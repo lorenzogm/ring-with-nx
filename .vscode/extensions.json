@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "coenraads.bracket-pair-colorizer-2",
+    "editorconfig.editorconfig",
+    "eamodio.gitlens",
+    "davidanson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "amatiasq.sort-imports",
+    "hex-ci.stylelint-plus",
+    "dbaeumer.vscode-eslint"
+  ]
+}

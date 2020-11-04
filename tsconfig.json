@@ -1,0 +1,15 @@
+{
+  "extends": "@valtech-ch/eslint-config-react/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./src",
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
