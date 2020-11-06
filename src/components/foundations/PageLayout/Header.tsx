@@ -1,11 +1,13 @@
+import Link from 'next/link'
+
 import Navigation from 'components/elements/Navigation/Navigation'
 import Container from 'components/foundations/PageContainer/PageContainer'
-import Link from 'next/link'
 import { ReactElement } from 'react'
-import type { Config } from 'types/config'
+import type { Config } from 'services/CMS/config'
 import IconFacebook from 'components/foundations/IconFacebook/IconFacebook'
 import IconInstagram from 'components/foundations/IconInstagram/IconInstagram'
-import Image from '../Image/Image'
+import Image from 'components/foundations/Image/Image'
+import LocaleSwitcher from 'components/elements/LocaleSwitcher/LocaleSwitcher'
 
 type HeaderProps = {
   config: Config
@@ -48,6 +50,7 @@ export default function Header({ config }: HeaderProps): ReactElement {
               </Link>
             </div>
             <div className="flex items-center justify-end w-full">
+              <LocaleSwitcher />
               <button
                 type="button"
                 className="text-gray-600 focus:outline-none mx-4 sm:mx-0"
@@ -64,7 +67,6 @@ export default function Header({ config }: HeaderProps): ReactElement {
                   <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </button>
-
               <div className="flex sm:hidden">
                 <button
                   type="button"
