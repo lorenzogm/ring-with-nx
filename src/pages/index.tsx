@@ -9,6 +9,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const CMS = getCMS()
 
   const config = await CMS.getConfig()
+
   return {
     props: {
       preview,

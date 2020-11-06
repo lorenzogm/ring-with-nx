@@ -1,7 +1,7 @@
 module.exports = {
   i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
+    locales: ['en-GB', 'es-ES'],
+    defaultLocale: 'es-ES',
   },
   images: {
     domains: ['images.prismic.io'],
