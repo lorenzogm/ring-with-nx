@@ -8,7 +8,7 @@ import Hero, {
   HeroDescription,
   HeroTitle,
   HeroType,
-} from 'components/foundations/Hero/Hero'
+} from 'components/elements/Hero/Hero'
 
 type HomeTemplateProps = {
   preview: boolean
