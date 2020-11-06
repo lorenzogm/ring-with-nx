@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { Config } from 'types/config'
+import type { Config } from 'services/CMS/config'
 
 import client from '../../client'
 import configParser from './configParser'

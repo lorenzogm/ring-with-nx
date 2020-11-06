@@ -10,6 +10,9 @@ import getAllProducts from './customTypes/product/getAllProducts'
 import getAllProductsByTags from './customTypes/product/getAllProductsByTags'
 import getProductByUID from './customTypes/product/getProductByUID'
 
+// translations
+import getTranslations from './customTypes/translations/getTranslations'
+
 import client from './client'
 
 export default {
@@ -26,4 +29,7 @@ export default {
   getAllProducts,
   getAllProductsByTags,
   getProductByUID,
+
+  // getTranslations
+  getTranslations,
 }

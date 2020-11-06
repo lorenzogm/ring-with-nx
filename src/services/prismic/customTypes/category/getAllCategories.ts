@@ -1,5 +1,5 @@
 import Prismic from 'prismic-javascript'
-import { Category } from 'types/category'
+import { Category } from 'services/CMS/category'
 import client from '../../client'
 import categoryParser from './categoryParser'
 

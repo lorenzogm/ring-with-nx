@@ -1,4 +1,4 @@
-import type { Category } from 'types/category'
+import type { Category } from 'services/CMS/category'
 import client from '../../client'
 import categoryParser from './categoryParser'
 

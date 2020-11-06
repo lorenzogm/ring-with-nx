@@ -1,4 +1,4 @@
-import { Product } from 'types/product'
+import { Product } from 'services/CMS/product'
 import client from '../../client'
 import productParser from './productParser'
 

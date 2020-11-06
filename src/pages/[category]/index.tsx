@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate'
-import getClient from 'services/getClient'
+import getCMS from 'services/CMS/getCMS'
 
 export default CategoryTemplate
 
@@ -9,12 +9,18 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const CMS = getClient()
+  const CMS = getCMS()
 
-  const config = await CMS.getConfig()
-  const category = await CMS.getCategoryByUID({
-    uid: params?.category as string,
-  })
+  const [config, category] = await Promise.all([
+    CMS.getConfig(),
+    CMS.getCategoryByUID({
+      uid: params?.category as string,
+    }),
+  ])
+
+  if (!config) {
+    throw new Error(`Undefined "config" document. Please define it in the CMS`)
+  }
 
   if (!category) {
     throw new Error(`Undefined category "${params?.category as string}"`)
@@ -36,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const CMS = getClient()
+  const CMS = getCMS()
   const categories = await CMS.getAllCategories()
 
   return {

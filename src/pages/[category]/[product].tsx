@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import getClient from 'services/getClient'
+import getCMS from 'services/CMS/getCMS'
 import ProductTemplate from 'components/templates/ProductTemplate/ProductTemplate'
 
 export default ProductTemplate
@@ -9,7 +9,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const CMS = getClient()
+  const CMS = getCMS()
 
   const config = await CMS.getConfig()
   const product = await CMS.getProductByUID({
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const CMS = getClient()
+  const CMS = getCMS()
 
   const config = await CMS.getConfig()
   const products = await CMS.getAllProducts({ currency: config.currency })

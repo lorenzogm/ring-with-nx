@@ -1,6 +1,6 @@
 import Prismic from 'prismic-javascript'
-import { Config } from 'types/config'
-import type { Product } from 'types/product'
+import { Config } from 'services/CMS/config'
+import type { Product } from 'services/CMS/product'
 import client from '../../client'
 import productParser from './productParser'
 

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Document } from 'prismic-javascript/types/documents'
-import { Category } from 'types/category'
+import { Category } from 'services/CMS/category'
 
 type CategoryParser = {
   category: Document

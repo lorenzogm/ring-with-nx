@@ -1,7 +1,7 @@
-import { CMS } from './client'
-import prismic from './prismic'
+import type { CMS } from './CMS'
+import prismic from '../prismic'
 
-export default function getClient(): CMS {
+export default function getCMS(): CMS {
   if (process.browser) {
     throw new Error('"getClient" should be called in the server.')
   }
