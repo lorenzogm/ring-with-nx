@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { createContext, ReactElement, ReactNode, useContext } from 'react'
-import { Category } from 'types/category'
-import { Product } from 'types/product'
+import { Category } from 'services/CMS/category'
+import { Product } from 'services/CMS/product'
 
 type ProductTileProps = {
   children: ReactNode

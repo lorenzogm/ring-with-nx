@@ -9,9 +9,9 @@ import ProductTile, {
   ProductTileName,
   ProductTilePrice,
 } from 'components/elements/ProductTile/ProductTile'
-import { Config } from 'types/config'
-import { Category } from 'types/category'
-import { Product } from 'types/product'
+import { Config } from 'services/CMS/config'
+import { Category } from 'services/CMS/category'
+import { Product } from 'services/CMS/product'
 
 type CategoryTemplateProps = {
   preview: boolean

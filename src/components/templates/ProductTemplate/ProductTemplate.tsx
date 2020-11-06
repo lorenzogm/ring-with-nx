@@ -4,10 +4,9 @@ import ErrorPage from 'next/error'
 import { ReactElement } from 'react'
 
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
-import { Config } from 'types/config'
-import { Product } from 'types/product'
+import { Config } from 'services/CMS/config'
+import { Product } from 'services/CMS/product'
 import Image from 'components/foundations/Image/Image'
-import Reviews from 'components/elements/Reviews/Reviews'
 import Button from 'components/foundations/Button/Button'
 
 type ProductTemplateProps = {
