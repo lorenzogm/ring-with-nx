@@ -25,8 +25,12 @@ export default function CategoryTemplate({
   config,
   category,
   products,
-}: CategoryTemplateProps): ReactElement {
+}: CategoryTemplateProps): ReactElement | null {
   const router = useRouter()
+
+  if (!config || !category || !products) {
+    return null
+  }
 
   if (!router.isFallback && !category) {
     return <ErrorPage statusCode={404} />
