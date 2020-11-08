@@ -1,18 +1,24 @@
-import { ReactElement, ReactNode } from 'react'
+import { MouseEvent, ReactElement, ReactNode } from 'react'
 import classnames from 'classnames'
 
 type ButtonProps = {
   children: ReactNode
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   variant?: 'primary'
+  disabled?: boolean
 }
 
 export default function Button({
   children,
+  onClick,
   variant,
+  disabled,
 }: ButtonProps): ReactElement {
   return (
     <button
       type="button"
+      onClick={onClick}
+      disabled={disabled}
       className={classnames(
         'flex items-center py-2 text-sm uppercase font-medium rounded focus:outline-none',
         {

@@ -17,15 +17,12 @@
       "yarn lint"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npx tsc"
-    }
-  },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "13.4.0",
     "@contentful/rich-text-types": "^14.1.1",
+    "@stripe/stripe-js": "^1.11.0",
     "@types/classnames": "^2.2.10",
+    "@types/react-select": "^3.0.23",
     "classnames": "^2.2.6",
     "contentful": "7.14.4",
     "date-fns": "2.10.0",
@@ -33,7 +30,9 @@
     "next": "^10.0.1",
     "prismic-javascript": "^3.0.2",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-select": "^3.1.0",
+    "use-shopping-cart": "^2.1.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
