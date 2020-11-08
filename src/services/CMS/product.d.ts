@@ -3,8 +3,9 @@ import { Category } from './category'
 export type Product = {
   slug: string
   name: string
-  image: string
-  price: string
+  imageDefault: string
+  colorDefault: string
+  price: number
   description: string
   colors: Color[]
   sizes: Size[]
@@ -21,36 +22,28 @@ type Color = {
 }
 
 type Size = {
-  size: string
+  label: string
+  value: string
 }
 
 // getAllProducts
-export type GetAllProducts = ({
-  currency,
-}: GetAllProductsProps) => GetAllProductsReturn
-export type GetAllProductsProps = {
-  currency: Config['currency']
-}
+export type GetAllProducts = () => GetAllProductsReturn
 export type GetAllProductsReturn = Promise<Product[]>
 
 // getAllProductsByTags
 export type GetAllProductsByTags = ({
   tags,
-  config,
 }: GetAllProductsByTagsProps) => GetAllProductsByTagsReturn
 export type GetAllProductsByTagsProps = {
   tags: string[]
-  config: Config
 }
 export type GetAllProductsByTagsReturn = Promise<Product[]>
 
 // getProductByUID
 export type GetProductByUID = ({
   uid,
-  currency,
 }: GetProductByUIDProps) => GetProductByUIDReturn
 export type GetProductByUIDProps = {
   uid: string
-  currency: Config['currency']
 }
 export type GetProductByUIDReturn = Promise<Product>
