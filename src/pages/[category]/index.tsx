@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps = async ({
 
   const products = await CMS.getAllProductsByTags({
     tags: category.tags,
-    config,
   })
 
   return {

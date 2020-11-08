@@ -11,11 +11,12 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const CMS = getCMS()
 
-  const config = await CMS.getConfig()
-  const product = await CMS.getProductByUID({
-    uid: params?.product as string,
-    currency: config.currency,
-  })
+  const [config, product] = await Promise.all([
+    CMS.getConfig(),
+    CMS.getProductByUID({
+      uid: params?.product as string,
+    }),
+  ])
 
   return {
     props: {
@@ -29,8 +30,7 @@ export const getStaticProps: GetStaticProps = async ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()
 
-  const config = await CMS.getConfig()
-  const products = await CMS.getAllProducts({ currency: config.currency })
+  const products = await CMS.getAllProducts()
 
   return {
     paths: products.map(
