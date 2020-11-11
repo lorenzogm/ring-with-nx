@@ -6,8 +6,8 @@ import {
   useState,
 } from 'react'
 import classnames from 'classnames'
-import { useShoppingCart } from 'use-shopping-cart'
-import Link from 'next/link'
+import { CartDetails, useShoppingCart } from 'use-shopping-cart'
+import { useMutation } from 'react-query'
 
 import Button from 'components/foundations/Button/Button'
 import Divider from 'components/foundations/Divider/Divider'
@@ -24,7 +24,21 @@ export default function Aside({ state, setState }: AsideProps): ReactElement {
     incrementItem,
     decrementItem,
     cartCount,
+    redirectToCheckout,
   } = useShoppingCart()
+
+  const [mutate] = useMutation(createOrder)
+  async function onClickCheckout() {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const { sessionId } = await mutate({ cartDetails })
+
+      redirectToCheckout({ sessionId }).then(console.log).catch(console.error)
+    } catch (e) {
+      console.log(e)
+      // Uh oh, something went wrong
+    }
+  }
 
   const [lastCartCount, setLastCartCount] = useState(cartCount)
 
@@ -136,26 +150,32 @@ export default function Aside({ state, setState }: AsideProps): ReactElement {
           ))}
           <Divider />
 
-          <Link href="/cart">
-            <a>
-              <Button variant="primary">
-                <span>Comenzar pedido</span>
-                <svg
-                  className="h-5 w-5 mx-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Button>
-            </a>
-          </Link>
+          <Button variant="primary" onClick={onClickCheckout}>
+            <span>Comenzar pedido</span>
+            <svg
+              className="h-5 w-5 mx-2"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Button>
         </>
       )}
     </aside>
   )
+}
+
+type CreateOrder = {
+  cartDetails: CartDetails
+}
+function createOrder({ cartDetails }: CreateOrder) {
+  return fetch('/api/checkout', {
+    method: 'POST',
+    body: JSON.stringify({ cartDetails }),
+  }).then((res) => res.json())
 }

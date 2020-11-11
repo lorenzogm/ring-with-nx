@@ -1,13 +1,11 @@
 {
-  "name": "cms-contentful",
+  "name": "ecommerce",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./src --ext .js,.jsx,.tsx,.ts",
-    "setup": "node ./contentful/setup.js $CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN",
-    "types": "contentful-typescript-codegen --output src/types/generated/contentful.d.ts"
+    "lint": "eslint ./src --ext .js,.jsx,.tsx,.ts"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
@@ -18,32 +16,31 @@
     ]
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "13.4.0",
-    "@contentful/rich-text-types": "^14.1.1",
     "@stripe/stripe-js": "^1.11.0",
-    "@types/classnames": "^2.2.10",
-    "@types/react-select": "^3.0.23",
     "classnames": "^2.2.6",
-    "contentful": "7.14.4",
     "date-fns": "2.10.0",
     "dotenv": "^8.2.0",
     "next": "^10.0.1",
     "prismic-javascript": "^3.0.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-query": "^2.26.2",
+    "react-query-devtools": "^2.6.3",
     "react-select": "^3.1.0",
+    "stripe": "^8.120.0",
     "use-shopping-cart": "^2.1.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
+    "@types/classnames": "^2.2.11",
     "@types/gtag.js": "^0.0.3",
     "@types/node": "^14.14.2",
     "@types/react": "^16.9.53",
+    "@types/react-select": "^3.0.23",
+    "@types/stripe": "^7.13.25",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "@valtech-ch/eslint-config-react": "0.0.9",
-    "contentful-import": "^7.7.12",
-    "contentful-typescript-codegen": "^3.2.1",
     "eslint": "^7.1.0",
     "eslint-config-airbnb-typescript": "^10.0.0",
     "eslint-config-prettier": "^6.11.0",

@@ -12,6 +12,12 @@ export type Product = {
   category: Category
 }
 
+export type ProductSku = Product & {
+  sku: string
+  image: string
+  currency: string
+}
+
 type Image = {
   url: string
 }
@@ -29,6 +35,8 @@ type Size = {
 // getAllProducts
 export type GetAllProducts = () => GetAllProductsReturn
 export type GetAllProductsReturn = Promise<Product[]>
+export type GetAllProductsSku = () => GetAllProductsSkuReturn
+export type GetAllProductsSkuReturn = Promise<ProductSku[]>
 
 // getAllProductsByTags
 export type GetAllProductsByTags = ({

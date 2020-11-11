@@ -8,6 +8,7 @@ import getConfig from './customTypes/config/getConfig'
 // product
 import getAllProducts from './customTypes/product/getAllProducts'
 import getAllProductsByTags from './customTypes/product/getAllProductsByTags'
+import getAllProductsSku from './customTypes/product/getAllProductsSku'
 import getProductByUID from './customTypes/product/getProductByUID'
 
 // translations
@@ -29,6 +30,7 @@ export default {
   getAllProducts,
   getAllProductsByTags,
   getProductByUID,
+  getAllProductsSku,
 
   // getTranslations
   getTranslations,

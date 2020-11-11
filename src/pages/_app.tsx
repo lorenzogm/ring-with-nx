@@ -2,6 +2,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ReactElement } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart'
+import { ReactQueryDevtools } from 'react-query-devtools'
 
 import { useGtagHandlerouteChange } from 'services/gtag'
 import '../styles/index.css'
@@ -21,11 +22,18 @@ export default function MyApp({
   useGtagHandlerouteChange()
 
   return (
-    <CartProvider mode="checkout-session" stripe={stripePromise} currency="EUR">
-      <Component
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...pageProps}
-      />
-    </CartProvider>
+    <>
+      <CartProvider
+        mode="checkout-session"
+        stripe={stripePromise}
+        currency="EUR"
+      >
+        <Component
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...pageProps}
+        />
+      </CartProvider>
+      <ReactQueryDevtools />
+    </>
   )
 }
