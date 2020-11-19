@@ -1,6 +1,6 @@
 # Ecommerce
 
-Demo: https://github.com/lorenzogm/ecommerce
+Demo: https://ecommerce.lorenzogm.vercel.app/
 
 ## Stack
 
