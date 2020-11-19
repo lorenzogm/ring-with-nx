@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export const GA_TRACKING_ID = 'G-EQ9FVMPX3V'
+export const { GA_TRACKING_ID } = process.env
 
 declare global {
   interface Window {
@@ -11,9 +11,11 @@ declare global {
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 function pageview(url: string): void {
-  window.gtag('config', GA_TRACKING_ID, {
-    page_path: url,
-  })
+  if (GA_TRACKING_ID) {
+    window.gtag('config', GA_TRACKING_ID, {
+      page_path: url,
+    })
+  }
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
@@ -24,20 +26,27 @@ type EventProps = {
   value: string
 }
 export function event({ action, category, label, value }: EventProps): void {
-  window.gtag('event', action, {
-    event_category: category,
-    event_label: label,
-    value,
-  })
+  if (GA_TRACKING_ID) {
+    window.gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value,
+    })
+  }
 }
 
 export function useGtagHandlerouteChange(): void {
   const router = useRouter()
 
   useEffect(() => {
-    router.events.on('routeChangeComplete', pageview)
+    if (GA_TRACKING_ID) {
+      router.events.on('routeChangeComplete', pageview)
+    }
+
     return () => {
-      router.events.off('routeChangeComplete', pageview)
+      if (GA_TRACKING_ID) {
+        router.events.off('routeChangeComplete', pageview)
+      }
     }
   }, [router.events])
 }
