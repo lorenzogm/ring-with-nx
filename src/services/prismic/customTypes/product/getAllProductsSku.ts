@@ -1,7 +1,7 @@
-import { Product, ProductSku } from 'services/CMS/product'
+import { ProductSku } from 'services/CMS/product'
 import getAllProducts from './getAllProducts'
 
-export default async function getAllProductsSku(): Promise<Product[]> {
+export default async function getAllProductsSku(): Promise<ProductSku[]> {
   const products = await getAllProducts()
 
   const productsSku: ProductSku[] = []
