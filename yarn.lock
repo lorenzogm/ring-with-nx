@@ -1233,6 +1233,18 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.0.tgz#6c9eafc78c1529248f8f4d92b0799a712b6052c6"
   integrity sha512-i9YbZPN3QgfighY/1X1Pu118VUz2Fmmhd6b2n0/O8YVgGGfw0FbUYoA97k7FkpGJ+pLCFEDLUmAPPV4D1kpeFw==
 
+"@lorenzogm/eslint-config-base@^0.0.6":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@lorenzogm/eslint-config-base/-/eslint-config-base-1.0.1.tgz#aabd57262a721b1cb29a8cfc7db098fa3fd44965"
+  integrity sha512-ev9iI+5GQPcyinW0B4vXGzygDyYtL7rko9xBjdFt5j51iwSmpzvwG/3QjQ77leefEYCAIoCNId5it+qaGk5kjQ==
+
+"@lorenzogm/eslint-config-react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@lorenzogm/eslint-config-react/-/eslint-config-react-1.0.0.tgz#a33412dcfe8a43855b5101121958a631047afc16"
+  integrity sha512-GNnXVtiFG3i26X/8tl+eab+mGMBYFnfASvYJV++xghpkF/O7KbeDtYfpQs0qteRqc7MMzt3mtmojxyCTjwe56A==
+  dependencies:
+    "@lorenzogm/eslint-config-base" "^0.0.6"
+
 "@next/env@10.0.1":
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.1.tgz#5f49329fcc4fe8948737aeb8108c9d7d75155f93"
@@ -1512,18 +1524,6 @@
   dependencies:
     "@typescript-eslint/types" "4.5.0"
     eslint-visitor-keys "^2.0.0"
-
-"@valtech-ch/eslint-config-base@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@valtech-ch/eslint-config-base/-/eslint-config-base-0.0.6.tgz#84c97c1417c15c5eb091821230b258b501463868"
-  integrity sha512-HdMLxsntP8kR2pgvq6OjZDriQhEr8mn6ZNf4wrRJMbcjzmYxCwN3KrgU/OsQrKspzF/sjVgKYUGLq0JQz+7CgQ==
-
-"@valtech-ch/eslint-config-react@0.0.9":
-  version "0.0.9"
-  resolved "https://registry.npmjs.org/@valtech-ch/eslint-config-react/-/eslint-config-react-0.0.9.tgz#092e787dcda891255a15df406422163134413c9b"
-  integrity sha512-tbi3ND17XTtbt7imtc29DFzdAmq3K6adlLP1BE2E2ADxCspLJgYanM6VygeRZKB+FjsZHfcUeVUu6FR107kdtA==
-  dependencies:
-    "@valtech-ch/eslint-config-base" "^0.0.6"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

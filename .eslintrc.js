@@ -1,9 +1,6 @@
 module.exports = {
   extends: [
-    '@valtech-ch/eslint-config-react',
-    '@valtech-ch/eslint-config-react/nextjs',
+    '@lorenzogm/eslint-config-react',
+    '@lorenzogm/eslint-config-react/nextjs',
   ],
-  rules: {
-    '@typescript-eslint/no-use-before-define': 'off',
-  },
 }
