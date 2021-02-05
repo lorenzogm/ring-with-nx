@@ -41,16 +41,20 @@
               "label": "Image"
             }
           },
-          "sku": {
-            "type": "Text",
-            "config": {
-              "label": "SKU"
-            }
-          },
           "color": {
             "type": "Select",
             "config": {
-              "options": ["BLACK", "MELANGE_GREY", "NAVY", "WHITE"],
+              "options": [
+                "AQUAMARINE",
+                "BLACK",
+                "BURGUNDY",
+                "CHARCOAL_GREY",
+                "FADED_DENIM",
+                "LIGHT_CHARCOAL",
+                "MELANGE_GREY",
+                "NAVY",
+                "WHITE"
+              ],
               "label": "Color"
             }
           }

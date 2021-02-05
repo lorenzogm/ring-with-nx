@@ -1,0 +1,10 @@
+{
+  "Main": {
+    "shop_now": {
+      "type": "Text",
+      "config": {
+        "label": "shop_now"
+      }
+    }
+  }
+}
