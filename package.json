@@ -2,7 +2,7 @@
   "name": "ecommerce",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "./scripts/dev.sh",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./src --ext .js,.jsx,.tsx,.ts"
