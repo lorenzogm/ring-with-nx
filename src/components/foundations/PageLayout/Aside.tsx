@@ -33,6 +33,7 @@ export default function Aside({ state, setState }: AsideProps): ReactElement {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { sessionId } = await mutate({ cartDetails })
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       redirectToCheckout({ sessionId }).then(console.log).catch(console.error)
     } catch (e) {
       console.log(e)
