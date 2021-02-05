@@ -1,3 +1,5 @@
+import { RichTextBlock } from 'prismic-reactjs'
+
 import { Category } from './category'
 
 export type Product = {
@@ -6,7 +8,7 @@ export type Product = {
   imageDefault: string
   colorDefault: string
   price: number
-  description: string
+  description: RichTextBlock[]
   colors: Color[]
   sizes: Size[]
   category: Category

@@ -13,7 +13,7 @@ export default function productParser({ product }: ProductParser): Product {
   return {
     name: product.data.name as Product['name'],
     slug: product.uid as Product['slug'],
-    description: (product.data.description || '') as Product['description'],
+    description: product.data.description as Product['description'],
     price: product.data.price * 100,
     imageDefault: product.data.colors[0].image.url as Product['imageDefault'],
     colorDefault: product.data.colors[0].color as Product['colorDefault'],

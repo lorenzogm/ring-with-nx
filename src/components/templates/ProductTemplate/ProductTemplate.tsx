@@ -4,6 +4,7 @@ import ErrorPage from 'next/error'
 import { ReactElement, useState } from 'react'
 import ReactSelect from 'react-select'
 import { useShoppingCart } from 'use-shopping-cart'
+import { RichText } from 'prismic-reactjs'
 
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
 import { Config } from 'services/CMS/config'
@@ -76,7 +77,7 @@ export default function ProductTemplate({
                     </div>
 
                     <p className="leading-relaxed mb-6">
-                      {product.description || DESCRIPTION_DEFAULT}
+                      {RichText.render(product.description)}
                     </p>
                     <div className="mb-6">
                       <ColorSelector
@@ -132,6 +133,3 @@ export default function ProductTemplate({
     </PageLayout>
   )
 }
-
-const DESCRIPTION_DEFAULT =
-  'Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.'
