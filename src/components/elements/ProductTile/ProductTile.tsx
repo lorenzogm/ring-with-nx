@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { createContext, ReactElement, ReactNode, useContext } from 'react'
 import { Category } from 'services/CMS/category'
 import { Product } from 'services/CMS/product'
+import { formatCurrencyString } from 'use-shopping-cart'
 
 type ProductTileProps = {
   children: ReactNode
@@ -64,7 +65,16 @@ export function ProductTileName(): ReactElement {
   )
 }
 
-export function ProductTilePrice(): ReactElement {
+type ProductTilePriceProps = {
+  currency: string
+}
+export function ProductTilePrice({
+  currency,
+}: ProductTilePriceProps): ReactElement {
   const product = useProductTileContext()
-  return <p className="pt-1 text-gray-900">{product.price}</p>
+  const price = formatCurrencyString({
+    value: product.price,
+    currency,
+  })
+  return <p className="pt-1 text-gray-900">{price}</p>
 }

@@ -57,7 +57,7 @@ export default function CategoryTemplate({
                   >
                     <ProductTileImage />
                     <ProductTileName />
-                    <ProductTilePrice />
+                    <ProductTilePrice currency={config.currency} />
                   </ProductTile>
                 ))}
               </div>
