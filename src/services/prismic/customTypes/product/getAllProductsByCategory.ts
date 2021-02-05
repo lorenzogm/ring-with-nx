@@ -10,10 +10,7 @@ export default async function getAllProductsByCategory({
   category,
 }: GetAllProductsByCategoryProps): Promise<Product[]> {
   const products = await client.query(
-    [
-      // Prismic.Predicates.at('document.type', 'product'),
-      Prismic.Predicates.at('my.product.category', category),
-    ],
+    Prismic.Predicates.at('my.product.category', category),
     { fetchLinks: 'category.name' },
   )
 
