@@ -2,6 +2,7 @@ import type { GetAllCategories, GetCategoryByUID } from 'services/CMS/category'
 import type { GetConfig } from 'services/CMS/config'
 import type {
   GetAllProducts,
+  GetAllProductsByCategory,
   GetAllProductsByTags,
   GetAllProductsSku,
   GetProductByUID,
@@ -18,6 +19,7 @@ type CMS = {
 
   // product
   getAllProducts: GetAllProducts
+  getAllProductsByCategory: GetAllProductsByCategory
   getAllProductsByTags: GetAllProductsByTags
   getAllProductsSku: GetAllProductsSku
   getProductByUID: GetProductByUID

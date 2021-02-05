@@ -26,8 +26,8 @@ export const getStaticProps: GetStaticProps = async ({
     throw new Error(`Undefined category "${params?.category as string}"`)
   }
 
-  const products = await CMS.getAllProductsByTags({
-    tags: category.tags,
+  const products = await CMS.getAllProductsByCategory({
+    category: category.id,
   })
 
   return {

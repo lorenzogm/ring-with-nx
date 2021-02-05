@@ -38,6 +38,15 @@ export type GetAllProductsReturn = Promise<Product[]>
 export type GetAllProductsSku = () => GetAllProductsSkuReturn
 export type GetAllProductsSkuReturn = Promise<ProductSku[]>
 
+// getAllProductsByCategory
+export type GetAllProductsByCategory = ({
+  tags,
+}: GetAllProductsByCategoryProps) => GetAllProductsByCategoryReturn
+export type GetAllProductsByCategoryProps = {
+  category: string
+}
+export type GetAllProductsByCategoryReturn = Promise<Product[]>
+
 // getAllProductsByTags
 export type GetAllProductsByTags = ({
   tags,
