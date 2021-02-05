@@ -23,6 +23,7 @@
     "next": "^10.0.1",
     "prismic-javascript": "^3.0.2",
     "react": "^16.13.0",
+    "react-cookie-banner": "^4.1.0",
     "react-dom": "^16.13.0",
     "react-query": "^2.26.2",
     "react-query-devtools": "^2.6.3",

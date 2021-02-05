@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode, useState } from 'react'
+import CookieBanner from 'react-cookie-banner'
 
 import PageContainer from 'components/foundations/PageContainer/PageContainer'
 import Meta from 'components/foundations/PageLayout/Meta'
@@ -25,14 +26,20 @@ export default function PageLayout({
   return (
     <>
       <Meta />
-      <div className="min-h-screen">
+      <div className="flex flex-col h-screen justify-between">
         <Header config={config} setState={setState} />
         <Aside state={state} setState={setState} />
         <PageContainer>
           <main>{children}</main>
         </PageContainer>
+        <Footer config={config} />
+        <CookieBanner
+          message="Hola, usamos cookies. Si sigues navegando significa que aceptas el uso de cookies."
+          cookie="user-has-accepted-cookies"
+          dismissOnScroll
+          dismissOnClick
+        />
       </div>
-      <Footer config={config} />
     </>
   )
 }
