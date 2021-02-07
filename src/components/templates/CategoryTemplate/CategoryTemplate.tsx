@@ -37,7 +37,7 @@ export default function CategoryTemplate({
   }
 
   return (
-    <PageLayout preview={preview} config={config}>
+    <PageLayout config={config}>
       {router.isFallback ? null : (
         <>
           <article>
