@@ -75,7 +75,9 @@ export default function ProductTemplate({
                     </div>
 
                     <p className="leading-relaxed mb-6">
-                      {RichText.render(product.description)}
+                      {product.description
+                        ? RichText.render(product.description)
+                        : null}
                     </p>
                     <div className="mb-6">
                       <ColorSelector
