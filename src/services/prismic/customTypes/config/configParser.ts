@@ -16,13 +16,20 @@ export default function configParser({
     siteName: config.data.site_name as Config['siteName'],
     logo: (config.data.logo.url || '') as Config['logo'],
     currency: config.data.currency,
-    instagramUrl: config.data.instagram_url || null,
-    facebookUrl: config.data.facebook_url || null,
     navigation: navigationItems.map((item) => ({
       slug: item.uid,
       name: item.data.name,
       description: item.data.description,
       image: item.data.image.url || '',
     })) as Config['navigation'],
+    // social
+    instagramUrl: config.data.instagram_url || null,
+    facebookUrl: config.data.facebook_url || null,
+    // payments
+    isPaymentMethodWireTransferEnabled:
+      config.data.is_payment_method_wire_transfer_enabled,
+    isPaymentMethodBizumEnabled: config.data.is_payment_method_bizum_enabled,
+    isPaymentMethodCreditCardEnabled:
+      config.data.is_payment_method_credit_card_enabled,
   }
 }

@@ -2,9 +2,12 @@ export type Config = {
   siteName: string
   logo: string
   currency: string
+  navigation: Navigation[]
   instagramUrl?: string
   facebookUrl?: string
-  navigation: Navigation[]
+  isPaymentMethodWireTransferEnabled: boolean
+  isPaymentMethodBizumEnabled: boolean
+  isPaymentMethodCreditCardEnabled: boolean
 }
 
 export type Navigation = {
