@@ -26,6 +26,7 @@
     "react": "^16.13.0",
     "react-cookie-banner": "^4.1.0",
     "react-dom": "^16.13.0",
+    "react-hook-form": "^6.15.1",
     "react-query": "^2.26.2",
     "react-query-devtools": "^2.6.3",
     "react-select": "^3.1.0",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "@lorenzogm/eslint-config-react": "1.0.1",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "@types/classnames": "^2.2.11",
     "@types/gtag.js": "^0.0.3",
     "@types/node": "^14.14.2",
