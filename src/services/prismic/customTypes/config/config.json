@@ -17,26 +17,6 @@
         "label": "Logo"
       }
     },
-    "currency": {
-      "type": "Select",
-      "config": {
-        "options": ["EUR"],
-        "default_value": "EUR",
-        "label": "Currency"
-      }
-    },
-    "instagram_url": {
-      "type": "Text",
-      "config": {
-        "label": "Instagram URL"
-      }
-    },
-    "facebook_url": {
-      "type": "Text",
-      "config": {
-        "label": "Facebook URL"
-      }
-    },
     "navigation": {
       "type": "Group",
       "config": {
@@ -51,6 +31,57 @@
           }
         },
         "label": "Navigation"
+      }
+    }
+  },
+  "Social": {
+    "instagram_url": {
+      "type": "Text",
+      "config": {
+        "label": "Instagram URL"
+      }
+    },
+    "facebook_url": {
+      "type": "Text",
+      "config": {
+        "label": "Facebook URL"
+      }
+    }
+  },
+  "Payments": {
+    "currency": {
+      "type": "Select",
+      "config": {
+        "options": ["EUR"],
+        "default_value": "EUR",
+        "label": "Currency"
+      }
+    },
+    "is_payment_method_wire_transfer_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Wire transfer"
+      }
+    },
+    "is_payment_method_bizum_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Bizum"
+      }
+    },
+    "is_payment_method_credit_card_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Payment with Credit"
       }
     }
   }
