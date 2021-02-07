@@ -10,8 +10,9 @@ export default async function getAllProductsSku(): Promise<ProductSku[]> {
     product.colors.forEach((color) => {
       product.sizes.forEach((size) => {
         productsSku.push({
-          ...product,
+          name: product.name,
           sku: `${product.slug}-${color.color}-${size.value}`,
+          price: product.price,
           image: color.image.url,
           currency: 'EUR',
         })

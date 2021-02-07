@@ -8,14 +8,16 @@ export type Product = {
   imageDefault: string
   colorDefault: string
   price: number
-  description: RichTextBlock[]
+  description?: RichTextBlock[]
   colors: Color[]
   sizes: Size[]
   category: Category
 }
 
-export type ProductSku = Product & {
+export type ProductSku = {
+  name: string
   sku: string
+  price: number
   image: string
   currency: string
 }

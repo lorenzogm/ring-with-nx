@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
@@ -10,18 +11,22 @@ type ProductParser = {
 }
 
 export default function productParser({ product }: ProductParser): Product {
+  if (!product.uid) {
+    throw new Error(`Undefined product UID: ${JSON.stringify(product)}`)
+  }
+
   return {
-    name: product.data.name as Product['name'],
-    slug: product.uid as Product['slug'],
-    description: product.data.description as Product['description'],
+    name: product.data.name,
+    slug: product.uid,
+    description: product.data.description || null,
     price: product.data.price * 100,
-    imageDefault: product.data.colors[0].image.url as Product['imageDefault'],
-    colorDefault: product.data.colors[0].color as Product['colorDefault'],
-    colors: product.data.colors as Product['colors'],
+    imageDefault: product.data.colors[0].image.url,
+    colorDefault: product.data.colors[0].color,
+    colors: product.data.colors,
     sizes: product.data.sizes.map(({ size }: { size: string }) => ({
       label: size,
       value: size,
-    })) as Product['sizes'],
+    })),
     category: categoryParser({ category: product.data.category as Document }),
   }
 }
