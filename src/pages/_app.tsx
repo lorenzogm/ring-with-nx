@@ -9,11 +9,9 @@ import '../styles/index.css'
 
 const { NEXT_PUBLIC_STRIPE_API_PUBLIC } = process.env
 
-if (!NEXT_PUBLIC_STRIPE_API_PUBLIC) {
-  throw new Error('Undefined "NEXT_PUBLIC_STRIPE_API_PUBLIC"')
-}
-
-const stripePromise = loadStripe(NEXT_PUBLIC_STRIPE_API_PUBLIC)
+const stripePromise = NEXT_PUBLIC_STRIPE_API_PUBLIC
+  ? loadStripe(NEXT_PUBLIC_STRIPE_API_PUBLIC)
+  : Promise.resolve(null)
 
 export default function MyApp({
   Component,

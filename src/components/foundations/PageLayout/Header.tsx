@@ -47,12 +47,16 @@ export default function Header({
             <div className="w-full text-gray-700 md:text-center text-2xl font-semibold">
               <Link href="/">
                 <a>
-                  <Image
-                    src={config.logo}
-                    alt={config.siteName}
-                    width={100}
-                    height={100}
-                  />
+                  {config.logo ? (
+                    <Image
+                      src={config.logo}
+                      alt={config.siteName}
+                      width={100}
+                      height={100}
+                    />
+                  ) : (
+                    config.siteName
+                  )}
                 </a>
               </Link>
             </div>
