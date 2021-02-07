@@ -5,10 +5,7 @@ import ProductTemplate from 'components/templates/ProductTemplate/ProductTemplat
 
 export default ProductTemplate
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const CMS = getCMS()
 
   const [config, product] = await Promise.all([
@@ -20,7 +17,6 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      preview,
       config,
       product,
     },

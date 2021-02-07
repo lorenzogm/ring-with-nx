@@ -5,10 +5,7 @@ import getCMS from 'services/CMS/getCMS'
 
 export default CategoryTemplate
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const CMS = getCMS()
 
   const [config, category] = await Promise.all([
@@ -32,7 +29,6 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      preview,
       config,
       category,
       products,

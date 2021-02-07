@@ -17,13 +17,11 @@ import Price from './Price'
 import { State } from './ProductTemplate.d'
 
 type ProductTemplateProps = {
-  preview: boolean
   config: Config
   product: Product
 }
 
 export default function ProductTemplate({
-  preview,
   config,
   product,
 }: ProductTemplateProps): ReactElement | null {
@@ -44,7 +42,7 @@ export default function ProductTemplate({
   }
 
   return (
-    <PageLayout preview={preview} config={config}>
+    <PageLayout config={config}>
       {router.isFallback ? null : (
         <>
           <article>

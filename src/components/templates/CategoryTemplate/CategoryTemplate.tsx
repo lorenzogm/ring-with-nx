@@ -14,14 +14,12 @@ import { Category } from 'services/CMS/category'
 import { Product } from 'services/CMS/product'
 
 type CategoryTemplateProps = {
-  preview: boolean
   config: Config
   category: Category
   products: Product[]
 }
 
 export default function CategoryTemplate({
-  preview,
   config,
   category,
   products,

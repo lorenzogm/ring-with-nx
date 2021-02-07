@@ -11,16 +11,14 @@ import Hero, {
 } from 'components/elements/Hero/Hero'
 
 type HomeTemplateProps = {
-  preview: boolean
   config: Config
 }
 
 export default function HomeTemplate({
-  preview,
   config,
 }: HomeTemplateProps): ReactElement {
   return (
-    <PageLayout preview={preview} config={config}>
+    <PageLayout config={config}>
       <Head>
         <title>{config.siteName}</title>
       </Head>

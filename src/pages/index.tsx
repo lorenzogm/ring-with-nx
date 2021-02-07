@@ -5,14 +5,13 @@ import getCMS from 'services/CMS/getCMS'
 
 export default HomeTemplate
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+export const getStaticProps: GetStaticProps = async () => {
   const CMS = getCMS()
 
   const config = await CMS.getConfig()
 
   return {
     props: {
-      preview,
       config,
     },
   }
