@@ -11,13 +11,10 @@ import Footer from './Footer'
 import { State } from './PageLayout.d'
 
 type PageLayoutProps = {
-  preview: boolean
   config: Config
   children: ReactNode
 }
 export default function PageLayout({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  preview,
   config,
   children,
 }: PageLayoutProps): ReactElement {

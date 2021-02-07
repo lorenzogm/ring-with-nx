@@ -6,40 +6,24 @@ import {
   useState,
 } from 'react'
 import classnames from 'classnames'
-import { CartDetails, useShoppingCart } from 'use-shopping-cart'
-import { useMutation } from 'react-query'
+import { useShoppingCart } from 'use-shopping-cart'
+import Link from 'next/link'
 
 import Button from 'components/foundations/Button/Button'
 import Divider from 'components/foundations/Divider/Divider'
+import Basket from 'components/modules/Basket/Basket'
 
 import { State } from './PageLayout.d'
+import PageSectionHeader from '../PageSectionHeader/PageSectionHeader'
+import IconArrowRight from '../Icon/IconArrowRight'
+import IconClose from '../Icon/IconClose'
 
 type AsideProps = {
   state: State
   setState: Dispatch<SetStateAction<State>>
 }
 export default function Aside({ state, setState }: AsideProps): ReactElement {
-  const {
-    cartDetails,
-    incrementItem,
-    decrementItem,
-    cartCount,
-    redirectToCheckout,
-  } = useShoppingCart()
-
-  const [mutate] = useMutation(createOrder)
-  async function onClickCheckout() {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const { sessionId } = await mutate({ cartDetails })
-
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      redirectToCheckout({ sessionId }).then(console.log).catch(console.error)
-    } catch (e) {
-      console.log(e)
-      // Uh oh, something went wrong
-    }
-  }
+  const { cartCount } = useShoppingCart()
 
   const [lastCartCount, setLastCartCount] = useState(cartCount)
 
@@ -64,7 +48,7 @@ export default function Aside({ state, setState }: AsideProps): ReactElement {
       )}
     >
       <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-medium text-gray-700">Tu cesta</h3>
+        <PageSectionHeader>Tu cesta</PageSectionHeader>
         <button
           type="button"
           onClick={() =>
@@ -75,108 +59,26 @@ export default function Aside({ state, setState }: AsideProps): ReactElement {
           }
           className="text-gray-600 focus:outline-none"
         >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <IconClose />
         </button>
       </div>
       <Divider />
-      {cartCount === 0 ? (
-        <p>Tu cesta está vacía</p>
-      ) : (
+
+      <Basket />
+      {cartCount > 0 ? (
         <>
-          {Object.values(cartDetails).map((cartItem) => (
-            <div key={cartItem.sku} className="flex justify-between mt-6">
-              <div className="flex">
-                <img
-                  className="h-20 w-20 object-cover rounded"
-                  src={cartItem.image}
-                  alt={cartItem.name}
-                />
-                <div className="mx-3">
-                  <h3 className="text-sm text-gray-600">{cartItem.name}</h3>
-                  <p>Color: {cartItem.color}</p>
-                  <p>Talla: {cartItem.size}</p>
-                  <div className="flex items-center mt-2">
-                    <button
-                      type="button"
-                      className="text-gray-500 focus:outline-none focus:text-gray-600"
-                      onClick={() => decrementItem(cartItem.sku)}
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </button>
-                    <span className="text-gray-700 mx-2">
-                      {cartItem.quantity}
-                    </span>
-                    <button
-                      type="button"
-                      className="text-gray-500 focus:outline-none focus:text-gray-600"
-                      onClick={() => incrementItem(cartItem.sku)}
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <span className="text-gray-600">{cartItem.formattedValue}</span>
-            </div>
-          ))}
           <Divider />
 
-          <Button variant="primary" onClick={onClickCheckout}>
-            <span>Comenzar pedido</span>
-            <svg
-              className="h-5 w-5 mx-2"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Button>
+          <Link href="/checkout/address">
+            <a>
+              <Button variant="primary">
+                <span>Comenzar pedido</span>
+                <IconArrowRight />
+              </Button>
+            </a>
+          </Link>
         </>
-      )}
+      ) : null}
     </aside>
   )
-}
-
-type CreateOrder = {
-  cartDetails: CartDetails
-}
-function createOrder({ cartDetails }: CreateOrder) {
-  return fetch('/api/checkout', {
-    method: 'POST',
-    body: JSON.stringify({ cartDetails }),
-  }).then((res) => res.json())
 }
