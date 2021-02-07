@@ -27,9 +27,10 @@ export default function configParser({
     facebookUrl: config.data.facebook_url || null,
     // payments
     isPaymentMethodWireTransferEnabled:
-      config.data.is_payment_method_wire_transfer_enabled,
-    isPaymentMethodBizumEnabled: config.data.is_payment_method_bizum_enabled,
+      config.data.is_payment_method_wire_transfer_enabled || false,
+    isPaymentMethodBizumEnabled:
+      config.data.is_payment_method_bizum_enabled || false,
     isPaymentMethodCreditCardEnabled:
-      config.data.is_payment_method_credit_card_enabled,
+      config.data.is_payment_method_credit_card_enabled || false,
   }
 }
