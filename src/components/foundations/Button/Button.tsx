@@ -3,6 +3,7 @@ import classnames from 'classnames'
 
 type ButtonProps = {
   children: ReactNode
+  type?: 'button' | 'submit' | 'reset'
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   variant?: 'primary'
   disabled?: boolean
@@ -10,13 +11,15 @@ type ButtonProps = {
 
 export default function Button({
   children,
+  type = 'button',
   onClick,
   variant,
   disabled,
 }: ButtonProps): ReactElement {
   return (
     <button
-      type="button"
+      // eslint-disable-next-line react/button-has-type
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={classnames(
