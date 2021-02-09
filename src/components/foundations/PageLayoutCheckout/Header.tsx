@@ -17,12 +17,16 @@ const Header: FC<HeaderProps> = ({ config, checkoutStep }) => {
       <header>
         <div className="container mx-auto px-6 pt-3 pb-16">
           <div className="flex items-start justify-between">
-            <Image
-              src={config.logo}
-              alt={config.siteName}
-              width={100}
-              height={100}
-            />
+            {config.logo ? (
+              <Image
+                src={config.logo}
+                alt={config.siteName}
+                width={100}
+                height={100}
+              />
+            ) : (
+              config.siteName
+            )}
           </div>
           <div className="flex items-center justify-end w-full">a</div>
 
