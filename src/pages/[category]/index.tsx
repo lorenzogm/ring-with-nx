@@ -15,10 +15,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }),
   ])
 
-  if (!config) {
-    throw new Error(`Undefined "config" document. Please define it in the CMS`)
-  }
-
   if (!category) {
     throw new Error(`Undefined category "${params?.category as string}"`)
   }

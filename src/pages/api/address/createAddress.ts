@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { NextApiHandler } from 'next'
-import { Address } from 'services/api/user/address/address'
+
 import { db } from 'services/firebase-admin'
+import type { Address } from 'types/address'
 
 const createAddress: NextApiHandler = async (req, res) => {
   try {
     const { address }: { address: Address } = JSON.parse(req.body)
 
-    await db.collection('address').doc().set(address)
+    await db.collection('address').add(address)
 
     res.status(200)
   } catch (error) {

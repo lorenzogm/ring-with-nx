@@ -1,18 +1,21 @@
 import { FC, useEffect, useState } from 'react'
-
-import { Config } from 'services/CMS/config'
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
+
 import getCMS from 'services/CMS/getCMS'
 import CheckoutAddressTemplate from 'components/templates/CheckoutAddressTemplate/CheckoutAddressTemplate'
-import createAddress from 'services/api/user/address/createAddress'
-import { Address } from 'services/api/user/address/address'
-import { CheckoutAddressFormValues } from 'components/templates/CheckoutAddressTemplate/CheckoutAddressTemplate.d'
+import createAddress from 'services/api/address/createAddress'
+import { CheckoutAddressFormValues } from 'components/templates/CheckoutAddressTemplate/checkoutAddress'
+import type { Config } from 'types/config'
+import type { Address } from 'types/address'
 
 type CheckoutAddressPageProps = {
   config: Config
 }
 
 const CheckoutAddressPage: FC<CheckoutAddressPageProps> = ({ config }) => {
+  const router = useRouter()
+
   const [state, setState] = useState<State>({
     status: 'LOADING',
     address: {
@@ -30,7 +33,6 @@ const CheckoutAddressPage: FC<CheckoutAddressPageProps> = ({ config }) => {
     const addressFromLocalStorage = localStorage.getItem('address')
 
     if (addressFromLocalStorage) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const addressFromLocalStorageParsed: Address = JSON.parse(
         addressFromLocalStorage,
       )
@@ -59,6 +61,12 @@ const CheckoutAddressPage: FC<CheckoutAddressPageProps> = ({ config }) => {
       onSubmit={onSubmit}
     />
   )
+
+  async function onSubmit(values: CheckoutAddressFormValues) {
+    await createAddress(values.address)
+
+    await router.push('/checkout/payment')
+  }
 }
 
 export default CheckoutAddressPage
@@ -67,10 +75,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const CMS = getCMS()
 
   const [config] = await Promise.all([CMS.getConfig()])
-
-  if (!config) {
-    throw new Error(`Undefined "config" document. Please define it in the CMS`)
-  }
 
   return {
     props: {
@@ -82,8 +86,4 @@ export const getStaticProps: GetStaticProps = async () => {
 type State = {
   status: 'LOADING' | 'SUCCESS'
   address: Address
-}
-
-function onSubmit(values: CheckoutAddressFormValues) {
-  createAddress(values.address)
 }
