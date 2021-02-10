@@ -5,12 +5,12 @@ import { Category } from './category'
 export type Product = {
   slug: string
   name: string
-  imageDefault: string
-  colorDefault: string
+  imageDefault?: string
+  colorDefault?: string
   price: number
   description?: RichTextBlock[]
-  colors: Color[]
-  sizes: Size[]
+  colors?: Color[]
+  sizes?: Size[]
   category: Category
 }
 

@@ -17,12 +17,22 @@ export default function productParser({ product }: ProductParser): Product {
     description: product.data.description || null,
     price: product.data.price * 100,
     imageDefault: product.data.colors[0].image.url,
-    colorDefault: product.data.colors[0].color,
-    colors: product.data.colors,
-    sizes: product.data.sizes.map(({ size }: { size: string }) => ({
-      label: size,
-      value: size,
-    })),
     category: categoryParser({ category: product.data.category as Document }),
+    // colors are optional
+    ...(product.data.colors
+      ? {
+          colorDefault: product.data.colors[0].color,
+          colors: product.data.colors,
+        }
+      : {}),
+    // sizes are optional
+    ...(product.data.sizes
+      ? {
+          sizes: product.data.sizes.map(({ size }: { size: string }) => ({
+            label: size,
+            value: size,
+          })),
+        }
+      : {}),
   }
 }
