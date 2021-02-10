@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart'
 import { ReactQueryDevtools } from 'react-query-devtools'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { useGtagHandlerouteChange } from 'services/gtag'
 import '../styles/index.css'
@@ -13,6 +14,8 @@ const stripePromise = NEXT_PUBLIC_STRIPE_API_PUBLIC
   ? loadStripe(NEXT_PUBLIC_STRIPE_API_PUBLIC)
   : Promise.resolve(null)
 
+const queryClient = new QueryClient()
+
 export default function MyApp({
   Component,
   pageProps,
@@ -21,16 +24,18 @@ export default function MyApp({
 
   return (
     <>
-      <CartProvider
-        mode="checkout-session"
-        stripe={stripePromise}
-        currency="EUR"
-      >
-        <Component
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...pageProps}
-        />
-      </CartProvider>
+      <QueryClientProvider client={queryClient}>
+        <CartProvider
+          mode="checkout-session"
+          stripe={stripePromise}
+          currency="EUR"
+        >
+          <Component
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...pageProps}
+          />
+        </CartProvider>
+      </QueryClientProvider>
       <ReactQueryDevtools />
     </>
   )
