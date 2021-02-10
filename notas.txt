@@ -1,0 +1,21 @@
+npx next -> levantar servidor
+
+/******************************************************************************/
+
+repo en github
+coge los datos de prismic
+hace los pagos con stripe
+se depliega en vercel
+
+components
+    foundations
+        PageLayoutCheckout: Header y footer como en Zalando https://www.zalando.co.uk/welcomenoaccount/true
+    templates
+        CheckoutAddressTemplate
+        CheckoutPaymentTemplate
+        CheckoutConfirmationTemplate
+        CheckoutSuccessTemplate
+
+tailwind: https://tailwindcss.com/
+tailwind forms: https://tailwindcss-custom-forms.netlify.app/
+tailwind stepper: https://tailwindcomponents.com/component/form-stepper
