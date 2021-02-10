@@ -7,14 +7,14 @@ import { useShoppingCart } from 'use-shopping-cart'
 import { RichText } from 'prismic-reactjs'
 
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
-import { Config } from 'services/CMS/config'
-import { Product, Size } from 'services/CMS/product'
 import Button from 'components/foundations/Button/Button'
 import Divider from 'components/foundations/Divider/Divider'
+import type { Config } from 'types/config'
+import type { Product, Size } from 'types/product'
+
 import ColorSelector from './ColorSelector'
 import Price from './Price'
-
-import { State } from './ProductTemplate.d'
+import type { State } from './ProductTemplate.d'
 
 type ProductTemplateProps = {
   config: Config
@@ -93,7 +93,6 @@ export default function ProductTemplate({
                         onChange={(size) => {
                           setState((statePrevious) => ({
                             ...statePrevious,
-                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                             sizeSelected: size as Size,
                           }))
                         }}

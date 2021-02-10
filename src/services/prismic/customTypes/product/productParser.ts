@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import { Document } from 'prismic-javascript/types/documents'
-import { Product } from 'services/CMS/product'
+import type { Product } from 'types/product'
 import categoryParser from '../category/categoryParser'
 
 type ProductParser = {

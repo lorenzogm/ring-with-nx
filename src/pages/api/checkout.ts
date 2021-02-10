@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { NextApiRequest, NextApiResponse } from 'next'
-import getCMS from 'services/CMS/getCMS'
-import { validateCartItems } from 'use-shopping-cart/src/serverUtil'
+import { NextApiHandler } from 'next'
 import Stripe from 'stripe'
+import { validateCartItems } from 'use-shopping-cart/src/serverUtil'
+
+import getCMS from 'services/CMS/getCMS'
 
 const { STRIPE_API_SECRET } = process.env
 if (!STRIPE_API_SECRET) {
@@ -12,10 +11,7 @@ if (!STRIPE_API_SECRET) {
 
 const stripe = new Stripe(STRIPE_API_SECRET, { apiVersion: '2020-08-27' })
 
-export default async function checkout(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+const checkout: NextApiHandler = async (req, res) => {
   if (!req.headers.origin) {
     throw new Error('Undefined "req.headers.origin')
   }
@@ -47,7 +43,8 @@ export default async function checkout(
 
     res.status(200).json({ sessionId: session.id })
   } catch (e) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     res.status(500).json({ message: e.raw.message })
   }
 }
+
+export default checkout

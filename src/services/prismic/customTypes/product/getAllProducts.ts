@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import Prismic from 'prismic-javascript'
-import { Product } from 'services/CMS/product'
+import type { Product } from 'types/product'
 import client from '../../client'
 import productParser from './productParser'
 

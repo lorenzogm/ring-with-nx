@@ -1,11 +1,13 @@
-import { CheckoutStep } from './PageLayoutCheckout.d'
-import type { Config } from 'services/CMS/config'
-import Container from 'components/foundations/PageContainer/PageContainer'
 import { FC } from 'react'
+
+import Container from 'components/foundations/PageContainer/PageContainer'
+import type { Config } from 'types/config'
 import Image from 'components/foundations/Image/Image'
 import Navigation from 'components/elements/Navigation/Navigation'
 import StepperCircle from 'components/elements/Stepper/StepperCircle/StepperCircle'
 import StepperLine from 'components/elements/Stepper/StepperLine/StepperLine'
+
+import { CheckoutStep } from './PageLayoutCheckout.d'
 
 type HeaderProps = {
   config: Config
@@ -18,12 +20,16 @@ const Header: FC<HeaderProps> = ({ config, checkoutStep }) => {
       <header>
         <div className="container mx-auto px-6 pt-3 pb-16">
           <div className="flex items-start justify-between">
-            <Image
-              src={config.logo}
-              alt={config.siteName}
-              width={100}
-              height={100}
-            />
+            {config.logo ? (
+              <Image
+                src={config.logo}
+                alt={config.siteName}
+                width={100}
+                height={100}
+              />
+            ) : (
+              config.siteName
+            )}
           </div>
           <div className="flex items-center justify-end w-full">a</div>
           <Navigation navigation={config.navigation} />

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { Product } from 'services/CMS/product'
+import type { Product } from 'types/product'
 import { formatCurrencyString } from 'use-shopping-cart'
 
 type PriceProps = {

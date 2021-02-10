@@ -1,14 +1,17 @@
-import React, { FC } from 'react'
-import { FormProvider, UseFormMethods } from 'react-hook-form'
+import React, { ReactElement, ReactNode } from 'react'
+import { FormProvider, SubmitHandler, UseFormMethods } from 'react-hook-form'
 
-type FormProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  useFormMethods: UseFormMethods<any>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onSubmit: (values: Record<string, any>) => void
+type FormProps<FormValues> = {
+  useFormMethods: UseFormMethods<FormValues>
+  children: ReactNode
+  onSubmit: SubmitHandler<FormValues>
 }
 
-const Form: FC<FormProps> = ({ useFormMethods, children, onSubmit }) => {
+export default function Form<FormValues>({
+  useFormMethods,
+  children,
+  onSubmit,
+}: FormProps<FormValues>): ReactElement {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...useFormMethods}>
@@ -16,5 +19,3 @@ const Form: FC<FormProps> = ({ useFormMethods, children, onSubmit }) => {
     </FormProvider>
   )
 }
-
-export default Form

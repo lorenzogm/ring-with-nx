@@ -1,15 +1,8 @@
 {
   "extends": "@lorenzogm/eslint-config-react/tsconfig",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.js",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.js", "**/*.ts", "**/*.d.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

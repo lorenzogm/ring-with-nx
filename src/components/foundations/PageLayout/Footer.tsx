@@ -1,7 +1,8 @@
+import { FC } from 'react'
+
 import Container from 'components/foundations/PageContainer/PageContainer'
 import Navigation from 'components/elements/Navigation/Navigation'
-import { FC } from 'react'
-import { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 
 type FooterProps = {
   config: Config

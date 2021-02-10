@@ -3,7 +3,7 @@ import { FC } from 'react'
 import Image from 'components/foundations/Image/Image'
 import Button from 'components/foundations/Button/Button'
 import IconArrowRight from 'components/foundations/Icon/IconArrowRight'
-import { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 
 type PaymentMethodsProps = {
   config: Config

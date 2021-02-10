@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import PageContainer from 'components/foundations/PageContainer/PageContainer'
 import Meta from 'components/foundations/PageLayout/Meta'
-import type { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 
 import Header from './Header'
 import Footer from './Footer'
