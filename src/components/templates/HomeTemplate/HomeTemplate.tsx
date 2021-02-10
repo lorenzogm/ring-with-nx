@@ -2,7 +2,7 @@ import PageLayout from 'components/foundations/PageLayout/PageLayout'
 import Head from 'next/head'
 import { ReactElement } from 'react'
 
-import { Config, Navigation } from 'services/CMS/config'
+import type { Config, Navigation } from 'types/config'
 import Hero, {
   HeroButton,
   HeroDescription,

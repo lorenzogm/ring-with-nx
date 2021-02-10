@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { Dispatch, ReactElement, SetStateAction } from 'react'
 import classnames from 'classnames'
-import { Product } from 'services/CMS/product'
-import { State } from './ProductTemplate.d'
+
+import type { Product } from 'types/product'
+import type { State } from './ProductTemplate.d'
 
 type ColorSelectorProps = {
   product: Product

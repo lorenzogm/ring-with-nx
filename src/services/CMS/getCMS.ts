@@ -1,5 +1,6 @@
+import prismic from 'services/prismic'
+
 import type { CMS } from './CMS'
-import prismic from '../prismic'
 
 export default function getCMS(): CMS {
   if (process.browser) {

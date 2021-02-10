@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { createContext, ReactElement, ReactNode, useContext } from 'react'
-import { Category } from 'services/CMS/category'
-import { Product } from 'services/CMS/product'
+import type { Category } from 'types/category'
+import type { Product } from 'types/product'
 import { formatCurrencyString } from 'use-shopping-cart'
 
 type ProductTileProps = {

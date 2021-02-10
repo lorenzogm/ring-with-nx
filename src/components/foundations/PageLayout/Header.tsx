@@ -1,14 +1,14 @@
+import { Dispatch, ReactElement, SetStateAction } from 'react'
 import Link from 'next/link'
 import { useShoppingCart } from 'use-shopping-cart'
 
 import Navigation from 'components/elements/Navigation/Navigation'
 import Container from 'components/foundations/PageContainer/PageContainer'
-import { Dispatch, ReactElement, SetStateAction } from 'react'
-import type { Config } from 'services/CMS/config'
 import IconFacebook from 'components/foundations/Icon/IconFacebook'
 import IconInstagram from 'components/foundations/Icon/IconInstagram'
 import Image from 'components/foundations/Image/Image'
 import LocaleSwitcher from 'components/elements/LocaleSwitcher/LocaleSwitcher'
+import type { Config } from 'types/config'
 
 import { State } from './PageLayout.d'
 

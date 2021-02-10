@@ -16,7 +16,3 @@ export type Navigation = {
   description: string
   image: string
 }
-
-// getConfig
-export type GetConfig = () => GetConfigReturn
-export type GetConfigReturn = Promise<Config>

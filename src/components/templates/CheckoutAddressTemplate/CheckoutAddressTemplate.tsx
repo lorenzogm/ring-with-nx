@@ -1,13 +1,13 @@
 import { FC } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Config } from 'services/CMS/config'
 import PageLayoutCheckout from 'components/foundations/PageLayoutCheckout/PageLayoutCheckout'
 import Form from 'components/foundations/Form/Form'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import FormInputText from 'components/foundations/FormInputText/FormInputText'
 import Button from 'components/foundations/Button/Button'
-import type { Address } from 'services/api/user/address/address'
-import { CheckoutAddressFormValues } from './CheckoutAddressTemplate.d'
+import type { Address } from 'types/address'
+import type { Config } from 'types/config'
+import type { CheckoutAddressFormValues } from './checkoutAddress'
 
 type CheckoutAddressTemplateProps = {
   config: Config

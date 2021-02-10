@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 import { GetStaticProps } from 'next'
 import getCMS from 'services/CMS/getCMS'
 import CartTemplate from 'components/templates/CartTemplate/CartTemplate'

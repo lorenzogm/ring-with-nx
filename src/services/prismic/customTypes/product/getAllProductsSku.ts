@@ -1,4 +1,4 @@
-import { ProductSku } from 'services/CMS/product'
+import type { ProductSku } from 'types/product'
 import getAllProducts from './getAllProducts'
 
 export default async function getAllProductsSku(): Promise<ProductSku[]> {

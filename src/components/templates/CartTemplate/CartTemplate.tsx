@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
-import { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 import Basket from 'components/modules/Basket/Basket'
 import PageSectionHeader from 'components/foundations/PageSectionHeader/PageSectionHeader'
 import { useShoppingCart } from 'use-shopping-cart'

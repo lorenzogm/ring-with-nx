@@ -1,13 +1,13 @@
-import type { GetAllCategories, GetCategoryByUID } from 'services/CMS/category'
-import type { GetConfig } from 'services/CMS/config'
+import type { GetAllCategories, GetCategoryByUID } from './category'
+import type { GetConfig } from './config'
 import type {
   GetAllProducts,
   GetAllProductsByCategory,
   GetAllProductsByTags,
   GetAllProductsSku,
   GetProductByUID,
-} from 'services/CMS/product'
-import type { GetTranslations } from 'services/CMS/translations'
+} from './product'
+import type { GetTranslations } from './translations'
 
 type CMS = {
   // category

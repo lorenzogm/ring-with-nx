@@ -1,5 +1,5 @@
 import { Document } from 'prismic-javascript/types/documents'
-import type { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 
 type ConfigParser = {
   config: Document

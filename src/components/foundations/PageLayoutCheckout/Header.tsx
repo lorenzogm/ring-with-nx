@@ -1,7 +1,7 @@
 import Navigation from 'components/elements/Navigation/Navigation'
 import Container from 'components/foundations/PageContainer/PageContainer'
 import { FC } from 'react'
-import type { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 import Image from 'components/foundations/Image/Image'
 
 import { CheckoutStep } from './PageLayoutCheckout.d'

@@ -1,5 +1,5 @@
 import { Document } from 'prismic-javascript/types/documents'
-import type { Translations } from 'services/CMS/translations'
+import type { Translations } from 'types/translations'
 
 type TranslationsParser = {
   translations: Document

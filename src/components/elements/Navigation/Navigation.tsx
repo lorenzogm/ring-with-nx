@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-import type { Navigation as NavigationType } from 'services/CMS/config'
+import type { Navigation as NavigationType } from 'types/config'
 
 type NavigationProps = {
   navigation: NavigationType[]
