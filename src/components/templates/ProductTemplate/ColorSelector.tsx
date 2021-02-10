@@ -14,7 +14,11 @@ export default function ColorSelector({
   product,
   state,
   setState,
-}: ColorSelectorProps): ReactElement {
+}: ColorSelectorProps): ReactElement | null {
+  if (!product.colors) {
+    return null
+  }
+
   return (
     <div className="">
       <div className="mr-3">Colour: {state.colorSelected}</div>

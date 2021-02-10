@@ -29,8 +29,8 @@ export default function ProductTemplate({
   const { addItem } = useShoppingCart()
 
   const [state, setState] = useState<State>({
-    colorSelected: product ? product.colorDefault : '',
-    imageSelected: product ? product.imageDefault : '',
+    colorSelected: product && product.colorDefault ? product.colorDefault : '',
+    imageSelected: product && product.imageDefault ? product.imageDefault : '',
   })
 
   if (!config || !product) {
@@ -79,25 +79,29 @@ export default function ProductTemplate({
                         ? RichText.render(product.description)
                         : null}
                     </p>
-                    <div className="mb-6">
-                      <ColorSelector
-                        product={product}
-                        state={state}
-                        setState={setState}
-                      />
-                    </div>
-                    <div className="mb-6">
-                      <ReactSelect
-                        options={product.sizes}
-                        placeholder="Elige tu talla"
-                        onChange={(size) => {
-                          setState((statePrevious) => ({
-                            ...statePrevious,
-                            sizeSelected: size as Size,
-                          }))
-                        }}
-                      />
-                    </div>
+                    {product.colors && (
+                      <div className="mb-6">
+                        <ColorSelector
+                          product={product}
+                          state={state}
+                          setState={setState}
+                        />
+                      </div>
+                    )}
+                    {product.sizes && (
+                      <div className="mb-6">
+                        <ReactSelect
+                          options={product.sizes}
+                          placeholder="Elige tu talla"
+                          onChange={(size) => {
+                            setState((statePrevious) => ({
+                              ...statePrevious,
+                              sizeSelected: size as Size,
+                            }))
+                          }}
+                        />
+                      </div>
+                    )}
                     <Divider />
                     <div className="flex">
                       <div className="flex ml-auto">

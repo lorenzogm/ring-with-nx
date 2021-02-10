@@ -7,17 +7,27 @@ export default async function getAllProductsSku(): Promise<ProductSku[]> {
   const productsSku: ProductSku[] = []
 
   products.forEach((product) => {
-    product.colors.forEach((color) => {
-      product.sizes.forEach((size) => {
-        productsSku.push({
-          name: product.name,
-          sku: `${product.slug}-${color.color}-${size.value}`,
-          price: product.price,
-          image: color.image.url,
-          currency: 'EUR',
+    product.colors
+      ? product.colors.forEach((color) => {
+          product.sizes
+            ? product.sizes.forEach((size) => {
+                productsSku.push({
+                  name: product.name,
+                  sku: `${product.slug}-${color.color}-${size.value}`,
+                  price: product.price,
+                  image: color.image.url,
+                  currency: 'EUR',
+                })
+              })
+            : productsSku.push({
+                name: product.name,
+                sku: `${product.slug}-${color.color}`,
+                price: product.price,
+                image: color.image.url,
+                currency: 'EUR',
+              })
         })
-      })
-    })
+      : []
   })
 
   return productsSku
