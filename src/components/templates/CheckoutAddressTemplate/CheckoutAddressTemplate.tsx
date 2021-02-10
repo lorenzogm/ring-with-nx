@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { FC } from 'react'
 
 import { Config } from 'services/CMS/config'

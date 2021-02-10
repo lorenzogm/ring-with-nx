@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { Config } from 'services/CMS/config'
+import type { Config } from 'types/config'
 
 import client from '../../client'
 import configParser from './configParser'
@@ -19,8 +16,6 @@ export default async function getConfig(): Promise<Config> {
     return configParser({ config, navigationItems: [] })
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const navigationItemIds = config.data.navigation
     .filter(
       ({ navigation_item }: { navigation_item: { id: string } }) =>

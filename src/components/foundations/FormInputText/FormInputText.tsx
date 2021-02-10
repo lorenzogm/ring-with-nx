@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
 
