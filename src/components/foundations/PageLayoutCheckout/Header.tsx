@@ -4,8 +4,8 @@ import Container from 'components/foundations/PageContainer/PageContainer'
 import type { Config } from 'types/config'
 import Image from 'components/foundations/Image/Image'
 import Navigation from 'components/elements/Navigation/Navigation'
-import StepperCircle from 'components/elements/Stepper/StepperCircle/StepperCircle'
-import StepperLine from 'components/elements/Stepper/StepperLine/StepperLine'
+import Stepper from 'components/elements/Stepper/Stepper'
+import IconFacebook from 'components/foundations/Icon/IconFacebook'
 
 import { CheckoutStep } from './PageLayoutCheckout.d'
 
@@ -15,6 +15,13 @@ type HeaderProps = {
 }
 
 const Header: FC<HeaderProps> = ({ config, checkoutStep }) => {
+  const steps = [
+    { key: 'ADDRESS', label: 'Dirección', icon: <IconFacebook /> },
+    { key: 'PAYMENT', label: 'Pago', icon: <IconFacebook /> },
+    { key: 'CONFIRMATION', label: 'Confirmación', icon: <IconFacebook /> },
+    { key: 'SUCCESS', label: 'Hecho!', icon: <IconFacebook /> },
+  ]
+
   return (
     <Container>
       <header>
@@ -34,22 +41,11 @@ const Header: FC<HeaderProps> = ({ config, checkoutStep }) => {
           <div className="flex items-center justify-end w-full">a</div>
           <Navigation navigation={config.navigation} />
         </div>
-        {checkoutStep === 'ADDRESS' ? '1 ok' : '1'}
-        {checkoutStep === 'PAYMENT' ? '2 ok ' : '2'}
-        {checkoutStep === 'CONFIRMATION' ? '3 ok' : '3'}
 
         <div className="p-5">
           <div className="mx-4 p-4">
             <div className="flex items-center">
-              <StepperCircle label="Log In" successColor />
-              <StepperLine successColor />
-              <StepperCircle label="Address" successColor />
-              <StepperLine />
-              <StepperCircle label="Payment" />
-              <StepperLine />
-              <StepperCircle label="Confirmation" />
-              <StepperLine />
-              <StepperCircle label="Done" />
+              <Stepper steps={steps} stepSelected={checkoutStep} />
             </div>
           </div>
         </div>
