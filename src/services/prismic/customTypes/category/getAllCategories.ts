@@ -9,7 +9,7 @@ export default async function getAllCategories(): Promise<Category[]> {
   )
 
   const categories: Category[] = response.results.map((category) =>
-    categoryParser({ category }),
+    categoryParser({ document: category }),
   )
 
   return categories

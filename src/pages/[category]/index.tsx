@@ -37,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await CMS.getAllCategories()
 
   return {
-    paths: categories.map((category) => `/${category.slug}`),
+    paths: categories.map((category) => `/${category.uid}`),
     fallback: true,
   }
 }

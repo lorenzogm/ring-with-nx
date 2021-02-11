@@ -4,7 +4,7 @@ export type Content = {
   type: string
   data: {
     title: RichTextBlock
-    body: unknown
+    body: any
   }
 }
 

@@ -61,8 +61,7 @@ const CheckoutConfirmationPage: FC<CheckoutConfirmationPageProps> = ({
 
       await router.push('/checkout/success')
     } catch (e) {
-      console.log(e)
-      // Uh oh, something went wrong
+      console.error(e)
     }
   }
 }

@@ -7,7 +7,7 @@ const sliceParser: SliceParser = ({ slice }) => {
   if (slice.slice_type === 'carousel') {
     return {
       sliceType: slice.slice_type,
-      items: slice.items.map((item) => ({
+      items: slice.items.map((item: any) => ({
         image: item.image,
         text: item.text,
         buttonText: item.button_text,
@@ -31,7 +31,7 @@ const contentParser: ContentParser = ({ document }) => {
     type: document.type,
     data: {
       title: document.data.title,
-      body: document.data.body.map((slice) => sliceParser({ slice })),
+      body: document.data.body.map((slice: any) => sliceParser({ slice })),
     },
   }
 }

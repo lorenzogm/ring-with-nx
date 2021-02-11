@@ -12,6 +12,6 @@ export default async function getCategoryByUID({
   const category = await client.getByUID('category', uid, {})
 
   return categoryParser({
-    category,
+    document: category,
   })
 }

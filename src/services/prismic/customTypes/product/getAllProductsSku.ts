@@ -13,7 +13,7 @@ export default async function getAllProductsSku(): Promise<ProductSku[]> {
             ? product.sizes.forEach((size) => {
                 productsSku.push({
                   name: product.name,
-                  sku: `${product.slug}-${color.color}-${size.value}`,
+                  sku: `${product.uid}-${color.color}-${size.value}`,
                   price: product.price,
                   image: color.image.url,
                   currency: 'EUR',
@@ -21,7 +21,7 @@ export default async function getAllProductsSku(): Promise<ProductSku[]> {
               })
             : productsSku.push({
                 name: product.name,
-                sku: `${product.slug}-${color.color}`,
+                sku: `${product.uid}-${color.color}`,
                 price: product.price,
                 image: color.image.url,
                 currency: 'EUR',

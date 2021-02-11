@@ -34,7 +34,7 @@ const getAllDocuments: GetAllDocuments = async ({
     }
 
     if (document.type === 'category') {
-      return categoryParser({ category: document })
+      return categoryParser({ document })
     }
 
     if (document.type === 'product') {

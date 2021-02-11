@@ -48,7 +48,7 @@ export default function ContentTemplate({
           </Hero>
         </div>
       </div>
-      {content.data.body.map((component) => console.log(component))}
+      {/* {content.data.body.map((component: any) => console.log(component))} */}
     </PageLayout>
   )
 }
@@ -61,7 +61,7 @@ function getHeroFromCategory(navigationItem: Navigation): HeroType | undefined {
   return {
     backgroundImage: navigationItem.image,
     title: navigationItem.name,
-    href: `/${navigationItem.uid}`,
+    href: `/${navigationItem.slug}`,
     description: navigationItem.description,
   }
 }

@@ -20,14 +20,6 @@ export default function Stepper({
         const borderColor =
           index <= stepAsNumber ? 'border-yellow-400' : 'border-grey-600'
 
-        console.log(
-          textColor,
-          borderColor,
-          index <= stepAsNumber,
-          index,
-          stepAsNumber,
-        )
-
         const isFirstStep = index === 0
 
         return (
