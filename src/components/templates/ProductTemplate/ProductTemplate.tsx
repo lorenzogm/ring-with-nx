@@ -112,7 +112,7 @@ export default function ProductTemplate({
                             if (state.sizeSelected) {
                               addItem({
                                 name: product.name,
-                                sku: `${product.slug}-${state.colorSelected}-${state.sizeSelected.value}`,
+                                sku: `${product.uid}-${state.colorSelected}-${state.sizeSelected.value}`,
                                 price: product.price,
                                 currency: config.currency,
                                 image: state.imageSelected,

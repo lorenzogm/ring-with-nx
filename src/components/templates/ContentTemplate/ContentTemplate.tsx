@@ -9,14 +9,17 @@ import Hero, {
   HeroTitle,
   HeroType,
 } from 'components/elements/Hero/Hero'
+import { Content } from 'types/content'
 
-type HomeTemplateProps = {
+type ContentTemplateProps = {
   config: Config
+  content: Content
 }
 
-export default function HomeTemplate({
+export default function ContentTemplate({
   config,
-}: HomeTemplateProps): ReactElement {
+  content,
+}: ContentTemplateProps): ReactElement | null {
   return (
     <PageLayout config={config}>
       <Head>
@@ -45,6 +48,7 @@ export default function HomeTemplate({
           </Hero>
         </div>
       </div>
+      {content.data.body.map((component) => console.log(component))}
     </PageLayout>
   )
 }
@@ -57,7 +61,7 @@ function getHeroFromCategory(navigationItem: Navigation): HeroType | undefined {
   return {
     backgroundImage: navigationItem.image,
     title: navigationItem.name,
-    href: `/${navigationItem.slug}`,
+    href: `/${navigationItem.uid}`,
     description: navigationItem.description,
   }
 }

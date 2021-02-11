@@ -5,6 +5,14 @@ import getCategoryByUID from './customTypes/category/getCategoryByUID'
 // config
 import getConfig from './customTypes/config/getConfig'
 
+// content
+import getAllContents from './customTypes/content/getAllContents'
+import getContentByUID from './customTypes/content/getContentByUID'
+
+// documents
+import getAllDocuments from './documents/getAllDocuments'
+import getDocumentByUID from './documents/getDocumentByUID'
+
 // product
 import getAllProducts from './customTypes/product/getAllProducts'
 import getAllProductsByCategory from './customTypes/product/getAllProductsByCategory'
@@ -26,6 +34,14 @@ export default {
 
   // config
   getConfig,
+
+  // content
+  getAllContents,
+  getContentByUID,
+
+  // documents
+  getAllDocuments,
+  getDocumentByUID,
 
   // product
   getAllProducts,

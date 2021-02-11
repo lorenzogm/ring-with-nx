@@ -10,7 +10,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const [config, content] = await Promise.all([
     CMS.getConfig(),
-    CMS.getContentByUID({ uid: 'home' }),
+    CMS.getContentByUID({ uid: 'contacto' }),
   ])
 
   return {

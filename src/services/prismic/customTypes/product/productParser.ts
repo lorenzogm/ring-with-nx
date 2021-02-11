@@ -13,11 +13,12 @@ export default function productParser({ product }: ProductParser): Product {
 
   return {
     name: product.data.name,
-    slug: product.uid,
+    uid: product.uid,
+    type: product.type,
     description: product.data.description || null,
     price: product.data.price * 100,
     imageDefault: product.data.colors[0].image.url,
-    category: categoryParser({ category: product.data.category as Document }),
+    category: categoryParser({ document: product.data.category }),
     // colors are optional
     ...(product.data.colors
       ? {

@@ -1,5 +1,3 @@
-import { Product, ProductSku } from 'types/product'
-
 // getAllProducts
 export type GetAllProducts = () => Promise<Product[]>
 export type GetAllProductsSku = () => Promise<ProductSku[]>

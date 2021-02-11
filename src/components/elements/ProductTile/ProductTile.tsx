@@ -18,7 +18,7 @@ export default function ProductTile({
   return (
     <ProductTileContext.Provider value={product}>
       <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-        <Link href={`${category.slug}/${product.slug}`}>
+        <Link href={`${category.uid}/${product.uid}`}>
           <a>{children}</a>
         </Link>
       </div>

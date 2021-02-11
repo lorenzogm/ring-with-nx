@@ -1,5 +1,6 @@
 import type { GetAllCategories, GetCategoryByUID } from './category'
 import type { GetConfig } from './config'
+import type { GetAllContents, GetContentByUID } from './content'
 import type {
   GetAllProducts,
   GetAllProductsByCategory,
@@ -16,6 +17,10 @@ type CMS = {
 
   // config
   getConfig: GetConfig
+
+  // content
+  getAllContents: GetAllContents
+  getContentByUID: GetContentByUID
 
   // product
   getAllProducts: GetAllProducts
