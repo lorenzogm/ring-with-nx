@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
+import { useShoppingCart } from 'use-shopping-cart'
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
 import type { Config } from 'types/config'
 import Basket from 'components/modules/Basket/Basket'
 import PageSectionHeader from 'components/foundations/PageSectionHeader/PageSectionHeader'
-import { useShoppingCart } from 'use-shopping-cart'
 
 type CartTemplateProps = {
   config: Config

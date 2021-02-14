@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { createContext, ReactElement, ReactNode, useContext } from 'react'
+import { formatCurrencyString } from 'use-shopping-cart'
 import type { Category } from 'types/category'
 import type { Product } from 'types/product'
-import { formatCurrencyString } from 'use-shopping-cart'
 
 type ProductTileProps = {
   children: ReactNode

@@ -1,5 +1,4 @@
 import type { Config } from 'types/config'
-
 import client from '../../client'
 import configParser from './configParser'
 

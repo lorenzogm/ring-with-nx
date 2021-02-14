@@ -12,11 +12,11 @@ import Link from 'next/link'
 import Button from 'components/foundations/Button/Button'
 import Divider from 'components/foundations/Divider/Divider'
 import Basket from 'components/modules/Basket/Basket'
-
-import { State } from './PageLayout.d'
 import PageSectionHeader from '../PageSectionHeader/PageSectionHeader'
 import IconArrowRight from '../Icon/IconArrowRight'
 import IconClose from '../Icon/IconClose'
+import { State } from './PageLayout.d'
+
 
 type AsideProps = {
   state: State

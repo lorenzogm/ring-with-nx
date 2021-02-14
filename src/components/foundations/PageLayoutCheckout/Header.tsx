@@ -6,8 +6,8 @@ import Image from 'components/foundations/Image/Image'
 import Navigation from 'components/elements/Navigation/Navigation'
 import Stepper from 'components/elements/Stepper/Stepper'
 import IconFacebook from 'components/foundations/Icon/IconFacebook'
-
 import { CheckoutStep } from './PageLayoutCheckout.d'
+
 
 type HeaderProps = {
   config: Config

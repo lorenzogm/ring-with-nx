@@ -1,5 +1,5 @@
-import Container from 'components/foundations/PageContainer/PageContainer'
 import { FC } from 'react'
+import Container from 'components/foundations/PageContainer/PageContainer'
 
 const Footer: FC = () => {
   return (

@@ -1,5 +1,5 @@
-import { GetTranslations } from 'services/CMS/translations'
 
+import { GetTranslations } from 'services/CMS/translations'
 import client from '../../client'
 import translationsParser from './translationsParser'
 

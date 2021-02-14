@@ -1,7 +1,7 @@
 import Prismic from 'prismic-javascript'
 import { Document } from 'prismic-javascript/types/documents'
-import { Category } from 'types/category'
 import { Product } from 'types/product'
+import { Category } from 'types/category'
 import client from '../client'
 import categoryParser from '../customTypes/category/categoryParser'
 import productParser from '../customTypes/product/productParser'

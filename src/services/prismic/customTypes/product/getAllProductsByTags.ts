@@ -1,7 +1,6 @@
 import Prismic from 'prismic-javascript'
 
 import type { GetAllProductsByTags } from 'services/CMS/product'
-
 import client from '../../client'
 import productParser from './productParser'
 

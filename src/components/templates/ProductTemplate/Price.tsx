@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
-import type { Product } from 'types/product'
 import { formatCurrencyString } from 'use-shopping-cart'
+import type { Product } from 'types/product'
 
 type PriceProps = {
   product: Product
