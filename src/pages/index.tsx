@@ -28,6 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       config,
       content,
+      isPageEnabled: true,
     },
   }
 }
