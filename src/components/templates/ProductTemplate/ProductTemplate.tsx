@@ -11,10 +11,9 @@ import Button from 'components/foundations/Button/Button'
 import Divider from 'components/foundations/Divider/Divider'
 import type { Config } from 'types/config'
 import type { Product, Size } from 'types/product'
-
-import ColorSelector from './ColorSelector'
-import Price from './Price'
 import type { State } from './ProductTemplate.d'
+import Price from './Price'
+import ColorSelector from './ColorSelector'
 
 type ProductTemplateProps = {
   config: Config
@@ -30,7 +29,7 @@ export default function ProductTemplate({
 
   const [state, setState] = useState<State>({
     colorSelected: product && product.colorDefault ? product.colorDefault : '',
-    imageSelected: product && product.imageDefault ? product.imageDefault : '',
+    imageSelected: product && product.imageDefault,
   })
 
   if (!config || !product) {
@@ -56,7 +55,7 @@ export default function ProductTemplate({
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
                   <div className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200">
                     <img
-                      src={state.imageSelected}
+                      src={state.imageSelected.url}
                       alt={product.name}
                       width={1080}
                       height={1080}
@@ -115,7 +114,7 @@ export default function ProductTemplate({
                                 sku: `${product.uid}-${state.colorSelected}-${state.sizeSelected.value}`,
                                 price: product.price,
                                 currency: config.currency,
-                                image: state.imageSelected,
+                                image: state.imageSelected.url,
                                 color: state.colorSelected,
                                 size: state.sizeSelected.value,
                               })

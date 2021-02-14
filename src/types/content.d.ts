@@ -4,8 +4,6 @@ export type Content = {
   type: string
   data: {
     title: RichTextBlock
-    body: any
+    body: Slice[]
   }
 }
-
-type Body = Slice[]

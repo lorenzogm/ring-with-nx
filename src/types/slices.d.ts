@@ -1,12 +1,12 @@
 type Slice = {
-  slice_type: string
-  items: any
+  sliceType: string
+  items: Carousel['items'][]
 }
 
 type Carousel = {
   sliceType: 'carousel'
   items: {
-    image: string
+    image: Image
     text: string
     buttonText: string
     buttonLink: string
