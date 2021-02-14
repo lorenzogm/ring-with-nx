@@ -43,7 +43,7 @@ export function ProductTileImage(): ReactElement {
   return (
     <img
       className="hover:grow hover:shadow-lg"
-      src={product.imageDefault}
+      src={product.imageDefault.url}
       alt={product.name}
     />
   )

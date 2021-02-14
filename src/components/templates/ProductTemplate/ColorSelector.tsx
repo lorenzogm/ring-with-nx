@@ -30,7 +30,7 @@ export default function ColorSelector({
               setState((statePrevious) => ({
                 ...statePrevious,
                 colorSelected: color,
-                imageSelected: image.url,
+                imageSelected: image,
               }))
             }
             key={color}
