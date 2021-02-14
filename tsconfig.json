@@ -3,6 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./src"
   },
-  "include": ["next-env.d.ts", "**/*.js", "**/*.ts", "**/*.d.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    ".eslintrc.js"
+  ],
   "exclude": ["node_modules"]
 }
