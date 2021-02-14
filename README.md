@@ -13,17 +13,20 @@ Demo: https://ecommerce.lorenzogm.vercel.app/
 ## Getting Started
 
 1. Clone the repo
+
 ```
 git clone git@github.com:lorenzogm/ecommerce.git
 cd ecommerce
 ```
 
 2. Install packages
+
 ```
 yarn install
 ```
 
 3. Setup environment variables
+
 ```
 cp .env.local.example .env.local
 ```
@@ -37,11 +40,13 @@ cp .env.local.example .env.local
 The content defined in prismic needs a specific format to work with the existing code of this repository. That structure is easy to import/export with the `JSON Editor` feature from Prismic.
 
 Those are the JSON Fields needed for this repo:
+
 - [category.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/category/category.json) Repeatable Type
 - [config.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/config/config.json) Single Type
 - [product.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/product/product.json) Repetable Type
 
 Create the custom types in Prismic:
+
 1. Go to prismic and create a new Custom Type
 2. Select `Single Type` to use the `config.json` or `Repeatable Type` to use `category.json` or `product.json`
 3. Write the name (Category, Config or Product), select JSON Editor on the right panel and paste the content of the JSON file.

@@ -1,4 +1,3 @@
-
 import type { GetProductByUID } from 'services/CMS/product'
 import client from '../../client'
 import productParser from './productParser'

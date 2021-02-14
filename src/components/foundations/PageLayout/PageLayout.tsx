@@ -1,7 +1,6 @@
 import { ReactElement, ReactNode, useState } from 'react'
 import CookieBanner from 'react-cookie-banner'
 
-
 import type { Config } from 'types/config'
 import Meta from 'components/foundations/PageLayout/Meta'
 import PageContainer from 'components/foundations/PageContainer/PageContainer'

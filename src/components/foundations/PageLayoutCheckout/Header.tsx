@@ -8,7 +8,6 @@ import Stepper from 'components/elements/Stepper/Stepper'
 import IconFacebook from 'components/foundations/Icon/IconFacebook'
 import { CheckoutStep } from './PageLayoutCheckout.d'
 
-
 type HeaderProps = {
   config: Config
   checkoutStep: CheckoutStep

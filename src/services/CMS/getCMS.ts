@@ -1,7 +1,6 @@
 import prismic from 'services/prismic'
 import type { CMS } from './CMS'
 
-
 export default function getCMS(): CMS {
   if (process.browser) {
     throw new Error('"getClient" should be called in the server.')

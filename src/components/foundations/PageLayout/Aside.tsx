@@ -17,7 +17,6 @@ import IconArrowRight from '../Icon/IconArrowRight'
 import IconClose from '../Icon/IconClose'
 import { State } from './PageLayout.d'
 
-
 type AsideProps = {
   state: State
   setState: Dispatch<SetStateAction<State>>
