@@ -1,21 +1,25 @@
 import type { Document } from 'prismic-javascript/types/documents'
+import imageParser from 'services/prismic/fields/imageParser'
 import type { Content } from 'types/content'
 
-type SliceParser = ({ slice }: { slice: Slice }) => Carousel | Slice
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type SliceParser = ({ slice }: { slice: any }) => Carousel
 
 const sliceParser: SliceParser = ({ slice }) => {
   if (slice.slice_type === 'carousel') {
     return {
       sliceType: slice.slice_type,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       items: slice.items.map((item: any) => ({
-        image: item.image,
+        image: imageParser({ image: item.image }),
         text: item.text,
         buttonText: item.button_text,
         buttonLink: item.button_link,
       })),
     } as Carousel
   }
-  return slice
+
+  throw new Error('Unexpected "slice.slice_type"')
 }
 
 type ContentParser = ({ document }: { document: Document }) => Content
@@ -31,6 +35,7 @@ const contentParser: ContentParser = ({ document }) => {
     type: document.type,
     data: {
       title: document.data.title,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       body: document.data.body.map((slice: any) => sliceParser({ slice })),
     },
   }

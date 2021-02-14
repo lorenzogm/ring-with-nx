@@ -1,4 +1,6 @@
-export default function Reviews() {
+import { ReactElement } from 'react'
+
+export default function Reviews(): ReactElement {
   return (
     <div className="flex mb-4">
       <span className="flex items-center">

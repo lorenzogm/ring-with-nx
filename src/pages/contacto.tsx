@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import ErrorPage from 'next/error'
 
+import { ReactElement } from 'react'
 import ContentTemplate from 'components/templates/ContentTemplate/ContentTemplate'
 import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
@@ -33,7 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-type HomePage = {
+type ContactPageProps = {
   config: Config
   content: Content
   isPageEnabled: boolean
@@ -43,7 +44,7 @@ export default function ContactPage({
   config,
   content,
   isPageEnabled,
-}: HomePage) {
+}: ContactPageProps): ReactElement {
   if (isPageEnabled) {
     return <ContentTemplate config={config} content={content} />
   }

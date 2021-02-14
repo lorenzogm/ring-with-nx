@@ -33,36 +33,30 @@ const CheckoutConfirmationPage: FC<CheckoutConfirmationPageProps> = ({
   )
 
   async function onConfirm() {
-    try {
-      const addressFromLocalStorage = localStorage.getItem('address')
+    const addressFromLocalStorage = localStorage.getItem('address')
 
-      if (!addressFromLocalStorage) {
-        throw new Error('Undefined address')
-      }
-
-      const paymentMethodFromLocalStorage = localStorage.getItem(
-        'paymentMethod',
-      )
-      if (!paymentMethodFromLocalStorage) {
-        throw new Error('Undefined address')
-      }
-
-      const address: Address = JSON.parse(addressFromLocalStorage)
-
-      const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
-
-      const order: Order = await mutateAsync({
-        address,
-        cartDetails,
-        paymentMethod,
-      })
-
-      localStorage.setItem('orderId', order.orderId)
-
-      await router.push('/checkout/success')
-    } catch (e) {
-      console.error(e)
+    if (!addressFromLocalStorage) {
+      throw new Error('Undefined address')
     }
+
+    const paymentMethodFromLocalStorage = localStorage.getItem('paymentMethod')
+    if (!paymentMethodFromLocalStorage) {
+      throw new Error('Undefined address')
+    }
+
+    const address: Address = JSON.parse(addressFromLocalStorage)
+
+    const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
+
+    const order: Order = await mutateAsync({
+      address,
+      cartDetails,
+      paymentMethod,
+    })
+
+    localStorage.setItem('orderId', order.orderId)
+
+    await router.push('/checkout/success')
   }
 }
 

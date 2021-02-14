@@ -1,3 +1,5 @@
+import type { Category } from 'types/category'
+
 // getAllCategories
 export type GetAllCategories = () => Promise<Category[]>
 

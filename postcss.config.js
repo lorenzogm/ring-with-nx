@@ -10,6 +10,7 @@ module.exports = {
               './src/components/**/*.{js,jsx,ts,tsx}',
             ],
             defaultExtractor: (content) =>
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-return
               content.match(/[\w-/:]+(?<!:)/g) || [],
           },
         ]

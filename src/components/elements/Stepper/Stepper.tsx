@@ -24,6 +24,7 @@ export default function Stepper({
 
         return (
           <div
+            key={key}
             className={classnames('flex items-center', {
               'w-full': !isFirstStep,
             })}
