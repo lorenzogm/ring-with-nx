@@ -1,10 +1,15 @@
 import { ReactElement, useRef } from 'react'
 import Glider, { GliderMethods } from 'react-glider'
 import Image from 'components/foundations/Image/Image'
+import type { SliceCarousel } from 'types/slices'
 
 import 'glider-js/glider.min.css'
 
-type CarouselProps = ({ items }: { items: Carousel['items'][] }) => ReactElement
+type CarouselProps = ({
+  items,
+}: {
+  items: SliceCarousel['items']
+}) => ReactElement
 
 const Carousel: CarouselProps = ({ items }) => {
   const gliderRef = useRef<GliderMethods>(null)
