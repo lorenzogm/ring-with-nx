@@ -6,6 +6,15 @@
         "label": "Site Name"
       }
     },
+    "is_maintenance_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "DISABLED",
+        "placeholder_true": "ENABLED",
+        "default_value": false,
+        "label": "Is Maintenance Enabled"
+      }
+    },
     "logo": {
       "type": "Image",
       "config": {

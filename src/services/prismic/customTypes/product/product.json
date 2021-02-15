@@ -1,15 +1,15 @@
 {
   "Main": {
-    "name": {
-      "type": "Text",
-      "config": {
-        "label": "Name"
-      }
-    },
     "uid": {
       "type": "UID",
       "config": {
         "label": "Slug"
+      }
+    },
+    "name": {
+      "type": "Text",
+      "config": {
+        "label": "Name"
       }
     },
     "category": {
@@ -26,6 +26,13 @@
         "label": "Price"
       }
     },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Description"
+      }
+    },
     "colors": {
       "type": "Group",
       "config": {
@@ -37,7 +44,13 @@
                 "width": 1080,
                 "height": 1080
               },
-              "thumbnails": [],
+              "thumbnails": [
+                {
+                  "name": "secundaria_1",
+                  "width": 1080,
+                  "height": 1080
+                }
+              ],
               "label": "Image"
             }
           },
@@ -48,12 +61,27 @@
                 "AQUAMARINE",
                 "BLACK",
                 "BURGUNDY",
+                "BLUE",
+                "BROWN",
+                "CAREY",
                 "CHARCOAL_GREY",
                 "FADED_DENIM",
+                "GREEN",
+                "GREY",
+                "GOLDEN",
+                "HAVANA",
                 "LIGHT_CHARCOAL",
+                "LILA",
                 "MELANGE_GREY",
                 "NAVY",
-                "WHITE"
+                "ORANGE",
+                "PINK",
+                "PURPLE",
+                "RED",
+                "SILVER",
+                "TRANSPARENT",
+                "WHITE",
+                "YELLOW"
               ],
               "label": "Color"
             }
@@ -62,6 +90,36 @@
         "label": "Colors"
       }
     },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "test": []
+        },
+        "choices": {
+          "test": {
+            "type": "Slice",
+            "fieldset": "test",
+            "description": "test",
+            "icon": "3d_rotation",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "pres": {
+                "type": "Select",
+                "config": {
+                  "options": [],
+                  "label": "pres"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Clothes": {
     "sizes": {
       "type": "Group",
       "config": {
@@ -85,6 +143,49 @@
           }
         },
         "label": "Sizes"
+      }
+    }
+  },
+  "Optic": {
+    "prescription": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "+0.00",
+          "Miopía -0.25",
+          "Miopía -0.50",
+          "Miopía -0.75",
+          "Miopía -1.00",
+          "Miopía -1.25",
+          "Miopía -1.50",
+          "Miopía -1.75",
+          "Miopía -2.00",
+          "Miopía -2.25",
+          "Miopía -2.50",
+          "Miopía -2.75",
+          "Miopía -3.00",
+          "Miopía -3.25",
+          "Miopía -3.50",
+          "Miopía -3.75",
+          "Miopía -4.00",
+          "Miopía -4.25",
+          "Miopía -4.50",
+          "Miopía -4.75",
+          "Miopía -5.00",
+          "Miopía -5.25",
+          "Miopía -5.50",
+          "Miopía -5.75",
+          "Miopía -6.00",
+          "Miopía -6.50",
+          "Miopía -7.00",
+          "Miopía -7.50",
+          "Miopía -8.00",
+          "Miopía -8.50",
+          "Miopía -9.00",
+          "Miopía -9.50",
+          "Miopía -10.00"
+        ],
+        "label": "Prescription"
       }
     }
   }
