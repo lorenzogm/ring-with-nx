@@ -14,12 +14,14 @@ import type { Category } from 'types/category'
 import type { Product } from 'types/product'
 
 type CategoryTemplateProps = {
+  preview: boolean
   config: Config
   category: Category
   products: Product[]
 }
 
 export default function CategoryTemplate({
+  preview,
   config,
   category,
   products,
@@ -35,7 +37,7 @@ export default function CategoryTemplate({
   }
 
   return (
-    <PageLayout config={config}>
+    <PageLayout preview={preview} config={config}>
       {router.isFallback ? null : (
         <>
           <article>

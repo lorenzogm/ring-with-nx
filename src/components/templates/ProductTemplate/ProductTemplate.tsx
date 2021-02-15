@@ -16,11 +16,13 @@ import Price from './Price'
 import ColorSelector from './ColorSelector'
 
 type ProductTemplateProps = {
+  preview: boolean
   config: Config
   product: Product
 }
 
 export default function ProductTemplate({
+  preview,
   config,
   product,
 }: ProductTemplateProps): ReactElement | null {
@@ -41,7 +43,7 @@ export default function ProductTemplate({
   }
 
   return (
-    <PageLayout config={config}>
+    <PageLayout preview={preview} config={config}>
       {router.isFallback ? null : (
         <>
           <article>

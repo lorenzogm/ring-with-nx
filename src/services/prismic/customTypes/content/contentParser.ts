@@ -43,7 +43,7 @@ const contentParser: ContentParser = ({ document }) => {
   return {
     id: document.id,
     uid: document.uid,
-    type: document.type,
+    type: 'content',
     data: {
       title: document.data.title,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,11 +1,17 @@
 import Prismic from 'prismic-javascript'
+import type { GetAllCategories } from 'services/CMS/category'
 import type { Category } from 'types/category'
-import client from '../../client'
+import Client from '../../client'
+
 import categoryParser from './categoryParser'
 
-export default async function getAllCategories(): Promise<Category[]> {
+const getAllCategories: GetAllCategories = async ({ ref }) => {
+  const client = Client()
   const response = await client.query(
     Prismic.Predicates.at('document.type', 'category'),
+    {
+      ...(ref ? { ref } : {}),
+    },
   )
 
   const categories: Category[] = response.results.map((category) =>
@@ -14,3 +20,5 @@ export default async function getAllCategories(): Promise<Category[]> {
 
   return categories
 }
+
+export default getAllCategories

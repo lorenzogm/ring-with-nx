@@ -2,7 +2,7 @@ import Prismic from 'prismic-javascript'
 import { Document } from 'prismic-javascript/types/documents'
 import { Product } from 'types/product'
 import { Category } from 'types/category'
-import client from '../client'
+import Client from '../client'
 import categoryParser from '../customTypes/category/categoryParser'
 import productParser from '../customTypes/product/productParser'
 
@@ -20,6 +20,7 @@ const getAllDocuments: GetAllDocuments = async ({
   fields,
   fetchLinks,
 }) => {
+  const client = Client()
   const documents = await client.query(
     Prismic.Predicates.any('document.type', documentTypes),
     {

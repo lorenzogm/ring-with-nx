@@ -8,7 +8,10 @@ import type { Content } from 'types/content'
 
 const { PAGE_HOME } = process.env
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+  previewData,
+}) => {
   if (PAGE_HOME !== 'ENABLED') {
     return {
       props: {
@@ -18,14 +21,16 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const CMS = getCMS()
+  const ref = previewData ? previewData.ref : undefined
 
   const [config, content] = await Promise.all([
-    CMS.getConfig(),
-    CMS.getContentByUID({ uid: 'home' }),
+    CMS.getConfig({ ref }),
+    CMS.getContentByUID({ uid: 'home', ref }),
   ])
 
   return {
     props: {
+      preview,
       config,
       content,
     },
@@ -33,13 +38,15 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 type HomePageProps = {
+  preview: boolean
   config: Config
   content: Content
 }
 
 export default function HomePage({
+  preview,
   config,
   content,
 }: HomePageProps): ReactElement {
-  return <ContentTemplate config={config} content={content} />
+  return <ContentTemplate preview={preview} config={config} content={content} />
 }

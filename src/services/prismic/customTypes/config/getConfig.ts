@@ -1,9 +1,13 @@
-import type { Config } from 'types/config'
-import client from '../../client'
+import { GetConfig } from 'services/CMS/config'
+import Client from '../../client'
+
 import configParser from './configParser'
 
-export default async function getConfig(): Promise<Config> {
-  const config = await client.getSingle('config', {})
+const getConfig: GetConfig = async ({ ref }) => {
+  const client = Client()
+  const config = await client.getSingle('config', {
+    ...(ref ? { ref } : {}),
+  })
 
   if (!config) {
     throw new Error(
@@ -29,3 +33,5 @@ export default async function getConfig(): Promise<Config> {
 
   return configParser({ config, navigationItems: navigationItems.results })
 }
+
+export default getConfig

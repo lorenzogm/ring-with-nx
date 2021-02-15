@@ -9,12 +9,14 @@ import Image from 'components/foundations/Image/Image'
 import { Slice } from 'types/slices'
 
 type ContentTemplateProps = {
+  preview: boolean
   config: Config
   content: Content
   Layout?: ({ config }: { config: Config; children: ReactNode }) => ReactElement
 }
 
 export default function ContentTemplate({
+  preview,
   config,
   content,
   Layout,
@@ -62,5 +64,9 @@ export default function ContentTemplate({
     return <Layout config={config}>{render}</Layout>
   }
 
-  return <PageLayout config={config}>{render}</PageLayout>
+  return (
+    <PageLayout preview={preview} config={config}>
+      {render}
+    </PageLayout>
+  )
 }

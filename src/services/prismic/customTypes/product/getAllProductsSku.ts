@@ -1,8 +1,9 @@
+import { GetAllProductsSku } from 'services/CMS/product'
 import type { ProductSku } from 'types/product'
 import getAllProducts from './getAllProducts'
 
-export default async function getAllProductsSku(): Promise<ProductSku[]> {
-  const products = await getAllProducts()
+const getAllProductsSku: GetAllProductsSku = async ({ ref }) => {
+  const products = await getAllProducts({ ref })
 
   const productsSku: ProductSku[] = []
 
@@ -42,3 +43,5 @@ export default async function getAllProductsSku(): Promise<ProductSku[]> {
 
   return productsSku
 }
+
+export default getAllProductsSku

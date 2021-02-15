@@ -1,7 +1,17 @@
 import type { Category } from 'types/category'
 
 // getAllCategories
-export type GetAllCategories = () => Promise<Category[]>
+export type GetAllCategories = ({
+  ref,
+}: {
+  ref?: string
+}) => Promise<Category[]>
 
 // getCategoryByUID
-export type GetCategoryByUID = ({ uid }: { uid: string }) => Promise<Category>
+export type GetCategoryByUID = ({
+  uid,
+  ref,
+}: {
+  uid: string
+  ref?: string
+}) => Promise<Category>

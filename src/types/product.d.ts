@@ -6,7 +6,7 @@ import { Image } from './image'
 export type Product = {
   uid: string
   name: string
-  type: string
+  type: 'product'
   imageDefault: Image
   colorDefault?: string
   price: number

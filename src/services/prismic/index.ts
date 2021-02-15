@@ -23,11 +23,7 @@ import getProductByUID from './customTypes/product/getProductByUID'
 // translations
 import getTranslations from './customTypes/translations/getTranslations'
 
-import client from './client'
-
 export default {
-  client,
-
   // category
   getAllCategories,
   getCategoryByUID,

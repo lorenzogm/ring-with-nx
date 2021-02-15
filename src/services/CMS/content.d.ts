@@ -1,5 +1,11 @@
 // getAllContents
-export type GetAllContents = () => Promise<Content[]>
+export type GetAllContents = ({ ref }: { ref?: string }) => Promise<Content[]>
 
 // getContentByUID
-export type GetContentByUID = ({ uid }: { uid: string }) => Promise<Content>
+export type GetContentByUID = ({
+  uid,
+  ref,
+}: {
+  uid: string
+  ref?: string
+}) => Promise<Content>

@@ -24,8 +24,9 @@ export default function MyApp({
 }: AppProps): ReactElement {
   useGtagHandlerouteChange()
   if (
-    (pageProps.config && pageProps.config.isMaintenanceEnabled === true) ||
-    router.pathname === '/maintenance'
+    pageProps.preview === false &&
+    ((pageProps.config && pageProps.config.isMaintenanceEnabled === true) ||
+      router.pathname === '/maintenance')
   ) {
     return (
       <MaintenanceRedirect
@@ -61,7 +62,7 @@ export default function MyApp({
 
 function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
-    // Page is "maintenance" and maintenance it's disabled, redirect to "home"
+    // redirect to "home"
     if (
       router.pathname === '/maintenance' &&
       pageProps.config.isMaintenanceEnabled === false
@@ -70,7 +71,7 @@ function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
         throw e
       })
     }
-    // Page is NOT "maintenance" and maintenance is enabled, redirect to "maintenance"
+    // redirect to "maintenance"
     else if (
       router.pathname !== '/maintenance' &&
       pageProps.config.isMaintenanceEnabled === true

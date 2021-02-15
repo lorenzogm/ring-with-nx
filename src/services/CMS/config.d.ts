@@ -1,2 +1,2 @@
 // getConfig
-export type GetConfig = () => Promise<Config>
+export type GetConfig = ({ ref }: { ref?: string }) => Promise<Config>

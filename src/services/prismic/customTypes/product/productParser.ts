@@ -12,10 +12,14 @@ export default function productParser({ product }: ProductParser): Product {
     throw new Error(`Undefined product UID: ${JSON.stringify(product)}`)
   }
 
+  if (!product.data.colors[0] || !product.data.colors[0].image) {
+    throw new Error(`Undefined default image`)
+  }
+
   return {
     name: product.data.name,
     uid: product.uid,
-    type: product.type,
+    type: 'product',
     description: product.data.description || null,
     price: product.data.price * 100,
     imageDefault: imageParser({ image: product.data.colors[0].image }),

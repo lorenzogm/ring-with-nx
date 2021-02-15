@@ -1,17 +1,17 @@
-import type { Category } from 'types/category'
-import client from '../../client'
+import type { GetCategoryByUID } from 'services/CMS/category'
+import Client from '../../client'
+
 import categoryParser from './categoryParser'
 
-type GetCategoryBySlug = {
-  uid: string
-}
-
-export default async function getCategoryByUID({
-  uid,
-}: GetCategoryBySlug): Promise<Category> {
-  const category = await client.getByUID('category', uid, {})
+const getCategoryByUID: GetCategoryByUID = async ({ uid, ref }) => {
+  const client = Client()
+  const category = await client.getByUID('category', uid, {
+    ...(ref ? { ref } : {}),
+  })
 
   return categoryParser({
     document: category,
   })
 }
+
+export default getCategoryByUID

@@ -15,9 +15,10 @@ const checkout: NextApiHandler = async (req, res) => {
   if (!req.headers.origin) {
     throw new Error('Undefined "req.headers.origin')
   }
+
   try {
     const CMS = getCMS()
-    const productsSku = await CMS.getAllProductsSku()
+    const productsSku = await CMS.getAllProductsSku({})
 
     const { cartDetails } = JSON.parse(req.body)
 

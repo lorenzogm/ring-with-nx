@@ -6,6 +6,10 @@ type CategoryParser = {
 }
 
 export default function categoryParser({ document }: CategoryParser): Category {
+  if (!document) {
+    throw new Error('Undefined "document"')
+  }
+
   if (!document.uid) {
     throw new Error('Undefined "document.uid"')
   }
@@ -13,7 +17,7 @@ export default function categoryParser({ document }: CategoryParser): Category {
   return {
     id: document.id,
     uid: document.uid,
-    type: document.type,
+    type: 'category',
     name: document.data.name,
     description: document.data.description || '',
     tags: document.tags,

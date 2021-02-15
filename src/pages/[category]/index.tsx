@@ -3,15 +3,29 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate'
 import getCMS from 'services/CMS/getCMS'
 
-export default CategoryTemplate
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()
+  const categories = await CMS.getAllCategories({})
+
+  return {
+    paths: categories.map((category) => `/${category.uid}`),
+    fallback: true,
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
+  const CMS = getCMS()
+  const ref = previewData ? previewData.ref : undefined
 
   const [config, category] = await Promise.all([
-    CMS.getConfig(),
+    CMS.getConfig({ ref }),
     CMS.getCategoryByUID({
       uid: params?.category as string,
+      ref,
     }),
   ])
 
@@ -25,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      preview,
       config,
       category,
       products,
@@ -32,12 +47,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const CMS = getCMS()
-  const categories = await CMS.getAllCategories()
-
-  return {
-    paths: categories.map((category) => `/${category.uid}`),
-    fallback: true,
-  }
-}
+export default CategoryTemplate

@@ -1,9 +1,13 @@
 import type { GetContentByUID } from 'services/CMS/content'
-import client from '../../client'
+import Client from '../../client'
+
 import contentParser from './contentParser'
 
-const getContentByUID: GetContentByUID = async ({ uid }) => {
-  const document = await client.getByUID('content', uid, {})
+const getContentByUID: GetContentByUID = async ({ uid, ref }) => {
+  const client = Client()
+  const document = await client.getByUID('content', uid, {
+    ...(ref ? { ref } : {}),
+  })
 
   return contentParser({ document })
 }

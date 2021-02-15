@@ -1,12 +1,15 @@
 import Prismic from 'prismic-javascript'
+import type { GetAllProducts } from 'services/CMS/product'
 import type { Product } from 'types/product'
-import client from '../../client'
+import Client from '../../client'
+
 import productParser from './productParser'
 
-export default async function getAllProducts(): Promise<Product[]> {
+const getAllProducts: GetAllProducts = async ({ ref }) => {
+  const client = Client()
   const productsResponse = await client.query(
     Prismic.Predicates.at('document.type', 'product'),
-    { fetchLinks: 'category.name' },
+    { fetchLinks: 'category.name', ...(ref ? { ref } : {}) },
   )
 
   const products: Product[] = productsResponse.results.map((product) =>
@@ -15,3 +18,5 @@ export default async function getAllProducts(): Promise<Product[]> {
 
   return products
 }
+
+export default getAllProducts

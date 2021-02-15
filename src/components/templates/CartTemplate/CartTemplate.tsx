@@ -13,7 +13,7 @@ type CartTemplateProps = {
 const CartTemplate: FC<CartTemplateProps> = ({ config }) => {
   const { cartCount } = useShoppingCart()
   return (
-    <PageLayout config={config}>
+    <PageLayout preview={false} config={config}>
       <div className="flex">
         <div className="w-2/3 mr-4">
           <PageSectionHeader>

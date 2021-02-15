@@ -65,7 +65,7 @@ export default CheckoutConfirmationPage
 export const getStaticProps: GetStaticProps = async () => {
   const CMS = getCMS()
 
-  const [config] = await Promise.all([CMS.getConfig()])
+  const [config] = await Promise.all([CMS.getConfig({})])
 
   return {
     props: {
