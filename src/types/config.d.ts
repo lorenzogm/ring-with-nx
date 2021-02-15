@@ -1,5 +1,6 @@
 export type Config = {
   siteName: string
+  isMaintenanceEnabled: boolean
   logo: string
   currency: string
   navigation: Navigation[]

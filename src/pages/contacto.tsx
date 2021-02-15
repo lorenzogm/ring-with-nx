@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next'
-import ErrorPage from 'next/error'
 
 import { ReactElement } from 'react'
 import ContentTemplate from 'components/templates/ContentTemplate/ContentTemplate'
@@ -29,7 +28,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       config,
       content,
-      isPageEnabled: true,
     },
   }
 }
@@ -37,17 +35,11 @@ export const getStaticProps: GetStaticProps = async () => {
 type ContactPageProps = {
   config: Config
   content: Content
-  isPageEnabled: boolean
 }
 
 export default function ContactPage({
   config,
   content,
-  isPageEnabled,
 }: ContactPageProps): ReactElement {
-  if (isPageEnabled) {
-    return <ContentTemplate config={config} content={content} />
-  }
-
-  return <ErrorPage statusCode={404} />
+  return <ContentTemplate config={config} content={content} />
 }

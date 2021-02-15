@@ -5,23 +5,14 @@ import ContentTemplate from 'components/templates/ContentTemplate/ContentTemplat
 import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
-
-const { PAGE_HOME } = process.env
+import PageLayoutBlank from 'components/foundations/PageLayoutBlank/PageLayoutBlank'
 
 export const getStaticProps: GetStaticProps = async () => {
-  if (PAGE_HOME !== 'ENABLED') {
-    return {
-      props: {
-        isPageEnabled: false,
-      },
-    }
-  }
-
   const CMS = getCMS()
 
   const [config, content] = await Promise.all([
     CMS.getConfig(),
-    CMS.getContentByUID({ uid: 'home' }),
+    CMS.getContentByUID({ uid: 'maintenance' }),
   ])
 
   return {
@@ -32,14 +23,20 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-type HomePageProps = {
+type MaintenancePageProps = {
   config: Config
   content: Content
 }
 
-export default function HomePage({
+export default function MaintenancePage({
   config,
   content,
-}: HomePageProps): ReactElement {
-  return <ContentTemplate config={config} content={content} />
+}: MaintenancePageProps): ReactElement {
+  return (
+    <ContentTemplate
+      config={config}
+      content={content}
+      Layout={PageLayoutBlank}
+    />
+  )
 }
