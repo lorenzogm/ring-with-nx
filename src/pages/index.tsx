@@ -25,7 +25,15 @@ export const getStaticProps: GetStaticProps = async ({
 
   const [config, content] = await Promise.all([
     CMS.getConfig({ ref }),
-    CMS.getContentByUID({ uid: 'home', ref }),
+    CMS.getContentByUID({
+      uid: 'home',
+      ref,
+      fetchLinks: [
+        'product.name',
+        'product.colors',
+        'my.product.category.name',
+      ],
+    }),
   ])
 
   return {

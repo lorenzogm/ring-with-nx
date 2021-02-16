@@ -1,6 +1,7 @@
 import { Image } from './image'
+import { Product } from './product'
 
-type Slice = SliceCarousel | SliceImage
+type Slice = SliceCarousel | SliceImage | SliceListOfProducts
 
 type SliceCarousel = {
   sliceType: 'carousel'
@@ -15,4 +16,9 @@ type SliceCarousel = {
 type SliceImage = {
   sliceType: 'image'
   image: Image
+}
+
+type SliceListOfProducts = {
+  sliceType: 'list_of_products'
+  items: Product[]
 }

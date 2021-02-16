@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { FC, ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import PageLayout from 'components/foundations/PageLayout/PageLayout'
 
 import type { Config } from 'types/config'
@@ -7,6 +7,11 @@ import { Content } from 'types/content'
 import Carousel from 'components/elements/Carousel/Carousel'
 import Image from 'components/foundations/Image/Image'
 import { Slice } from 'types/slices'
+import ProductTile, {
+  ProductTileImage,
+  ProductTileName,
+  ProductTilePrice,
+} from 'components/elements/ProductTile/ProductTile'
 
 type ContentTemplateProps = {
   preview: boolean
@@ -50,6 +55,27 @@ export default function ContentTemplate({
                   width={component.image.width}
                   height={component.image.height}
                 />
+              </div>
+            )
+
+          case 'list_of_products':
+            return (
+              <div
+                // eslint-disable-next-line react/no-array-index-key
+                key={`${component.sliceType}-${index}`}
+                className="flex justify-center"
+              >
+                {component.items.map((item) => (
+                  <ProductTile
+                    key={item.uid}
+                    category={item.category}
+                    product={item}
+                  >
+                    <ProductTileImage />
+                    <ProductTileName />
+                    <ProductTilePrice currency={config.currency} />
+                  </ProductTile>
+                ))}
               </div>
             )
 
