@@ -65,6 +65,7 @@ export default function ContentTemplate({
                 key={`${component.sliceType}-${index}`}
                 className="flex justify-center"
               >
+                <h2>{component.title}</h2>
                 {component.items.map((item) => (
                   <ProductTile
                     key={item.uid}

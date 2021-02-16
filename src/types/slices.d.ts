@@ -20,5 +20,6 @@ type SliceImage = {
 
 type SliceListOfProducts = {
   sliceType: 'list_of_products'
+  title: string
   items: Product[]
 }

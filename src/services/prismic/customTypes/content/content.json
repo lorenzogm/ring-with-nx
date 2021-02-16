@@ -1,0 +1,54 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "carousel": [],
+          "image": [],
+          "list_of_products": []
+        },
+        "choices": {
+          "list_of_products": {
+            "type": "Slice",
+            "fieldset": "List of Products",
+            "description": "List of Products",
+            "icon": "art_track",
+            "display": "grid",
+            "non-repeat": {
+              "title1": {
+                "type": "Text",
+                "config": {
+                  "label": "Title"
+                }
+              }
+            },
+            "repeat": {
+              "products": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "label": "Products"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
