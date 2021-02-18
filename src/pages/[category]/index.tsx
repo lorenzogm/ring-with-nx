@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import CategoryTemplate from 'components/templates/CategoryTemplate/CategoryTemplate'
+import CategoryTemplate from 'components/templates/CategoryTemplate'
 import getCMS from 'services/CMS/getCMS'
 
 export const getStaticPaths: GetStaticPaths = async () => {

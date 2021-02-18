@@ -10,6 +10,7 @@ export type Product = {
   imageDefault: Image
   colorDefault?: string
   price: number
+  brand: string
   description?: RichTextBlock[]
   colors?: Color[]
   sizes?: Size[]

@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { GetStaticProps } from 'next'
 import type { Config } from 'types/config'
 import getCMS from 'services/CMS/getCMS'
-import CartTemplate from 'components/templates/CartTemplate/CartTemplate'
+import CartTemplate from 'components/templates/CartTemplate'
 
 export const getStaticProps: GetStaticProps = async () => {
   const CMS = getCMS()

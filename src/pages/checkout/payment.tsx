@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutPaymentTemplate from 'components/templates/CheckoutPaymentTemplate/CheckoutPaymentTemplate'
+import CheckoutPaymentTemplate from 'components/templates/CheckoutPaymentTemplate'
 import type { Config } from 'types/config'
 import type { PaymentMethods } from 'types/paymentMethods'
 

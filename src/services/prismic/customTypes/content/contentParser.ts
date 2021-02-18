@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Document } from 'prismic-javascript/types/documents'
-import imageParser from 'services/prismic/fields/imageParser'
 import type { Content } from 'types/content'
 import type {
   SliceCarousel,
@@ -22,7 +21,7 @@ const sliceParser: SliceParser = ({ slice }) => {
       return {
         sliceType: slice.slice_type,
         items: slice.items.map((item: any) => ({
-          image: imageParser({ image: item.image }),
+          image: item.image,
           text: item.text,
           buttonText: item.button_text,
           buttonLink: item.button_link,
@@ -32,7 +31,7 @@ const sliceParser: SliceParser = ({ slice }) => {
     case 'image':
       return {
         sliceType: slice.slice_type,
-        image: imageParser({ image: slice.primary.image }),
+        image: slice.primary.image,
       } as SliceImage
 
     case 'list_of_products':

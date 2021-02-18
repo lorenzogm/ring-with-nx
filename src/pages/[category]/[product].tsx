@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 import getCMS from 'services/CMS/getCMS'
-import ProductTemplate from 'components/templates/ProductTemplate/ProductTemplate'
+import ProductTemplate from 'components/templates/ProductTemplate'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()

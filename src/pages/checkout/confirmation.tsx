@@ -5,7 +5,7 @@ import { useMutation } from 'react-query'
 import { useShoppingCart } from 'use-shopping-cart'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutConfirmationTemplate from 'components/templates/CheckoutConfirmationTemplate/CheckoutConfirmationTemplate'
+import CheckoutConfirmationTemplate from 'components/templates/CheckoutConfirmationTemplate'
 import createOrder from 'services/api/order/createOrder'
 import { PaymentMethods } from 'types/paymentMethods'
 import type { Config } from 'types/config'

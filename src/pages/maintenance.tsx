@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next'
 
 import { ReactElement } from 'react'
-import ContentTemplate from 'components/templates/ContentTemplate/ContentTemplate'
+import PageLayoutBlank from 'components/layouts/LayoutBlank'
+import ContentTemplate from 'components/templates/ContentTemplate'
 import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
-import PageLayoutBlank from 'components/foundations/PageLayoutBlank/PageLayoutBlank'
 
 export const getStaticProps: GetStaticProps = async ({
   preview = false,

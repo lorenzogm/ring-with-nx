@@ -3,9 +3,10 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutAddressTemplate from 'components/templates/CheckoutAddressTemplate/CheckoutAddressTemplate'
+import CheckoutAddressTemplate, {
+  CheckoutAddressFormValues,
+} from 'components/templates/CheckoutAddressTemplate'
 import createAddress from 'services/api/address/createAddress'
-import { CheckoutAddressFormValues } from 'components/templates/CheckoutAddressTemplate/checkoutAddress'
 import type { Config } from 'types/config'
 import type { Address } from 'types/address'
 

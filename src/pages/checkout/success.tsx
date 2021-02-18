@@ -2,9 +2,10 @@ import { FC, useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutSuccessTemplate from 'components/templates/CheckoutSuccessTemplate/CheckoutSuccessTemplate'
+import CheckoutSuccessTemplate, {
+  CheckoutSuccessPageState,
+} from 'components/templates/CheckoutSuccessTemplate'
 import type { Config } from 'types/config'
-import type { CheckoutSuccessPageState } from 'components/templates/CheckoutSuccessTemplate/checkoutSuccess.d'
 
 type CheckoutSuccessPageProps = {
   config: Config

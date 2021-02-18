@@ -1,5 +1,4 @@
 import { Document } from 'prismic-javascript/types/documents'
-import imageParser from 'services/prismic/fields/imageParser'
 import type { Product } from 'types/product'
 import categoryParser from '../category/categoryParser'
 
@@ -17,12 +16,13 @@ export default function productParser({ product }: ProductParser): Product {
   }
 
   return {
+    brand: product.data.brand || null,
     name: product.data.name,
     uid: product.uid,
     type: 'product',
     description: product.data.description || null,
     price: product.data.price * 100,
-    imageDefault: imageParser({ image: product.data.colors[0].image }),
+    imageDefault: product.data.colors[0].image,
     category: categoryParser({ document: product.data.category }),
     // colors are optional
     ...(product.data.colors
