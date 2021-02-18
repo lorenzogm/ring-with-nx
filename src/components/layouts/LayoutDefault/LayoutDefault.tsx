@@ -1,6 +1,7 @@
 import { ReactElement, ReactNode, useReducer } from 'react'
 import { useRouter } from 'next/router'
 import Container from '@material-ui/core/Container'
+import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 
 import type { Config } from 'types/config'
@@ -9,6 +10,12 @@ import exitPreview from 'services/api/preview/exitPreview'
 import Aside from './Aside'
 import Header from './Header'
 import Footer from './Footer'
+
+const ContainerStyled = styled(Container)`
+  display: flex;
+  min-height: calc(100vh - 40px);
+  flex-direction: column;
+`
 
 type LayoutDefaultProps = {
   preview: boolean
@@ -42,13 +49,16 @@ export default function LayoutDefault({
     <>
       <Meta />
       {preview && (
-        <div className="bg-red-800 flex justify-center">
+        <div>
           <Button onClick={onClickExitPreview}>Exit Preview</Button>
         </div>
       )}
-      <Container>
+      <ContainerStyled>
         <Header config={config} openCart={openCart} />
         <main>{children}</main>
+      </ContainerStyled>
+
+      <Container>
         <Footer config={config} />
       </Container>
 
