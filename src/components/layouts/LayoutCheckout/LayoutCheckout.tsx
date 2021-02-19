@@ -4,13 +4,16 @@ import styled from 'styled-components'
 import Container from '@material-ui/core/Container'
 import Meta from 'components/layouts/Meta'
 import type { Config } from 'types/config'
+import theme from 'theme'
 import Header from './Header'
 import Footer from './Footer'
 
 const ContainerStyled = styled(Container)`
   display: flex;
-  min-height: calc(100vh - 40px);
+  // 100vh - header height - footer height
+  min-height: calc(100vh - 342px - 40px);
   flex-direction: column;
+  margin-bottom: ${theme.spacing(6)}px;
 `
 
 type LayoutCheckoutProps = {
@@ -26,14 +29,14 @@ export default function LayoutCheckout({
   return (
     <>
       <Meta />
+
+      <Header config={config} activeStep={activeStep} />
+
       <ContainerStyled>
-        <Header config={config} activeStep={activeStep} />
         <main>{children}</main>
       </ContainerStyled>
 
-      <Container>
-        <Footer config={config} />
-      </Container>
+      <Footer />
     </>
   )
 }

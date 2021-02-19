@@ -1,11 +1,27 @@
 import { ReactElement } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
 import Stepper from '@material-ui/core/Stepper'
 import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
+import styled from 'styled-components'
 import type { Config } from 'types/config'
-import Image from 'components/atoms/Image'
+import theme from 'theme'
+import Logo from 'components/molecules/Logo'
+import Link from 'components/atoms/Link'
+
+const HeaderWrapper = styled.header`
+  background-color: ${theme.palette.grey[500]};
+`
+
+const StepLabelStyled = styled(StepLabel)`
+  .MuiStepLabel-label {
+    ${({ active }: { active: boolean }) => {
+      return active ? 'font-size: 1.5rem' : ''
+    }};
+  }
+`
 
 type HeaderProps = {
   config: Config
@@ -19,32 +35,33 @@ export default function Header({
   const steps = ['Dirección', 'Pago', 'Confirmación', 'Hecho!']
 
   return (
-    <header>
-      <Grid container>
-        <Grid container justify="space-between">
-          {config.logo ? (
-            <Image
-              src={config.logo}
-              alt={config.siteName}
-              width={100}
-              height={100}
-            />
-          ) : (
-            config.siteName
-          )}
-          <Typography>Pago seguro</Typography>
-        </Grid>
+    <>
+      <HeaderWrapper>
+        <Container>
+          <Grid container justify="space-between" alignItems="center">
+            <Link href="/">
+              <a>
+                <Logo config={config} />
+              </a>
+            </Link>
+            <Typography variant="h5" color="secondary">
+              Pago seguro
+            </Typography>
+          </Grid>
+        </Container>
+      </HeaderWrapper>
 
-        <Grid container justify="center">
-          <Stepper activeStep={activeStep} alternativeLabel>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </Grid>
-      </Grid>
-    </header>
+      <Container style={{ width: '100%' }}>
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map((label, index) => (
+            <Step key={label}>
+              <StepLabelStyled active={activeStep === index}>
+                {label}
+              </StepLabelStyled>
+            </Step>
+          ))}
+        </Stepper>
+      </Container>
+    </>
   )
 }
