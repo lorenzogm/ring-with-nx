@@ -1,6 +1,8 @@
 import { FC, MouseEvent } from 'react'
 import { MutationStatus } from 'react-query'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import IconArrowForward from '@material-ui/icons/ArrowForward'
 
 import type { Config } from 'types/config'
 import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
@@ -22,14 +24,23 @@ const CheckoutConfirmationTemplate: FC<CheckoutConfirmationTemplateProps> = ({
 }) => {
   return (
     <LayoutCheckout config={config} activeStep={2}>
-      {pageState.status === 'idle' && (
-        <Button onClick={onConfirm}>
-          <a>Confirmar pedido</a>
-        </Button>
-      )}
-      {pageState.status === 'loading' && <div>Loading...</div>}
-      {pageState.status === 'success' && <div>Success!</div>}
-      {pageState.status === 'error' && <div>Error</div>}
+      <Grid container justify="center">
+        <Grid item>
+          {pageState.status === 'idle' && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onConfirm}
+              endIcon={<IconArrowForward />}
+            >
+              Confirmar pedido
+            </Button>
+          )}
+          {pageState.status === 'loading' && <div>Loading...</div>}
+          {pageState.status === 'success' && <div>Success!</div>}
+          {pageState.status === 'error' && <div>Error</div>}
+        </Grid>
+      </Grid>
     </LayoutCheckout>
   )
 }

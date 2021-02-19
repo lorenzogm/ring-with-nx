@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { useFormContext } from 'react-hook-form'
+import { useFormContext, useController } from 'react-hook-form'
+import TextField from '@material-ui/core/TextField'
 
 type FormInputTextProps = {
   name: string
@@ -17,28 +18,29 @@ const FormInputText: FC<FormInputTextProps> = ({
   validate,
   disabled = false,
 }) => {
-  const { register } = useFormContext()
+  const { control } = useFormContext()
+  const {
+    field: { ref, ...inputProps },
+  } = useController({
+    name,
+    control,
+    rules: {
+      required: required ? 'Requerido' : undefined,
+      validate,
+    },
+  })
 
   return (
-    <>
-      <label htmlFor={name} className="block text-gray-700">
-        {label}
-        {required ? '*' : '(opcional)'}
-      </label>
-
-      <input
-        type="text"
-        name={name}
-        id={name}
-        className="form-input mt-1 block w-full"
-        placeholder={placeholder}
-        disabled={disabled}
-        ref={register({
-          required: required ? 'Requerido' : undefined,
-          validate,
-        })}
-      />
-    </>
+    <TextField
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...inputProps}
+      disabled={disabled}
+      inputRef={ref}
+      label={label}
+      placeholder={placeholder}
+      variant="filled"
+      fullWidth
+    />
   )
 }
 

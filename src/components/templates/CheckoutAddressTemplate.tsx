@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
+import IconArrowForward from '@material-ui/icons/ArrowForward'
 
 import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
 import Form from 'components/atoms/Form'
@@ -43,21 +45,59 @@ const CheckoutAddressTemplate: FC<CheckoutAddressTemplateProps> = ({
         useFormMethods={useFormMethods}
         onSubmit={onSubmit}
       >
-        <FormInputText name="address.firstName" label="Nombre" required />
-        <FormInputText name="address.lastName" label="Apellidos" required />
-        <FormInputText name="address.address" label="Dirección" required />
-        <FormInputText name="address.addressMoreInfo" label="Más información" />
-        <FormInputText
-          name="address.postalCode"
-          label="Código postal"
-          required
-        />
-        <FormInputText name="address.city" label="Población" required />
-        <FormInputText name="address.country" label="País" required disabled />
+        <Grid container direction="column" alignItems="center" spacing={3}>
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText name="address.firstName" label="Nombre" required />
+          </Grid>
 
-        <Button type="submit" variant="contained">
-          Guardar dirección
-        </Button>
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText name="address.lastName" label="Apellidos" required />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText name="address.address" label="Dirección" required />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText
+              name="address.addressMoreInfo"
+              label="Más información"
+            />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText
+              name="address.postalCode"
+              label="Código postal"
+              required
+            />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText name="address.city" label="Población" required />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText
+              name="address.country"
+              label="País"
+              required
+              disabled
+            />
+          </Grid>
+
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              endIcon={<IconArrowForward />}
+              fullWidth
+            >
+              Guardar dirección
+            </Button>
+          </Grid>
+        </Grid>
       </Form>
     </LayoutCheckout>
   )

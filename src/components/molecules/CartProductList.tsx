@@ -23,8 +23,13 @@ export default function CartProductList(): ReactElement {
 
   return (
     <Grid container direction="column">
-      {Object.values(cartDetails).map((cartItem) => (
+      {Object.values(cartDetails).map((cartItem, index) => (
         <Grid item key={cartItem.sku}>
+          {index !== 0 && (
+            <Box mb={2}>
+              <Divider />
+            </Box>
+          )}
           <Grid container spacing={2}>
             <Grid item xs={4}>
               {cartItem.image && (
@@ -54,9 +59,6 @@ export default function CartProductList(): ReactElement {
               </Grid>
             </Grid>
           </Grid>
-          <Box mb={4}>
-            <Divider />
-          </Box>
         </Grid>
       ))}
     </Grid>
