@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import type { Config } from 'types/config'
 import Meta from 'components/layouts/Meta'
 import exitPreview from 'services/api/preview/exitPreview'
+import theme from 'theme'
 import Aside from './Aside'
 import Header from './Header'
 import Footer from './Footer'
@@ -15,6 +16,7 @@ const ContainerStyled = styled(Container)`
   display: flex;
   min-height: calc(100vh - 40px);
   flex-direction: column;
+  margin-bottom: ${theme.spacing(6)}px;
 `
 
 type LayoutDefaultProps = {
@@ -64,6 +66,7 @@ export default function LayoutDefault({
 
       <Aside
         cartStatus={state.cartStatus}
+        config={config}
         openCart={openCart}
         closeCart={closeCart}
       />
