@@ -7165,19 +7165,10 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-"sib-api-v3-typescript@git+ssh://git@github.com:lorenzogm/APIv3-typescript-library.git#bug/fix-imports-for-request-and-http":
+sib-api-v3-typescript@^2.2.0:
   version "2.2.0"
-  resolved "git+ssh://git@github.com:lorenzogm/APIv3-typescript-library.git#3c2b076d4d26c66252721185cc61bcdba7e189d8"
-  dependencies:
-    "@types/bluebird" "*"
-    "@types/request" "*"
-    bluebird "^3.5.0"
-    request "^2.81.0"
-    rewire "^3.0.2"
-
-"sib-api-v3-typescript@git+ssh://git@github.com:lorenzogm/APIv3-typescript-library.git#v2.2.0":
-  version "2.2.0"
-  resolved "git+ssh://git@github.com:lorenzogm/APIv3-typescript-library.git#7dccd87b753e7b6efe0d56beda15c39ec9440776"
+  resolved "https://registry.yarnpkg.com/sib-api-v3-typescript/-/sib-api-v3-typescript-2.2.0.tgz#a37e4d4f08cca29cf5baf244e54e3368cb31c294"
+  integrity sha512-b9rRphzLTr1KNvIeaJDDZMXRf1wCTeRfz6vqf1c8nYxArG/8FRP8fgWwGRyRBeBO8N8tXkRF9OApSamcqPDJRw==
   dependencies:
     "@types/bluebird" "*"
     "@types/request" "*"
