@@ -14,7 +14,6 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 import CartProducts from 'components/molecules/CartProductList'
 import theme from 'theme'
-import { Config } from 'types/config'
 
 export type CartStatus = 'OPEN' | 'CLOSED'
 
@@ -38,18 +37,16 @@ const Body = styled.aside`
 `
 
 type AsideProps = {
-  config: Config
   cartStatus: CartStatus
   openCart: () => void
   closeCart: () => void
 }
 export default function Aside({
-  config,
   cartStatus,
   openCart,
   closeCart,
 }: AsideProps): ReactElement {
-  const { cartCount, formattedTotalPrice, totalPrice } = useShoppingCart()
+  const { cartCount, formattedTotalPrice } = useShoppingCart()
 
   const [lastCartCount, setLastCartCount] = useState(cartCount)
 
