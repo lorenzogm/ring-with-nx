@@ -1,31 +1,20 @@
-import { FC } from 'react'
+import { ReactElement } from 'react'
 
 import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
 import type { Config } from 'types/config'
 
-export type CheckoutSuccessPageState = {
-  status: 'LOADING' | 'SUCCESS' | 'ERROR'
-  orderId?: string
-}
-
 type CheckoutSuccessTemplateProps = {
   config: Config
-  pageState: CheckoutSuccessPageState
+  orderId: string
 }
 
-const CheckoutSuccessTemplate: FC<CheckoutSuccessTemplateProps> = ({
+export default function CheckoutSuccessTemplate({
   config,
-  pageState,
-}) => {
+  orderId,
+}: CheckoutSuccessTemplateProps): ReactElement {
   return (
     <LayoutCheckout config={config} activeStep={3}>
-      {pageState.status === 'LOADING' && <div>Loading...</div>}
-      {pageState.status === 'SUCCESS' && (
-        <div>Your order {pageState.orderId}!</div>
-      )}
-      {pageState.status === 'ERROR' && <div>Error</div>}
+      {orderId}!
     </LayoutCheckout>
   )
 }
-
-export default CheckoutSuccessTemplate

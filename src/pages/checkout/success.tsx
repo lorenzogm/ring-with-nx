@@ -1,17 +1,29 @@
-import { FC, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutSuccessTemplate, {
-  CheckoutSuccessPageState,
-} from 'components/templates/CheckoutSuccessTemplate'
+import CheckoutSuccessTemplate from 'components/templates/CheckoutSuccessTemplate'
 import type { Config } from 'types/config'
 
 type CheckoutSuccessPageProps = {
   config: Config
 }
 
-const CheckoutSuccessPage: FC<CheckoutSuccessPageProps> = ({ config }) => {
+export const getStaticProps: GetStaticProps = async () => {
+  const CMS = getCMS()
+
+  const [config] = await Promise.all([CMS.getConfig({})])
+
+  return {
+    props: {
+      config,
+    },
+  }
+}
+
+export default function CheckoutSuccessPage({
+  config,
+}: CheckoutSuccessPageProps): ReactElement | null {
   const [pageState, setPageState] = useState<CheckoutSuccessPageState>({
     status: 'LOADING',
   })
@@ -25,19 +37,23 @@ const CheckoutSuccessPage: FC<CheckoutSuccessPageProps> = ({ config }) => {
     }
   }, [])
 
-  return <CheckoutSuccessTemplate config={config} pageState={pageState} />
+  if (pageState.status === 'LOADING') {
+    return <div>Loading...</div>
+  }
+
+  if (pageState.status === 'ERROR') {
+    return <div>Error</div>
+  }
+
+  return (
+    <CheckoutSuccessTemplate
+      config={config}
+      orderId={pageState.orderId as string}
+    />
+  )
 }
 
-export default CheckoutSuccessPage
-
-export const getStaticProps: GetStaticProps = async () => {
-  const CMS = getCMS()
-
-  const [config] = await Promise.all([CMS.getConfig({})])
-
-  return {
-    props: {
-      config,
-    },
-  }
+export type CheckoutSuccessPageState = {
+  status: 'LOADING' | 'SUCCESS' | 'ERROR'
+  orderId?: string
 }
