@@ -40,9 +40,7 @@ export default function Header({
         <Container>
           <Grid container justify="space-between" alignItems="center">
             <Link href="/">
-              <a>
-                <Logo config={config} />
-              </a>
+              <Logo config={config} />
             </Link>
             <Typography variant="h5" color="secondary">
               Pago seguro
