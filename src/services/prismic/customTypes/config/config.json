@@ -43,6 +43,44 @@
       }
     }
   },
+  "Company Data": {
+    "company_name": {
+      "type": "Text",
+      "config": {
+        "label": "Company Name"
+      }
+    },
+    "company_email": {
+      "type": "Text",
+      "config": {
+        "label": "Company Email"
+      }
+    },
+    "company_address": {
+      "type": "Text",
+      "config": {
+        "label": "Company Address"
+      }
+    },
+    "company_postcode": {
+      "type": "Text",
+      "config": {
+        "label": "Company Postcode"
+      }
+    },
+    "company_city": {
+      "type": "Text",
+      "config": {
+        "label": "Company City"
+      }
+    },
+    "company_country": {
+      "type": "Text",
+      "config": {
+        "label": "Company Country"
+      }
+    }
+  },
   "Social": {
     "instagram_url": {
       "type": "Text",
@@ -66,16 +104,28 @@
         "label": "Currency"
       }
     },
-    "is_payment_method_wire_transfer_enabled": {
+    "payment_method_wire_transfer_is_enabled": {
       "type": "Boolean",
       "config": {
         "placeholder_false": "Disabled",
         "placeholder_true": "Enabled",
         "default_value": false,
-        "label": "Wire transfer"
+        "label": "Wire Transfer"
       }
     },
-    "is_payment_method_bizum_enabled": {
+    "payment_method_wire_transfer_account_holder": {
+      "type": "Text",
+      "config": {
+        "label": "Account Holder"
+      }
+    },
+    "payment_method_wire_transfer_iban": {
+      "type": "Text",
+      "config": {
+        "label": "Wire Transfer IBAN"
+      }
+    },
+    "payment_method_bizum_is_enabled": {
       "type": "Boolean",
       "config": {
         "placeholder_false": "Disabled",
@@ -84,7 +134,7 @@
         "label": "Bizum"
       }
     },
-    "is_payment_method_credit_card_enabled": {
+    "payment_method_credit_card_is_enabled": {
       "type": "Boolean",
       "config": {
         "placeholder_false": "Disabled",

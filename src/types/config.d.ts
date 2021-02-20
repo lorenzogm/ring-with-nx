@@ -1,14 +1,16 @@
+import { Company } from './company'
+
 export type Config = {
   siteName: string
   isMaintenanceEnabled: boolean
   logo: string
   currency: string
   navigation: Navigation[]
+  company: Company
   instagramUrl?: string
   facebookUrl?: string
-  isPaymentMethodWireTransferEnabled: boolean
-  isPaymentMethodBizumEnabled: boolean
-  isPaymentMethodCreditCardEnabled: boolean
+  paymentMethods: PaymentMethods
+  shipping: Shipping
 }
 
 export type Navigation = {
@@ -16,4 +18,29 @@ export type Navigation = {
   name: string
   description: string
   image: string
+}
+
+type PaymentMethods = {
+  wireTransfer: PaymentMethodsWireTransfer
+  bizum: PaymentMethodsBizum
+  creditCard: PaymentMethodsCreditCard
+}
+
+type PaymentMethodsWireTransfer = {
+  isEnabled: boolean
+  accountHolder: string
+  IBAN: string
+}
+
+type PaymentMethodsBizum = {
+  isEnabled: boolean
+}
+
+type PaymentMethodsCreditCard = {
+  isEnabled: boolean
+}
+
+type Shipping = {
+  costs: number
+  freeAmount: number
 }

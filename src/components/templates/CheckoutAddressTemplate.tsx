@@ -28,11 +28,12 @@ const CheckoutAddressTemplate: FC<CheckoutAddressTemplateProps> = ({
   const useFormMethods = useForm<CheckoutAddressFormValues>({
     defaultValues: {
       address: {
+        email: address.email,
         firstName: address.firstName,
         lastName: address.lastName,
         address: address.address,
         addressMoreInfo: address.addressMoreInfo,
-        postalCode: address.postalCode,
+        postcode: address.postcode,
         city: address.city,
         country: address.country,
       },
@@ -46,6 +47,10 @@ const CheckoutAddressTemplate: FC<CheckoutAddressTemplateProps> = ({
         onSubmit={onSubmit}
       >
         <Grid container direction="column" alignItems="center" spacing={3}>
+          <Grid item sm={6} style={{ width: '100%' }}>
+            <FormInputText name="address.email" label="Email" required />
+          </Grid>
+
           <Grid item sm={6} style={{ width: '100%' }}>
             <FormInputText name="address.firstName" label="Nombre" required />
           </Grid>
@@ -67,7 +72,7 @@ const CheckoutAddressTemplate: FC<CheckoutAddressTemplateProps> = ({
 
           <Grid item sm={6} style={{ width: '100%' }}>
             <FormInputText
-              name="address.postalCode"
+              name="address.postcode"
               label="Código postal"
               required
             />

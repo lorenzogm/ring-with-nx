@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react'
-import { useShoppingCart } from 'use-shopping-cart'
+import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import Link from 'next/link'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 import CartProducts from 'components/molecules/CartProductList'
 import theme from 'theme'
+import type { Config } from 'types/config'
 
 export type CartStatus = 'OPEN' | 'CLOSED'
 
@@ -38,15 +39,17 @@ const Body = styled.aside`
 
 type AsideProps = {
   cartStatus: CartStatus
+  config: Config
   openCart: () => void
   closeCart: () => void
 }
 export default function Aside({
   cartStatus,
+  config,
   openCart,
   closeCart,
 }: AsideProps): ReactElement {
-  const { cartCount, formattedTotalPrice } = useShoppingCart()
+  const { cartCount, totalPrice } = useShoppingCart()
 
   const [lastCartCount, setLastCartCount] = useState(cartCount)
 
@@ -56,6 +59,11 @@ export default function Aside({
       setLastCartCount(cartCount)
     }
   }, [cartCount, cartStatus, lastCartCount, openCart])
+
+  const subtotal = totalPrice
+  const shipping =
+    subtotal >= config.shipping.freeAmount ? 0 : config.shipping.costs
+  const total = subtotal + shipping
 
   return (
     <>
@@ -91,15 +99,20 @@ export default function Aside({
               <Box m={4}>
                 <Box mb={2}>
                   <Grid container justify="space-between">
-                    <Typography>Total</Typography>
-                    <Typography>{formattedTotalPrice}</Typography>
+                    <Typography>Subtotal</Typography>
+                    <Typography>
+                      {formatCurrencyString({
+                        value: subtotal,
+                        currency: config.currency,
+                      })}
+                    </Typography>
                   </Grid>
 
-                  {/* <Grid container justify="space-between">
+                  <Grid container justify="space-between">
                     <Typography>Envío</Typography>
                     <Typography>
                       {formatCurrencyString({
-                        value: 900,
+                        value: shipping,
                         currency: config.currency,
                       })}
                     </Typography>
@@ -111,11 +124,11 @@ export default function Aside({
                     </Typography>
                     <Typography variant="h5" component="p">
                       {formatCurrencyString({
-                        value: totalPrice + 900,
+                        value: total,
                         currency: config.currency,
                       })}
                     </Typography>
-                  </Grid> */}
+                  </Grid>
                 </Box>
 
                 <Link href="/checkout/address">

@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react'
+import { MouseEvent, ReactElement } from 'react'
 import { MutationStatus } from 'react-query'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
@@ -17,11 +17,11 @@ type CheckoutConfirmationTemplateProps = {
   pageState: CheckoutConfirmationPageState
 }
 
-const CheckoutConfirmationTemplate: FC<CheckoutConfirmationTemplateProps> = ({
+export default function CheckoutConfirmationTemplate({
   config,
   onConfirm,
   pageState,
-}) => {
+}: CheckoutConfirmationTemplateProps): ReactElement {
   return (
     <LayoutCheckout config={config} activeStep={2}>
       <Grid container justify="center">
@@ -44,5 +44,3 @@ const CheckoutConfirmationTemplate: FC<CheckoutConfirmationTemplateProps> = ({
     </LayoutCheckout>
   )
 }
-
-export default CheckoutConfirmationTemplate

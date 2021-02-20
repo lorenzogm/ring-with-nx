@@ -5,11 +5,12 @@ export default function useUserAddress(): State {
   const [state, dispatch] = useReducer(reducer, {
     status: 'LOADING',
     address: {
+      email: '',
       firstName: '',
       lastName: '',
       address: '',
       addressMoreInfo: '',
-      postalCode: '',
+      postcode: '',
       city: '',
       country: 'España',
     },

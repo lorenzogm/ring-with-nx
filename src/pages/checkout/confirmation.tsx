@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ReactElement } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { useMutation } from 'react-query'
@@ -12,15 +12,27 @@ import type { Config } from 'types/config'
 import type { Address } from 'types/address'
 import { Order } from 'types/order'
 
+export const getStaticProps: GetStaticProps = async () => {
+  const CMS = getCMS()
+
+  const [config] = await Promise.all([CMS.getConfig({})])
+
+  return {
+    props: {
+      config,
+    },
+  }
+}
+
 type CheckoutConfirmationPageProps = {
   config: Config
 }
 
-const CheckoutConfirmationPage: FC<CheckoutConfirmationPageProps> = ({
+export default function CheckoutConfirmationPage({
   config,
-}) => {
+}: CheckoutConfirmationPageProps): ReactElement {
   const router = useRouter()
-  const { cartDetails } = useShoppingCart()
+  const { cartDetails, totalPrice } = useShoppingCart()
 
   const { status, mutateAsync } = useMutation(createOrder)
 
@@ -45,31 +57,17 @@ const CheckoutConfirmationPage: FC<CheckoutConfirmationPageProps> = ({
     }
 
     const address: Address = JSON.parse(addressFromLocalStorage)
-
     const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
 
     const order: Order = await mutateAsync({
       address,
       cartDetails,
+      totalPrice,
       paymentMethod,
     })
 
     localStorage.setItem('orderId', order.orderId)
 
     await router.push('/checkout/success')
-  }
-}
-
-export default CheckoutConfirmationPage
-
-export const getStaticProps: GetStaticProps = async () => {
-  const CMS = getCMS()
-
-  const [config] = await Promise.all([CMS.getConfig({})])
-
-  return {
-    props: {
-      config,
-    },
   }
 }

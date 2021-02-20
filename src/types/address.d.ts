@@ -1,9 +1,10 @@
 export type Address = {
+  email: string
   firstName: string
   lastName: string
   address: string
   addressMoreInfo: string
-  postalCode: string
+  postcode: string
   city: string
   country: string
 }
