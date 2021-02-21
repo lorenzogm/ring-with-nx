@@ -4,18 +4,28 @@ import type { PaymentMethods } from 'types/paymentMethods'
 import type { Order } from 'types/order'
 
 type CreateOrder = {
-  address: Address
   cartDetails: CartDetails
   totalPrice: number
-  paymentMethod: PaymentMethods
 }
 
 export default async function createOrder({
-  address,
   cartDetails,
-  paymentMethod,
   totalPrice,
 }: CreateOrder): Promise<Order> {
+  const addressFromLocalStorage = localStorage.getItem('address')
+
+  if (!addressFromLocalStorage) {
+    throw new Error('Undefined "address" in local storage.')
+  }
+
+  const paymentMethodFromLocalStorage = localStorage.getItem('paymentMethod')
+  if (!paymentMethodFromLocalStorage) {
+    throw new Error('Undefined "paymentMethod" in local storage.')
+  }
+
+  const address: Address = JSON.parse(addressFromLocalStorage)
+  const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
+
   const res = await fetch('/api/order/createOrder', {
     method: 'POST',
     body: JSON.stringify({
@@ -27,6 +37,8 @@ export default async function createOrder({
   })
 
   const order = (await res.json()) as Order
+
+  localStorage.setItem('orderId', order.orderId)
 
   return order
 }

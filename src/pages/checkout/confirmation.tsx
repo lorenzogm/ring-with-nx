@@ -7,10 +7,7 @@ import { useShoppingCart } from 'use-shopping-cart'
 import getCMS from 'services/CMS/getCMS'
 import CheckoutConfirmationTemplate from 'components/templates/CheckoutConfirmationTemplate'
 import createOrder from 'services/api/order/createOrder'
-import { PaymentMethods } from 'types/paymentMethods'
 import type { Config } from 'types/config'
-import type { Address } from 'types/address'
-import { Order } from 'types/order'
 
 export const getStaticProps: GetStaticProps = async () => {
   const CMS = getCMS()
@@ -40,33 +37,15 @@ export default function CheckoutConfirmationPage({
     <CheckoutConfirmationTemplate
       config={config}
       onConfirm={onConfirm}
-      pageState={{ status }}
+      onConfirmStatus={status}
     />
   )
 
   async function onConfirm() {
-    const addressFromLocalStorage = localStorage.getItem('address')
-
-    if (!addressFromLocalStorage) {
-      throw new Error('Undefined address')
-    }
-
-    const paymentMethodFromLocalStorage = localStorage.getItem('paymentMethod')
-    if (!paymentMethodFromLocalStorage) {
-      throw new Error('Undefined address')
-    }
-
-    const address: Address = JSON.parse(addressFromLocalStorage)
-    const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
-
-    const order: Order = await mutateAsync({
-      address,
+    await mutateAsync({
       cartDetails,
       totalPrice,
-      paymentMethod,
     })
-
-    localStorage.setItem('orderId', order.orderId)
 
     await router.push('/checkout/success')
   }
