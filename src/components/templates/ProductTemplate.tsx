@@ -29,7 +29,7 @@ export default function ProductTemplate({
   product,
 }: ProductTemplateProps): ReactElement | null {
   const router = useRouter()
-  const { addItem } = useShoppingCart()
+  const { cartDetails, addItem, incrementItem } = useShoppingCart()
 
   const fieldSelectSize = useRef<ReactSelect>(null)
 
@@ -142,15 +142,25 @@ export default function ProductTemplate({
                       fullWidth
                       onClick={() => {
                         if (state.sizeSelected) {
-                          addItem({
-                            name: product.name,
-                            sku: `${product.uid}-${state.colorSelected}-${state.sizeSelected.value}`,
-                            price: product.price,
-                            currency: config.currency,
-                            image: state.imageSelected.url,
-                            color: state.colorSelected,
-                            size: state.sizeSelected.value,
-                          })
+                          const sku = `${product.uid}-${state.colorSelected}-${state.sizeSelected.value}`
+
+                          if (
+                            Object.keys(cartDetails).find(
+                              (productSlug) => productSlug === sku,
+                            ) === undefined
+                          ) {
+                            addItem({
+                              name: product.name,
+                              sku,
+                              price: product.price,
+                              currency: config.currency,
+                              image: state.imageSelected.url,
+                              color: state.colorSelected,
+                              size: state.sizeSelected.value,
+                            })
+                          } else {
+                            incrementItem(sku)
+                          }
                         } else {
                           if (fieldSelectSize && fieldSelectSize.current) {
                             fieldSelectSize.current.focus()
