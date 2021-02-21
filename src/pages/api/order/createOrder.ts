@@ -46,10 +46,13 @@ const createOrder: NextApiHandler = async (req, res) => {
         value: subtotal,
         currency: config.currency,
       }),
-      shipping: formatCurrencyString({
-        value: shipping,
-        currency: config.currency,
-      }),
+      shipping:
+        shipping === 0
+          ? 'Gratis'
+          : formatCurrencyString({
+              value: shipping,
+              currency: config.currency,
+            }),
       total: formatCurrencyString({
         value: total,
         currency: config.currency,

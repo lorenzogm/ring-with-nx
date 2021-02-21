@@ -66,7 +66,6 @@ export default function LayoutDefault({
 
       <Aside
         cartStatus={state.cartStatus}
-        config={config}
         openCart={openCart}
         closeCart={closeCart}
       />

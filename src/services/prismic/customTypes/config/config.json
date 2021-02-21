@@ -143,5 +143,19 @@
         "label": "Payment with Credit"
       }
     }
+  },
+  "Shipping": {
+    "shipping_costs": {
+      "type": "Number",
+      "config": {
+        "label": "Shipping Costs"
+      }
+    },
+    "shipping_free_amount": {
+      "type": "Number",
+      "config": {
+        "label": "Shipping Free Amount"
+      }
+    }
   }
 }
