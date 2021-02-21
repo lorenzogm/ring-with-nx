@@ -14,7 +14,7 @@ import Footer from './Footer'
 
 const ContainerStyled = styled(Container)`
   display: flex;
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 88px);
   flex-direction: column;
   margin-bottom: ${theme.spacing(6)}px;
 `
