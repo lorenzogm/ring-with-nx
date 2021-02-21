@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import type { Config } from 'types/config'
 import Meta from 'components/layouts/Meta'
 import exitPreview from 'services/api/preview/exitPreview'
+import CookieBanner from 'components/molecules/CookieBanner'
 import theme from 'theme'
 import Aside from './Aside'
 import Header from './Header'
@@ -55,6 +56,7 @@ export default function LayoutDefault({
           <Button onClick={onClickExitPreview}>Exit Preview</Button>
         </div>
       )}
+      <CookieBanner />
       <ContainerStyled>
         <Header config={config} openCart={openCart} />
         <main>{children}</main>

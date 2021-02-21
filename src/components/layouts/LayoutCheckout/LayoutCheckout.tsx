@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Container from '@material-ui/core/Container'
 import Meta from 'components/layouts/Meta'
 import type { Config } from 'types/config'
+import CookieBanner from 'components/molecules/CookieBanner'
 import theme from 'theme'
 import Header from './Header'
 import Footer from './Footer'
@@ -29,6 +30,8 @@ export default function LayoutCheckout({
   return (
     <>
       <Meta />
+
+      <CookieBanner />
 
       <Header config={config} activeStep={activeStep} />
 
