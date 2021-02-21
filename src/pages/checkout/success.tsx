@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react'
 import { GetStaticProps } from 'next'
+import { useShoppingCart } from 'use-shopping-cart'
 
 import getCMS from 'services/CMS/getCMS'
 import CheckoutSuccessTemplate from 'components/templates/CheckoutSuccessTemplate'
@@ -28,14 +29,18 @@ export default function CheckoutSuccessPage({
     status: 'LOADING',
   })
 
+  const { clearCart } = useShoppingCart()
+
   useEffect(() => {
     const orderId = localStorage.getItem('orderId')
     if (orderId) {
       setPageState({ status: 'SUCCESS', orderId })
+
+      clearCart()
     } else {
       setPageState({ status: 'ERROR' })
     }
-  }, [])
+  }, [clearCart])
 
   if (pageState.status === 'LOADING') {
     return <div>Loading...</div>
