@@ -3,9 +3,10 @@ import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
 
 import getCMS from 'services/CMS/getCMS'
-import CheckoutPaymentTemplate from 'components/templates/CheckoutPaymentTemplate'
+import CheckoutPaymentTemplate, {
+  CheckoutPaymentFormValues,
+} from 'components/templates/CheckoutPaymentTemplate'
 import type { Config } from 'types/config'
-import type { PaymentMethods } from 'types/paymentMethods'
 
 type CheckoutPaymentPageProps = {
   config: Config
@@ -14,14 +15,10 @@ type CheckoutPaymentPageProps = {
 const CheckoutPaymentPage: FC<CheckoutPaymentPageProps> = ({ config }) => {
   const router = useRouter()
 
-  return <CheckoutPaymentTemplate config={config} onSelect={onSelect} />
+  return <CheckoutPaymentTemplate config={config} onSubmit={onSubmit} />
 
-  async function onSelect({
-    paymentMethod,
-  }: {
-    paymentMethod: PaymentMethods
-  }) {
-    localStorage.setItem('paymentMethod', paymentMethod)
+  async function onSubmit(values: CheckoutPaymentFormValues) {
+    localStorage.setItem('paymentMethod', values.paymentMethod)
 
     await router.push('/checkout/confirmation')
   }
