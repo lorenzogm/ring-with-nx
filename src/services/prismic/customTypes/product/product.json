@@ -60,62 +60,43 @@
               "options": [
                 "AQUAMARINE",
                 "BLACK",
-                "BURGUNDY",
+                "RED_BURGUNDY",
                 "BLUE",
                 "BROWN",
                 "CAREY",
-                "CHARCOAL_GREY",
-                "FADED_DENIM",
+                "DENIM_FADED",
+                "DENIM_LIGHT",
                 "GREEN",
-                "GREY",
+                "GOLD",
                 "GOLDEN",
+                "GREEN_LEAF",
+                "GREEN_KELLY",
+                "GREEN_SEA",
+                "GREY",
+                "GREY_CHARCOAL",
+                "GREY_CHARCOAL_LIGHT",
+                "GREY_MELANGE",
                 "HAVANA",
-                "LIGHT_CHARCOAL",
                 "LILA",
-                "MELANGE_GREY",
+                "NATURAL",
                 "NAVY",
                 "ORANGE",
                 "PINK",
+                "PINK_CANDY",
+                "PINK_HOT",
                 "PURPLE",
                 "RED",
                 "SILVER",
                 "TRANSPARENT",
                 "WHITE",
-                "YELLOW"
+                "YELLOW",
+                "YELLOW_BUTTERCUP"
               ],
               "label": "Color"
             }
           }
         },
         "label": "Colors"
-      }
-    },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {
-          "test": []
-        },
-        "choices": {
-          "test": {
-            "type": "Slice",
-            "fieldset": "test",
-            "description": "test",
-            "icon": "3d_rotation",
-            "display": "list",
-            "non-repeat": {},
-            "repeat": {
-              "pres": {
-                "type": "Select",
-                "config": {
-                  "options": [],
-                  "label": "pres"
-                }
-              }
-            }
-          }
-        }
       }
     }
   },
