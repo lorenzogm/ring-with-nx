@@ -86,7 +86,8 @@ const createOrder: NextApiHandler = async (req, res) => {
       orderSubtotal: payment.subtotal,
       orderShipping: payment.shipping,
       orderTotal: payment.total,
-      orderPaymentMethod: paymentMethod,
+      orderPaymentMethod:
+        paymentMethod === 'WIRE_TRANSFER' ? 'Transferencia bancaria' : '',
       products: Object.values(cartDetails).map((product) => ({
         name: product.name,
         image: product.image as string,
