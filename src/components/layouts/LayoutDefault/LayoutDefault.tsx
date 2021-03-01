@@ -56,7 +56,9 @@ export default function LayoutDefault({
           <Button onClick={onClickExitPreview}>Exit Preview</Button>
         </div>
       )}
+
       <CookieBanner />
+
       <ContainerStyled>
         <Header config={config} openCart={openCart} />
         <main>{children}</main>
