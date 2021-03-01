@@ -13,7 +13,7 @@ export default function configParser({
   return {
     siteName: config.data.site_name as Config['siteName'],
     isMaintenanceEnabled: config.data.is_maintenance_enabled || false,
-    logo: (config.data.logo.url || '') as Config['logo'],
+    logo: config.data.logo,
     currency: config.data.currency,
     navigation: navigationItems.map((item) => ({
       slug: item.uid,

@@ -19,8 +19,8 @@
       "type": "Image",
       "config": {
         "constraint": {
-          "width": 1080,
-          "height": 1080
+          "width": 200,
+          "height": 70
         },
         "thumbnails": [],
         "label": "Logo"

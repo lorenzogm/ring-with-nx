@@ -7,7 +7,12 @@ type LogoProps = { config: Config }
 
 export default function Logo({ config }: LogoProps): ReactElement {
   return config.logo ? (
-    <Image src={config.logo} alt={config.siteName} width={100} height={100} />
+    <Image
+      src={config.logo.url}
+      alt={config.siteName}
+      width={config.logo.dimensions.width}
+      height={config.logo.dimensions.height}
+    />
   ) : (
     <Typography>{config.siteName}</Typography>
   )

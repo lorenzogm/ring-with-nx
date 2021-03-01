@@ -3,7 +3,7 @@ import { Company } from './company'
 export type Config = {
   siteName: string
   isMaintenanceEnabled: boolean
-  logo: string
+  logo: Image
   currency: string
   navigation: Navigation[]
   company: Company
