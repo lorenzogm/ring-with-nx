@@ -6,19 +6,19 @@ export default function getCMS(): CMS {
     throw new Error('"getClient" should be called in the server.')
   }
 
-  const { CMS_INTEGRATION } = process.env
+  const { CONFIG_CMS_INTEGRATION } = process.env
 
-  if (!CMS_INTEGRATION) {
+  if (!CONFIG_CMS_INTEGRATION) {
     throw new Error(
-      'Undefined "CMS_INTEGRATION" in your environment variables.',
+      'Undefined "CONFIG_CMS_INTEGRATION" in your environment variables.',
     )
   }
 
-  switch (CMS_INTEGRATION) {
+  switch (CONFIG_CMS_INTEGRATION) {
     case 'PRISMIC':
       return prismic
 
     default:
-      throw new Error(`${CMS_INTEGRATION} is not a valid integration.`)
+      throw new Error(`${CONFIG_CMS_INTEGRATION} is not a valid integration.`)
   }
 }
