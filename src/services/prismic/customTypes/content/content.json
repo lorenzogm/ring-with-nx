@@ -46,6 +46,27 @@
                 }
               }
             }
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Image",
+            "description": "Single image",
+            "icon": "image",
+            "display": "grid",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 1080,
+                    "height": 1080
+                  },
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
