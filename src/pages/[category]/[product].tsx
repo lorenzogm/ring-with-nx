@@ -1,7 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { ReactElement } from 'react'
+import { useRouter } from 'next/router'
 
 import getCMS from 'services/CMS/getCMS'
 import ProductTemplate from 'components/templates/ProductTemplate'
+import type { Product } from 'types/product'
+import type { Config } from 'types/config'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()
@@ -40,4 +44,22 @@ export const getStaticProps: GetStaticProps = async ({
   }
 }
 
-export default ProductTemplate
+type ProductPageProps = {
+  config: Config
+  preview: boolean
+  product: Product
+}
+
+export default function ProductPage({
+  config,
+  preview,
+  product,
+}: ProductPageProps): ReactElement | null {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return null
+  }
+
+  return <ProductTemplate config={config} preview={preview} product={product} />
+}

@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps = async ({
       config,
       content,
     },
+    revalidate: 1,
   }
 }
 

@@ -1,7 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { ReactElement } from 'react'
+import { useRouter } from 'next/router'
 
 import CategoryTemplate from 'components/templates/CategoryTemplate'
 import getCMS from 'services/CMS/getCMS'
+import type { Category } from 'types/category'
+import type { Config } from 'types/config'
+import type { Product } from 'types/product'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()
@@ -44,7 +49,35 @@ export const getStaticProps: GetStaticProps = async ({
       category,
       products,
     },
+    revalidate: 1,
   }
 }
 
-export default CategoryTemplate
+type CategoryPageProps = {
+  category: Category
+  config: Config
+  preview: boolean
+  products: Product[]
+}
+
+export default function CategoryPage({
+  category,
+  config,
+  preview,
+  products,
+}: CategoryPageProps): ReactElement | null {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return null
+  }
+
+  return (
+    <CategoryTemplate
+      category={category}
+      config={config}
+      preview={preview}
+      products={products}
+    />
+  )
+}
