@@ -108,7 +108,7 @@ export default function ProductTemplate({
                     </Box>
                   )}
 
-                  {product.sizes && (
+                  {product.sizes.length > 0 && (
                     <Box mb={2}>
                       <ReactSelect
                         ref={fieldSelectSize}
@@ -140,37 +140,7 @@ export default function ProductTemplate({
                       variant="contained"
                       color="primary"
                       fullWidth
-                      onClick={() => {
-                        if (state.sizeSelected) {
-                          const sku = `${product.uid}-${state.colorSelected}-${state.sizeSelected.value}`
-
-                          if (
-                            Object.keys(cartDetails).find(
-                              (productSlug) => productSlug === sku,
-                            ) === undefined
-                          ) {
-                            addItem({
-                              name: product.name,
-                              sku,
-                              price: product.price,
-                              currency: config.currency,
-                              image: state.imageSelected.url,
-                              color: state.colorSelected,
-                              size: state.sizeSelected.value,
-                            })
-                          } else {
-                            incrementItem(sku)
-                          }
-                        } else {
-                          if (fieldSelectSize && fieldSelectSize.current) {
-                            fieldSelectSize.current.focus()
-                          }
-
-                          dispatch({
-                            type: 'SIZE_OPEN',
-                          })
-                        }
-                      }}
+                      onClick={addToCart}
                     >
                       Añadir a la cesta
                     </Button>
@@ -187,6 +157,47 @@ export default function ProductTemplate({
       )}
     </PageLayout>
   )
+
+  function addToCart() {
+    const isPossibleToAddToTheCart =
+      state.sizeSelected || product.sizes.length === 0
+
+    if (isPossibleToAddToTheCart) {
+      let sku = ''
+      let size
+      if (state.sizeSelected) {
+        size = state.sizeSelected.value
+        sku = `${product.uid}-${state.colorSelected}-${size}`
+      } else if (product.sizes.length === 0) {
+        sku = `${product.uid}-${state.colorSelected}`
+      }
+
+      if (
+        Object.keys(cartDetails).find((productSlug) => productSlug === sku) ===
+        undefined
+      ) {
+        addItem({
+          name: product.name,
+          sku,
+          price: product.price,
+          currency: config.currency,
+          image: state.imageSelected.url,
+          color: state.colorSelected,
+          ...(size ? { size } : {}),
+        })
+      } else {
+        incrementItem(sku)
+      }
+    } else {
+      if (fieldSelectSize && fieldSelectSize.current) {
+        fieldSelectSize.current.focus()
+      }
+
+      dispatch({
+        type: 'SIZE_OPEN',
+      })
+    }
+  }
 }
 
 type State = {

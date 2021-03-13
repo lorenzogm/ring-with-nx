@@ -9,7 +9,7 @@ const { SENDINBLUE_API_KEY } = process.env
 if (!SENDINBLUE_API_KEY) {
   throw new Error('Undefined "SENDINBLUE_API_KEY"')
 }
-// console.log({ SENDINBLUE_API_KEY })
+
 // Configure API key authorization: api-key
 transactionalEmailsApi.setApiKey(
   sendinblue.TransactionalEmailsApiApiKeys.apiKey,
