@@ -20,7 +20,7 @@ const CheckoutPaymentPage: FC<CheckoutPaymentPageProps> = ({ config }) => {
   async function onSubmit(values: CheckoutPaymentFormValues) {
     localStorage.setItem('paymentMethod', values.paymentMethod)
 
-    await router.push('/checkout/confirmation')
+    await router.push('/store/checkout/confirmation')
   }
 }
 

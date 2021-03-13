@@ -12,7 +12,7 @@ import Navigation from 'components/molecules/Navigation'
 import Logo from 'components/molecules/Logo'
 import Link from 'components/atoms/Link'
 
-const { CONFIG_ECOMMERCE } = process.env
+const { CONFIG_STORE } = process.env
 
 type HeaderProps = {
   config: Config
@@ -59,7 +59,7 @@ export default function Header({
         </Hidden>
         <div>
           <LocaleSwitcher />
-          {CONFIG_ECOMMERCE === 'ENABLED' && (
+          {CONFIG_STORE === 'ENABLED' && (
             <IconButton onClick={openCart}>
               <Badge badgeContent={cartCount} color="primary">
                 <LocalMallIcon />

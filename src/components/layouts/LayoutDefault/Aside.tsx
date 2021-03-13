@@ -99,7 +99,7 @@ export default function Aside({
                   </Grid>
                 </Box>
 
-                <Link href="/checkout/address">
+                <Link href="/store/checkout/address">
                   <Button variant="contained" color="primary" fullWidth>
                     <span>Comenzar pedido</span>
                     <ArrowForwardIcon />

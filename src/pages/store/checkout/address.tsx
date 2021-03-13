@@ -49,6 +49,6 @@ export default function CheckoutAddressPage({
   async function onSubmit(values: CheckoutAddressFormValues) {
     await createAddress(values.address)
 
-    await router.push('/checkout/payment')
+    await router.push('/store/checkout/payment')
   }
 }

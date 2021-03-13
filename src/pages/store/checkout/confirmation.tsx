@@ -48,6 +48,6 @@ export default function CheckoutConfirmationPage({
       totalPrice,
     })
 
-    await router.push('/checkout/success')
+    await router.push('/store/checkout/success')
   }
 }
