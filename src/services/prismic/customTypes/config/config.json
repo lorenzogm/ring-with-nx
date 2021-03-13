@@ -81,6 +81,14 @@
       }
     }
   },
+  "Emails": {
+    "order_confirmation_template_number": {
+      "type": "Number",
+      "config": {
+        "label": "Order Confirmation Template Number"
+      }
+    }
+  },
   "Social": {
     "instagram_url": {
       "type": "Text",
