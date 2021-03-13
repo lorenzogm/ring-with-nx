@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect } from 'react'
+import { ReactElement, ReactNode } from 'react'
 // import { ReactQueryDevtools } from 'react-query-devtools'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -11,12 +11,6 @@ type ProviderReactQueryProps = {
 export default function ProviderReactQuery({
   children,
 }: ProviderReactQueryProps): ReactElement {
-  useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles && jssStyles.parentNode)
-      jssStyles.parentNode.removeChild(jssStyles)
-  }, [])
-
   return (
     <>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
