@@ -792,18 +792,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lorenzogm/eslint-config-base@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@lorenzogm/eslint-config-base/-/eslint-config-base-1.0.1.tgz#aabd57262a721b1cb29a8cfc7db098fa3fd44965"
-  integrity sha512-ev9iI+5GQPcyinW0B4vXGzygDyYtL7rko9xBjdFt5j51iwSmpzvwG/3QjQ77leefEYCAIoCNId5it+qaGk5kjQ==
-
-"@lorenzogm/eslint-config-react@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@lorenzogm/eslint-config-react/-/eslint-config-react-1.1.0.tgz#40445c1885ea3d15d1147b7daad29752c014d480"
-  integrity sha512-olWQwFKBqmrWY8BVBWGTTlfUv4zx+48ZZ8ABk3G6npIVc2GiiPRgJOu1ILMpSY6scCCjNchT2lTMCsbGoN0+8A==
-  dependencies:
-    "@lorenzogm/eslint-config-base" "^1.0.1"
-
 "@material-ui/core@^4.11.3":
   version "4.11.3"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.3.tgz#f22e41775b0bd075e36a7a093d43951bf7f63850"
@@ -1433,6 +1421,11 @@
   dependencies:
     "@typescript-eslint/types" "4.15.1"
     eslint-visitor-keys "^2.0.0"
+
+"@valtech-ch/eslint-config@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@valtech-ch/eslint-config/-/eslint-config-2.0.2.tgz#7f79a0e2833d836ee2a2bfb4f94ea9472e1f789a"
+  integrity sha512-EjRFSLjQL37UotgYwlS8ob2AZbtC2rmFkRXSouPi+WUORRgfZyMiZsDWiWdpTF/PZSWaOc52ySfF2oaczrJsOw==
 
 abab@^2.0.3:
   version "2.0.5"

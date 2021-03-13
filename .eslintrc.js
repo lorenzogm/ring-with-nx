@@ -1,7 +1,8 @@
 module.exports = {
   extends: [
-    '@lorenzogm/eslint-config-react',
-    '@lorenzogm/eslint-config-react/nextjs',
+    '@valtech-ch/eslint-config/config/react',
+    '@valtech-ch/eslint-config/rules/react',
+    '@valtech-ch/eslint-config/rules/nextjs',
   ],
   globals: {
     localStorage: true,

@@ -1,5 +1,5 @@
 {
-  "extends": "@lorenzogm/eslint-config-react/tsconfig",
+  "extends": "@valtech-ch/eslint-config/tsconfig.react",
   "compilerOptions": {
     "baseUrl": "./src"
   },
