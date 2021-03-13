@@ -6,13 +6,13 @@ import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
 
-const { CONFIG_PAGE_HOME } = process.env
+const { CONFIG_CONTENT_PAGES_HOME } = process.env
 
 export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
-  if (CONFIG_PAGE_HOME !== 'ENABLED') {
+  if (CONFIG_CONTENT_PAGES_HOME !== 'ENABLED') {
     return {
       props: {
         isPageEnabled: false,

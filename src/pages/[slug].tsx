@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { ReactElement } from 'react'
 import ContentTemplate from 'components/templates/ContentTemplate'
@@ -6,13 +6,24 @@ import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
 
-const { CONFIG_PAGE_CONTACT } = process.env
+const { CONFIG_CONTENT_PAGES } = process.env
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const CMS = getCMS()
+  const contentPages = await CMS.getAllContents({})
+
+  return {
+    paths: contentPages.map((contentPage) => `/${contentPage.uid}`),
+    fallback: true,
+  }
+}
 
 export const getStaticProps: GetStaticProps = async ({
+  params,
   preview = false,
   previewData,
 }) => {
-  if (CONFIG_PAGE_CONTACT !== 'ENABLED') {
+  if (CONFIG_CONTENT_PAGES !== 'ENABLED') {
     return {
       props: {
         isPageEnabled: false,
@@ -25,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({
 
   const [config, content] = await Promise.all([
     CMS.getConfig({ ref }),
-    CMS.getContentByUID({ uid: 'contacto', ref }),
+    CMS.getContentByUID({ uid: params?.slug as string, ref }),
   ])
 
   return {
