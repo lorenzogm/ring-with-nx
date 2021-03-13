@@ -34,7 +34,7 @@ export default function ProductTile({
   return (
     <Grid item xs={12} sm={6} md={3}>
       <article>
-        <Link href={`${category.uid}/${product.uid}`}>
+        <Link href={`/store/${category.uid}/${product.uid}`}>
           <Grid container direction="column">
             <PaperStyled elevation={1}>
               <Image

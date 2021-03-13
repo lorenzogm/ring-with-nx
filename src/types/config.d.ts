@@ -15,6 +15,7 @@ export type Config = {
 }
 
 export type Navigation = {
+  type: string
   slug: string
   name: string
   description: string

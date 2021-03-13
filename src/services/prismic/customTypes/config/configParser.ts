@@ -16,6 +16,7 @@ export default function configParser({
     logo: config.data.logo,
     currency: config.data.currency,
     navigation: navigationItems.map((item) => ({
+      type: item.type,
       slug: item.uid,
       name: item.data.name,
       description: item.data.description,

@@ -13,7 +13,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const products = await CMS.getAllProducts({})
 
   return {
-    paths: products.map((product) => `/${product.category.uid}/${product.uid}`),
+    paths: products.map(
+      (product) => `/store/${product.category.uid}/${product.uid}`,
+    ),
     fallback: true,
   }
 }

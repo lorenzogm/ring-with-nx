@@ -22,13 +22,16 @@ export default function Navigation({ config }: NavigationProps): ReactElement {
     <nav>
       <Grid container justify="center" spacing={3}>
         {config.navigation &&
-          config.navigation.map((item) => (
-            <Grid key={item.slug} item>
-              <Link href={`/${item.slug}`}>
-                <Category variant="subtitle1">{item.name}</Category>
-              </Link>
-            </Grid>
-          ))}
+          config.navigation.map((item) => {
+            const prefix = item.type === 'category' ? '/store' : ''
+            return (
+              <Grid key={item.slug} item>
+                <Link href={`${prefix}/${item.slug}`}>
+                  <Category variant="subtitle1">{item.name}</Category>
+                </Link>
+              </Grid>
+            )
+          })}
       </Grid>
     </nav>
   )
