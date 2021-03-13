@@ -33,6 +33,12 @@
         "label": "Description"
       }
     },
+    "brand": {
+      "type": "Text",
+      "config": {
+        "label": "Brand"
+      }
+    },
     "colors": {
       "type": "Group",
       "config": {
