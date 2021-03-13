@@ -30,6 +30,10 @@ export default function configParser({
       city: config.data.company_city || '',
       country: config.data.company_country || '',
     },
+    // emails
+    emails: {
+      orderConfirmationTemplateId: config.data.order_confirmation_template_id,
+    },
     // social
     instagramUrl: config.data.instagram_url || null,
     facebookUrl: config.data.facebook_url || null,

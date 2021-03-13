@@ -111,7 +111,7 @@ const createOrder: NextApiHandler = async (req, res) => {
           name: config.company.name,
         },
       ],
-      templateId: 2,
+      templateId: config.emails.orderConfirmationTemplateId,
       params,
     }
 

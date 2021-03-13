@@ -82,10 +82,10 @@
     }
   },
   "Emails": {
-    "order_confirmation_template_number": {
+    "order_confirmation_template_id": {
       "type": "Number",
       "config": {
-        "label": "Order Confirmation Template Number"
+        "label": "Order Confirmation Template ID"
       }
     }
   },

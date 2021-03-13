@@ -7,6 +7,7 @@ export type Config = {
   currency: string
   navigation: Navigation[]
   company: Company
+  emails: Emails
   instagramUrl?: string
   facebookUrl?: string
   paymentMethods: PaymentMethods
