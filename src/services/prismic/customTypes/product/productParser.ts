@@ -32,7 +32,7 @@ export default function productParser({ product }: ProductParser): Product {
         }
       : {}),
     // sizes are optional
-    ...(product.data.sizes
+    ...(product.data.sizes.length > 0
       ? {
           sizes: product.data.sizes.map(({ size }: { size: string }) => ({
             label: size,

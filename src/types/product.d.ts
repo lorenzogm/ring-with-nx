@@ -13,7 +13,7 @@ export type Product = {
   brand: string
   description?: RichTextBlock[]
   colors?: Color[]
-  sizes: Size[]
+  sizes?: Size[]
   category: Category
 }
 

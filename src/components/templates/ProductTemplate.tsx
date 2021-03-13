@@ -108,7 +108,7 @@ export default function ProductTemplate({
                     </Box>
                   )}
 
-                  {product.sizes.length > 0 && (
+                  {product.sizes && (
                     <Box mb={2}>
                       <ReactSelect
                         ref={fieldSelectSize}
@@ -160,7 +160,7 @@ export default function ProductTemplate({
 
   function addToCart() {
     const isPossibleToAddToTheCart =
-      state.sizeSelected || product.sizes.length === 0
+      state.sizeSelected || product.sizes === undefined
 
     if (isPossibleToAddToTheCart) {
       let sku = ''
@@ -168,7 +168,7 @@ export default function ProductTemplate({
       if (state.sizeSelected) {
         size = state.sizeSelected.value
         sku = `${product.uid}-${state.colorSelected}-${size}`
-      } else if (product.sizes.length === 0) {
+      } else if (product.sizes === undefined) {
         sku = `${product.uid}-${state.colorSelected}`
       }
 
