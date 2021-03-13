@@ -6,7 +6,7 @@ import type { Config } from 'types/config'
 type LogoProps = { config: Config }
 
 export default function Logo({ config }: LogoProps): ReactElement {
-  return config.logo ? (
+  return config.logo && config.logo.url ? (
     <Image
       src={config.logo.url}
       alt={config.siteName}
