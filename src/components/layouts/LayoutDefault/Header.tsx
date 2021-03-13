@@ -1,5 +1,4 @@
 import { ReactElement, useReducer } from 'react'
-import Link from 'next/link'
 import Grid from '@material-ui/core/Grid'
 import Badge from '@material-ui/core/Badge'
 import Hidden from '@material-ui/core/Hidden'
@@ -11,6 +10,9 @@ import NavigationMobile from 'components/molecules/NavigationMobile'
 import LocaleSwitcher from 'components/molecules/LocaleSwitcher'
 import Navigation from 'components/molecules/Navigation'
 import Logo from 'components/molecules/Logo'
+import Link from 'components/atoms/Link'
+
+const { CONFIG_ECOMMERCE } = process.env
 
 type HeaderProps = {
   config: Config
@@ -57,11 +59,13 @@ export default function Header({
         </Hidden>
         <div>
           <LocaleSwitcher />
-          <IconButton onClick={openCart}>
-            <Badge badgeContent={cartCount} color="primary">
-              <LocalMallIcon />
-            </Badge>
-          </IconButton>
+          {CONFIG_ECOMMERCE === 'ENABLED' && (
+            <IconButton onClick={openCart}>
+              <Badge badgeContent={cartCount} color="primary">
+                <LocalMallIcon />
+              </Badge>
+            </IconButton>
+          )}
         </div>
       </Grid>
     </header>
