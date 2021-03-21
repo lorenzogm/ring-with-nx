@@ -6,6 +6,7 @@ import ContentTemplate from 'components/templates/ContentTemplate'
 import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
+import LayoutBlank from 'components/layouts/LayoutBlank'
 
 const { CONFIG_CONTENT_PAGES } = process.env
 
@@ -66,5 +67,12 @@ export default function ContentPage({
     return null
   }
 
-  return <ContentTemplate preview={preview} config={config} content={content} />
+  return (
+    <ContentTemplate
+      preview={preview}
+      config={config}
+      content={content}
+      Layout={router.asPath === '/maintenance' ? LayoutBlank : undefined}
+    />
+  )
 }

@@ -18,7 +18,7 @@ export default function App({
   if (
     pageProps.preview === false &&
     ((pageProps.config && pageProps.config.isMaintenanceEnabled === true) ||
-      router.pathname === '/maintenance')
+      router.asPath === '/maintenance')
   ) {
     return (
       <MaintenanceRedirect
@@ -51,7 +51,7 @@ function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     // redirect to "home"
     if (
-      router.pathname === '/maintenance' &&
+      router.asPath === '/maintenance' &&
       pageProps.config.isMaintenanceEnabled === false
     ) {
       router.push('/').catch((e) => {
@@ -60,7 +60,7 @@ function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
     }
     // redirect to "maintenance"
     else if (
-      router.pathname !== '/maintenance' &&
+      router.asPath !== '/maintenance' &&
       pageProps.config.isMaintenanceEnabled === true
     ) {
       router.push('/maintenance').catch((e) => {
@@ -70,7 +70,7 @@ function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
   }, [pageProps.config.isMaintenanceEnabled, router])
 
   if (
-    router.pathname === '/maintenance' &&
+    router.asPath === '/maintenance' &&
     pageProps.config.isMaintenanceEnabled === true
   ) {
     return (
