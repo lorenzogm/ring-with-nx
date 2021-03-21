@@ -4,10 +4,13 @@ import Client from '../../client'
 
 import contentParser from './contentParser'
 
-const getAllContents: GetAllContents = async ({ ref }) => {
+const getAllContents: GetAllContents = async ({ ref, excludeByUID = '' }) => {
   const client = Client()
   const documents = await client.query(
-    Prismic.Predicates.at('document.type', 'content'),
+    [
+      Prismic.Predicates.at('document.type', 'content'),
+      Prismic.Predicates.not('my.content.uid', excludeByUID),
+    ],
     {
       ...(ref ? { ref } : {}),
     },

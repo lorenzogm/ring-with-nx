@@ -8,14 +8,32 @@ import type {
 } from 'types/slices'
 import productParser from '../product/productParser'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SliceParser = ({
+export default function contentParser({
+  document,
+}: {
+  document: Document
+}): Content {
+  if (!document.uid) {
+    throw new Error('Undefined "document.uid"')
+  }
+
+  return {
+    id: document.id,
+    uid: document.uid,
+    type: 'content',
+    data: {
+      title: document.data.title,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      body: document.data.body.map((slice: any) => sliceParser({ slice })),
+    },
+  }
+}
+
+function sliceParser({
   slice,
 }: {
   slice: any
-}) => SliceCarousel | SliceImage | SliceListOfProducts
-
-const sliceParser: SliceParser = ({ slice }) => {
+}): SliceCarousel | SliceImage | SliceListOfProducts {
   switch (slice.slice_type) {
     case 'carousel':
       return {
@@ -49,24 +67,3 @@ const sliceParser: SliceParser = ({ slice }) => {
       )
   }
 }
-
-type ContentParser = ({ document }: { document: Document }) => Content
-
-const contentParser: ContentParser = ({ document }) => {
-  if (!document.uid) {
-    throw new Error('Undefined "document.uid"')
-  }
-
-  return {
-    id: document.id,
-    uid: document.uid,
-    type: 'content',
-    data: {
-      title: document.data.title,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      body: document.data.body.map((slice: any) => sliceParser({ slice })),
-    },
-  }
-}
-
-export default contentParser
