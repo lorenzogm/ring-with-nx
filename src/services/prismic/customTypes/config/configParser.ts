@@ -33,7 +33,8 @@ export default function configParser({
     },
     // emails
     emails: {
-      orderConfirmationTemplateId: config.data.order_confirmation_template_id,
+      orderConfirmationTemplateId:
+        config.data.order_confirmation_template_id || null,
     },
     // social
     instagramUrl: config.data.instagram_url || null,
