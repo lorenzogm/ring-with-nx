@@ -26,7 +26,7 @@ export default async function createOrder({
   const address: Address = JSON.parse(addressFromLocalStorage)
   const paymentMethod = paymentMethodFromLocalStorage as PaymentMethods
 
-  const res = await fetch('/api/order/createOrder', {
+  const response = await fetch('/api/order/createOrder', {
     method: 'POST',
     body: JSON.stringify({
       address,
@@ -36,7 +36,12 @@ export default async function createOrder({
     }),
   })
 
-  const order = (await res.json()) as Order
+  if (!response.ok) {
+    const { message } = await response.json()
+    throw new Error(message)
+  }
+
+  const order = (await response.json()) as Order
 
   localStorage.setItem('orderId', order.orderId)
 

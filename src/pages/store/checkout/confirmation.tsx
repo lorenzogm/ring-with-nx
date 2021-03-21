@@ -43,11 +43,15 @@ export default function CheckoutConfirmationPage({
   )
 
   async function onConfirm() {
-    await mutateAsync({
-      cartDetails,
-      totalPrice,
-    })
+    try {
+      await mutateAsync({
+        cartDetails,
+        totalPrice,
+      })
 
-    await router.push('/store/checkout/success')
+      await router.push('/store/checkout/success')
+    } catch (error) {
+      // display modal
+    }
   }
 }
