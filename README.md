@@ -5,9 +5,10 @@ Demo: https://ecommerce.lorenzogm.vercel.app/
 ## Stack
 
 - React with Next.js
-- Tailwind: Rapid styling
+- Styling with Styled Components & Material UI
 - Prismic: Products, config and translations handle by a CMS (more integrations are possible)
-- Stripe: Payment by credit card throught he Stripe checkout
+- Payments: Bank account (Free) and by credit card with Stripe (Low fees)
+- Transactional Emails with Sendinblue
 - Deployment: Vercel
 
 ## Getting Started
