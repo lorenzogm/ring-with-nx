@@ -9,7 +9,7 @@ jobs:
         uses: wei/git-sync@v3
         with:
           source_repo: "git@github.com:lorenzogm/ring.git"
-          source_branch: "main"
-          destination_repo: "git@github.com:lorenzogm/dindim.es.git"
-          destination_branch: "main"
+          source_branch: "refs/remotes/source/*"
+          destination_repo: "git@github.com:lorenzogm/lorenzogm.git"
+          destination_branch: "refs/heads/*"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
