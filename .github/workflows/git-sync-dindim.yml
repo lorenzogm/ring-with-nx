@@ -8,7 +8,7 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: "lorenzogm/ring"
+          source_repo: "https://github.com/lorenzogm/ring"
           source_branch: "main"
-          destination_repo: "lorenzogm/dindim.es"
+          destination_repo: "https://github.com/lorenzogm/dindim.es"
           destination_branch: "main"
