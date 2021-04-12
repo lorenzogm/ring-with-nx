@@ -1,6 +1,6 @@
-# Ecommerce
+# Ring
 
-Demo: https://ecommerce.lorenzogm.vercel.app/
+Demo: https://ring-store.vercel.app/
 
 ## Stack
 
@@ -42,9 +42,9 @@ The content defined in prismic needs a specific format to work with the existing
 
 Those are the JSON Fields needed for this repo:
 
-- [category.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/category/category.json) Repeatable Type
-- [config.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/config/config.json) Single Type
-- [product.json](https://github.com/lorenzogm/ecommerce/blob/main/src/services/prismic/customTypes/product/product.json) Repetable Type
+- [category.json](https://github.com/lorenzogm/ring/blob/main/src/services/prismic/customTypes/category/category.json) Repeatable Type
+- [config.json](https://github.com/lorenzogm/ring/blob/main/src/services/prismic/customTypes/config/config.json) Single Type
+- [product.json](https://github.com/lorenzogm/ring/blob/main/src/services/prismic/customTypes/product/product.json) Repetable Type
 
 Create the custom types in Prismic:
 
