@@ -8,6 +8,8 @@ import CheckoutPaymentTemplate, {
 } from 'components/templates/CheckoutPaymentTemplate'
 import type { Config } from 'types/config'
 
+const { CONFIG_STORE } = process.env
+
 type CheckoutPaymentPageProps = {
   config: Config
 }
@@ -27,6 +29,14 @@ const CheckoutPaymentPage: FC<CheckoutPaymentPageProps> = ({ config }) => {
 export default CheckoutPaymentPage
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
 
   const [config] = await Promise.all([CMS.getConfig({})])

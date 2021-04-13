@@ -8,7 +8,16 @@ import type { Category } from 'types/category'
 import type { Config } from 'types/config'
 import type { Product } from 'types/product'
 
+const { CONFIG_STORE } = process.env
+
 export const getStaticPaths: GetStaticPaths = async () => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      paths: [],
+      fallback: false,
+    }
+  }
+
   const CMS = getCMS()
   const categories = await CMS.getAllCategories({})
 
@@ -23,6 +32,14 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
   const ref = previewData ? previewData.ref : undefined
 

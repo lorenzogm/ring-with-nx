@@ -12,7 +12,9 @@ const { CONFIG_CONTENT_PAGES } = process.env
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const CMS = getCMS()
-  const contentPages = await CMS.getAllContents({ excludeByUID: 'home' })
+  const contentPages = await CMS.getAllContents({
+    excludeByUID: ['home', 'blog'],
+  })
   return {
     paths: contentPages.map((contentPage) => `/${contentPage.uid}`),
     fallback: true,

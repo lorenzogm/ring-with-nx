@@ -10,11 +10,21 @@ import createAddress from 'services/api/address/createAddress'
 import type { Config } from 'types/config'
 import useUserAddress from 'hooks/useUserAddress'
 
+const { CONFIG_STORE } = process.env
+
 type CheckoutAddressPageProps = {
   config: Config
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
 
   const [config] = await Promise.all([CMS.getConfig({})])

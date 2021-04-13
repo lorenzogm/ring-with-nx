@@ -9,7 +9,17 @@ import CheckoutConfirmationTemplate from 'components/templates/CheckoutConfirmat
 import createOrder from 'services/api/order/createOrder'
 import type { Config } from 'types/config'
 
+const { CONFIG_STORE } = process.env
+
 export const getStaticProps: GetStaticProps = async () => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
 
   const [config] = await Promise.all([CMS.getConfig({})])

@@ -6,10 +6,20 @@ import type { BlogPost } from 'types/blogPost'
 import type { Config } from 'types/config'
 import BlogTemplate from 'components/templates/BlogTemplate'
 
+const { CONFIG_BLOG } = process.env
+
 export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
+  if (CONFIG_BLOG !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
   const ref = previewData ? previewData.ref : undefined
 

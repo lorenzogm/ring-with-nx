@@ -4,7 +4,7 @@ export type GetAllContents = ({
   excludeByUID,
 }: {
   ref?: string
-  excludeByUID?: string
+  excludeByUID?: string[]
 }) => Promise<Content[]>
 
 // getContentByUID

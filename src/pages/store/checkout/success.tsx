@@ -6,11 +6,21 @@ import getCMS from 'services/CMS/getCMS'
 import CheckoutSuccessTemplate from 'components/templates/CheckoutSuccessTemplate'
 import type { Config } from 'types/config'
 
+const { CONFIG_STORE } = process.env
+
 type CheckoutSuccessPageProps = {
   config: Config
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (CONFIG_STORE !== 'ENABLED') {
+    return {
+      props: {
+        isPageEnabled: false,
+      },
+    }
+  }
+
   const CMS = getCMS()
 
   const [config] = await Promise.all([CMS.getConfig({})])
