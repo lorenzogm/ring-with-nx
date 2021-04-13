@@ -19,8 +19,8 @@ export default function configParser({
       type: item.type,
       slug: item.uid,
       name: item.data.name,
-      description: item.data.description,
-      image: item.data.image.url || '',
+      description: item.data.description || null,
+      image: (item.data.image && item.data.image.url) || '',
     })) as Config['navigation'],
     // company
     company: {

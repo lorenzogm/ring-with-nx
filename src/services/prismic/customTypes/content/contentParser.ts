@@ -22,7 +22,7 @@ export default function contentParser({
     uid: document.uid,
     type: 'content',
     data: {
-      title: document.data.title,
+      name: document.data.name,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       body: document.data.body.map((slice: any) => sliceParser({ slice })),
     },

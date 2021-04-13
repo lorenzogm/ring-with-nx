@@ -33,8 +33,6 @@
           "navigation_item": {
             "type": "Link",
             "config": {
-              "select": "document",
-              "customtypes": ["category"],
               "label": "Navigation Item"
             }
           }

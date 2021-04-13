@@ -1,16 +1,15 @@
 {
   "Main": {
+    "name": {
+      "type": "Text",
+      "config": {
+        "label": "Name"
+      }
+    },
     "uid": {
       "type": "UID",
       "config": {
         "label": "Slug"
-      }
-    },
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1",
-        "label": "Title"
       }
     },
     "body": {
@@ -20,7 +19,8 @@
         "labels": {
           "carousel": [],
           "image": [],
-          "list_of_products": []
+          "list_of_products": [],
+          "list_of_blog_posts": []
         },
         "choices": {
           "list_of_products": {
@@ -67,6 +67,31 @@
               }
             },
             "repeat": {}
+          },
+          "list_of_blog_posts": {
+            "type": "Slice",
+            "fieldset": "List of Blog Posts",
+            "description": "List of Blog Posts",
+            "icon": "insert_drive_file",
+            "display": "list",
+            "non-repeat": {
+              "blog_post_list_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Blog Post List Title"
+                }
+              }
+            },
+            "repeat": {
+              "blog_post": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["blog_post"],
+                  "label": "Blog Post"
+                }
+              }
+            }
           }
         }
       }

@@ -1,3 +1,6 @@
+// blogPost
+import getAllBlogPostEntries from './customTypes/blogPost/getAllBlogPostEntries'
+
 // category
 import getAllCategories from './customTypes/category/getAllCategories'
 import getCategoryByUID from './customTypes/category/getCategoryByUID'
@@ -24,6 +27,9 @@ import getProductByUID from './customTypes/product/getProductByUID'
 import getTranslations from './customTypes/translations/getTranslations'
 
 export default {
+  // blogPost
+  getAllBlogPostEntries,
+
   // category
   getAllCategories,
   getCategoryByUID,

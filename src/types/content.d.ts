@@ -3,7 +3,7 @@ export type Content = {
   uid: string
   type: 'content'
   data: {
-    title: RichTextBlock
+    name: string
     body: Slice[]
   }
 }
