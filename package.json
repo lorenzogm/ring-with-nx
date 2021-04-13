@@ -16,6 +16,7 @@
     "@types/styled-components": "^5.1.7",
     "classnames": "^2.2.6",
     "date-fns": "2.17.0",
+    "date-fns-tz": "^1.1.4",
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.5.0",
     "glider-js": "^1.7.3",
