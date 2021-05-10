@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import BoxHeader from '@ring/ui/BoxHeader'
+import BoxHeader from '@ring/components/BoxHeader'
 import { Config } from 'types/config'
 
 type OrderSummaryProps = {

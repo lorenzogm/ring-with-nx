@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid'
 import IconArrowForward from '@material-ui/icons/ArrowForward'
 
 import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
-import Form from '@ring/ui/Form'
-import FormInputText from '@ring/ui/FormInputText'
+import Form from '@ring/components/Form'
+import FormInputText from '@ring/components/FormInputText'
 import type { Address } from 'types/address'
 import type { Config } from 'types/config'
 

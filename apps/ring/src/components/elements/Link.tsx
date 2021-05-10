@@ -1,6 +1,6 @@
 import LinkNext, { LinkProps as LinkNextProps } from 'next/link'
 import React, { ReactElement, ReactNode } from 'react'
-import LinkRing from '@ring/ui/Link'
+import LinkRing from '@ring/components/Link'
 
 type LinkProps = LinkNextProps & {
   onClick?: () => void

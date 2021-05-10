@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
-import Typography from '@ring/ui/Typography'
+import Typography from '@ring/components/Typography'
 import { BlogPost } from 'types/blogPost'
 import BlogPostList from 'components/modules/BlogPostList'
 

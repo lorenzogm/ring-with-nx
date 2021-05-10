@@ -1,11 +1,20 @@
 {
   "version": 2,
-  "cli": { "defaultCollection": "@nrwl/next" },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
   "defaultProject": "ring",
   "generators": {
-    "@nrwl/react": { "application": { "babel": true } },
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
     "@nrwl/next": {
-      "application": { "style": "styled-components", "linter": "eslint" }
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
     }
   },
   "projects": {
@@ -36,8 +45,13 @@
         "build-nx": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
-          "options": { "root": "apps/ring", "outputPath": "dist/apps/ring" },
-          "configurations": { "production": {} }
+          "options": {
+            "root": "apps/ring",
+            "outputPath": "dist/apps/ring"
+          },
+          "configurations": {
+            "production": {}
+          }
         },
         "serve": {
           "executor": "@nrwl/workspace:run-commands",
@@ -51,7 +65,10 @@
         },
         "serve-nx": {
           "executor": "@nrwl/next:server",
-          "options": { "buildTarget": "ring:build-nx", "dev": true },
+          "options": {
+            "buildTarget": "ring:build-nx",
+            "dev": true
+          },
           "configurations": {
             "production": {
               "buildTarget": "ring:build:production",
@@ -61,7 +78,9 @@
         },
         "export": {
           "executor": "@nrwl/next:export",
-          "options": { "buildTarget": "ring:build:production" }
+          "options": {
+            "buildTarget": "ring:build:production"
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -73,27 +92,8 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"] }
-        }
-      }
-    },
-    "shared-ui": {
-      "root": "libs/shared/ui",
-      "sourceRoot": "libs/shared/ui/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/shared/ui/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/ui"],
-          "options": {
-            "jestConfig": "libs/shared/ui/jest.config.js",
-            "passWithNoTests": true
+            "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -135,6 +135,27 @@
           "outputs": ["coverage/libs/shared/services"],
           "options": {
             "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-components": {
+      "root": "libs/shared/components",
+      "sourceRoot": "libs/shared/components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/components"],
+          "options": {
+            "jestConfig": "libs/shared/components/jest.config.js",
             "passWithNoTests": true
           }
         }
