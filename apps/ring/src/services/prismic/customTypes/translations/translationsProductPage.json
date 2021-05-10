@@ -1,0 +1,22 @@
+{
+  "Main": {
+    "add_to_cart": {
+      "type": "Text",
+      "config": {
+        "label": "add_to_cart"
+      }
+    },
+    "color": {
+      "type": "Text",
+      "config": {
+        "label": "color"
+      }
+    },
+    "size": {
+      "type": "Text",
+      "config": {
+        "label": "size"
+      }
+    }
+  }
+}

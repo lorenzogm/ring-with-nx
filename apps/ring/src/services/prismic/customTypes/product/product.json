@@ -1,0 +1,179 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug"
+      }
+    },
+    "name": {
+      "type": "Text",
+      "config": {
+        "label": "Name"
+      }
+    },
+    "category": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["category"],
+        "label": "Category"
+      }
+    },
+    "price": {
+      "type": "Number",
+      "config": {
+        "label": "Price"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Description"
+      }
+    },
+    "brand": {
+      "type": "Text",
+      "config": {
+        "label": "Brand"
+      }
+    },
+    "colors": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {
+                "width": 1080,
+                "height": 1080
+              },
+              "thumbnails": [
+                {
+                  "name": "secundaria_1",
+                  "width": 1080,
+                  "height": 1080
+                }
+              ],
+              "label": "Image"
+            }
+          },
+          "color": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "AQUAMARINE",
+                "BLACK",
+                "RED_BURGUNDY",
+                "BLUE",
+                "BROWN",
+                "CAREY",
+                "DENIM_FADED",
+                "DENIM_LIGHT",
+                "GREEN",
+                "GOLD",
+                "GOLDEN",
+                "GREEN_LEAF",
+                "GREEN_KELLY",
+                "GREEN_SEA",
+                "GREY",
+                "GREY_CHARCOAL",
+                "GREY_CHARCOAL_LIGHT",
+                "GREY_MELANGE",
+                "HAVANA",
+                "LILA",
+                "NATURAL",
+                "NAVY",
+                "ORANGE",
+                "PINK",
+                "PINK_CANDY",
+                "PINK_HOT",
+                "PURPLE",
+                "RED",
+                "SILVER",
+                "TRANSPARENT",
+                "WHITE",
+                "YELLOW",
+                "YELLOW_BUTTERCUP"
+              ],
+              "label": "Color"
+            }
+          }
+        },
+        "label": "Colors"
+      }
+    }
+  },
+  "Clothes": {
+    "sizes": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "size": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "YEARS_3_4",
+                "MONTHS_0_3",
+                "MONTHS_3_6"
+              ],
+              "label": "Size"
+            }
+          }
+        },
+        "label": "Sizes"
+      }
+    }
+  },
+  "Optic": {
+    "prescription": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "+0.00",
+          "Miopía -0.25",
+          "Miopía -0.50",
+          "Miopía -0.75",
+          "Miopía -1.00",
+          "Miopía -1.25",
+          "Miopía -1.50",
+          "Miopía -1.75",
+          "Miopía -2.00",
+          "Miopía -2.25",
+          "Miopía -2.50",
+          "Miopía -2.75",
+          "Miopía -3.00",
+          "Miopía -3.25",
+          "Miopía -3.50",
+          "Miopía -3.75",
+          "Miopía -4.00",
+          "Miopía -4.25",
+          "Miopía -4.50",
+          "Miopía -4.75",
+          "Miopía -5.00",
+          "Miopía -5.25",
+          "Miopía -5.50",
+          "Miopía -5.75",
+          "Miopía -6.00",
+          "Miopía -6.50",
+          "Miopía -7.00",
+          "Miopía -7.50",
+          "Miopía -8.00",
+          "Miopía -8.50",
+          "Miopía -9.00",
+          "Miopía -9.50",
+          "Miopía -10.00"
+        ],
+        "label": "Prescription"
+      }
+    }
+  }
+}

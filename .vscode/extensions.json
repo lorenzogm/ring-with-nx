@@ -1,7 +1,12 @@
 {
   "recommendations": [
-    "nrwl.angular-console",
+    "coenraads.bracket-pair-colorizer-2",
+    "editorconfig.editorconfig",
+    "eamodio.gitlens",
+    "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
+    "hex-ci.stylelint-plus",
+    "dbaeumer.vscode-eslint",
     "firsttris.vscode-jest-runner",
     "dbaeumer.vscode-eslint"
   ]

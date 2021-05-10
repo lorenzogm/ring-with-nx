@@ -8,7 +8,7 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "options": { "cacheableOperations": ["build-nx", "lint", "test", "e2e"] }
     }
   },
   "projects": { "ring": { "tags": [] } }

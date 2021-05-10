@@ -1,0 +1,124 @@
+{
+  "Main": {
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug"
+      }
+    },
+    "image_background": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image Background"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "carousel": [],
+          "image": [],
+          "list_of_products": [],
+          "list_of_blog_posts": [],
+          "teaser": [],
+          "blog_posts__latest": []
+        },
+        "choices": {
+          "list_of_products": {
+            "type": "Slice",
+            "fieldset": "List of Products",
+            "description": "List of Products",
+            "icon": "art_track",
+            "display": "grid",
+            "non-repeat": {
+              "title1": {
+                "type": "Text",
+                "config": {
+                  "label": "Title"
+                }
+              }
+            },
+            "repeat": {
+              "products": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "label": "Products"
+                }
+              }
+            }
+          },
+          "image": {
+            "type": "Slice",
+            "fieldset": "Image",
+            "description": "Single image",
+            "icon": "image",
+            "display": "grid",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": 1080,
+                    "height": 1080
+                  },
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "teaser": {
+            "type": "Slice",
+            "fieldset": "Teaser",
+            "description": "Teaser",
+            "icon": "add_to_photos",
+            "display": "list",
+            "non-repeat": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title"
+                }
+              },
+              "subtitle": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtitle"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "blog_posts__latest": {
+            "type": "Slice",
+            "fieldset": "Blog Posts: Latest",
+            "description": "Blog Posts: Latest",
+            "icon": "art_track",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

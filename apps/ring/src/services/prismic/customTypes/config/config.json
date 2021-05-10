@@ -1,0 +1,167 @@
+{
+  "Main": {
+    "site_name": {
+      "type": "Text",
+      "config": {
+        "label": "Site Name"
+      }
+    },
+    "is_maintenance_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "DISABLED",
+        "placeholder_true": "ENABLED",
+        "default_value": false,
+        "label": "Is Maintenance Enabled"
+      }
+    },
+    "logo": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 200,
+          "height": 70
+        },
+        "thumbnails": [],
+        "label": "Logo"
+      }
+    },
+    "navigation": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "navigation_item": {
+            "type": "Link",
+            "config": {
+              "label": "Navigation Item"
+            }
+          }
+        },
+        "label": "Navigation"
+      }
+    }
+  },
+  "Company Data": {
+    "company_name": {
+      "type": "Text",
+      "config": {
+        "label": "Company Name"
+      }
+    },
+    "company_email": {
+      "type": "Text",
+      "config": {
+        "label": "Company Email"
+      }
+    },
+    "company_address": {
+      "type": "Text",
+      "config": {
+        "label": "Company Address"
+      }
+    },
+    "company_postcode": {
+      "type": "Text",
+      "config": {
+        "label": "Company Postcode"
+      }
+    },
+    "company_city": {
+      "type": "Text",
+      "config": {
+        "label": "Company City"
+      }
+    },
+    "company_country": {
+      "type": "Text",
+      "config": {
+        "label": "Company Country"
+      }
+    }
+  },
+  "Emails": {
+    "order_confirmation_template_id": {
+      "type": "Number",
+      "config": {
+        "label": "Order Confirmation Template ID"
+      }
+    }
+  },
+  "Social": {
+    "instagram_url": {
+      "type": "Text",
+      "config": {
+        "label": "Instagram URL"
+      }
+    },
+    "facebook_url": {
+      "type": "Text",
+      "config": {
+        "label": "Facebook URL"
+      }
+    }
+  },
+  "Payments": {
+    "currency": {
+      "type": "Select",
+      "config": {
+        "options": ["EUR"],
+        "default_value": "EUR",
+        "label": "Currency"
+      }
+    },
+    "payment_method_wire_transfer_is_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Wire Transfer"
+      }
+    },
+    "payment_method_wire_transfer_account_holder": {
+      "type": "Text",
+      "config": {
+        "label": "Account Holder"
+      }
+    },
+    "payment_method_wire_transfer_iban": {
+      "type": "Text",
+      "config": {
+        "label": "Wire Transfer IBAN"
+      }
+    },
+    "payment_method_bizum_is_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Bizum"
+      }
+    },
+    "payment_method_credit_card_is_enabled": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Disabled",
+        "placeholder_true": "Enabled",
+        "default_value": false,
+        "label": "Payment with Credit"
+      }
+    }
+  },
+  "Shipping": {
+    "shipping_costs": {
+      "type": "Number",
+      "config": {
+        "label": "Shipping Costs"
+      }
+    },
+    "shipping_free_amount": {
+      "type": "Number",
+      "config": {
+        "label": "Shipping Free Amount"
+      }
+    }
+  }
+}
