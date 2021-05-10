@@ -1,20 +1,11 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/next"
-  },
+  "cli": { "defaultCollection": "@nrwl/next" },
   "defaultProject": "ring",
   "generators": {
-    "@nrwl/react": {
-      "application": {
-        "babel": true
-      }
-    },
+    "@nrwl/react": { "application": { "babel": true } },
     "@nrwl/next": {
-      "application": {
-        "style": "styled-components",
-        "linter": "eslint"
-      }
+      "application": { "style": "styled-components", "linter": "eslint" }
     }
   },
   "projects": {
@@ -26,20 +17,12 @@
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
-          "options": {
-            "root": "apps/ring",
-            "outputPath": "dist/apps/ring"
-          },
-          "configurations": {
-            "production": {}
-          }
+          "options": { "root": "apps/ring", "outputPath": "dist/apps/ring" },
+          "configurations": { "production": {} }
         },
         "serve": {
           "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "ring:build",
-            "dev": true
-          },
+          "options": { "buildTarget": "ring:build", "dev": true },
           "configurations": {
             "production": {
               "buildTarget": "ring:build:production",
@@ -49,9 +32,7 @@
         },
         "export": {
           "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "ring:build:production"
-          }
+          "options": { "buildTarget": "ring:build:production" }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -63,35 +44,7 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"]
-          }
-        }
-      }
-    },
-    "ring-e2e": {
-      "root": "apps/ring-e2e",
-      "sourceRoot": "apps/ring-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/ring-e2e/cypress.json",
-            "tsConfig": "apps/ring-e2e/tsconfig.e2e.json",
-            "devServerTarget": "ring:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ring:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/ring-e2e/**/*.{js,ts}"]
-          }
+          "options": { "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"] }
         }
       }
     }
