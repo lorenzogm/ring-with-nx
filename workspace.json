@@ -82,25 +82,6 @@
       "sourceRoot": "libs/shared/ui/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/shared/ui",
-            "tsConfig": "libs/shared/ui/tsconfig.lib.json",
-            "project": "libs/shared/ui/package.json",
-            "entryFile": "libs/shared/ui/src/index.ts",
-            "external": ["react", "react-dom", "react-is", "styled-components"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/shared/ui/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {

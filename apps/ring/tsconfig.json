@@ -11,7 +11,10 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": "./src"
+    "paths": {
+      "components/*": ["apps/ring/src/components/*"],
+      "services/*": ["apps/ring/src/services/*"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
   "exclude": ["node_modules"]
