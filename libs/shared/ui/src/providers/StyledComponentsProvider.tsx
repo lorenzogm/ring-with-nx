@@ -2,24 +2,20 @@
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components'
 import {
   StylesProvider,
-  createMuiTheme,
   ThemeProvider as MuiThemeProvider,
+  Theme,
 } from '@material-ui/core/styles'
 import { ReactElement, useEffect } from 'react'
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: '#252e43' },
-    secondary: { main: '#fafafa' },
-  },
-})
-
 type ProviderStyledComponentsProps = {
   children: ReactElement
+  theme: Theme
 }
 
-export default function ProviderStyledComponents({
+export default StyledComponentsProvider
+export function StyledComponentsProvider({
   children,
+  theme,
 }: ProviderStyledComponentsProps): ReactElement {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')

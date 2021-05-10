@@ -12,7 +12,8 @@ type StripeProviderProps = {
   children: ReactElement
 }
 
-export default function ProviderStripe({
+export default StripeProvider
+export function StripeProvider({
   children,
 }: StripeProviderProps): ReactElement {
   return (

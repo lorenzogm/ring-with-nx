@@ -3,36 +3,14 @@ import React, { ReactElement } from 'react'
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
 
-import { GA_TRACKING_ID } from 'services/gtag'
+import { Gtag } from '@ring/ui'
 
 export default class MyDocument extends Document {
   render(): ReactElement {
     return (
       <Html>
         <Head>
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {GA_TRACKING_ID ? (
-            <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-              />
-              <script
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `,
-                }}
-              />
-            </>
-          ) : null}
+          <Gtag trackingId={process.env.TRACKING_ID} />
         </Head>
         <body>
           <Main />
