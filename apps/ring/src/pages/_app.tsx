@@ -3,12 +3,10 @@ import { ReactElement, useEffect } from 'react'
 import ErrorPage from 'next/error'
 import 'normalize.css/normalize.css'
 
-import {
-  StripeProvider,
-  StyledComponentsProvider,
-  ReactQueryProvider,
-  useGtag,
-} from '@ring/ui'
+import StripeProvider from '@ring/providers/StripeProvider'
+import StyledComponentsProvider from '@ring/providers/StyledComponentsProvider'
+import ReactQueryProvider from '@ring/providers/ReactQueryProvider'
+import { useGtag } from '@ring/services/Gtag'
 import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({

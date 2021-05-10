@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
 
-import { Gtag } from '@ring/ui'
+import Gtag from '@ring/services/Gtag'
 
 export default class MyDocument extends Document {
   render(): ReactElement {

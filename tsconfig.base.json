@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ring/ui": ["libs/shared/ui/src/index.ts"]
+      "@ring/ui": ["libs/shared/ui/src/index.ts"],
+      "@ring/providers": ["libs/shared/providers/src/index.ts"],
+      "@ring/services": ["libs/shared/services/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

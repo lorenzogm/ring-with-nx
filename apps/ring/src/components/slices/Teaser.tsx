@@ -5,7 +5,7 @@ import { useMediaQuery } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Image from 'components/elements/Image'
-import Typography from 'components/elements/Typography'
+import Typography from '@ring/ui/Typography'
 import { SliceTeaser, SliceTeaserItem } from 'types/slices'
 
 type TeaserProps = Pick<SliceTeaser, 'variant' | 'items'>

@@ -97,6 +97,48 @@
           }
         }
       }
+    },
+    "shared-providers": {
+      "root": "libs/shared/providers",
+      "sourceRoot": "libs/shared/providers/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/providers/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/providers"],
+          "options": {
+            "jestConfig": "libs/shared/providers/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-services": {
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/services/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/services"],
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

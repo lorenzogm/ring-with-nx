@@ -1,20 +1,6 @@
 import LinkNext, { LinkProps as LinkNextProps } from 'next/link'
 import React, { ReactElement, ReactNode } from 'react'
-import styled from 'styled-components'
-
-const LinkStyled = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    color: inherit;
-    text-decoration: none;
-  }
-`
+import LinkRing from '@ring/ui/Link'
 
 type LinkProps = LinkNextProps & {
   onClick?: () => void
@@ -32,7 +18,7 @@ export default function Link({
       {...rest}
       passHref
     >
-      <LinkStyled onClick={onClick}>{children}</LinkStyled>
+      <LinkRing onClick={onClick}>{children}</LinkRing>
     </LinkNext>
   )
 }

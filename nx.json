@@ -13,5 +13,10 @@
       }
     }
   },
-  "projects": { "ring": { "tags": [] }, "shared-ui": { "tags": [] } }
+  "projects": {
+    "ring": { "tags": [] },
+    "shared-ui": { "tags": [] },
+    "shared-providers": { "tags": [] },
+    "shared-services": { "tags": [] }
+  }
 }
