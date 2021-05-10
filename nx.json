@@ -11,5 +11,5 @@
       "options": { "cacheableOperations": ["build-nx", "lint", "test", "e2e"] }
     }
   },
-  "projects": { "ring": { "tags": [] } }
+  "projects": { "ring": { "tags": [] }, "shared-ui": { "tags": [] } }
 }
