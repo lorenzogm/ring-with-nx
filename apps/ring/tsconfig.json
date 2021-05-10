@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
+      "@ring/ui": ["libs/shared/ui/src/index.ts"],
       "components/*": ["apps/ring/src/components/*"],
       "services/*": ["apps/ring/src/services/*"]
     }
