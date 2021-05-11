@@ -16,6 +16,10 @@ export default async function queryListOfProducts({
   document,
   ref,
 }: QueryListOfProducts): Promise<Document> {
+  if (!document) {
+    return document
+  }
+
   const isSliceInTheDocument = document.data.body.find(
     (slice: any) => slice.slice_type === SLICE_TYPE,
   )

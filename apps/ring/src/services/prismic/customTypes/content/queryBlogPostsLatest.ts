@@ -14,6 +14,10 @@ export default async function queryBlogPostsLatest({
   document,
   ref,
 }: QueryBlogPostsLatest): Promise<Document> {
+  if (!document) {
+    return document
+  }
+
   const isSliceInTheDocument = document.data.body.find(
     (slice: any) => slice.slice_type === SLICE_TYPE,
   )
