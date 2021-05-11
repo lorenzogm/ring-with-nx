@@ -8,9 +8,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
 import type { PaymentMethods } from 'types/paymentMethods'
 import type { Config } from 'types/config'
-import FormInputRadio from '@ring/ui/FormInputRadio'
-import Form from '@ring/ui/Form'
-import BoxHeader from '@ring/ui/BoxHeader'
+import FormInputRadio from '@ring/components/FormInputRadio'
+import Form from '@ring/components/Form'
+import BoxHeader from '@ring/components/BoxHeader'
 import OrderSummary from 'components/modules/OrderSummary'
 
 type CheckoutPaymentTemplateProps = {

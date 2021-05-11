@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/no-node-access */
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components'
 import {
   StylesProvider,

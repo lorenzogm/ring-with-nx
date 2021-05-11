@@ -84,7 +84,7 @@ function MaintenanceRedirect({ Component, pageProps, router }: AppProps) {
     return (
       <ReactQueryProvider>
         <StripeProvider>
-          <StyledComponentsProvider>
+          <StyledComponentsProvider theme={theme}>
             <>
               <Component
                 // eslint-disable-next-line react/jsx-props-no-spreading

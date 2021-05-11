@@ -1,14 +1,14 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react'
 // import { ReactQueryDevtools } from 'react-query-devtools'
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 type ReactQueryProviderProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
-export default ReactQueryProvider;
+export default ReactQueryProvider
 export function ReactQueryProvider({
   children,
 }: ReactQueryProviderProps): ReactElement {
@@ -17,5 +17,5 @@ export function ReactQueryProvider({
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
       {/* <ReactQueryDevtools /> */}
     </>
-  );
+  )
 }

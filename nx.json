@@ -1,14 +1,9 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "ring",
   "tasksRunnerOptions": {
     "default": {
@@ -18,18 +13,5 @@
       }
     }
   },
-  "projects": {
-    "ring": {
-      "tags": []
-    },
-    "shared-providers": {
-      "tags": []
-    },
-    "shared-services": {
-      "tags": []
-    },
-    "shared-components": {
-      "tags": []
-    }
-  }
+  "projects": { "ring": { "tags": [] }, "shared-ring": { "tags": [] } }
 }

@@ -12,11 +12,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@ring/components/*": ["libs/shared/components/src/*"],
-      "@ring/providers/*": ["libs/shared/providers/src/*"],
-      "@ring/services/*": ["libs/shared/services/src/*"],
+      "@ring/*": ["libs/shared/ring/src/*"],
       "components/*": ["apps/ring/src/components/*"],
-      "services/*": ["apps/ring/src/services/*"]
+      "hooks/*": ["apps/ring/src/hooks/*"],
+      "services/*": ["apps/ring/src/services/*"],
+      "types/*": ["apps/ring/src/types/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
