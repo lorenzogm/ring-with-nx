@@ -15,20 +15,20 @@ Demo: https://ring-store.vercel.app/
 
 1. Clone the repo
 
-```
+```bash
 git clone git@github.com:lorenzogm/ecommerce.git
 cd ecommerce
 ```
 
 2. Install packages
 
-```
+```bash
 yarn install
 ```
 
 3. Setup environment variables
 
-```
+```bash
 cp .env.local.example .env.local
 ```
 
