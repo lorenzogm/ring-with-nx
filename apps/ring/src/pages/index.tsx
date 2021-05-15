@@ -5,8 +5,33 @@ import ContentTemplate from 'components/templates/ContentTemplate'
 import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
+import Image from 'components/elements/Image'
 
 const { CONFIG_CONTENT_PAGES_HOME } = process.env
+
+const graphQuery = `{
+  content {
+    ...contentFields
+    body {
+      ...on grid {
+        non-repeat {
+          ...non-repeatFields
+        }
+        repeat {
+          ...repeatFields
+          content {
+            ...on carousel {
+              ...carouselFields
+            }
+            ...on teaser {
+              ...teaserFields
+            }
+          }
+        }
+      }
+    }
+  }
+}`
 
 export const getStaticProps: GetStaticProps = async ({
   preview = false,
@@ -28,11 +53,7 @@ export const getStaticProps: GetStaticProps = async ({
     CMS.getContentByUID({
       uid: 'home',
       ref,
-      fetchLinks: [
-        'product.name',
-        'product.colors',
-        'my.product.category.name',
-      ],
+      graphQuery,
     }),
   ])
 
@@ -57,5 +78,12 @@ export default function HomePage({
   config,
   content,
 }: HomePageProps): ReactElement {
-  return <ContentTemplate preview={preview} config={config} content={content} />
+  return (
+    <ContentTemplate
+      preview={preview}
+      config={config}
+      content={content}
+      Image={Image}
+    />
+  )
 }

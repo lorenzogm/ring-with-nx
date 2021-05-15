@@ -1,21 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Document } from 'prismic-javascript/types/documents'
 import type { Content } from 'types/content'
-import type {
-  Slice,
-  SliceBlogPostLatest,
-  SliceCarousel,
-  SliceImage,
-  SliceListOfProducts,
-  SliceTeaser,
-} from 'types/slices'
-import productParser from '../product/productParser'
+import { GridParsed } from '@ring/components/Grid'
+import gridParser from 'services/prismic/slices/gridParser'
 
-export default function contentParser({
-  document,
-}: {
+type ContentParser = {
   document: Document
-}): Content {
+}
+
+export default function contentParser({ document }: ContentParser): Content {
   if (!document.uid) {
     throw new Error('Undefined "document.uid"')
   }
@@ -30,53 +22,20 @@ export default function contentParser({
         document.data.image_background && document.data.image_background.url
           ? document.data.image_background
           : null,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      body: document.data.body.map((slice: any) => sliceParser({ slice })),
+      body: document.data.body.map(sliceParser),
     },
   }
 }
 
-function sliceParser({ slice }: { slice: any }): Slice {
+function sliceParser(slice: any): GridParsed {
   switch (slice.slice_type) {
-    case 'blog_posts__latest':
-      return {
-        sliceType: slice.slice_type,
-        items: slice.items,
-      } as SliceBlogPostLatest
-
-    case 'carousel':
-      return {
-        sliceType: slice.slice_type,
-        items: slice.items.map((item: any) => ({
-          image: item.image,
-        })),
-      } as SliceCarousel
-
-    case 'image':
-      return {
-        sliceType: slice.slice_type,
-        image: slice.primary.image,
-      } as SliceImage
-
-    case 'list_of_products':
-      return {
-        sliceType: slice.slice_type,
-        title: slice.primary.title1,
-        items: slice.items.map((item: any) =>
-          productParser({ product: item.products }),
-        ),
-      } as SliceListOfProducts
-
-    case 'teaser':
-      return {
-        sliceType: slice.slice_type,
-        variant: slice.primary.variant,
-        items: slice.items,
-      } as SliceTeaser
+    case 'grid':
+      return gridParser(slice)
 
     default:
-      throw new Error(
+      console.error(
         `Unexpected "slice.slice_type" = "${slice.slice_type as string}"`,
       )
+      return null
   }
 }
