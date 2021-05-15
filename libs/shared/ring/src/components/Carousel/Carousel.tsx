@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { CarouselProps } from './index.d'
 import ImageRing from '../Image'
+import { Theme } from '@material-ui/core'
 
 export default Carousel
 export function Carousel({ items, Image }: CarouselProps): ReactElement {
@@ -26,9 +27,22 @@ export function Carousel({ items, Image }: CarouselProps): ReactElement {
 }
 
 const SliderStyled = styled(Slider)`
-  .slick-arrow {
-    &:before {
-      color: black;
+  ${({ theme }: { theme: Theme }) => `
+    .slick-arrow {
+      color: white;
+      background: white;
+      border-radius: ${theme.spacing(5)}px;
+      &:before {
+        color: black;
+      }
     }
-  }
+
+    .slick-prev {
+      left: ${theme.spacing(1)}px;
+      z-index: 1;
+    }
+    .slick-next {
+      right: ${theme.spacing(1)}px;
+    }
+`}
 `

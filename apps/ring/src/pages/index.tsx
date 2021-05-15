@@ -23,6 +23,9 @@ const graphQuery = `{
             ...on carousel {
               ...carouselFields
             }
+            ...on shop_location {
+              ...shop_locationFields
+            }
             ...on teaser {
               ...teaserFields
             }

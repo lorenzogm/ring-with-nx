@@ -1,6 +1,7 @@
 import { CarouselParsed } from '@ring/components/Carousel'
 import imageParser from 'services/prismic/fields/imageParser'
 import { TeaserParsed } from '@ring/components/Teaser'
+import { ShopLocationParsed } from '@ring/components/ShopLocation'
 import titleParser from 'services/prismic/fields/titleParser'
 
 export default function gridParser(slice) {
@@ -35,19 +36,31 @@ export default function gridParser(slice) {
   }
 }
 
-function componentParser(content: any): CarouselParsed | TeaserParsed {
+function componentParser(
+  content: any,
+): CarouselParsed | ShopLocationParsed | TeaserParsed {
   switch (content.type) {
     case 'carousel':
       return {
-        type: content.type,
+        type: 'carousel',
         items: content.data.content.map((item: any) => ({
           image: imageParser(item.image),
         })),
       }
 
+    case 'shop_location':
+      return {
+        type: 'shopLocation',
+        image: content.data.image ? imageParser(content.data.image) : null,
+        logo: content.data.logo ? imageParser(content.data.logo) : null,
+        address: titleParser(content.data.address),
+        email: titleParser(content.data.email),
+        phoneNumber: titleParser(content.data.phone_number),
+      }
+
     case 'teaser':
       return {
-        type: content.type,
+        type: 'teaser',
         variant: content.data.variant,
         title: titleParser(content.data.title),
         subtitle: titleParser(content.data.subtitle),

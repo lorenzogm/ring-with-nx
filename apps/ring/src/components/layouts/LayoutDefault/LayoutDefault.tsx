@@ -8,7 +8,7 @@ import type { Config } from 'types/config'
 import Meta from 'components/layouts/Meta'
 import exitPreview from 'services/api/preview/exitPreview'
 import CookieBanner from 'components/modules/CookieBanner'
-import { Image } from 'types/image'
+import { ImageProps } from '@ring/components/Image'
 import Aside from './Aside'
 import Header from './Header'
 import Footer from './Footer'
@@ -20,12 +20,9 @@ const ContainerStyled = styled(Container)`
   margin-bottom: ${({ theme }) => `${theme.spacing(6)}px`};
 `
 
-const Background = styled.div`
-  background-image: ${({
-    imageBackground,
-  }: {
-    imageBackground?: Image | null
-  }) => imageBackground && `url(${imageBackground.url})`};
+const Background = styled.div<Pick<LayoutDefaultProps, 'imageBackground'>>`
+  background-image: ${({ imageBackground }) =>
+    imageBackground && `url(${imageBackground.src})`};
   background-size: 100% 300px;
   background-repeat: no-repeat;
 `
@@ -34,7 +31,7 @@ type LayoutDefaultProps = {
   preview: boolean
   config: Config
   children: ReactNode
-  imageBackground?: Image | null
+  imageBackground?: ImageProps | null
 }
 
 export default function LayoutDefault({
@@ -71,7 +68,7 @@ export default function LayoutDefault({
 
       <CookieBanner />
 
-      <ContainerStyled maxWidth="md">
+      <ContainerStyled maxWidth="lg">
         <Header config={config} openCart={openCart} />
         <main>{children}</main>
       </ContainerStyled>

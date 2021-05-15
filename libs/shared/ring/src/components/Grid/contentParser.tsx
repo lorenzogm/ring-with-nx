@@ -1,13 +1,15 @@
+import { FC } from 'react'
 import Carousel, { CarouselParsed } from '../Carousel'
 import Teaser, { TeaserParsed } from '../Teaser'
-import { FC } from 'react'
+import ShopLocation from '../ShopLocation'
 
 const mapping = {
   carousel: Carousel,
+  shopLocation: ShopLocation,
   teaser: Teaser,
 }
 
-export default function sectionParser(
+export default function contentParser(
   component: CarouselParsed | TeaserParsed,
   index: number,
   Image: FC,
