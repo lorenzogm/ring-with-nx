@@ -12,6 +12,10 @@ type TitlePrismic = {
 }[]
 
 export default function titleParser(items: TitlePrismic): TitleParsed {
+  if (!items) {
+    return null
+  }
+
   return {
     variant: items[0].type.replace('eading', '') as TitleParsed['variant'],
     text: items[0].text,

@@ -7,6 +7,7 @@ import getCMS from 'services/CMS/getCMS'
 import type { Config } from 'types/config'
 import type { Content } from 'types/content'
 import LayoutBlank from 'components/layouts/LayoutBlank'
+import Image from 'components/elements/Image'
 
 const { CONFIG_CONTENT_PAGES } = process.env
 
@@ -71,6 +72,7 @@ export default function ContentPage({
 
   return (
     <ContentTemplate
+      Image={Image}
       preview={preview}
       config={config}
       content={content}

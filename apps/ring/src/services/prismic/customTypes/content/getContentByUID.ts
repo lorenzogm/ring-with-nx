@@ -1,23 +1,15 @@
-/* eslint-disable testing-library/no-await-sync-query */
-/* eslint-disable testing-library/prefer-screen-queries */
-
 import type { GetContentByUID } from 'services/CMS/content'
 import Client from '../../client'
 
 import contentParser from './contentParser'
+import graphQuery from './graphQuery'
 
-const getContentByUID: GetContentByUID = async ({
-  uid,
-  ref,
-  fetchLinks,
-  graphQuery,
-}) => {
+const getContentByUID: GetContentByUID = async ({ uid, ref }) => {
   const client = Client()
 
   let document = await client.getByUID('content', uid, {
+    graphQuery,
     ...(ref ? { ref } : {}),
-    ...(fetchLinks ? { fetchLinks } : {}),
-    ...(graphQuery ? { graphQuery } : {}),
   })
 
   return contentParser({ document })

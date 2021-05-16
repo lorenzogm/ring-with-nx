@@ -9,33 +9,6 @@ import Image from 'components/elements/Image'
 
 const { CONFIG_CONTENT_PAGES_HOME } = process.env
 
-const graphQuery = `{
-  content {
-    ...contentFields
-    body {
-      ...on grid {
-        non-repeat {
-          ...non-repeatFields
-        }
-        repeat {
-          ...repeatFields
-          content {
-            ...on carousel {
-              ...carouselFields
-            }
-            ...on shop_location {
-              ...shop_locationFields
-            }
-            ...on teaser {
-              ...teaserFields
-            }
-          }
-        }
-      }
-    }
-  }
-}`
-
 export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
@@ -56,7 +29,6 @@ export const getStaticProps: GetStaticProps = async ({
     CMS.getContentByUID({
       uid: 'home',
       ref,
-      graphQuery,
     }),
   ])
 
