@@ -3,9 +3,13 @@ import Box from '@material-ui/core/Box'
 import { GridProps } from './index.d'
 
 import contentParser from './contentParser'
+import styled from 'styled-components'
+import { ImageData } from '@ring/components/Image'
+import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
 
 export default Grid
 export function Grid({
+  backgroundImage,
   backgroundColor,
   marginTop,
   marginRight,
@@ -19,8 +23,11 @@ export function Grid({
   items,
   Image,
 }: GridProps) {
+  const mediaQuery = useMediaQueryGetCurrent()
+
   return (
-    <Box
+    <BoxStyled
+      backgroundImage={backgroundImage && backgroundImage[mediaQuery]}
       bgcolor={backgroundColor}
       mt={marginTop}
       mr={marginRight}
@@ -62,6 +69,11 @@ export function Grid({
           </GridMui>
         ))}
       </GridMui>
-    </Box>
+    </BoxStyled>
   )
 }
+
+const BoxStyled = styled(Box)<{ backgroundImage: ImageData }>`
+  ${({ backgroundImage }) =>
+    backgroundImage && `background-image: url(${backgroundImage.src})`}
+`

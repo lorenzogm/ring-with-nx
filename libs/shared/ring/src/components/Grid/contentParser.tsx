@@ -2,8 +2,10 @@ import { FC } from 'react'
 import Carousel, { CarouselParsed } from '../Carousel'
 import Teaser, { TeaserParsed } from '../Teaser'
 import ShopLocation from '../ShopLocation'
+import CallToAction from '../CallToAction'
 
 const mapping = {
+  callToAction: CallToAction,
   carousel: Carousel,
   shopLocation: ShopLocation,
   teaser: Teaser,

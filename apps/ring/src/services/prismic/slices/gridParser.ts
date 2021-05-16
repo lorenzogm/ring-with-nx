@@ -3,12 +3,14 @@ import imageParser from 'services/prismic/fields/imageParser'
 import { TeaserParsed } from '@ring/components/Teaser'
 import { ShopLocationParsed } from '@ring/components/ShopLocation'
 import titleParser from 'services/prismic/fields/titleParser'
+import { CallToActionParsed } from '@ring/components/CallToAction'
 
 export default function gridParser(slice) {
+  console.log(slice)
   return {
     sliceType: slice.slice_type,
     backgroundColor: slice.primary.background_color,
-    backgroundImage: slice.background_image || null,
+    backgroundImage: imageParser(slice.primary.background_image),
     spacing: slice.primary.spacing || 0,
     marginTop: slice.primary.margin_top || 0,
     marginRight: slice.primary.margin_right || 0,
@@ -38,8 +40,15 @@ export default function gridParser(slice) {
 
 function componentParser(
   content: any,
-): CarouselParsed | ShopLocationParsed | TeaserParsed {
+): CallToActionParsed | CarouselParsed | ShopLocationParsed | TeaserParsed {
   switch (content.type) {
+    case 'call_to_action':
+      return {
+        type: 'callToAction',
+        image: imageParser(content.data.image),
+        title: titleParser(content.data.title),
+      }
+
     case 'carousel':
       return {
         type: 'carousel',
@@ -51,8 +60,8 @@ function componentParser(
     case 'shop_location':
       return {
         type: 'shopLocation',
-        image: content.data.image ? imageParser(content.data.image) : null,
-        logo: content.data.logo ? imageParser(content.data.logo) : null,
+        image: imageParser(content.data.image),
+        logo: imageParser(content.data.logo),
         address: titleParser(content.data.address),
         email: titleParser(content.data.email),
         phoneNumber: titleParser(content.data.phone_number),
@@ -64,7 +73,7 @@ function componentParser(
         variant: content.data.variant,
         title: titleParser(content.data.title),
         subtitle: titleParser(content.data.subtitle),
-        image: content.data.image ? imageParser(content.data.image) : null,
+        image: imageParser(content.data.image),
       }
 
     default:

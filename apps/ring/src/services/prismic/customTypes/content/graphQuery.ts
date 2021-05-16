@@ -9,6 +9,9 @@ const graphQuery = `{
         repeat {
           ...repeatFields
           content {
+            ...on call_to_action {
+              ...call_to_actionFields
+            }
             ...on carousel {
               ...carouselFields
             }

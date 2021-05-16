@@ -17,6 +17,10 @@ type ImagePrismicItem = {
 }
 
 export default function imageParser(image: ImagePrismic): ImageParsed {
+  if (!image || (image && !image.url)) {
+    return null
+  }
+
   return {
     xs: {
       src: image.xs.url,
