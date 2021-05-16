@@ -6,7 +6,6 @@ import titleParser from 'services/prismic/fields/titleParser'
 import { CallToActionParsed } from '@ring/components/CallToAction'
 
 export default function gridParser(slice) {
-  console.log(slice)
   return {
     sliceType: slice.slice_type,
     backgroundColor: slice.primary.background_color,
@@ -74,6 +73,7 @@ function componentParser(
         title: titleParser(content.data.title),
         subtitle: titleParser(content.data.subtitle),
         image: imageParser(content.data.image),
+        justify: content.data.justify || 'flex-start',
       }
 
     default:

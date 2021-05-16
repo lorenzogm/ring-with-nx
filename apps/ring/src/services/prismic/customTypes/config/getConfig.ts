@@ -3,10 +3,43 @@ import Client from '../../client'
 
 import configParser from './configParser'
 
+const graphQuery = `{
+  config {
+    ...configFields
+    header {
+      body {
+        ...on grid {
+          non-repeat {
+            ...non-repeatFields
+          }
+          repeat {
+            ...repeatFields
+            content {
+              ...on call_to_action {
+                ...call_to_actionFields
+              }
+              ...on carousel {
+                ...carouselFields
+              }
+              ...on shop_location {
+                ...shop_locationFields
+              }
+              ...on teaser {
+                ...teaserFields
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
 const getConfig: GetConfig = async ({ ref }) => {
   const client = Client()
   const config = await client.getSingle('config', {
     ...(ref ? { ref } : {}),
+    graphQuery,
   })
 
   if (!config) {

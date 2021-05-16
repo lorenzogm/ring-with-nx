@@ -1,9 +1,10 @@
+import { GridParsed } from '@ring/components/Grid'
 import { Company } from './company'
 
 export type Config = {
   siteName: string
   isMaintenanceEnabled: boolean
-  logo: Image
+  header: Slice[]
   currency: string
   navigation: Navigation[]
   company: Company

@@ -1,4 +1,6 @@
 import { Document } from 'prismic-javascript/types/documents'
+import gridParser from 'services/prismic/slices/gridParser'
+import sliceParser from 'services/prismic/slices/sliceParser'
 import type { Config } from 'types/config'
 
 type ConfigParser = {
@@ -13,8 +15,8 @@ export default function configParser({
   return {
     siteName: config.data.site_name as Config['siteName'],
     isMaintenanceEnabled: config.data.is_maintenance_enabled || false,
-    logo: config.data.logo,
     currency: config.data.currency,
+    header: config.data.header.data.body.map(sliceParser),
     navigation: navigationItems.map((item) => ({
       type: item.type,
       slug: item.uid,

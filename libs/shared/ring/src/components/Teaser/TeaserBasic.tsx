@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import Title from '@ring/components/Title'
 import { TeaserProps } from './index.d'
 import ImageRing from '../Image'
+import styled from 'styled-components'
 
 type TeaserBasicProps = Omit<TeaserProps, 'variant'>
 
@@ -11,6 +12,7 @@ export default function TeaserBasic({
   title,
   subtitle,
   image,
+  justify = 'flex-start',
   Image,
 }: TeaserBasicProps) {
   const isMdOrGreater = useMediaQuery((theme: Theme) =>
@@ -18,16 +20,25 @@ export default function TeaserBasic({
   )
 
   return (
-    <Grid container direction="column" alignItems="center">
-      {image && <ImageRing as={Image} image={image} />}
-      <Title variant={title.variant} text={title.text} />
-      {subtitle && (
+    <GridStyled
+      container
+      direction="column"
+      alignItems="center"
+      justify={justify}
+    >
+      {image ? <ImageRing as={Image} image={image} /> : null}
+      {title ? <Title variant={title.variant} text={title.text} /> : null}
+      {subtitle ? (
         <Title
           variant={subtitle.variant}
           text={subtitle.text}
           align={isMdOrGreater ? 'center' : 'left'}
         />
-      )}
-    </Grid>
+      ) : null}
+    </GridStyled>
   )
 }
+
+const GridStyled = styled(Grid)`
+  height: 100%;
+`

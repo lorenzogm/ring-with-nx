@@ -26,7 +26,7 @@ export function Grid({
   const mediaQuery = useMediaQueryGetCurrent()
 
   return (
-    <BoxStyled
+    <BoxContainer
       backgroundImage={backgroundImage && backgroundImage[mediaQuery]}
       bgcolor={backgroundColor}
       mt={marginTop}
@@ -49,7 +49,7 @@ export function Grid({
             lg={item.lg}
             xl={item.xl}
           >
-            <Box
+            <BoxItem
               mt={item.marginTop}
               mr={item.marginRight}
               mb={item.marginBottom}
@@ -65,15 +65,19 @@ export function Grid({
                 index,
                 Image,
               )}
-            </Box>
+            </BoxItem>
           </GridMui>
         ))}
       </GridMui>
-    </BoxStyled>
+    </BoxContainer>
   )
 }
 
-const BoxStyled = styled(Box)<{ backgroundImage: ImageData }>`
+const BoxContainer = styled(Box)<{ backgroundImage: ImageData }>`
   ${({ backgroundImage }) =>
     backgroundImage && `background-image: url(${backgroundImage.src})`}
+`
+
+const BoxItem = styled(Box)`
+  height: 100%;
 `

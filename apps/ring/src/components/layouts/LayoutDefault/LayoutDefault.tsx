@@ -8,11 +8,12 @@ import type { Config } from 'types/config'
 import Meta from 'components/layouts/Meta'
 import exitPreview from 'services/api/preview/exitPreview'
 import CookieBanner from 'components/modules/CookieBanner'
-import { ImageParsed, ImageData } from '@ring/components/Image'
+import { ImageParsed, ImageData, ImageProps } from '@ring/components/Image'
 import Aside from './Aside'
 import Header from './Header'
 import Footer from './Footer'
 import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
+import Grid from '@ring/components/Grid'
 
 const ContainerStyled = styled(Container)`
   display: flex;
@@ -29,6 +30,7 @@ const Background = styled.div<{ imageBackground: ImageData }>`
 `
 
 type LayoutDefaultProps = {
+  Image: ImageProps['as']
   preview: boolean
   config: Config
   children: ReactNode
@@ -36,6 +38,7 @@ type LayoutDefaultProps = {
 }
 
 export default function LayoutDefault({
+  Image,
   preview,
   config,
   children,
@@ -59,7 +62,7 @@ export default function LayoutDefault({
   function closeCart() {
     dispatch({ type: 'CLOSE_CART' })
   }
-
+  console.log(config.header)
   return (
     <Background
       imageBackground={imageBackground && imageBackground[mediaQuery]}
@@ -74,7 +77,15 @@ export default function LayoutDefault({
       <CookieBanner />
 
       <ContainerStyled maxWidth="lg">
-        <Header config={config} openCart={openCart} />
+        {config.header.map((section, index) => (
+          <Grid
+            key={index.toString()}
+            Image={Image}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...section}
+          />
+        ))}
+        {/* <Header config={config} openCart={openCart} /> */}
         <main>{children}</main>
       </ContainerStyled>
 

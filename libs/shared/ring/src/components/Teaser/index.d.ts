@@ -1,3 +1,4 @@
+import { GridJustification } from '@material-ui/core/Grid'
 import { ImageProps } from '../Image'
 import { TitleParsed } from '../Title'
 
@@ -7,6 +8,7 @@ export type TeaserProps = {
   title: TitleParsed
   subtitle: TitleParsed
   image: Image
+  justify?: GridJustification
 }
 
 export type TeaserParsed = TeaserProps & {
