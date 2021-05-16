@@ -13,14 +13,7 @@ export function Carousel({ items, Image }: CarouselProps): ReactElement {
   return (
     <SliderStyled dots>
       {items.map((item) => (
-        <ImageRing
-          key={item.image.src}
-          as={Image}
-          src={item.image.src}
-          alt={item.image.alt}
-          width={item.image.width}
-          height={item.image.height}
-        />
+        <ImageRing key={item.image.xs.src} as={Image} image={item.image} />
       ))}
     </SliderStyled>
   )

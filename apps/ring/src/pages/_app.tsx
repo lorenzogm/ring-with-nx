@@ -25,7 +25,7 @@ export default function App({
 
   if (
     pageProps.preview === false &&
-    ((pageProps.config && pageProps.config.isMaintenanceEnabled === false) ||
+    ((pageProps.config && pageProps.config.isMaintenanceEnabled === true) ||
       router.asPath === '/maintenance')
   ) {
     return (

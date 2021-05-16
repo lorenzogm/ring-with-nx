@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactNode, forwardRef } from 'react'
 import styled from 'styled-components'
 
 type LinkProps = {
@@ -6,9 +6,9 @@ type LinkProps = {
   children: ReactNode
 }
 
-export default function Link({ children, onClick }: LinkProps): ReactElement {
+export default forwardRef(({ children, onClick }: LinkProps, ref) => {
   return <LinkStyled onClick={onClick}>{children}</LinkStyled>
-}
+})
 
 const LinkStyled = styled.a`
   cursor: pointer;

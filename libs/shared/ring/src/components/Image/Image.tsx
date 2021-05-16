@@ -1,13 +1,21 @@
+import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
 import styled from 'styled-components'
 import { ImageProps } from './index.d'
 
 export default Image
-export function Image({ alt, as, src, width, height }: ImageProps) {
+export function Image({ as, image }: ImageProps) {
   const Component = as || 'img'
+
+  const mediaQuery = useMediaQueryGetCurrent()
 
   return (
     <Container>
-      <Component src={src} alt={alt} width={width} height={height} />
+      <Component
+        src={image[mediaQuery].src}
+        alt={image[mediaQuery].alt}
+        width={image[mediaQuery].width}
+        height={image[mediaQuery].height}
+      />
     </Container>
   )
 }

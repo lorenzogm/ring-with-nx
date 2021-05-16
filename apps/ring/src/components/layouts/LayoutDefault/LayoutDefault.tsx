@@ -8,10 +8,11 @@ import type { Config } from 'types/config'
 import Meta from 'components/layouts/Meta'
 import exitPreview from 'services/api/preview/exitPreview'
 import CookieBanner from 'components/modules/CookieBanner'
-import { ImageProps } from '@ring/components/Image'
+import { ImageParsed, ImageData } from '@ring/components/Image'
 import Aside from './Aside'
 import Header from './Header'
 import Footer from './Footer'
+import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
 
 const ContainerStyled = styled(Container)`
   display: flex;
@@ -20,7 +21,7 @@ const ContainerStyled = styled(Container)`
   margin-bottom: ${({ theme }) => `${theme.spacing(6)}px`};
 `
 
-const Background = styled.div<Pick<LayoutDefaultProps, 'imageBackground'>>`
+const Background = styled.div<{ imageBackground: ImageData }>`
   background-image: ${({ imageBackground }) =>
     imageBackground && `url(${imageBackground.src})`};
   background-size: 100% 300px;
@@ -31,7 +32,7 @@ type LayoutDefaultProps = {
   preview: boolean
   config: Config
   children: ReactNode
-  imageBackground?: ImageProps | null
+  imageBackground?: ImageParsed | null
 }
 
 export default function LayoutDefault({
@@ -42,6 +43,8 @@ export default function LayoutDefault({
 }: LayoutDefaultProps): ReactElement {
   const router = useRouter()
   const [state, dispatch] = useReducer(reducer, { cartStatus: 'CLOSED' })
+
+  const mediaQuery = useMediaQueryGetCurrent()
 
   async function onClickExitPreview() {
     await exitPreview()
@@ -58,7 +61,9 @@ export default function LayoutDefault({
   }
 
   return (
-    <Background imageBackground={imageBackground}>
+    <Background
+      imageBackground={imageBackground && imageBackground[mediaQuery]}
+    >
       <Meta />
       {preview && (
         <div>

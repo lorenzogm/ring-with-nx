@@ -4,7 +4,7 @@ import { useMediaQuery } from '@material-ui/core'
 import { ShopLocationProps } from './index.d'
 import Grid from '@material-ui/core/Grid'
 import Title from '@ring/components/Title'
-import Image from '../Image'
+import ImageRing from '@ring/components/Image'
 
 export default function ShopLocation({
   image,
@@ -12,6 +12,7 @@ export default function ShopLocation({
   address,
   email,
   phoneNumber,
+  Image,
 }: ShopLocationProps): ReactElement | null {
   const isMdOrGreater = useMediaQuery((theme: Theme) =>
     theme.breakpoints.up('md'),
@@ -19,22 +20,8 @@ export default function ShopLocation({
 
   return (
     <Grid container direction="column" alignItems="center">
-      {image ? (
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-        />
-      ) : null}
-      {logo ? (
-        <Image
-          src={logo.src}
-          alt={logo.alt}
-          width={logo.width}
-          height={logo.height}
-        />
-      ) : null}
+      {image ? <ImageRing image={image} as={Image} /> : null}
+      {logo ? <ImageRing image={logo} as={Image} /> : null}
       {address ? (
         <Title
           variant={address.variant}

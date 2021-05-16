@@ -33,34 +33,33 @@ export function Grid({
     >
       <GridMui container spacing={spacing}>
         {items.map((item, index) => (
-          <>
-            <GridMui
-              item
-              xs={item.xs}
-              sm={item.sm}
-              md={item.md}
-              lg={item.lg}
-              xl={item.xl}
+          <GridMui
+            key={index.toString()}
+            item
+            xs={item.xs}
+            sm={item.sm}
+            md={item.md}
+            lg={item.lg}
+            xl={item.xl}
+          >
+            <Box
+              mt={item.marginTop}
+              mr={item.marginRight}
+              mb={item.marginBottom}
+              ml={item.marginLeft}
+              pt={item.paddingTop}
+              pr={item.paddingRight}
+              pb={item.paddingBottom}
+              pl={item.paddingLeft}
             >
-              <Box
-                mt={item.marginTop}
-                mr={item.marginRight}
-                mb={item.marginBottom}
-                ml={item.marginLeft}
-                pt={item.paddingTop}
-                pr={item.paddingRight}
-                pb={item.paddingBottom}
-                pl={item.paddingLeft}
-              >
-                {contentParser(
-                  // @ts-expect-error don't know how to fix it
-                  item.content,
-                  index,
-                  Image,
-                )}
-              </Box>
-            </GridMui>
-          </>
+              {contentParser(
+                // @ts-expect-error don't know how to fix it
+                item.content,
+                index,
+                Image,
+              )}
+            </Box>
+          </GridMui>
         ))}
       </GridMui>
     </Box>

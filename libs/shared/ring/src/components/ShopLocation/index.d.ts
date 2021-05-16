@@ -1,7 +1,9 @@
+import { ImageProps, ImageParsed } from '../Image'
 import { TitleParsed } from '../Title'
 
 export type ShopLocationProps = {
-  image: Image
+  Image?: ImageProps['as']
+  image: ImageParsed
   logo: Image
   address: TitleParsed
   email: TitleParsed

@@ -1,10 +1,9 @@
-import { ImageProps } from '@ring/components/Image'
-import { FC } from 'react'
+import { ImageParsed, ImageProps } from '@ring/components/Image'
 
 export type CarouselProps = {
-  Image: FC<ImageProps>
+  Image?: ImageProps['as']
   items: {
-    image: ImageProps
+    image: ImageParsed
   }[]
 }
 
