@@ -10,6 +10,7 @@ export default function gridParser(slice) {
     sliceType: slice.slice_type,
     backgroundColor: slice.primary.background_color,
     backgroundImage: imageParser(slice.primary.background_image),
+    fullWidth: slice.primary.full_width,
     spacing: slice.primary.spacing || 0,
     marginTop: slice.primary.margin_top || 0,
     marginRight: slice.primary.margin_right || 0,
@@ -21,11 +22,11 @@ export default function gridParser(slice) {
     paddingLeft: slice.primary.padding_left || 0,
     items: slice.items.map((item) => ({
       content: componentParser(item.content),
-      xs: item.xs || 12,
-      sm: item.sm || item.xs || 12,
-      md: item.md || item.sm || item.xs || 12,
-      lg: item.lg || item.md || item.sm || item.xs || 12,
-      xl: item.xl || item.lg || item.md || item.sm || item.xs || 12,
+      xs: item.xs || null,
+      sm: item.sm || null,
+      md: item.md || null,
+      lg: item.lg || null,
+      xl: item.xl || null,
       marginRight: item.margin_right || 0,
       marginBottom: item.margin_bottom || 0,
       marginLeft: item.margin_left || 0,
@@ -40,6 +41,10 @@ export default function gridParser(slice) {
 function componentParser(
   content: any,
 ): CallToActionParsed | CarouselParsed | ShopLocationParsed | TeaserParsed {
+  if (!content) {
+    return null
+  }
+
   switch (content.type) {
     case 'call_to_action':
       return {

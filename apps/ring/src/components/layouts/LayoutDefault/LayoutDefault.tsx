@@ -10,24 +10,9 @@ import exitPreview from 'services/api/preview/exitPreview'
 import CookieBanner from 'components/modules/CookieBanner'
 import { ImageParsed, ImageData, ImageProps } from '@ring/components/Image'
 import Aside from './Aside'
-import Header from './Header'
 import Footer from './Footer'
 import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
 import Grid from '@ring/components/Grid'
-
-const ContainerStyled = styled(Container)`
-  display: flex;
-  min-height: calc(100vh - 88px);
-  flex-direction: column;
-  margin-bottom: ${({ theme }) => `${theme.spacing(6)}px`};
-`
-
-const Background = styled.div<{ imageBackground: ImageData }>`
-  background-image: ${({ imageBackground }) =>
-    imageBackground && `url(${imageBackground.src})`};
-  background-size: 100% 300px;
-  background-repeat: no-repeat;
-`
 
 type LayoutDefaultProps = {
   Image: ImageProps['as']
@@ -76,7 +61,7 @@ export default function LayoutDefault({
 
       <CookieBanner />
 
-      <ContainerStyled maxWidth="lg">
+      <ContainerStyled maxWidth={false}>
         {config.header.map((section, index) => (
           <Grid
             key={index.toString()}
@@ -124,3 +109,19 @@ function reducer(state: State, action: Action): State {
       return state
   }
 }
+
+const ContainerStyled = styled(Container)`
+  display: flex;
+  min-height: calc(100vh - 88px);
+  flex-direction: column;
+  margin-bottom: ${({ theme }) => `${theme.spacing(6)}px`};
+  padding-left: 0;
+  padding-right: 0;
+`
+
+const Background = styled.div<{ imageBackground: ImageData }>`
+  background-image: ${({ imageBackground }) =>
+    imageBackground && `url(${imageBackground.src})`};
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+`

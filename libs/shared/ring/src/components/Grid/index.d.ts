@@ -1,9 +1,15 @@
-import type { GridSize, GridSpacing } from '@material-ui/core'
+import type {
+  GridJustification,
+  GridSize,
+  GridSpacing,
+} from '@material-ui/core'
 import { FC } from 'react'
 
 export type GridProps = {
   backgroundColor: string
   backgroundImage: Image
+  fullWidth: boolean
+  justify?: GridJustification
   spacing: GridSpacing
   marginTop: GridSpacing
   marginRight: GridSpacing
