@@ -47,7 +47,7 @@ export default function LayoutDefault({
   function closeCart() {
     dispatch({ type: 'CLOSE_CART' })
   }
-  console.log(config.header)
+
   return (
     <Background
       imageBackground={imageBackground && imageBackground[mediaQuery]}

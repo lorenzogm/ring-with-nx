@@ -4,6 +4,8 @@ import { TeaserParsed } from '@ring/components/Teaser'
 import { ShopLocationParsed } from '@ring/components/ShopLocation'
 import titleParser from 'services/prismic/fields/titleParser'
 import { CallToActionParsed } from '@ring/components/CallToAction'
+import { LinkParsed } from '@ring/components/Link'
+import linkParser from '../fields/linkParser'
 
 export default function gridParser(slice) {
   return {
@@ -40,7 +42,12 @@ export default function gridParser(slice) {
 
 function componentParser(
   content: any,
-): CallToActionParsed | CarouselParsed | ShopLocationParsed | TeaserParsed {
+):
+  | CallToActionParsed
+  | CarouselParsed
+  | LinkParsed
+  | ShopLocationParsed
+  | TeaserParsed {
   if (!content) {
     return null
   }
@@ -59,6 +66,16 @@ function componentParser(
         items: content.data.content.map((item: any) => ({
           image: imageParser(item.image),
         })),
+      }
+
+    case 'link':
+      return {
+        type: 'link',
+        text: content.data.text,
+        href: linkParser(content.data.link),
+        startIcon: content.data.start_icon || null,
+        endIcon: content.data.end_icon || null,
+        variant: content.data.variant,
       }
 
     case 'shop_location':

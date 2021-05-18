@@ -11,6 +11,10 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <Gtag trackingId={process.env.TRACKING_ID} />
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />

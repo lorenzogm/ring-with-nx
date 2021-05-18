@@ -3,10 +3,12 @@ import Carousel, { CarouselParsed } from '../Carousel'
 import Teaser, { TeaserParsed } from '../Teaser'
 import ShopLocation from '../ShopLocation'
 import CallToAction from '../CallToAction'
+import Link from '../Link'
 
 const mapping = {
   callToAction: CallToAction,
   carousel: Carousel,
+  link: Link,
   shopLocation: ShopLocation,
   teaser: Teaser,
 }

@@ -15,6 +15,9 @@ const graphQuery = `{
             ...on carousel {
               ...carouselFields
             }
+            ...on link {
+              ...linkFields
+            }
             ...on shop_location {
               ...shop_locationFields
             }
