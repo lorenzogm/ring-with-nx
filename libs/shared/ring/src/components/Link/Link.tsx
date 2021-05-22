@@ -6,7 +6,10 @@ import Icon from '@material-ui/core/Icon'
 import { LinkProps } from './index.d'
 
 export default forwardRef(
-  ({ href, onClick, text, startIcon, endIcon, variant }: LinkProps, ref) => {
+  (
+    { href, onClick, text, startIcon, endIcon, variant = 'link' }: LinkProps,
+    ref,
+  ) => {
     return (
       <LinkStyled href={href} onClick={onClick} variantType={variant}>
         {startIcon && <IconStart>{startIcon}</IconStart>}
