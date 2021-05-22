@@ -7,10 +7,12 @@ import StyledComponentsProvider from '@ring/providers/StyledComponentsProvider'
 import { useGtag } from '@ring/services/Gtag'
 import { createMuiTheme } from '@material-ui/core/styles'
 
-import 'services/firebase'
+import { initialize } from 'services/firebase'
 import { Provider as UseServerStateProvider } from '../contexts/useServerState'
 import { Provider as UseClientStateProvider } from '../contexts/useClientState'
 import Layout from 'components/Layout'
+
+initialize()
 
 const theme = createMuiTheme({
   palette: {
