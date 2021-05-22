@@ -149,7 +149,6 @@ export default function ChartXY({
                 : [tooltipData?.nearestDatum?.key]
               )
                 .filter((key) => !!key)
-                // @ts-expect-error the filter should remove the undefined, isn't it?
                 .map((key: string) => {
                   const value = tooltipData?.nearestDatum?.datum[key]
                   return (

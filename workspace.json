@@ -75,6 +75,13 @@
           "options": {
             "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"]
           }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./apps/ring/tsconfig.json"],
+            "parallel": false
+          }
         }
       }
     },
@@ -146,6 +153,15 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/mustachian-tracker/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "yarn tsc --project ./apps/mustachian-tracker/tsconfig.json"
+            ],
+            "parallel": false
           }
         }
       }
