@@ -1,32 +1,23 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "ring",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "ring": {
-      "tags": []
-    },
-    "shared-ring": {
-      "tags": []
-    },
-    "mustachian-tracker": {
-      "tags": []
+    "ring": { "tags": [] },
+    "shared-ring": { "tags": [] },
+    "mustachian-tracker": { "tags": [] },
+    "mustachian-tracker-e2e": {
+      "tags": [],
+      "implicitDependencies": ["mustachian-tracker"]
     }
   }
 }
