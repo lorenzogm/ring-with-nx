@@ -1,5 +1,10 @@
 {
-  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nrwl/nx/react",
+    "../../.eslintrc.json",
+    "@valtech-ch/eslint-config/rules/react",
+    "@valtech-ch/eslint-config/rules/nextjs"
+  ],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -7,12 +12,7 @@
       "parserOptions": {
         "project": ["apps/ring/tsconfig(.*)?.json"]
       },
-      "extends": [
-        "plugin:@nrwl/nx/react",
-        "../../.eslintrc.json",
-        "@valtech-ch/eslint-config/rules/react",
-        "@valtech-ch/eslint-config/rules/nextjs"
-      ],
+      "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
       "rules": {}
     },
     {
