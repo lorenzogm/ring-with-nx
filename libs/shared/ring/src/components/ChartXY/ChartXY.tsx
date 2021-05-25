@@ -2,7 +2,6 @@ import { curveLinear, curveStep, curveCardinal } from '@visx/curve'
 import { lightTheme, darkTheme } from '@visx/xychart'
 import merge from 'lodash.merge'
 import get from 'lodash.get'
-import { timeParse, timeFormat } from 'd3-time-format'
 import { Axis, Grid, Tooltip, XYChart } from '@visx/xychart'
 import AreaSeries from './AreaSeries'
 import AreaStack from './AreaStack'
@@ -14,6 +13,7 @@ import { useMemo } from 'react'
 
 import ChartBackground from './ChartBackground'
 import { DataPoint, XYChartProps } from './index.d'
+import formatDate from '@ring/utils/formatDate'
 
 const defaultConfig = {
   chartType: 'LineSeries',
@@ -176,11 +176,6 @@ export default function ChartXY({
   )
 }
 
-const parseDate = timeParse('%Y-%m-%d')
-const format = timeFormat('%b %y')
-function formatDate(date: string) {
-  return format(parseDate(date) as Date)
-}
 function formatNumber(number: number) {
   // @ts-expect-error maybe one day
   const o = Intl.NumberFormat('en', { notation: 'compact' })
