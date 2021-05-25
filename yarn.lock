@@ -2645,6 +2645,14 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@testing-library/cypress@^7.0.6":
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/@testing-library/cypress/-/cypress-7.0.6.tgz#5445dac4f4852c26901c356e9d3a69371bd20ccf"
+  integrity sha512-atnjqlkEt6spU4Mv7evvpA8fMXeRw7AN2uTKOR1dP6WBvBixVwAYMZY+1fMOaZULWAj9vGLCXXvmw++u3TxuCQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@testing-library/dom" "^7.28.1"
+
 "@testing-library/dom@^7.28.1":
   version "7.31.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.31.0.tgz#938451abd3ca27e1b69bb395d4a40759fd7f5b3b"
@@ -3314,7 +3322,7 @@
     "@typescript-eslint/types" "4.22.1"
     eslint-visitor-keys "^2.0.0"
 
-"@valtech-ch/eslint-config@^2.0.2":
+"@valtech-ch/eslint-config@2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@valtech-ch/eslint-config/-/eslint-config-2.0.2.tgz#7f79a0e2833d836ee2a2bfb4f94ea9472e1f789a"
   integrity sha512-EjRFSLjQL37UotgYwlS8ob2AZbtC2rmFkRXSouPi+WUORRgfZyMiZsDWiWdpTF/PZSWaOc52ySfF2oaczrJsOw==
@@ -6230,15 +6238,15 @@ date-fns-tz@^1.1.4:
   resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.1.4.tgz#38282c2bfab08946a4e9bb89d733451e5525048b"
   integrity sha512-lQ+FF7xUxxRuRqIY7H/lagnT3PhhSnnvtGHzjE5WZKwRyLU7glJfLys05SZ7zHlEr6RXWiqkmgWq4nCkcElR+g==
 
-date-fns@2.20.3:
-  version "2.20.3"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.20.3.tgz#5a28718edb95a80db96187b25340959867d36bc8"
-  integrity sha512-BbiJSlfmr1Fnfi1OHY8arklKdwtZ9n3NkjCeK8G9gtEe0ZSUwJuwHc6gYBl0uoC0Oa5RdpJV1gBBdXcZi8Efdw==
-
 date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+date-fns@^2.21.3:
+  version "2.21.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.21.3.tgz#8f5f6889d7a96bbcc1f0ea50239b397a83357f9b"
+  integrity sha512-HeYdzCaFflc1i4tGbj7JKMjM4cKGYoyxwcIIkHzNgCkX8xXDNJDZXgDDVchIWpN4eQc3lH37WarduXFZJOtxfw==
 
 dayjs@^1.9.3:
   version "1.10.4"
@@ -12625,6 +12633,11 @@ react-cookie@^2.1.2:
     hoist-non-react-statics "^2.3.1"
     prop-types "^15.0.0"
     universal-cookie "^2.2.0"
+
+react-datasheet@^1.4.9:
+  version "1.4.9"
+  resolved "https://registry.yarnpkg.com/react-datasheet/-/react-datasheet-1.4.9.tgz#fe1c1adcccb62f07a94262ac1c3a8a285740694a"
+  integrity sha512-/UoIw/bnqeFT205IE+eESm0APLUnSl0ZPqG6mrKszgNB578cm+06GuPg79UxFOiobVeWXtrLwa/yNUQc+OiOfQ==
 
 react-dom@17.0.2:
   version "17.0.2"
