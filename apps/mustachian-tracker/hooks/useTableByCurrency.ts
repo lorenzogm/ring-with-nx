@@ -1,20 +1,24 @@
-import useServerState from '../contexts/useServerState'
 import get from 'lodash.get'
 import { capitalize } from '@material-ui/core'
+import useClientState from 'contexts/useClientState'
 import { isFutureDate } from '../utils/utils'
 
 export default function useTableByCurrency({ yearSelected, assetCategory }) {
-  const [serverState] = useServerState()
+  const [clientState] = useClientState()
 
-  const keys = get(serverState, `data.${yearSelected}.${assetCategory}`)
+  const keys = get(
+    clientState,
+    `assetsDatatable.${yearSelected}.${assetCategory}`,
+  )
+
   if (!keys) {
     return {}
   }
 
   const data = Object.keys(keys).map((currency) => {
     const dataPerCurrency = get(
-      serverState,
-      `data.${yearSelected}.${assetCategory}.${currency}`,
+      clientState,
+      `assetsDatatable.${yearSelected}.${assetCategory}.${currency}`,
       [],
     )
 

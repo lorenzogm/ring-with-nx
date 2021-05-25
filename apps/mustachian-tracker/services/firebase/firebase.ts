@@ -2,7 +2,8 @@ import { init } from 'next-firebase-auth'
 
 import firebase from 'firebase/app'
 import 'firebase/analytics'
-import 'firebase/database'
+import 'firebase/auth'
+import 'firebase/firestore'
 
 const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
 const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
@@ -20,7 +21,7 @@ const cookieName = process.env.FIREBASE_COOKIE_NAME
 const cookieSecretCurrent = process.env.FIREBASE_COOKIE_SECRET_CURRENT
 const cookieSecretPrevious = process.env.FIREBASE_COOKIE_SECRET_PREVIOUS
 
-if (!firebase.apps.length && process.browser) {
+if (!firebase.apps.length) {
   firebase.initializeApp({
     projectId,
     apiKey,
@@ -31,10 +32,15 @@ if (!firebase.apps.length && process.browser) {
     appId,
     measurementId,
   })
-  firebase.analytics()
+
+  if (process.browser) {
+    firebase.analytics()
+  }
 }
 
 export default firebase
+
+export const db = firebase.firestore()
 
 export function initialize() {
   init({

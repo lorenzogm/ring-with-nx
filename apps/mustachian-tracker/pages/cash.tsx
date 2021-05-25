@@ -1,11 +1,13 @@
 import Typography from '@material-ui/core/Typography'
+import { ReactElement } from 'react'
 import Box from '@material-ui/core/Box'
 import Table from '@ring/components/Table'
+import Button from '@ring/components/Button'
 import useTableByCurrency from 'hooks/useTableByCurrency'
 import useClientState from '../contexts/useClientState'
 
-export default function Index() {
-  const [clientState] = useClientState()
+export default function CashPage(): ReactElement {
+  const [clientState, { selectYear }] = useClientState()
   const { columns, data } = useTableByCurrency({
     assetCategory: 'CASH',
     yearSelected: clientState.yearSelected,
@@ -31,6 +33,23 @@ export default function Index() {
 
   return (
     <>
+      <Box mb={4}>
+        {Object.keys(clientState.assetsDatasheet)
+          .slice(0)
+          .reverse()
+          .map((year) => (
+            <Button
+              key={year}
+              variant={year === clientState.yearSelected ? 'contained' : 'text'}
+              onClick={() => {
+                selectYear(year)
+              }}
+            >
+              {year}
+            </Button>
+          ))}
+      </Box>
+
       <Box mb={4}>
         <Typography variant="h2">Cash</Typography>
         <Table columns={columns} data={data} />

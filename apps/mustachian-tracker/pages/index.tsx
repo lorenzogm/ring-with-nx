@@ -1,84 +1,95 @@
-import flatten from 'lodash.flatten'
+import { ReactElement } from 'react'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import ChartXY from '@ring/components/ChartXY'
-import useServerState from 'contexts/useServerState'
-import { isFutureDate } from '../utils/utils'
+import { useAuthUser } from 'next-firebase-auth'
+import Button from '@ring/components/Button'
+import Spreadsheet, { Row } from '@ring/components/Spreadsheet'
+import useClientState from 'contexts/useClientState'
+import useServerState, { AssetsDoc } from 'contexts/useServerState'
+import { db } from 'services/firebase'
 
-export default function Index() {
+export default function AssetsPage(): ReactElement {
   const [serverState] = useServerState()
+  const [clientState, { addYear, selectYear, setData }] = useClientState()
+  const user = useAuthUser()
 
-  const cash = flatten(
-    Object.keys(serverState.data).map((year) => {
-      return serverState.data[year]['CASH']['TOTAL'].map((dataPoint, index) => {
-        return {
-          label: `${year}-${dataPoint.label + 1}-28`,
-          ['Cash']: dataPoint.value,
-          ['Pillar 2']:
-            serverState.data[year]['PILLAR_2']['TOTAL'][index].value,
-          ['Pillar 3a']:
-            serverState.data[year]['PILLAR_3A']['TOTAL'][index].value,
-        }
-      })
-    }),
-  )
-
-  const savings = flatten(
-    Object.keys(serverState.data).map((year) => {
-      return serverState.data[year]['CASH_INCOME']['TOTAL'].map(
-        (dataPoint, index) => {
-          if (isFutureDate({ year, month: index + 1 })) {
-            return null
-          }
-          return {
-            label: `${year}-${dataPoint.label + 1}-28`,
-            ['Income']: dataPoint.value,
-            ['Expenses']:
-              serverState.data[year]['CASH_EXPENSES']['TOTAL'][index].value,
-            ['Savings']:
-              serverState.data[year]['CASH_SAVINGS']['TOTAL'][index].value,
-            ['Savings %']:
-              serverState.data[year]['CASH_SAVINGS']['TOTAL_PERCENTAGE'][index]
-                .value,
-          }
-        },
-      )
-    }),
-  )
+  if (serverState.status !== 'SUCCESS') {
+    return null
+  }
 
   return (
-    <>
-      <Box mb={4}>
-        <Typography variant="h2">Net Worth</Typography>
-        <ChartXY
-          width={1000}
-          height={400}
-          data={cash}
-          // @ts-expect-error in the ChartXY they should be required, but it use a default config
-          config={{
-            chartType: 'BarStack',
-            yAxis: {
-              label: 'CHF',
-            },
-          }}
-        />
-      </Box>
+    <div>
+      <Typography variant="h2">Input Data</Typography>
 
-      <Box mb={4}>
-        <Typography variant="h2">Savings</Typography>
-        <ChartXY
-          width={1000}
-          height={400}
-          data={savings}
-          // @ts-expect-error in the ChartXY they should be required, but it use a default config
-          config={{
-            chartType: 'LineSeries',
-            yAxis: {
-              label: 'CHF',
-            },
-          }}
-        />
-      </Box>
-    </>
+      {Object.keys(clientState.assetsDatasheet)
+        .slice(0)
+        .reverse()
+        .map((year) => (
+          <Button
+            key={year}
+            variant={year === clientState.yearSelected ? 'contained' : 'text'}
+            onClick={() => {
+              selectYear(year)
+            }}
+          >
+            {year}
+          </Button>
+        ))}
+
+      <Button onClick={addYear}>Add year</Button>
+
+      <Spreadsheet
+        data={clientState.assetsDatasheet[clientState.yearSelected]}
+        setData={onCellChanged}
+      />
+    </div>
   )
+
+  function onCellChanged(data) {
+    setData(data)
+
+    const assets: AssetsDoc['assets'] = {
+      ...serverState.assetsDoc.assets,
+      [clientState.yearSelected]: data
+        .filter((_, index) => index > 0)
+        .map((row: Row) => {
+          return row.reduce(
+            (acc, cell, index) => {
+              switch (index) {
+                case 0:
+                  return {
+                    ...acc,
+                    name: cell.value,
+                  }
+                case 1:
+                  return {
+                    ...acc,
+                    category: cell.value,
+                  }
+                case 2:
+                  return {
+                    ...acc,
+                    currency: cell.value,
+                  }
+
+                default:
+                  return {
+                    ...acc,
+                    values: [...acc.values, cell.value],
+                  }
+              }
+            },
+            { values: [] },
+          )
+        }),
+    }
+
+    if (user.id) {
+      db.collection('assets').doc(user.id).set({
+        userId: user.id,
+        assets,
+      })
+    } else {
+      localStorage.setItem('assets', JSON.stringify({ assets }))
+    }
+  }
 }
