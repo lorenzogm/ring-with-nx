@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import {
+  AuthAction,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth'
+import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import { withAuthUser, AuthAction } from 'next-firebase-auth'
-import firebase, { db } from 'services/firebase'
-import { AssetsDoc } from 'contexts/useServerState'
+import firebase from 'services/firebase'
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -14,31 +17,13 @@ const uiConfig = {
   signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
 }
 
+export const getServerSideProps = withAuthUserTokenSSR()()
+
 export default withAuthUser({
   whenAuthed: AuthAction.REDIRECT_TO_APP,
 })(LoginPage)
 
 function LoginPage() {
-  useEffect(() => {
-    const unregisterAuthObserver = firebase
-      .auth()
-      .onAuthStateChanged((user) => {
-        if (user) {
-          const assetsDoc = localStorage.getItem('assets')
-          if (assetsDoc) {
-            const assetsDocParsed: AssetsDoc = JSON.parse(assetsDoc)
-            db.collection('assets')
-              .doc(user.uid)
-              .set({
-                userId: user.uid,
-                ...assetsDocParsed,
-              })
-          }
-        }
-      })
-    return () => unregisterAuthObserver()
-  }, [])
-
   if (!window) {
     return null
   }

@@ -1,4 +1,5 @@
 import get from 'lodash.get'
+
 import getDeltaPercentage from './getDeltaPercentage'
 import getDiff from './getDiff'
 
@@ -10,6 +11,9 @@ export default function getExpenses({ data }) {
     // the total cash from the last year isn't available in the total cash array of this year
     // we need to prepend it to calculate the expenses
     const previousYearValues = get(data, `${parseInt(year) - 1}.CASH.TOTAL`)
+    if (!previousYearValues) {
+      return yearAcc
+    }
 
     const lastMonthPreviousYearValue = previousYearValues
       ? previousYearValues[previousYearValues.length - 1].value
@@ -17,7 +21,7 @@ export default function getExpenses({ data }) {
 
     const expensesWithLastMonthPreviousYearValue = [
       lastMonthPreviousYearValue,
-      ...data[year]['CASH']['TOTAL'].map((dataPoint) => dataPoint.value),
+      ...data[year].CASH.TOTAL.map((dataPoint) => dataPoint.value),
     ]
 
     // calculate the expenses with the formula
@@ -60,17 +64,17 @@ export default function getExpenses({ data }) {
       ...yearAcc,
       [year]: {
         ...data[year],
-        ['CASH_EXPENSES']: {
-          ...data[year]['CASH_EXPENSES'],
-          ['TOTAL']: expenses.map((value, index) => ({
+        'CASH_EXPENSES': {
+          ...data[year].CASH_EXPENSES,
+          'TOTAL': expenses.map((value, index) => ({
             label: index,
             value,
           })),
-          ['DELTA']: expensesDelta.map((value, index) => ({
+          'DELTA': expensesDelta.map((value, index) => ({
             label: index,
             value,
           })),
-          ['DELTA_PERCENTAGE']: getDeltaPercentage({
+          'DELTA_PERCENTAGE': getDeltaPercentage({
             deltaArray: expensesDelta,
             totalValuesArray: expenses,
           }),

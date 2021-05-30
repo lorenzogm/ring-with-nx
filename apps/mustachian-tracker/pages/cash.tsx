@@ -1,10 +1,15 @@
-import Typography from '@material-ui/core/Typography'
-import { ReactElement } from 'react'
 import Box from '@material-ui/core/Box'
-import Table from '@ring/components/Table'
+import Typography from '@material-ui/core/Typography'
 import Button from '@ring/components/Button'
+import { Table } from '@ring/components/Table'
+import Layout from 'components/Layouts/Layout'
 import useTableByCurrency from 'hooks/useTableByCurrency'
+import { withAuthUserTokenSSR } from 'next-firebase-auth'
+import { ReactElement } from 'react'
+
 import useClientState from '../contexts/useClientState'
+
+export const getServerSideProps = withAuthUserTokenSSR()()
 
 export default function CashPage(): ReactElement {
   const [clientState, { selectYear }] = useClientState()
@@ -32,7 +37,7 @@ export default function CashPage(): ReactElement {
   )
 
   return (
-    <>
+    <Layout>
       <Box mb={4}>
         {Object.keys(clientState.assetsDatasheet)
           .slice(0)
@@ -74,6 +79,6 @@ export default function CashPage(): ReactElement {
         <Typography variant="h3">Transfers</Typography>
         <Table columns={transfersColumns} data={transfersData} />
       </Box>
-    </>
+    </Layout>
   )
 }

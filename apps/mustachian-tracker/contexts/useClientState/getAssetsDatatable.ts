@@ -1,10 +1,11 @@
-import get from 'lodash.get'
-import type { Asset, AssetsDoc } from 'contexts/useServerState'
 import type { AssetsDatatable } from 'contexts/useClientState'
-import getValues from './getValues'
+import type { Asset, AssetsDoc } from 'contexts/useServerState'
+import get from 'lodash.get'
+
 import getDelta from './getDelta'
 import getExpenses from './getExpenses'
 import getSavings from './getSavings'
+import getValues from './getValues'
 
 export default function getAssetsDatasheet(doc: AssetsDoc): AssetsDatatable {
   const data = Object.keys(doc.assets).reduce((yearAcc, year) => {

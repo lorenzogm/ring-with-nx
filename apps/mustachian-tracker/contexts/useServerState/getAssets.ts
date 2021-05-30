@@ -1,20 +1,37 @@
-import firebase, { db } from 'services/firebase'
-import type { AssetsDoc } from 'contexts/useServerState/index.d'
+import { AuthUser } from 'next-firebase-auth'
+import { db } from 'services/firebase'
+import { AssetsDoc } from 'types/index.d'
 
-export default async function getAssets(): Promise<AssetsDoc> {
-  const { currentUser } = firebase.auth()
+type GetAssets = {
+  user: AuthUser
+}
+export default async function getAssets({
+  user,
+}: GetAssets): Promise<AssetsDoc> {
+  const assetsFromLocalStorage = localStorage.getItem('assets')
+  if (user && user.id) {
+    const assetsDoc = await db.collection('assets').doc(user.id).get()
 
-  let doc: AssetsDoc
-  if (currentUser) {
-    const assets = await db.collection('assets').doc(currentUser.uid).get()
+    if (assetsDoc.data()) {
+      return assetsDoc.data() as AssetsDoc
+    }
 
-    doc = assets ? (assets.data() as AssetsDoc) : getInitialData()
-  } else {
-    const assets = localStorage.getItem('assets')
-    doc = assets ? JSON.parse(assets) : getInitialData()
+    if (assetsFromLocalStorage) {
+      const assets: AssetsDoc = JSON.parse(assetsFromLocalStorage)
+      await db
+        .collection('assets')
+        .doc(user.id)
+        .set({ userId: user.id, ...assets })
+
+      return assets
+    }
+
+    return getInitialData()
   }
 
-  return doc
+  return (assetsFromLocalStorage
+    ? JSON.parse(assetsFromLocalStorage)
+    : getInitialData()) as AssetsDoc
 }
 
 function getInitialData(): AssetsDoc {

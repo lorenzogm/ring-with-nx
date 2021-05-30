@@ -1,9 +1,10 @@
-import { init } from 'next-firebase-auth'
-
+// eslint-disable-next-line simple-import-sort/imports
 import firebase from 'firebase/app'
+// eslint-disable-next-line import/no-duplicates
 import 'firebase/analytics'
-import 'firebase/auth'
+// eslint-disable-next-line import/no-duplicates
 import 'firebase/firestore'
+import { init } from 'next-firebase-auth'
 
 const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
 const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
@@ -42,7 +43,7 @@ export default firebase
 
 export const db = firebase.firestore()
 
-export function initialize() {
+export function initialize(): void {
   init({
     authPageURL: '/auth',
     appPageURL: '/',

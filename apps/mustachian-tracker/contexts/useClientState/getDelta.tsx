@@ -1,15 +1,20 @@
 import get from 'lodash.get'
+import { AssetsDatatable, AssetsDoc } from 'types/index.d'
+
 import getDeltaPercentage from './getDeltaPercentage'
 import getDiff from './getDiff'
 
-export default function getDelta({ data }) {
+type GetDelta = {
+  data: AssetsDoc
+}
+export default function getDelta({ data }: GetDelta): AssetsDatatable {
   const dataWithDelta = Object.keys(data).reduce((yearAcc, year) => {
     return {
       ...yearAcc,
       [year]: Object.keys(data[year]).reduce((acc, categoryName) => {
         const totalValuesFromPreviousYear = get(
           data,
-          `${parseInt(year) - 1}.${categoryName}.TOTAL`,
+          `${parseInt(year, 10) - 1}.${categoryName}.TOTAL`,
         )
         const lastValueFromThePreviousYear = totalValuesFromPreviousYear
           ? totalValuesFromPreviousYear[totalValuesFromPreviousYear.length - 1]
@@ -18,8 +23,8 @@ export default function getDelta({ data }) {
 
         const total = [
           lastValueFromThePreviousYear,
-          ...data[year][categoryName]['TOTAL'].map(
-            (dataPoint) => dataPoint.value,
+          ...data[year][categoryName].TOTAL.map(
+            (dataPoint: { value: string }) => dataPoint.value,
           ),
         ]
         const deltaArray = getDiff(total)
@@ -28,11 +33,11 @@ export default function getDelta({ data }) {
           ...acc,
           [categoryName]: {
             ...data[year][categoryName],
-            ['DELTA']: deltaArray.map((value, index) => ({
+            DELTA: deltaArray.map((value, index) => ({
               label: index,
               value,
             })),
-            ['DELTA_PERCENTAGE']: getDeltaPercentage({
+            DELTA_PERCENTAGE: getDeltaPercentage({
               deltaArray,
               totalValuesArray: total,
             }),

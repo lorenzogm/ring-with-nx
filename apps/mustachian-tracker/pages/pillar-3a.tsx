@@ -1,19 +1,25 @@
 import Typography from '@material-ui/core/Typography'
-import Table from '@ring/components/Table'
+import { Table } from '@ring/components/Table'
+import Layout from 'components/Layouts/Layout'
 import useTableByCurrency from 'hooks/useTableByCurrency'
-import useClientState from '../contexts/useClientState'
+import { withAuthUserTokenSSR } from 'next-firebase-auth'
+import { ReactElement } from 'react'
 
-export default function Pillar3aPage() {
+import useClientState, { AssetCategories } from '../contexts/useClientState'
+
+export const getServerSideProps = withAuthUserTokenSSR()()
+
+export default function Pillar3aPage(): ReactElement {
   const [clientState] = useClientState()
   const { columns, data } = useTableByCurrency({
-    assetCategory: 'PILLAR_3A',
+    assetCategory: AssetCategories.PENSION_FUND_PRIVATE,
     yearSelected: clientState.yearSelected,
   })
 
   return (
-    <>
+    <Layout>
       <Typography variant="h2">Pillar 3a</Typography>
       <Table columns={columns} data={data} />
-    </>
+    </Layout>
   )
 }

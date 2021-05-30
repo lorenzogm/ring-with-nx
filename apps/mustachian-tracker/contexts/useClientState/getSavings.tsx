@@ -1,4 +1,5 @@
 import get from 'lodash.get'
+
 import getDeltaPercentage from './getDeltaPercentage'
 import getDiff from './getDiff'
 
@@ -40,21 +41,21 @@ export default function getSavings({ data }) {
       ...yearAcc,
       [year]: {
         ...data[year],
-        ['CASH_SAVINGS']: {
-          ...data[year]['CASH_SAVINGS'],
-          ['TOTAL']: savingsList.map((value, index) => ({
+        'CASH_SAVINGS': {
+          ...data[year].CASH_SAVINGS,
+          'TOTAL': savingsList.map((value, index) => ({
             label: index,
             value,
           })),
-          ['TOTAL_PERCENTAGE']: savingsPercentageList.map((value, index) => ({
+          'TOTAL_PERCENTAGE': savingsPercentageList.map((value, index) => ({
             label: index,
             value,
           })),
-          ['DELTA']: savingsDelta.map((value, index) => ({
+          'DELTA': savingsDelta.map((value, index) => ({
             label: index,
             value,
           })),
-          ['DELTA_PERCENTAGE']: getDeltaPercentage({
+          'DELTA_PERCENTAGE': getDeltaPercentage({
             deltaArray: savingsDelta,
             totalValuesArray: savingsList,
           }),

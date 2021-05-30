@@ -1,5 +1,6 @@
-import { setAuthCookies } from 'next-firebase-auth'
 import 'services/firebase'
+
+import { setAuthCookies } from 'next-firebase-auth'
 
 export default async function login(req, res) {
   try {

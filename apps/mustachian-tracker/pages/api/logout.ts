@@ -1,5 +1,6 @@
-import { unsetAuthCookies } from 'next-firebase-auth'
 import 'services/firebase'
+
+import { unsetAuthCookies } from 'next-firebase-auth'
 
 export default async function logout(req, res) {
   try {

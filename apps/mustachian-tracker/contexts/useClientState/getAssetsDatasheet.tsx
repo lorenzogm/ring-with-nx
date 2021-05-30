@@ -1,6 +1,7 @@
-import { eachMonthOfInterval, format } from 'date-fns/fp'
 import type { AssetsDoc } from 'contexts/useServerState'
-import type { AssetsDatasheet } from 'contexts/useClientState'
+import { eachMonthOfInterval, format } from 'date-fns/fp'
+
+import { AssetsDatasheet } from './index.d'
 
 export default function getAssetsDatasheet(doc: AssetsDoc): AssetsDatasheet {
   return Object.keys(doc.assets).reduce((yearAcc, year) => {
@@ -12,7 +13,10 @@ export default function getAssetsDatasheet(doc: AssetsDoc): AssetsDatasheet {
         // prepend the header
         [
           { readOnly: true, value: 'Asset' },
-          { readOnly: true, value: 'Category' },
+          {
+            readOnly: true,
+            value: 'Category',
+          },
           { readOnly: true, value: 'Currency' },
           ...eachMonthOfInterval({
             start: new Date(now.getFullYear(), 0),

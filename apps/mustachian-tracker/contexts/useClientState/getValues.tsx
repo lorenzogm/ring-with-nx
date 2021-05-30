@@ -1,6 +1,5 @@
 import get from 'lodash.get'
-import { Asset } from 'contexts/useServerState'
-import { DatatableCell } from './index.d'
+import { Asset, DatatableCell } from 'types/index.d'
 
 type GetValues = {
   key: string

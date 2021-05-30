@@ -1,23 +1,33 @@
-import React, { ReactElement } from 'react'
-import { AppProps } from 'next/app'
 import 'normalize.css/normalize.css'
 import 'firebaseui/dist/firebaseui.css'
 
+import { createMuiTheme } from '@material-ui/core/styles'
 import StyledComponentsProvider from '@ring/providers/StyledComponentsProvider'
 import { useGtag } from '@ring/services/Gtag'
-import { createMuiTheme } from '@material-ui/core/styles'
-
+import GlobalStyle from 'components/GlobalStyle'
+import { Provider as UseClientStateProvider } from 'contexts/useClientState'
+import { Provider as UseServerStateProvider } from 'contexts/useServerState'
+import { AnimateSharedLayout } from 'framer-motion'
+import { AppProps } from 'next/app'
+import React, { ReactElement } from 'react'
 import { initialize } from 'services/firebase'
-import { Provider as UseServerStateProvider } from '../contexts/useServerState'
-import { Provider as UseClientStateProvider } from '../contexts/useClientState'
-import Layout from 'components/Layout'
 
 initialize()
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#252e43' },
-    secondary: { main: '#fafafa' },
+    type: 'dark',
+    primary: { main: '#ddc3a5' },
+    secondary: { main: '#e9a96d' },
+    // background: {
+    //   default: '#1d3c45',
+    // },
+    text: {
+      primary: '#fff',
+    },
+    // button: {
+    //   primary:
+    // }
   },
 })
 
@@ -27,17 +37,21 @@ export default function App({
   router,
 }: AppProps): ReactElement {
   useGtag({ router, trackingId: process.env.TRACKING_ID })
+  const user = pageProps.AuthUserSerialized
+    ? JSON.parse(pageProps.AuthUserSerialized)
+    : null
 
   return (
     <StyledComponentsProvider theme={theme}>
-      <UseServerStateProvider>
+      <GlobalStyle />
+      <UseServerStateProvider user={user}>
         <UseClientStateProvider>
-          <Layout>
+          <AnimateSharedLayout>
             <Component
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...pageProps}
             />
-          </Layout>
+          </AnimateSharedLayout>
         </UseClientStateProvider>
       </UseServerStateProvider>
     </StyledComponentsProvider>

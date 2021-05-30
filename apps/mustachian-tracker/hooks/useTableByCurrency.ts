@@ -1,6 +1,7 @@
-import get from 'lodash.get'
 import { capitalize } from '@material-ui/core'
 import useClientState from 'contexts/useClientState'
+import get from 'lodash.get'
+
 import { isFutureDate } from '../utils/utils'
 
 export default function useTableByCurrency({ yearSelected, assetCategory }) {
