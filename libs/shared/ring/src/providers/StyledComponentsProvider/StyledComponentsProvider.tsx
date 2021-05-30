@@ -3,11 +3,14 @@ import {
   StylesProvider,
   ThemeProvider as MuiThemeProvider,
   Theme,
+  responsiveFontSizes,
 } from '@material-ui/core/styles'
-import { ReactElement, useEffect } from 'react'
+import { ReactElement, useEffect, ReactNode } from 'react'
+import { CssBaseline } from '@material-ui/core'
+import '@fontsource/roboto'
 
 type ProviderStyledComponentsProps = {
-  children: ReactElement
+  children: ReactNode
   theme: Theme
 }
 
@@ -22,10 +25,13 @@ export function StyledComponentsProvider({
       jssStyles.parentNode.removeChild(jssStyles)
   }, [])
 
+  const themeResponsive = responsiveFontSizes(theme)
+
   return (
     <StylesProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <StyledComponentsThemeProvider theme={theme}>
+      <MuiThemeProvider theme={themeResponsive}>
+        <StyledComponentsThemeProvider theme={themeResponsive}>
+          <CssBaseline />
           {children}
         </StyledComponentsThemeProvider>
       </MuiThemeProvider>
