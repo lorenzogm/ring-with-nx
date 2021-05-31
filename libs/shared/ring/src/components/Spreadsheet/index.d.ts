@@ -1,8 +1,5 @@
-export type SpreadsheetProps = {
-  data: Datasheet
-  setData: (data) => void
-}
+import ReactDatasheet from 'react-datasheet'
 
-export type Datasheet = Array<Row>
-export type Row = Array<Cell>
-export type Cell = { value: string }
+export type SpreadsheetTable = Array<SpreadsheetRow>
+export type SpreadsheetRow = Array<SpreadsheetCell>
+export type SpreadsheetCell = ReactDatasheet.Cell

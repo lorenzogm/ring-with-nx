@@ -3,7 +3,12 @@ import styled from 'styled-components'
 import Button from '@ring/components/Button'
 
 import 'react-datasheet/lib/react-datasheet.css'
-import { SpreadsheetProps } from './index.d'
+import { SpreadsheetTable } from './index.d'
+
+export type SpreadsheetProps = {
+  data: SpreadsheetTable
+  setData: (data: SpreadsheetTable) => void
+}
 
 export default function Spreadsheet({ data, setData }: SpreadsheetProps) {
   const valueRenderer: ReactDatasheet.ValueRenderer<
@@ -17,7 +22,6 @@ export default function Spreadsheet({ data, setData }: SpreadsheetProps) {
   > = (changes) => {
     const dataUpdated = data
     changes.map(({ row, col, value }) => {
-      // @ts-expect-error no idea, no time
       dataUpdated[row][col] = { ...data[row][col], value }
     })
 
@@ -50,6 +54,4 @@ export default function Spreadsheet({ data, setData }: SpreadsheetProps) {
 
 const ReactDatasheetStyled = styled(ReactDatasheet)`
   width: 100%;
-  .data-grid-container {
-  }
 `

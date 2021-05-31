@@ -1,4 +1,4 @@
-import { DataPoint } from '@ring/components/ChartXY'
+import type { AssetsTableRow } from 'types/index'
 
 type GetDeltaPercentage = {
   deltaArray: Array<number>
@@ -7,10 +7,10 @@ type GetDeltaPercentage = {
 export default function getDeltaPercentage({
   deltaArray,
   totalValuesArray,
-}: GetDeltaPercentage): Array<DataPoint> {
+}: GetDeltaPercentage): AssetsTableRow<string> {
   return deltaArray.map((delta, index) => {
     return {
-      label: index.toString(),
+      label: index,
       value: `${(delta * 100) / totalValuesArray[index]}%`,
     }
   })

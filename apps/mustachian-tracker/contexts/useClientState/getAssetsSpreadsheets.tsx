@@ -1,9 +1,9 @@
-import type { AssetsDoc } from 'contexts/useServerState'
 import { eachMonthOfInterval, format } from 'date-fns/fp'
+import type { AssetsDoc, AssetsSpreadsheets } from 'types/index'
 
-import { AssetsDatasheet } from './index.d'
-
-export default function getAssetsDatasheet(doc: AssetsDoc): AssetsDatasheet {
+export default function getAssetsSpreadsheets(
+  doc: AssetsDoc,
+): AssetsSpreadsheets {
   return Object.keys(doc.assets).reduce((yearAcc, year) => {
     const now = new Date()
 

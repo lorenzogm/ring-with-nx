@@ -1,12 +1,23 @@
 import get from 'lodash.get'
+import type { AssetsTablePerYear, AssetsTableRow } from 'types/index'
 
 import getDeltaPercentage from './getDeltaPercentage'
 import getDiff from './getDiff'
 
-export default function getSavings({ data }) {
+type GetSavings = {
+  data: AssetsTablePerYear
+}
+export default function getSavings({ data }: GetSavings): AssetsTablePerYear {
   const dataWithExpenses = Object.keys(data).reduce((yearAcc, year) => {
-    const incomeList = get(data, `${year}.CASH_INCOME.TOTAL`)
-    const expensesList = get(data, `${year}.CASH_EXPENSES.TOTAL`)
+    const incomeList = (get(
+      data,
+      `${year}.CASH_INCOME.TOTAL`,
+    ) as unknown) as AssetsTableRow<number>
+
+    const expensesList = (get(
+      data,
+      `${year}.CASH_EXPENSES.TOTAL`,
+    ) as unknown) as AssetsTableRow<number>
 
     // calculate the expenses with the formula
     const savingsList = incomeList.map((income, index) => {
@@ -24,7 +35,7 @@ export default function getSavings({ data }) {
     // we need to prepend it to calculate the delta
     const savingsValuesFromPreviousYear = get(
       yearAcc,
-      `${parseInt(year) - 1}.CASH_SAVINGS.TOTAL`,
+      `${parseInt(year, 10) - 1}.CASH_SAVINGS.TOTAL`,
     )
 
     const lastSavingsValueFromThePreviousYear = savingsValuesFromPreviousYear
@@ -41,21 +52,21 @@ export default function getSavings({ data }) {
       ...yearAcc,
       [year]: {
         ...data[year],
-        'CASH_SAVINGS': {
+        CASH_SAVINGS: {
           ...data[year].CASH_SAVINGS,
-          'TOTAL': savingsList.map((value, index) => ({
+          TOTAL: savingsList.map((value, index) => ({
             label: index,
             value,
           })),
-          'TOTAL_PERCENTAGE': savingsPercentageList.map((value, index) => ({
+          TOTAL_PERCENTAGE: savingsPercentageList.map((value, index) => ({
             label: index,
             value,
           })),
-          'DELTA': savingsDelta.map((value, index) => ({
+          DELTA: savingsDelta.map((value, index) => ({
             label: index,
             value,
           })),
-          'DELTA_PERCENTAGE': getDeltaPercentage({
+          DELTA_PERCENTAGE: getDeltaPercentage({
             deltaArray: savingsDelta,
             totalValuesArray: savingsList,
           }),

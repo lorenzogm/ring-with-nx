@@ -1,4 +1,4 @@
-import { Row } from '@ring/components/Spreadsheet'
+import { SpreadsheetTable } from '@ring/components/Spreadsheet'
 import { AuthUser } from 'next-firebase-auth'
 import {
   createContext,
@@ -9,16 +9,15 @@ import {
   useState,
 } from 'react'
 import { db } from 'services/firebase'
-import { AssetsDatasheetTable } from 'types/index.d'
+import { Asset, AssetsDoc } from 'types/index'
 
 import getAssets from './getAssets'
-import { ServerState } from './index.d'
 
 const Context = createContext(null)
 
 type UseServerState = [
   ServerState,
-  { setAssetsDoc: (yearSelected: string, data: AssetsDatasheetTable) => void },
+  { setAssetsDoc: (yearSelected: string, data: SpreadsheetTable) => void },
 ]
 export default function useServerState(): UseServerState {
   const state = useContext<UseServerState>(Context)
@@ -59,12 +58,12 @@ export function Provider({ children, user }: ProviderProps): ReactElement {
     </Context.Provider>
   )
 
-  function setAssetsDoc(yearSelected: string, data: AssetsDatasheetTable) {
+  function setAssetsDoc(yearSelected: string, data: SpreadsheetTable) {
     const assets = {
       ...state.assetsDoc.assets,
       [yearSelected]: data
         .filter((_, index) => index > 0)
-        .map((row: Row) => {
+        .map((row) => {
           return row.reduce(
             (acc, cell, index) => {
               switch (index) {
@@ -72,27 +71,29 @@ export function Provider({ children, user }: ProviderProps): ReactElement {
                   return {
                     ...acc,
                     name: cell.value,
-                  }
+                  } as Asset
+
                 case 1:
                   return {
                     ...acc,
                     category: cell.value,
-                  }
+                  } as Asset
+
                 case 2:
                   return {
                     ...acc,
                     currency: cell.value,
-                  }
+                  } as Asset
 
                 default:
                   return {
                     ...acc,
                     values: [...acc.values, cell.value],
-                  }
+                  } as Asset
               }
             },
             { values: [] },
-          )
+          ) as Asset
         }),
     }
 
@@ -110,4 +111,10 @@ export function Provider({ children, user }: ProviderProps): ReactElement {
       localStorage.setItem('assets', JSON.stringify({ assets }))
     }
   }
+}
+
+export type ServerState = {
+  status: 'IDLE' | 'LOADING' | 'SUCCESS'
+  assetsDoc?: AssetsDoc
+  user: AuthUser
 }

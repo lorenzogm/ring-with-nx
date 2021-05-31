@@ -1,31 +1,50 @@
 import { capitalize } from '@material-ui/core'
 import useClientState from 'contexts/useClientState'
 import get from 'lodash.get'
+import { Column } from 'react-table'
+import {
+  AssetCategory,
+  AssetsTableRow,
+  AssetTableRowCategory,
+} from 'types/index'
 
 import { isFutureDate } from '../utils/utils'
 
-export default function useTableByCurrency({ yearSelected, assetCategory }) {
+type UseTableByCurrency = {
+  assetCategory: AssetCategory
+}
+
+export default function useTableByCurrency({
+  assetCategory,
+}: UseTableByCurrency): {
+  columns: Array<Column>
+  data: Array<Record<AssetTableRowCategory, string | number>>
+} {
   const [clientState] = useClientState()
 
-  const keys = get(
+  const keys: AssetTableRowCategory = get(
     clientState,
-    `assetsDatatable.${yearSelected}.${assetCategory}`,
+    `assetsTables.${clientState.yearSelected}.${assetCategory}`,
   )
+  console.log(clientState)
 
   if (!keys) {
-    return {}
+    return null
   }
 
   const data = Object.keys(keys).map((currency) => {
-    const dataPerCurrency = get(
+    const dataPerCurrency: AssetsTableRow = get(
       clientState,
-      `assetsDatatable.${yearSelected}.${assetCategory}.${currency}`,
+      `assetsTables.${clientState.yearSelected}.${assetCategory}.${currency}`,
       [],
     )
 
     return {
       name: currency,
-      ...getData({ yearSelected, data: dataPerCurrency }),
+      ...getData({
+        yearSelected: clientState.yearSelected,
+        data: dataPerCurrency,
+      }),
     }
   })
 
@@ -90,7 +109,11 @@ export default function useTableByCurrency({ yearSelected, assetCategory }) {
   return { columns, data }
 }
 
-function getData({ data, yearSelected }) {
+type GetData = {
+  data: AssetsTableRow
+  yearSelected: string
+}
+function getData({ data, yearSelected }: GetData): AssetsTableRow {
   return data.reduce((acc, current) => {
     let value
 
@@ -114,7 +137,7 @@ function getData({ data, yearSelected }) {
       ...acc,
       [getMonthName(current.label)]: value,
     }
-  }, {})
+  }, {}) as AssetsTableRow
 }
 
 function getMonthName(monthNumber) {

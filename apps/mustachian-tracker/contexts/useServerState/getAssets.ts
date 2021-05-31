@@ -1,6 +1,6 @@
 import { AuthUser } from 'next-firebase-auth'
 import { db } from 'services/firebase'
-import { AssetsDoc } from 'types/index.d'
+import { AssetsDoc } from 'types/index'
 
 type GetAssets = {
   user: AuthUser

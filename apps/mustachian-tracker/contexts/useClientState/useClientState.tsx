@@ -1,5 +1,6 @@
-import getAssetsDatasheet from 'contexts/useClientState/getAssetsDatasheet'
-import getAssetsDatatable from 'contexts/useClientState/getAssetsDatatable'
+import { SpreadsheetTable } from '@ring/components/Spreadsheet'
+import getAssetsSpreadsheets from 'contexts/useClientState/getAssetsSpreadsheets'
+import getAssetsTables from 'contexts/useClientState/getAssetsTables'
 import useServerState from 'contexts/useServerState'
 import merge from 'lodash.merge'
 import {
@@ -9,10 +10,14 @@ import {
   useContext,
   useState,
 } from 'react'
-import { AssetsDatasheetTable } from 'types/index.d'
+import {
+  AssetsMetrics,
+  AssetsSpreadsheets,
+  AssetsTablePerYear,
+  Timeframe,
+} from 'types/index'
 
 import getAssetsMetrics from './getAssetsMetrics'
-import { ClientState } from './index.d'
 
 const Context = createContext(null)
 
@@ -21,7 +26,7 @@ export type UseClientState = [
   {
     addYear: (year) => void
     selectYear: (year: string) => void
-    setData: (data: AssetsDatasheetTable) => void
+    setData: (data: SpreadsheetTable) => void
     setField: (value: string, row: number, col: number) => void
   },
 ]
@@ -37,16 +42,16 @@ type ProviderProps = {
 export function Provider({ children }: ProviderProps): ReactElement {
   const [serverState, { setAssetsDoc }] = useServerState()
 
-  const assetsDatasheet = getAssetsDatasheet(serverState.assetsDoc)
-  const assetsDatatable = getAssetsDatatable(serverState.assetsDoc)
+  const assetsSpreadsheets = getAssetsSpreadsheets(serverState.assetsDoc)
+  const assetsTables = getAssetsTables(serverState.assetsDoc)
   const assetsMetrics = getAssetsMetrics(serverState.assetsDoc)
 
   const [state, setState] = useState<ClientState>({
-    yearSelected: Object.keys(assetsDatasheet).slice(0).reverse()[0],
+    yearSelected: Object.keys(assetsSpreadsheets).slice(0).reverse()[0],
     timeframeSelected: '1Y',
 
-    assetsDatasheet,
-    assetsDatatable,
+    assetsSpreadsheets,
+    assetsTables,
     assetsMetrics,
   })
 
@@ -58,14 +63,14 @@ export function Provider({ children }: ProviderProps): ReactElement {
     </Context.Provider>
   )
 
-  function setData(data: AssetsDatasheetTable) {
+  function setData(data: SpreadsheetTable) {
     setState((s) => {
       setAssetsDoc(s.yearSelected, data)
 
       return {
         ...s,
-        assetsDatasheet: {
-          ...s.assetsDatasheet,
+        assetsSpreadsheets: {
+          ...s.assetsSpreadsheets,
           [state.yearSelected]: data,
         },
       }
@@ -74,7 +79,7 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
   function setField(value, row, col) {
     setState((s) => {
-      const data = s.assetsDatasheet[state.yearSelected]
+      const data = s.assetsSpreadsheets[state.yearSelected]
       const dataUpdated = data
 
       dataUpdated[row][col] = { ...data[row][col], value }
@@ -83,8 +88,8 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
       return {
         ...s,
-        assetsDatasheet: {
-          ...s.assetsDatasheet,
+        assetsSpreadsheets: {
+          ...s.assetsSpreadsheets,
           [state.yearSelected]: dataUpdated,
         },
       }
@@ -98,7 +103,7 @@ export function Provider({ children }: ProviderProps): ReactElement {
   function addYear() {
     const year =
       Math.min(
-        ...Object.keys(state.assetsDatasheet).map((y) => parseInt(y, 10)),
+        ...Object.keys(state.assetsSpreadsheets).map((y) => parseInt(y, 10)),
       ) - 1
     const assetsDoc = merge(serverState.assetsDoc, {
       assets: {
@@ -108,8 +113,16 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
     setState((s) => ({
       ...s,
-      assetsDatasheet: getAssetsDatasheet(assetsDoc),
+      assetsSpreadsheets: getAssetsSpreadsheets(assetsDoc),
       yearSelected: year.toString(),
     }))
   }
+}
+
+export type ClientState = {
+  assetsSpreadsheets: AssetsSpreadsheets
+  assetsTables: AssetsTablePerYear
+  yearSelected: string
+  assetsMetrics: AssetsMetrics
+  timeframeSelected: Timeframe
 }

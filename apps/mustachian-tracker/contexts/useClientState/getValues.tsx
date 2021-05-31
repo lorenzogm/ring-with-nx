@@ -1,9 +1,9 @@
 import get from 'lodash.get'
-import { Asset, DatatableCell } from 'types/index.d'
+import type { Asset, AssetsTablePerYear, AssetsTableRow } from 'types/index'
 
 type GetValues = {
   key: string
-  acc: any
+  acc: AssetsTablePerYear
   asset: Asset
 }
 
@@ -11,8 +11,12 @@ export default function getValues({
   key,
   acc,
   asset,
-}: GetValues): Array<DatatableCell> {
-  const accValues = get(acc, `${asset.category}.${key}`, [])
+}: GetValues): AssetsTableRow<number> {
+  const accValues = get(
+    acc,
+    `${asset.category}.${key}`,
+    [],
+  ) as AssetsTableRow<number>
 
   const values = asset.values.map((v, i) => {
     const previousCell = accValues.find((cell) => cell.label === i) || {

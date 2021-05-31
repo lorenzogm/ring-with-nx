@@ -25,9 +25,8 @@ export default function Header(): ReactElement {
         <nav>
           <Link href="/overview">Overview</Link>
           <Link href="/my-data">My Data</Link>
-          <Link href="/cash">Cash</Link>
-          <Link href="/pillar-2">Pillar 2</Link>
-          <Link href="/pillar-3a">Pillar 3a</Link>
+          <Link href="/banking">Banking</Link>
+          <Link href="/pension-funds">Pension Funds</Link>
         </nav>
         {serverState.user && serverState.user.id ? (
           <Button onClick={logout}>Logout</Button>

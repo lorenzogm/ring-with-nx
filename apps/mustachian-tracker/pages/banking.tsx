@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import Button from '@ring/components/Button'
-import { Table } from '@ring/components/Table'
+import Table from '@ring/components/Table'
 import Layout from 'components/Layouts/Layout'
 import useTableByCurrency from 'hooks/useTableByCurrency'
 import { withAuthUserTokenSSR } from 'next-firebase-auth'
@@ -15,31 +15,26 @@ export default function CashPage(): ReactElement {
   const [clientState, { selectYear }] = useClientState()
   const { columns, data } = useTableByCurrency({
     assetCategory: 'CASH',
-    yearSelected: clientState.yearSelected,
   })
   const { columns: incomeColumns, data: incomeData } = useTableByCurrency({
     assetCategory: 'CASH_INCOME',
-    yearSelected: clientState.yearSelected,
   })
   const { columns: expensesColumns, data: expensesData } = useTableByCurrency({
     assetCategory: 'CASH_EXPENSES',
-    yearSelected: clientState.yearSelected,
   })
   const { columns: savingsColumns, data: savingsData } = useTableByCurrency({
     assetCategory: 'CASH_SAVINGS',
-    yearSelected: clientState.yearSelected,
   })
   const { columns: transfersColumns, data: transfersData } = useTableByCurrency(
     {
       assetCategory: 'CASH_TRANSFER',
-      yearSelected: clientState.yearSelected,
     },
   )
 
   return (
     <Layout>
       <Box mb={4}>
-        {Object.keys(clientState.assetsDatasheet)
+        {Object.keys(clientState.assetsSpreadsheets)
           .slice(0)
           .reverse()
           .map((year) => (

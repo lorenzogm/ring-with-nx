@@ -1,4 +1,4 @@
-import { AssetMetrics, AssetsDoc } from 'types/index.d'
+import { AssetMetrics, AssetsDoc } from 'types/index'
 
 export default function getAssetsMetrics(doc: AssetsDoc): AssetMetrics {
   const yearList = Object.keys(doc.assets).slice(0).reverse()

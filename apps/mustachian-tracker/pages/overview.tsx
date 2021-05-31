@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import ChartXY from '@ring/components/ChartXY'
 import Layout from 'components/Layouts/Layout'
-import useClientState, { AssetCategories } from 'contexts/useClientState'
+import useClientState from 'contexts/useClientState'
 import flatten from 'lodash.flatten'
 import { withAuthUserTokenSSR } from 'next-firebase-auth'
 import { ReactElement } from 'react'
@@ -16,46 +16,34 @@ export default function DashboardPage(): ReactElement {
   const [clientState] = useClientState()
 
   const cash = flatten(
-    Object.keys(clientState.assetsDatatable).map((year) => {
-      return clientState.assetsDatatable[year].CASH.TOTAL.map(
-        (dataPoint, index) => {
-          return {
-            label: `${year}-${dataPoint.label + 1}-28`,
-            Cash: dataPoint.value,
-            [AssetCategories.PENSION_FUND]:
-              clientState.assetsDatatable[year].PENSION_FUND.TOTAL[index].value,
-            [AssetCategories.PENSION_FUND_PRIVATE]:
-              clientState.assetsDatatable[year].PENSION_FUND_PRIVATE.TOTAL[
-                index
-              ].value,
-          }
-        },
-      )
+    Object.entries(clientState.assetsTables).map(([year, assetsTable]) => {
+      return assetsTable.CASH.TOTAL.map((dataPoint, index) => {
+        return {
+          label: `${year}-${dataPoint.label + 1}-28`,
+          Cash: dataPoint.value,
+          'Pension Fund': assetsTable.PENSION_FUND.TOTAL[index].value,
+          'Private Pension Fund':
+            assetsTable.PENSION_FUND_PRIVATE.TOTAL[index].value,
+        }
+      })
     }),
   )
 
   const savings = flatten(
-    Object.keys(clientState.assetsDatatable).map((year) => {
-      return clientState.assetsDatatable[year].CASH_INCOME.TOTAL.map(
-        (dataPoint, index) => {
-          if (isFutureDate({ year, month: index + 1 })) {
-            return null
-          }
-          return {
-            label: `${year}-${dataPoint.label + 1}-28`,
-            Income: dataPoint.value,
-            Expenses:
-              clientState.assetsDatatable[year].CASH_EXPENSES.TOTAL[index]
-                .value,
-            Savings:
-              clientState.assetsDatatable[year].CASH_SAVINGS.TOTAL[index].value,
-            'Savings %':
-              clientState.assetsDatatable[year].CASH_SAVINGS.TOTAL_PERCENTAGE[
-                index
-              ].value,
-          }
-        },
-      )
+    Object.entries(clientState.assetsTables).map(([year, assetsTable]) => {
+      console.log(assetsTable)
+      return assetsTable.CASH_INCOME.TOTAL.map((dataPoint, index) => {
+        if (isFutureDate({ year, month: index + 1 })) {
+          return null
+        }
+        return {
+          label: `${year}-${dataPoint.label + 1}-28`,
+          Income: dataPoint.value,
+          Expenses: assetsTable.CASH_EXPENSES.TOTAL[index].value,
+          Savings: assetsTable.CASH_SAVINGS.TOTAL[index].value,
+          'Savings %': assetsTable.CASH_SAVINGS.TOTAL_PERCENTAGE[index].value,
+        }
+      })
     }),
   )
 

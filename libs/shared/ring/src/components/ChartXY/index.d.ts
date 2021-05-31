@@ -67,4 +67,4 @@ export type LineSeriesProps = {
   data: XYChartProps['data']
 }
 
-export type DataPoint = { label: string } & Record<string, string | number>
+export type DataPoint<T> = { label: string } & T

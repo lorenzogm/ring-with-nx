@@ -1,21 +1,21 @@
 import get from 'lodash.get'
-import { AssetsDatatable, AssetsDoc } from 'types/index.d'
+import type { AssetsTablePerYear, AssetsTableRow } from 'types/index'
 
 import getDeltaPercentage from './getDeltaPercentage'
 import getDiff from './getDiff'
 
 type GetDelta = {
-  data: AssetsDoc
+  data: AssetsTablePerYear
 }
-export default function getDelta({ data }: GetDelta): AssetsDatatable {
+export default function getDelta({ data }: GetDelta): AssetsTablePerYear {
   const dataWithDelta = Object.keys(data).reduce((yearAcc, year) => {
     return {
       ...yearAcc,
       [year]: Object.keys(data[year]).reduce((acc, categoryName) => {
-        const totalValuesFromPreviousYear = get(
+        const totalValuesFromPreviousYear = (get(
           data,
           `${parseInt(year, 10) - 1}.${categoryName}.TOTAL`,
-        )
+        ) as unknown) as AssetsTableRow<number>
         const lastValueFromThePreviousYear = totalValuesFromPreviousYear
           ? totalValuesFromPreviousYear[totalValuesFromPreviousYear.length - 1]
               .value
