@@ -15,7 +15,7 @@ export default function getDelta({ data }: GetDelta): AssetsTablePerYear {
         const totalValuesFromPreviousYear = (get(
           data,
           `${parseInt(year, 10) - 1}.${categoryName}.TOTAL`,
-        ) as unknown) as AssetsTableRow<number>
+        ) as unknown) as AssetsTableRow
         const lastValueFromThePreviousYear = totalValuesFromPreviousYear
           ? totalValuesFromPreviousYear[totalValuesFromPreviousYear.length - 1]
               .value

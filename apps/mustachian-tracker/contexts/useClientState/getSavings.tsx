@@ -12,22 +12,22 @@ export default function getSavings({ data }: GetSavings): AssetsTablePerYear {
     const incomeList = (get(
       data,
       `${year}.CASH_INCOME.TOTAL`,
-    ) as unknown) as AssetsTableRow<number>
+    ) as unknown) as AssetsTableRow
 
     const expensesList = (get(
       data,
       `${year}.CASH_EXPENSES.TOTAL`,
-    ) as unknown) as AssetsTableRow<number>
+    ) as unknown) as AssetsTableRow
 
     // calculate the expenses with the formula
     const savingsList = incomeList.map((income, index) => {
-      const incomeValue = income.value
-      const expensesValue = expensesList[index].value
+      const incomeValue = income.value as number
+      const expensesValue = expensesList[index].value as number
       return incomeValue - expensesValue
     })
 
     const savingsPercentageList = savingsList.map((savings, index) => {
-      const incomeValue = incomeList[index].value
+      const incomeValue = incomeList[index].value as number
       return `${(savings * 100) / incomeValue}%`
     })
 

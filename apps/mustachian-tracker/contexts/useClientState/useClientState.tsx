@@ -26,6 +26,7 @@ export type UseClientState = [
   {
     addYear: (year) => void
     selectYear: (year: string) => void
+    selectTimeframe: (timeframe: string) => void
     setData: (data: SpreadsheetTable) => void
     setField: (value: string, row: number, col: number) => void
   },
@@ -44,7 +45,7 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
   const assetsSpreadsheets = getAssetsSpreadsheets(serverState.assetsDoc)
   const assetsTables = getAssetsTables(serverState.assetsDoc)
-  const assetsMetrics = getAssetsMetrics(serverState.assetsDoc)
+  const assetsMetrics = getAssetsMetrics(assetsTables)
 
   const [state, setState] = useState<ClientState>({
     yearSelected: Object.keys(assetsSpreadsheets).slice(0).reverse()[0],
@@ -57,7 +58,10 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
   return (
     <Context.Provider
-      value={[state, { addYear, selectYear, setData, setField }]}
+      value={[
+        state,
+        { addYear, selectYear, selectTimeframe, setData, setField },
+      ]}
     >
       {children}
     </Context.Provider>
@@ -98,6 +102,10 @@ export function Provider({ children }: ProviderProps): ReactElement {
 
   function selectYear(year) {
     setState((s) => ({ ...s, yearSelected: year }))
+  }
+
+  function selectTimeframe(timeframe) {
+    setState((s) => ({ ...s, timeframeSelected: timeframe }))
   }
 
   function addYear() {

@@ -18,6 +18,7 @@ export type AssetCategory =
   | 'CASH_EXPENSES'
   | 'CASH_SAVINGS'
   | 'CASH_TRANSFER'
+  | 'NET_WORTH'
   | 'PENSION_FUND'
   | 'PENSION_FUND_PRIVATE'
   | 'PENSION_FUND_PRIVATE_TRANSFER'
@@ -70,10 +71,19 @@ export enum AssetsSpreadsheetsCategory {
 export type AssetsMetrics = Record<Timeframe, AssetsMetricsPerTimeframe>
 
 export type Timeframe = 'MTD' | 'YTD' | '1Y'
+export enum Timeframes {
+  'MTD' = 'MTD',
+  'YTD' = 'YTD',
+  '1Y' = '1Y',
+}
 
 export type AssetsMetricsPerTimeframe = {
   netWorth: {
     value: number
+  }
+  netWorthDelta: {
+    value: number
+    percentage: string
   }
   savings: {
     percentage: string

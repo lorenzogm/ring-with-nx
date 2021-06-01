@@ -3,6 +3,7 @@ import type { Asset, AssetsDoc, AssetsTablePerYear } from 'types/index'
 
 import getDelta from './getDelta'
 import getExpenses from './getExpenses'
+import getNetWorth from './getNetWorth'
 import getSavings from './getSavings'
 import getValues from './getValues'
 
@@ -32,7 +33,8 @@ export default function getAssetsTables(doc: AssetsDoc): AssetsTablePerYear {
     {},
   )
 
-  const dataWithDelta = getDelta({ data })
+  const dataWithNetWorth = getNetWorth({ data })
+  const dataWithDelta = getDelta({ data: dataWithNetWorth })
   const dataWithExpenses = getExpenses({ data: dataWithDelta })
   const dataWithSavings = getSavings({ data: dataWithExpenses })
 

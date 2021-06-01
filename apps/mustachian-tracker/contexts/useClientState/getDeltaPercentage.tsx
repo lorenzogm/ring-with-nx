@@ -7,11 +7,11 @@ type GetDeltaPercentage = {
 export default function getDeltaPercentage({
   deltaArray,
   totalValuesArray,
-}: GetDeltaPercentage): AssetsTableRow<string> {
+}: GetDeltaPercentage): AssetsTableRow {
   return deltaArray.map((delta, index) => {
     return {
       label: index,
-      value: `${(delta * 100) / totalValuesArray[index]}%`,
+      value: `${((delta * 100) / totalValuesArray[index]).toFixed(2)}%`,
     }
   })
 }
