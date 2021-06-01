@@ -52,10 +52,10 @@ MyDocument.getInitialProps = async (ctx) => {
   // Render app and page and get the context of the page with collected side effects.
   const styledComponentSheet = new StyledComponentSheets()
   const materialUiSheets = new MaterialUiServerStyleSheets()
-  const originalRenderPage = ctx.renderPage
+  const { renderPage } = ctx
   try {
     ctx.renderPage = () =>
-      originalRenderPage({
+      renderPage({
         enhanceApp: (App) => (props) =>
           styledComponentSheet.collectStyles(
             // eslint-disable-next-line react/jsx-props-no-spreading

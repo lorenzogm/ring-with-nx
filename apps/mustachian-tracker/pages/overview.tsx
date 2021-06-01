@@ -31,7 +31,6 @@ export default function DashboardPage(): ReactElement {
 
   const savings = flatten(
     Object.entries(clientState.assetsTables).map(([year, assetsTable]) => {
-      console.log(assetsTable)
       return assetsTable.CASH_INCOME.TOTAL.map((dataPoint, index) => {
         if (isFutureDate({ year, month: index + 1 })) {
           return null
@@ -86,20 +85,5 @@ export default function DashboardPage(): ReactElement {
         />
       </Box>
     </Layout>
-  )
-}
-type MetricTextProps = {
-  title: string
-  value: string | number
-  percentage: string
-}
-
-function MetricText({ title, value, percentage }) {
-  return (
-    <>
-      <Typography>{title}</Typography>
-      <Typography>{percentage}</Typography>
-      <Typography>{value}</Typography>
-    </>
   )
 }

@@ -1,8 +1,12 @@
 import 'services/firebase'
 
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { setAuthCookies } from 'next-firebase-auth'
 
-export default async function login(req, res) {
+export default async function login(
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Promise<void> {
   try {
     await setAuthCookies(req, res)
   } catch (e) {

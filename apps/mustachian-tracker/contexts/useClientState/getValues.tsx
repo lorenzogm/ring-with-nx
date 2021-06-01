@@ -11,12 +11,8 @@ export default function getValues({
   key,
   acc,
   asset,
-}: GetValues): AssetsTableRow<number> {
-  const accValues = get(
-    acc,
-    `${asset.category}.${key}`,
-    [],
-  ) as AssetsTableRow<number>
+}: GetValues): AssetsTableRow {
+  const accValues = get(acc, `${asset.category}.${key}`, []) as AssetsTableRow
 
   const values = asset.values.map((v, i) => {
     const previousCell = accValues.find((cell) => cell.label === i) || {

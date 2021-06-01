@@ -4,6 +4,8 @@ import get from 'lodash.get'
 import { Column } from 'react-table'
 import {
   AssetCategory,
+  AssetsTableCell,
+  AssetsTableColumns,
   AssetsTableRow,
   AssetTableRowCategory,
 } from 'types/index'
@@ -18,32 +20,25 @@ export default function useTableByCurrency({
   assetCategory,
 }: UseTableByCurrency): {
   columns: Array<Column>
-  data: Array<Record<AssetTableRowCategory, string | number>>
+  data: Array<Record<AssetTableRowCategory, AssetsTableColumns>>
 } {
   const [clientState] = useClientState()
 
-  const keys: AssetTableRowCategory = get(
+  const keys: Record<AssetTableRowCategory, Array<AssetsTableCell>> = get(
     clientState,
     `assetsTables.${clientState.yearSelected}.${assetCategory}`,
   )
-  console.log(clientState)
 
   if (!keys) {
     return null
   }
 
-  const data = Object.keys(keys).map((currency) => {
-    const dataPerCurrency: AssetsTableRow = get(
-      clientState,
-      `assetsTables.${clientState.yearSelected}.${assetCategory}.${currency}`,
-      [],
-    )
-
+  const data = Object.entries(keys).map(([key, values]) => {
     return {
-      name: currency,
+      name: key,
       ...getData({
         yearSelected: clientState.yearSelected,
-        data: dataPerCurrency,
+        data: values,
       }),
     }
   })
@@ -106,6 +101,7 @@ export default function useTableByCurrency({
     }),
   ]
 
+  // @ts-expect-error pfff no time
   return { columns, data }
 }
 

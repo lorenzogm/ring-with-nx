@@ -1,8 +1,12 @@
 import 'services/firebase'
 
+import { NextApiRequest, NextApiResponse } from 'next'
 import { unsetAuthCookies } from 'next-firebase-auth'
 
-export default async function logout(req, res) {
+export default async function logout(
+  req: NextApiRequest,
+  res: NextApiResponse,
+): Promise<void> {
   try {
     await unsetAuthCookies(req, res)
   } catch (e) {

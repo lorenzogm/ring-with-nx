@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import Button from '@ring/components/Button'
 
 import 'react-datasheet/lib/react-datasheet.css'
-import { SpreadsheetTable } from './index.d'
 
-export type SpreadsheetProps = {
+type SpreadsheetProps = {
   data: SpreadsheetTable
   setData: (data: SpreadsheetTable) => void
 }
@@ -22,7 +21,7 @@ export default function Spreadsheet({ data, setData }: SpreadsheetProps) {
   > = (changes) => {
     const dataUpdated = data
     changes.map(({ row, col, value }) => {
-      dataUpdated[row][col] = { ...data[row][col], value }
+      dataUpdated[row][col] = { ...data[row][col], value: value as string }
     })
 
     setData(dataUpdated)
@@ -55,3 +54,7 @@ export default function Spreadsheet({ data, setData }: SpreadsheetProps) {
 const ReactDatasheetStyled = styled(ReactDatasheet)`
   width: 100%;
 `
+
+export type SpreadsheetTable = Array<SpreadsheetRow>
+export type SpreadsheetRow = Array<SpreadsheetCell>
+export type SpreadsheetCell = { value: string }

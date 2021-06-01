@@ -3,9 +3,7 @@ import { ReactElement, useEffect, useCallback } from 'react'
 type GtagProps = {
   trackingId: string
 }
-export default Gtag
-
-export function Gtag({ trackingId }: GtagProps): ReactElement | null {
+export default function Gtag({ trackingId }: GtagProps): ReactElement | null {
   return trackingId ? (
     <>
       <script
@@ -13,7 +11,6 @@ export function Gtag({ trackingId }: GtagProps): ReactElement | null {
         src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`}
       />
       <script
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
     window.dataLayer = window.dataLayer || [];

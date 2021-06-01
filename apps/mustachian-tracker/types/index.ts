@@ -31,6 +31,21 @@ export type AssetsTableRowPerCategory = Record<
   AssetsTableRow
 >
 export type AssetsTableRow = Array<AssetsTableCell>
+export type AssetsTableColumns = {
+  name: AssetTableRowCategory
+  January: string | number
+  February: string | number
+  March: string | number
+  April: string | number
+  May: string | number
+  June: string | number
+  July: string | number
+  August: string | number
+  September: string | number
+  October: string | number
+  November: string | number
+  December: string | number
+}
 export type AssetsTableCell = {
   label: number
   value: number | string
