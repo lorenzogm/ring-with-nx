@@ -45,7 +45,7 @@ const defaultConfig = {
   },
 }
 
-export default function ChartXY({
+export default function ChartXY<T>({
   height,
   theme = 'dark',
   data,
@@ -126,7 +126,7 @@ export default function ChartXY({
         tickFormat={config.stackOffset === 'wiggle' ? () => '' : formatNumber}
       />
       {config.tooltip.showTooltip && (
-        <Tooltip<DataPoint>
+        <Tooltip<DataPoint<T>>
           showHorizontalCrosshair={config.tooltip.showHorizontalCrosshair}
           showVerticalCrosshair={config.tooltip.showVerticalCrosshair}
           snapTooltipToDatumX={config.tooltip.snapTooltipToDatumX}
