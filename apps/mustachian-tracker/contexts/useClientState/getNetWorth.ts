@@ -9,6 +9,10 @@ type GetNetWorth = {
 }
 export default function getNetWorth({ data }: GetNetWorth): AssetsTablePerYear {
   return Object.keys(data).reduce((yearAcc, year) => {
+    if (!data[year].CASH) {
+      return yearAcc
+    }
+
     const netWorthList = data[year].CASH.TOTAL.map((cashCell, index) => {
       const cash = cashCell.value as number
       const pensionFund = data[year].PENSION_FUND.TOTAL[index].value as number

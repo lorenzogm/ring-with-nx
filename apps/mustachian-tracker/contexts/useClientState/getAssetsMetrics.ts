@@ -7,6 +7,50 @@ export default function getAssetsMetrics(
   const yearLatest = yearList[0]
   const now = new Date()
 
+  if (!assetsTables[yearLatest]) {
+    return {
+      MTD: {
+        netWorth: {
+          value: null,
+        },
+        netWorthDelta: {
+          value: null,
+          percentage: null,
+        },
+        savings: {
+          percentage: null,
+          value: null,
+        },
+      },
+      YTD: {
+        netWorth: {
+          value: null,
+        },
+        netWorthDelta: {
+          value: null,
+          percentage: null,
+        },
+        savings: {
+          percentage: null,
+          value: null,
+        },
+      },
+      '1Y': {
+        netWorth: {
+          value: null,
+        },
+        netWorthDelta: {
+          value: null,
+          percentage: null,
+        },
+        savings: {
+          percentage: null,
+          value: null,
+        },
+      },
+    }
+  }
+
   const netWorthCell = assetsTables[yearLatest].NET_WORTH.TOTAL.find(
     (cell) => cell.label === now.getMonth(),
   )

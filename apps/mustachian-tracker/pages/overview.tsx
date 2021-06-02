@@ -89,37 +89,41 @@ export default function DashboardPage(): ReactElement {
           <MetricText title="Net Worth" value={0} />
         </Grid> */}
       </Grid>
-      <Box mb={4}>
-        <Typography variant="h2">Net Worth</Typography>
-        <ChartXY
-          width={1000}
-          height={400}
-          data={cash}
-          // @ts-expect-error in the ChartXY they should be required, but it use a default config
-          config={{
-            chartType: 'BarStack',
-            yAxis: {
-              label: 'CHF',
-            },
-          }}
-        />
-      </Box>
+      {cash.length > 0 ? (
+        <Box mb={4}>
+          <Typography variant="h2">Net Worth</Typography>
+          <ChartXY
+            width={1000}
+            height={400}
+            data={cash}
+            // @ts-expect-error in the ChartXY they should be required, but it use a default config
+            config={{
+              chartType: 'BarStack',
+              yAxis: {
+                label: 'CHF',
+              },
+            }}
+          />
+        </Box>
+      ) : null}
 
-      <Box mb={4}>
-        <Typography variant="h2">Savings</Typography>
-        <ChartXY
-          width={1000}
-          height={400}
-          data={savings}
-          // @ts-expect-error in the ChartXY they should be required, but it use a default config
-          config={{
-            chartType: 'LineSeries',
-            yAxis: {
-              label: 'CHF',
-            },
-          }}
-        />
-      </Box>
+      {savings.length > 0 ? (
+        <Box mb={4}>
+          <Typography variant="h2">Savings</Typography>
+          <ChartXY
+            width={1000}
+            height={400}
+            data={savings}
+            // @ts-expect-error in the ChartXY they should be required, but it use a default config
+            config={{
+              chartType: 'LineSeries',
+              yAxis: {
+                label: 'CHF',
+              },
+            }}
+          />
+        </Box>
+      ) : null}
     </Layout>
   )
 }
@@ -137,6 +141,10 @@ function MetricText({
   percentage,
   type = 'value',
 }: MetricTextProps) {
+  if (!value && !percentage) {
+    return null
+  }
+
   return (
     <Box mb={2}>
       <Typography variant="h4" component="h2">

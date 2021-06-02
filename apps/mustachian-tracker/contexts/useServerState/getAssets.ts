@@ -39,7 +39,32 @@ function getInitialData(): AssetsDoc {
 
   return {
     assets: {
-      [now.getFullYear()]: [],
+      [now.getFullYear()]: [
+        // {
+        //   name: 'Bank Account',
+        //   category: 'CASH',
+        //   currency: 'CHF',
+        //   values: Array.from({ length: 12 }).map((key, index) => index * 1000),
+        // },
+        // {
+        //   name: 'Pension Fund',
+        //   category: 'PENSION_FUND',
+        //   currency: 'CHF',
+        //   values: Array.from({ length: 12 }).map((key, index) => index * 1000),
+        // },
+        // {
+        //   name: 'Private Pension Fund',
+        //   category: 'PENSION_FUND_PRIVATE',
+        //   currency: 'CHF',
+        //   values: Array.from({ length: 12 }).map((key, index) => index * 1000),
+        // },
+        // {
+        //   name: 'Job 1',
+        //   category: 'CASH_INCOME',
+        //   currency: 'CHF',
+        //   values: Array.from({ length: 12 }).map((key, index) => index * 1000),
+        // },
+      ],
     },
   }
 }
