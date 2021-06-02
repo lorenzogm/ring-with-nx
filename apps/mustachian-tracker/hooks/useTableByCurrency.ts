@@ -19,8 +19,8 @@ type UseTableByCurrency = {
 export default function useTableByCurrency({
   assetCategory,
 }: UseTableByCurrency): {
-  columns: Array<Column>
-  data: Array<Record<AssetTableRowCategory, AssetsTableColumns>>
+  columns: Array<Column> | null
+  data: Array<Record<AssetTableRowCategory, AssetsTableColumns>> | null
 } {
   const [clientState] = useClientState()
 
@@ -30,7 +30,7 @@ export default function useTableByCurrency({
   )
 
   if (!keys) {
-    return null
+    return { columns: null, data: null }
   }
 
   const data = Object.entries(keys).map(([key, values]) => {

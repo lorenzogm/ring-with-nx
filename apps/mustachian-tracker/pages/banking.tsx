@@ -1,8 +1,7 @@
 import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
 import Button from '@ring/components/Button'
-import Table from '@ring/components/Table'
 import Layout from 'components/Layouts/Layout'
+import TableWithTitle from 'components/TableWithTitle'
 import useTableByCurrency from 'hooks/useTableByCurrency'
 import { withAuthUserTokenSSR } from 'next-firebase-auth'
 import { ReactElement } from 'react'
@@ -50,30 +49,27 @@ export default function CashPage(): ReactElement {
           ))}
       </Box>
 
-      <Box mb={4}>
-        <Typography variant="h2">Cash</Typography>
-        <Table columns={columns} data={data} />
-      </Box>
-
-      <Box mb={4}>
-        <Typography variant="h3">Income</Typography>
-        <Table columns={incomeColumns} data={incomeData} />
-      </Box>
-
-      <Box mb={4}>
-        <Typography variant="h3">Expenses</Typography>
-        <Table columns={expensesColumns} data={expensesData} />
-      </Box>
-
-      <Box mb={4}>
-        <Typography variant="h3">Savings</Typography>
-        <Table columns={savingsColumns} data={savingsData} />
-      </Box>
-
-      <Box mb={4}>
-        <Typography variant="h3">Transfers</Typography>
-        <Table columns={transfersColumns} data={transfersData} />
-      </Box>
+      <TableWithTitle title="Cash" columns={columns} data={data} />
+      <TableWithTitle
+        title="Income"
+        columns={incomeColumns}
+        data={incomeData}
+      />
+      <TableWithTitle
+        title="Expenses"
+        columns={expensesColumns}
+        data={expensesData}
+      />
+      <TableWithTitle
+        title="Savings"
+        columns={savingsColumns}
+        data={savingsData}
+      />
+      <TableWithTitle
+        title="Transfers"
+        columns={transfersColumns}
+        data={transfersData}
+      />
     </Layout>
   )
 }

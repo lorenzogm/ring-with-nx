@@ -1,7 +1,5 @@
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import Table from '@ring/components/Table'
 import Layout from 'components/Layouts/Layout'
+import TableWithTitle from 'components/TableWithTitle'
 import useTableByCurrency from 'hooks/useTableByCurrency'
 import { withAuthUserTokenSSR } from 'next-firebase-auth'
 import { ReactElement } from 'react'
@@ -24,18 +22,16 @@ export default function PillarPage(): ReactElement {
 
   return (
     <Layout>
-      <Box mb={4}>
-        <Typography variant="h2">Pension Funds</Typography>
-        <Table columns={pensionFundColumns} data={pensionFundData} />
-      </Box>
-
-      <Box mb={4}>
-        <Typography variant="h2">Private Pension Funds</Typography>
-        <Table
-          columns={pensionFundsPrivateColumns}
-          data={pensionFundsPrivateData}
-        />
-      </Box>
+      <TableWithTitle
+        title="Pension Funds"
+        columns={pensionFundColumns}
+        data={pensionFundData}
+      />
+      <TableWithTitle
+        title="Private Pension Funds"
+        columns={pensionFundsPrivateColumns}
+        data={pensionFundsPrivateData}
+      />
     </Layout>
   )
 }
