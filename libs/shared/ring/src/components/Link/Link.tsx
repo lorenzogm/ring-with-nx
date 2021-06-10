@@ -11,7 +11,7 @@ export default forwardRef(
     ref,
   ) => {
     return (
-      <LinkStyled href={href} onClick={onClick} variantType={variant}>
+      <LinkStyled href={href} onClick={onClick} $variantType={variant}>
         {startIcon && <IconStart>{startIcon}</IconStart>}
         {text}
         {endIcon && <IconEnd>{endIcon}</IconEnd>}
@@ -22,7 +22,7 @@ export default forwardRef(
 
 const LinkStyled = styled(Link)<{
   theme: Theme
-  variantType: LinkProps['variant']
+  $variantType: LinkProps['variant']
 }>`
   cursor: pointer;
   text-decoration: none;
@@ -41,12 +41,8 @@ const LinkStyled = styled(Link)<{
 
   font-size: 1.3em;
 
-  ${({ theme, variantType }) => `
+  ${({ theme }) => `
     padding: ${theme.spacing(1, 1)};
-    ${
-      variantType === 'link' &&
-      `background-color: ${theme.palette.background.paper};`
-    }
   `}
 `
 

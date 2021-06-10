@@ -28,11 +28,11 @@ export function Grid({
   const mediaQuery = useMediaQueryGetCurrent()
 
   return (
-    <ContainerStyled maxWidth={fullWidth ? false : 'lg'} fullWidth={fullWidth}>
+    <ContainerStyled maxWidth={fullWidth ? false : 'lg'} $fullWidth={fullWidth}>
       <BoxContainer
-        backgroundImage={backgroundImage && backgroundImage[mediaQuery]}
+        $backgroundImage={backgroundImage && backgroundImage[mediaQuery]}
         bgcolor={backgroundColor}
-        fullWidth={fullWidth}
+        $fullWidth={fullWidth}
         mt={marginTop}
         mr={marginRight}
         mb={marginBottom}
@@ -42,7 +42,7 @@ export function Grid({
         pb={paddingBottom}
         pl={paddingLeft}
       >
-        <ContainerStyled fullWidth={!fullWidth}>
+        <ContainerStyled $fullWidth={!fullWidth}>
           <GridMui container spacing={spacing}>
             {items.map((item, index) => (
               <GridMui
@@ -80,18 +80,18 @@ export function Grid({
   )
 }
 
-const ContainerStyled = styled(Container)<{ fullWidth: boolean }>`
-  ${({ fullWidth }) => fullWidth && `padding-left: 0;`}
-  ${({ fullWidth }) => fullWidth && `padding-right: 0;`}
+const ContainerStyled = styled(Container)<{ $fullWidth: boolean }>`
+  ${({ $fullWidth }) => $fullWidth && `padding-left: 0;`}
+  ${({ $fullWidth }) => $fullWidth && `padding-right: 0;`}
 `
 
 const BoxContainer = styled(Box)<{
-  backgroundImage: ImageData
-  fullWidth: boolean
+  $backgroundImage: ImageData
+  $fullWidth: boolean
 }>`
-  ${({ backgroundImage, fullWidth }) => `
-  ${backgroundImage && `background-image: url(${backgroundImage.src});`}
-  ${fullWidth && `padding-left: 0;`}
+  ${({ $backgroundImage, $fullWidth }) => `
+  ${$backgroundImage && `background-image: url(${$backgroundImage.src});`}
+  ${$fullWidth && `padding-left: 0;`}
     `}
 `
 
