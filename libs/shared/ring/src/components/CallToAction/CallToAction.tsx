@@ -8,13 +8,20 @@ export default function CallToAction({
   image,
   title,
   Image,
+  link,
 }: CallToActionProps): ReactElement | null {
-  return (
-    <Grid container direction="column" alignItems="center">
+  const render = (
+    <>
       {title ? (
         <Title variant={title.variant} text={title.text} align={'center'} />
       ) : null}
       {image ? <ImageRing image={image} as={Image} /> : null}
+    </>
+  )
+
+  return (
+    <Grid container direction="column" alignItems="center">
+      {link ? <a href={link}>{render}</a> : render}
     </Grid>
   )
 }

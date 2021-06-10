@@ -58,6 +58,7 @@ function componentParser(
         type: 'callToAction',
         image: imageParser(content.data.image),
         title: titleParser(content.data.title),
+        link: linkParser(content.data.link),
       }
 
     case 'carousel':

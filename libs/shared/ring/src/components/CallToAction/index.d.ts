@@ -5,6 +5,7 @@ export type CallToActionProps = {
   Image?: ImageProps['as']
   image: ImageParsed
   title: TitleParsed
+  link: string
 }
 
 export type CallToActionParsed = CallToActionProps & {
