@@ -17,6 +17,7 @@ export default function configParser({
     isMaintenanceEnabled: config.data.is_maintenance_enabled || false,
     currency: config.data.currency,
     header: config.data.header.data.body.map(sliceParser),
+    footer: config.data.footer.data.body.map(sliceParser),
     navigation: navigationItems.map((item) => ({
       type: item.type,
       slug: item.uid,

@@ -5,6 +5,7 @@ export type Config = {
   siteName: string
   isMaintenanceEnabled: boolean
   header: Slice[]
+  footer: Slice[]
   currency: string
   navigation: Navigation[]
   company: Company

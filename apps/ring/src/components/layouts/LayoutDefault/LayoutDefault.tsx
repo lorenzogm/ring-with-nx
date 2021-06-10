@@ -10,7 +10,6 @@ import exitPreview from 'services/api/preview/exitPreview'
 import CookieBanner from 'components/modules/CookieBanner'
 import { ImageParsed, ImageData, ImageProps } from '@ring/components/Image'
 import Aside from './Aside'
-import Footer from './Footer'
 import useMediaQueryGetCurrent from '@ring/hooks/useMediaQueryGetCurrent'
 import Grid from '@ring/components/Grid'
 
@@ -75,7 +74,14 @@ export default function LayoutDefault({
       </ContainerStyled>
 
       <Container>
-        <Footer config={config} />
+        {config.footer.map((section, index) => (
+          <Grid
+            key={index.toString()}
+            Image={Image}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...section}
+          />
+        ))}
       </Container>
 
       <Aside
