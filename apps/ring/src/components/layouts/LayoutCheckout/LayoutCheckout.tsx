@@ -28,7 +28,7 @@ export default function LayoutCheckout({
 }: LayoutCheckoutProps): ReactElement {
   return (
     <>
-      <Meta />
+      <Meta config={config} />
 
       <CookieBanner />
 
