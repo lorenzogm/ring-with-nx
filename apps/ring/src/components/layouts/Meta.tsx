@@ -7,7 +7,6 @@ type MetaProps = {
 }
 
 export default function Meta({ config }: MetaProps): ReactElement {
-  console.log(config)
   return (
     <Head>
       <title>{config.seo.title}</title>
