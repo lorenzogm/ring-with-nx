@@ -14,6 +14,7 @@ export type Config = {
   facebookUrl?: string
   paymentMethods: PaymentMethods
   shipping: Shipping
+  seo: SEO
 }
 
 export type Navigation = {
@@ -47,4 +48,11 @@ type PaymentMethodsCreditCard = {
 type Shipping = {
   costs: number
   freeAmount: number
+}
+
+type SEO = {
+  title: string
+  description: string
+  favicon: { url: string }
+  ogImage: string
 }

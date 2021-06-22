@@ -51,7 +51,7 @@ export default function LayoutDefault({
     <Background
       imageBackground={imageBackground && imageBackground[mediaQuery]}
     >
-      <Meta />
+      <Meta config={config} />
       {preview && (
         <div>
           <Button onClick={onClickExitPreview}>Exit Preview</Button>

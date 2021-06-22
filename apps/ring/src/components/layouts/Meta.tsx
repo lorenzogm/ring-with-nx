@@ -1,40 +1,40 @@
 import Head from 'next/head'
 import { ReactElement } from 'react'
+import { Config } from 'types/config'
 
-export default function Meta(): ReactElement {
+type MetaProps = {
+  config: Config
+}
+
+export default function Meta({ config }: MetaProps): ReactElement {
+  console.log(config)
   return (
     <Head>
-      <meta
-        name="description"
-        content="Check out my personal website. There is not a lot, but very useful and nice!"
-      />
+      <title>{config.seo.title}</title>
+      <meta name="description" content={config.seo.description} />
 
-      <meta property="og:image" content="/og-image.png" />
+      <meta property="og:image" content={config.seo.ogImage} />
 
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        href={config.seo.favicon.url}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        href={config.seo.favicon['32'].url}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        href={config.seo.favicon['16'].url}
       />
       <link rel="manifest" href="/favicon/site.webmanifest" />
-      <link
-        rel="mask-icon"
-        href="/favicon/safari-pinned-tab.svg"
-        color="#000000"
-      />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <link rel="mask-icon" href={config.seo.favicon.url} color="#000000" />
+      <link rel="shortcut icon" href={config.seo.favicon.url} />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />

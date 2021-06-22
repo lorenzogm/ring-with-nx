@@ -62,5 +62,11 @@ export default function configParser({
       costs: config.data.shipping_costs,
       freeAmount: config.data.shipping_free_amount,
     },
+    seo: {
+      title: config.data.title || null,
+      description: config.data.description || null,
+      favicon: config.data.favicon,
+      ogImage: config.data.og_image ? config.data.og_image.url : null,
+    },
   }
 }
