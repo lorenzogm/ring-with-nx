@@ -87,6 +87,7 @@ function componentParser(
         address: titleParser(content.data.address),
         email: titleParser(content.data.email),
         phoneNumber: titleParser(content.data.phone_number),
+        link: linkParser(content.data.link),
       }
 
     case 'teaser':

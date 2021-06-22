@@ -7,13 +7,21 @@ import { LinkProps } from './index.d'
 
 export default forwardRef(
   (
-    { href, onClick, text, startIcon, endIcon, variant = 'link' }: LinkProps,
+    {
+      href,
+      onClick,
+      text,
+      startIcon,
+      endIcon,
+      variant = 'link',
+      children,
+    }: LinkProps,
     ref,
   ) => {
     return (
       <LinkStyled href={href} onClick={onClick} $variantType={variant}>
         {startIcon && <IconStart>{startIcon}</IconStart>}
-        {text}
+        {text || children}
         {endIcon && <IconEnd>{endIcon}</IconEnd>}
       </LinkStyled>
     )

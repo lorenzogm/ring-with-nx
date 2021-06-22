@@ -8,6 +8,7 @@ export type ShopLocationProps = {
   address: TitleParsed
   email: TitleParsed
   phoneNumber: TitleParsed
+  link: string
 }
 
 export type ShopLocationParsed = ShopLocationProps & {
