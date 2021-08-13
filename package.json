@@ -63,7 +63,7 @@
     "lodash.flatten": "^4.4.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
-    "next": "10.1.3",
+    "next": "11.1.0",
     "next-firebase-auth": "^0.13.1",
     "normalize.css": "^8.0.1",
     "prismic-javascript": "^3.0.2",
