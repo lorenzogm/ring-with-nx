@@ -1,0 +1,3 @@
+apps/ring-with-contentful/public/static/valtech-ch-saas.js
+libs/ring-contentful/src/types/generated/contentful.d.ts
+libs/ring-storyblok/src/types/generated/storyblok.d.ts

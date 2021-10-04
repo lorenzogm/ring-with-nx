@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nrwl/nx"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "@valtech-ch/eslint-config/plugins/react",
+        "@valtech-ch/eslint-config/rules/react",
+        "@valtech-ch/eslint-config/rules/nextjs"
+      ],
+      "rules": {
+        "import/prefer-default-export": "off",
+        "jest/expect-expect": "off"
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    }
+  ]
+}

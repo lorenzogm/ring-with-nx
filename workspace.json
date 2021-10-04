@@ -1,0 +1,217 @@
+{
+  "version": 2,
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "projects": {
+    "ring": {
+      "root": "apps/ring",
+      "sourceRoot": "apps/ring",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/next:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "root": "apps/ring",
+            "outputPath": "dist/apps/ring"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/next:server",
+          "options": {
+            "buildTarget": "ring:build",
+            "dev": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "ring:build:production",
+              "dev": false
+            }
+          }
+        },
+        "export": {
+          "executor": "@nrwl/next:export",
+          "options": {
+            "buildTarget": "ring:build:production"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ring"],
+          "options": {
+            "jestConfig": "apps/ring/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"]
+          }
+        }
+      }
+    },
+    "ring-core": {
+      "root": "libs/ring/core",
+      "sourceRoot": "libs/ring/core/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/ring/core",
+            "tsConfig": "libs/ring/core/tsconfig.lib.json",
+            "project": "libs/ring/core/package.json",
+            "entryFile": "libs/ring/core/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/ring/core/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ring/core/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ring/core"],
+          "options": {
+            "jestConfig": "libs/ring/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ring-nextjs": {
+      "root": "libs/ring/nextjs",
+      "sourceRoot": "libs/ring/nextjs/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/ring/nextjs",
+            "tsConfig": "libs/ring/nextjs/tsconfig.lib.json",
+            "project": "libs/ring/nextjs/package.json",
+            "entryFile": "libs/ring/nextjs/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/ring/nextjs/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ring/nextjs/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ring/nextjs"],
+          "options": {
+            "jestConfig": "libs/ring/nextjs/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ring-storyblok": {
+      "root": "libs/ring/storyblok",
+      "sourceRoot": "libs/ring/storyblok/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/ring/storyblok",
+            "tsConfig": "libs/ring/storyblok/tsconfig.lib.json",
+            "project": "libs/ring/storyblok/package.json",
+            "entryFile": "libs/ring/storyblok/src/index.ts",
+            "external": ["react/jsx-runtime"],
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "libs/ring/storyblok/README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ring/storyblok/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ring/storyblok"],
+          "options": {
+            "jestConfig": "libs/ring/storyblok/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "types": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "parallel": false,
+            "commands": [
+              "yarn storyblok pull-components --space=128952",
+              "mkdir -p libs/ring/storyblok/src/types/generated",
+              "yarn storyblok-generate-ts source=./components.128952.json target=./libs/ring/storyblok/src/types/generated/storyblok.types.ts",
+              "rm components.128952.json",
+              "rm presets.128952.json"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

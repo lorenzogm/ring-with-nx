@@ -1,0 +1,30 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.*?.json"
+  },
+  "extends": ["plugin:@nrwl/nx/react-typescript", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "rules": {
+    "@typescript-eslint/semi": "off",
+    "import/no-unresolved": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ],
+  "env": {
+    "jest": true
+  }
+}
