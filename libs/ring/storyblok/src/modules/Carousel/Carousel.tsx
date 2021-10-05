@@ -3,7 +3,11 @@ import { useSpacing } from '@ring/storyblok/hooks'
 import { CarouselStoryblok } from '@ring/storyblok/types'
 import { ReactElement } from 'react'
 
-type CarouselProps = CarouselStoryblok
+type CarouselProps = CarouselStoryblok & {
+  mobileMarginBottom?: string
+  tabletMarginBottom?: string
+  laptopMarginBottom?: string
+}
 
 export function Carousel({
   items,
