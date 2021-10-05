@@ -8,8 +8,11 @@ export type ContainerModuleProps = Pick<GridProps, 'justifyContent'> & {
   children: ReactElement
   disableMargins?: boolean
   alignContent?: GridJustification
+  mobileFlexDirection: 'row' | 'column'
   mobileMarginBottom: number
+  tabletFlexDirection: 'row' | 'column'
   tabletMarginBottom: number
+  laptopFlexDirection: 'row' | 'column'
   laptopMarginBottom: number
 }
 
@@ -19,8 +22,11 @@ export function ContainerModule({
   children,
   disableMargins,
   justifyContent,
+  mobileFlexDirection,
   mobileMarginBottom,
+  tabletFlexDirection,
   tabletMarginBottom,
+  laptopFlexDirection,
   laptopMarginBottom,
 }: ContainerModuleProps): ReactElement {
   return (
@@ -30,8 +36,11 @@ export function ContainerModule({
       $backgroundColor={backgroundColor}
       $justifyContent={justifyContent}
       $mobileMarginBottom={mobileMarginBottom}
+      $mobileFlexDirection={mobileFlexDirection}
       $tabletMarginBottom={tabletMarginBottom}
+      $tabletFlexDirection={tabletFlexDirection}
       $laptopMarginBottom={laptopMarginBottom}
+      $laptopFlexDirection={laptopFlexDirection}
     >
       {children}
     </ContainerStyled>
@@ -42,8 +51,11 @@ const ContainerStyled = styled(Container)<{
   $alignContent: ContainerModuleProps['alignContent']
   $backgroundColor: ContainerModuleProps['backgroundColor']
   $justifyContent: ContainerModuleProps['justifyContent']
+  $mobileFlexDirection: ContainerModuleProps['mobileFlexDirection']
   $mobileMarginBottom: ContainerModuleProps['mobileMarginBottom']
+  $tabletFlexDirection: ContainerModuleProps['tabletFlexDirection']
   $tabletMarginBottom: ContainerModuleProps['tabletMarginBottom']
+  $laptopFlexDirection: ContainerModuleProps['laptopFlexDirection']
   $laptopMarginBottom: ContainerModuleProps['laptopMarginBottom']
 }>`
   ${({
@@ -51,8 +63,11 @@ const ContainerStyled = styled(Container)<{
     $alignContent,
     $backgroundColor,
     $justifyContent,
+    $mobileFlexDirection,
     $mobileMarginBottom,
+    $tabletFlexDirection,
     $tabletMarginBottom,
+    $laptopFlexDirection,
     $laptopMarginBottom,
   }) => `
     display: flex;
@@ -69,13 +84,16 @@ const ContainerStyled = styled(Container)<{
         : ''
     }
 
+    flex-direction: ${$mobileFlexDirection};
     margin: ${theme.spacing(0, 0, $mobileMarginBottom, 0)};
 
     ${theme.breakpoints.up('sm')} {
+      flex-direction: ${$tabletFlexDirection};
       margin: ${theme.spacing(0, 0, $tabletMarginBottom, 0)};
     }
 
     ${theme.breakpoints.up('md')} {
+      flex-direction: ${$laptopFlexDirection};
       margin: ${theme.spacing(0, 0, $laptopMarginBottom, 0)};
     }
   `}

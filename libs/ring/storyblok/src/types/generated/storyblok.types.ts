@@ -7,6 +7,9 @@ export interface CarouselStoryblok {
     name: string;
     title?: string;
   }[];
+  mobileMarginBottom?: number;
+  tabletMarginBottom?: number;
+  laptopMarginBottom?: number;
   _uid: string;
   component: "Carousel";
   [k: string]: any;
@@ -32,15 +35,15 @@ export interface ContainerStoryblok {
     | ImageStoryblok
     | TitleStoryblok
   )[];
-  justifyContent: "flex-start" | "center" | "space-between";
   backgroundColor?: string;
   fullWidth?: boolean;
-  mobileMarginTop: number;
-  tabletMarginTop: number;
-  laptopMarginTop: number;
+  justifyContent: "flex-start" | "center" | "space-between";
   mobileMarginBottom: number;
   tabletMarginBottom: number;
   laptopMarginBottom: number;
+  mobileFlexDirection: "row" | "column";
+  tabletFlexDirection: "row" | "column";
+  laptopFlexDirection: "row" | "column";
   _uid: string;
   component: "Container";
   [k: string]: any;

@@ -13,8 +13,11 @@ export function Container({
   backgroundColor,
   items,
   justifyContent,
+  mobileFlexDirection,
   mobileMarginBottom,
+  tabletFlexDirection,
   tabletMarginBottom,
+  laptopFlexDirection,
   laptopMarginBottom,
 }: ContainerProps): ReactElement {
   const mobileMarginBottomUpdated = useSpacing(mobileMarginBottom)
@@ -26,8 +29,11 @@ export function Container({
       backgroundColor={backgroundColor}
       justifyContent={justifyContent}
       mobileMarginBottom={mobileMarginBottomUpdated}
+      mobileFlexDirection={mobileFlexDirection}
       tabletMarginBottom={tabletMarginBottomUpdated}
+      tabletFlexDirection={tabletFlexDirection}
       laptopMarginBottom={laptopMarginBottomUpdated}
+      laptopFlexDirection={laptopFlexDirection}
     >
       <>
         {items.map((item) => (
