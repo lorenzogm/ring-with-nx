@@ -2,9 +2,8 @@ import GridMui, {
   GridProps as GridMuiProps,
   GridSize,
 } from '@material-ui/core/Grid'
+import { useSpacing } from '@ring/core/index'
 import styled from 'styled-components'
-
-import { useSpacing } from '../../hooks'
 
 export type GridProps = {
   xsOffset?: GridSize

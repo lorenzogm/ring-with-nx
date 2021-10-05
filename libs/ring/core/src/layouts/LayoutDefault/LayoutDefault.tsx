@@ -45,12 +45,7 @@ export function LayoutDefault({
 }
 
 const ContainerStyled = styled(Container)`
-  display: flex;
   min-height: calc(100vh - 88px);
-  flex-direction: column;
-  margin-bottom: ${({ theme }) => `${theme.spacing(6)}px`};
-  padding-left: 0;
-  padding-right: 0;
 `
 
 const Background = styled.div`

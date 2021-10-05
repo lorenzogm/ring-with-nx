@@ -23,9 +23,6 @@ export interface ContactInlineStoryblok {
 }
 
 export interface ContainerStoryblok {
-  justifyContent: "flex-start" | "space-between";
-  backgroundColor?: string;
-  fullWidth?: boolean;
   items: (
     | CarouselStoryblok
     | ContactInlineStoryblok
@@ -33,15 +30,17 @@ export interface ContainerStoryblok {
     | GridContainerStoryblok
     | GridItemStoryblok
     | ImageStoryblok
+    | TitleStoryblok
   )[];
-  marginTop?: number;
-  marginRight?: number;
-  marginBottom?: number;
-  marginLeft?: number;
-  paddingTop?: number;
-  paddingRight?: number;
-  paddingBottom?: number;
-  paddingLeft?: number;
+  justifyContent: "flex-start" | "center" | "space-between";
+  backgroundColor?: string;
+  fullWidth?: boolean;
+  mobileMarginTop: number;
+  tabletMarginTop: number;
+  laptopMarginTop: number;
+  mobileMarginBottom: number;
+  tabletMarginBottom: number;
+  laptopMarginBottom: number;
   _uid: string;
   component: "Container";
   [k: string]: any;
@@ -71,25 +70,27 @@ export interface GlobalReferenceStoryblok {
 
 export interface GridContainerStoryblok {
   items: GridItemStoryblok[];
+  mobileMarginBottom?: number;
+  tabletMarginBottom?: number;
+  laptopMarginBottom?: number;
   _uid: string;
   component: "GridContainer";
   [k: string]: any;
 }
 
 export interface GridItemStoryblok {
-  item: (
+  items: (
     | CarouselStoryblok
     | ContactInlineStoryblok
     | ContainerStoryblok
     | GridContainerStoryblok
     | GridItemStoryblok
     | ImageStoryblok
+    | TitleStoryblok
   )[];
-  xs?: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-  xl?: number;
+  mobileColumns?: number;
+  tabletColumns?: number;
+  laptopColumns?: number;
   _uid: string;
   component: "GridItem";
   [k: string]: any;
@@ -103,6 +104,7 @@ export interface HeaderStoryblok {
     | GridContainerStoryblok
     | GridItemStoryblok
     | ImageStoryblok
+    | TitleStoryblok
   )[];
   _uid: string;
   component: "Header";
@@ -118,6 +120,10 @@ export interface ImageStoryblok {
     name: string;
     title?: string;
   };
+  layout: "fill" | "responsive";
+  objectFit?: "contain" | "cover";
+  width?: number;
+  height?: number;
   _uid: string;
   component: "Image";
   [k: string]: any;
@@ -129,5 +135,18 @@ export interface NavigationItemStoryblok {
   items?: NavigationItemStoryblok[];
   _uid: string;
   component: "NavigationItem";
+  [k: string]: any;
+}
+
+export interface TitleStoryblok {
+  title: string;
+  mobileMarginBottom: number;
+  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body1" | "body2" | "subtitle1" | "subtitle2" | "caption";
+  align: "left" | "right" | "center" | "justify";
+  verticalAlign?: "flex-start" | "center" | "flex-end";
+  tabletMarginBottom: number;
+  laptopMarginBottom: number;
+  _uid: string;
+  component: "Title";
   [k: string]: any;
 }

@@ -1,43 +1,33 @@
 import { GridSize } from '@material-ui/core'
 import { GridItem as GridItemRing } from '@ring/core/index'
-import {
-  DynamicComponent,
-  GridItemStoryblok,
-  Modules,
-} from '@ring/storyblok/index'
+import { DynamicComponent, GridItemStoryblok } from '@ring/storyblok/index'
 import { ReactElement } from 'react'
 
 type GridItemProps = GridItemStoryblok & {
-  xs?: string
-  sm?: string
-  md?: string
-  lg?: string
-  xl?: string
+  mobileColumns?: string
+  tabletColumns?: string
+  laptopColumns?: string
 }
 
 export function GridItem({
-  item,
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
+  items,
+  mobileColumns,
+  tabletColumns,
+  laptopColumns,
 }: GridItemProps): ReactElement {
-  const xsUpdated = useMediaQuery({ mediaQuery: xs })
-  const smUpdated = useMediaQuery({ mediaQuery: sm })
-  const mdUpdated = useMediaQuery({ mediaQuery: md })
-  const lgUpdated = useMediaQuery({ mediaQuery: lg })
-  const xlUpdated = useMediaQuery({ mediaQuery: xl })
+  const xs = useMediaQuery({ mediaQuery: mobileColumns })
+  const sm = useMediaQuery({ mediaQuery: tabletColumns })
+  const md = useMediaQuery({ mediaQuery: laptopColumns })
 
   return (
-    <GridItemRing
-      xs={xsUpdated}
-      sm={smUpdated}
-      md={mdUpdated}
-      lg={lgUpdated}
-      xl={xlUpdated}
-    >
-      <DynamicComponent content={item[0] as Modules} />
+    <GridItemRing xs={xs} sm={sm} md={md}>
+      {items.map((content) => (
+        <DynamicComponent
+          content={content}
+          // eslint-disable-next-line no-underscore-dangle
+          key={content._uid}
+        />
+      ))}
     </GridItemRing>
   )
 }

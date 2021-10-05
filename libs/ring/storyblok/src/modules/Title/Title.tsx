@@ -1,33 +1,36 @@
-import { GridContainer as GridContainerRing } from '@ring/core/index'
+import { Title as TitleRing } from '@ring/core/index'
 import { useSpacing } from '@ring/storyblok/hooks'
-import { DynamicComponent, GridContainerStoryblok } from '@ring/storyblok/index'
+import { TitleStoryblok } from '@ring/storyblok/index'
 import { ReactElement } from 'react'
 
-type GridContainerProps = GridContainerStoryblok & {
+type TitleProps = TitleStoryblok & {
   mobileMarginBottom?: string
   tabletMarginBottom?: string
   laptopMarginBottom?: string
 }
 
-export function GridContainer({
-  items,
+export function Title({
+  align,
   mobileMarginBottom,
   tabletMarginBottom,
   laptopMarginBottom,
-}: GridContainerProps): ReactElement {
+  title,
+  variant,
+  verticalAlign,
+}: TitleProps): ReactElement {
   const mobileMarginBottomUpdated = useSpacing(mobileMarginBottom)
   const tabletMarginBottomUpdated = useSpacing(tabletMarginBottom)
   const laptopMarginBottomUpdated = useSpacing(laptopMarginBottom)
 
   return (
-    <GridContainerRing
+    <TitleRing
+      align={align}
       mobileMarginBottom={mobileMarginBottomUpdated}
       tabletMarginBottom={tabletMarginBottomUpdated}
       laptopMarginBottom={laptopMarginBottomUpdated}
-    >
-      {items.map((item) => (
-        <DynamicComponent key={item._uid} content={item} />
-      ))}
-    </GridContainerRing>
+      title={title}
+      variant={variant}
+      verticalAlign={verticalAlign}
+    />
   )
 }

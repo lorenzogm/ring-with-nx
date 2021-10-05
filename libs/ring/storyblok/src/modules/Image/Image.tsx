@@ -2,7 +2,11 @@ import { ImageModule as ImageModuleRing } from '@ring/core/index'
 import { ImageStoryblok } from '@ring/storyblok/index'
 import { ReactElement } from 'react'
 
-type ImageProps = ImageStoryblok
+type ImageProps = ImageStoryblok & {
+  objectFit?: ''
+  width?: ''
+  height?: ''
+}
 
 export function Image({
   image,
@@ -13,6 +17,7 @@ export function Image({
 }: ImageProps): ReactElement {
   const widthUpdated = useSize({ layout, size: width })
   const heightUpdated = useSize({ layout, size: height })
+
   return (
     <ImageModuleRing
       src={image.filename}
@@ -38,5 +43,5 @@ function useSize({ layout, size }: UseSizeProps) {
     return undefined
   }
 
-  return size as number
+  return size
 }

@@ -1,5 +1,6 @@
 import { createRingTheme, RingTheme, RingThemeOptions } from '@ring/core/index'
 
+import { addResponsiveFont } from './addResponsiveFont'
 import { colors } from './colors'
 import { footer } from './footer'
 import { grid } from './grid'
@@ -26,12 +27,12 @@ function commonThemeOptions(themeOptions: RingThemeOptions): RingThemeOptions {
 }
 
 export const createTheme = (themeOptions: RingThemeOptions): RingTheme => {
-  const theme = createRingTheme({
+  let theme = createRingTheme({
     ...themeOptions,
     ...commonThemeOptions(themeOptions),
   })
 
-  // theme = addResponsiveFont(theme)
+  theme = addResponsiveFont(theme)
 
   return theme
 }

@@ -5,6 +5,7 @@ import {
   GridContainer,
   GridItem,
   Image,
+  Title,
 } from '@ring/storyblok/modules'
 import {
   CarouselStoryblok,
@@ -14,6 +15,7 @@ import {
   GridContainerStoryblok,
   GridItemStoryblok,
   ImageStoryblok,
+  TitleStoryblok,
 } from '@ring/storyblok/types'
 import { ReactElement } from 'react'
 import StoryblokReact from 'storyblok-react'
@@ -50,6 +52,7 @@ export type Modules =
   | ContactInlineStoryblok
   | ContentTemplateStoryblok
   | ImageStoryblok
+  | TitleStoryblok
 const ModulesMapping = {
   ContactInline,
   Container,
@@ -58,6 +61,7 @@ const ModulesMapping = {
   GridContainer,
   GridItem,
   Image,
+  Title,
 }
 
 type DynamicComponentProps = {

@@ -12,6 +12,8 @@ export type TypographyProps = Omit<MuiTypographyProps, 'variant'> & {
     | 'h6'
     | 'body1'
     | 'body2'
+    | 'subtitle1'
+    | 'subtitle2'
     | 'caption'
 }
 
