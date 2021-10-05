@@ -25,13 +25,13 @@ export function ContainerModule({
 }: ContainerModuleProps): ReactElement {
   return (
     <ContainerStyled
-      alignContent={alignContent}
       disableMargins={disableMargins}
-      justifyContent={justifyContent}
-      mobileMarginBottom={mobileMarginBottom}
-      tabletMarginBottom={tabletMarginBottom}
-      laptopMarginBottom={laptopMarginBottom}
+      $alignContent={alignContent}
       $backgroundColor={backgroundColor}
+      $justifyContent={justifyContent}
+      $mobileMarginBottom={mobileMarginBottom}
+      $tabletMarginBottom={tabletMarginBottom}
+      $laptopMarginBottom={laptopMarginBottom}
     >
       {children}
     </ContainerStyled>
@@ -39,43 +39,44 @@ export function ContainerModule({
 }
 
 const ContainerStyled = styled(Container)<{
-  alignContent: ContainerModuleProps['alignContent']
-  justifyContent: ContainerModuleProps['justifyContent']
-  mobileMarginBottom: ContainerModuleProps['mobileMarginBottom']
-  tabletMarginBottom: ContainerModuleProps['tabletMarginBottom']
-  laptopMarginBottom: ContainerModuleProps['laptopMarginBottom']
+  $alignContent: ContainerModuleProps['alignContent']
   $backgroundColor: ContainerModuleProps['backgroundColor']
+  $justifyContent: ContainerModuleProps['justifyContent']
+  $mobileMarginBottom: ContainerModuleProps['mobileMarginBottom']
+  $tabletMarginBottom: ContainerModuleProps['tabletMarginBottom']
+  $laptopMarginBottom: ContainerModuleProps['laptopMarginBottom']
 }>`
   ${({
     theme,
-    alignContent,
-    justifyContent,
-    mobileMarginBottom,
-    tabletMarginBottom,
-    laptopMarginBottom,
+    $alignContent,
     $backgroundColor,
+    $justifyContent,
+    $mobileMarginBottom,
+    $tabletMarginBottom,
+    $laptopMarginBottom,
   }) => `
-    ${justifyContent ? `justify-content: ${justifyContent}` : ''};
+    display: flex;
+
+    ${$backgroundColor ? `background-color: ${$backgroundColor};` : ''}
+    ${$justifyContent ? `justify-content: ${$justifyContent}` : ''};
     ${
-      alignContent
+      $alignContent
         ? `
           flex-direction: column;
-          justify-content: ${alignContent};
+          justify-content: ${$alignContent};
           height: 100%;
           `
         : ''
     }
-    ${$backgroundColor ? `background-color: ${$backgroundColor};` : ''}
-    display: flex;
 
-    margin: ${theme.spacing(0, 0, mobileMarginBottom, 0)};
+    margin: ${theme.spacing(0, 0, $mobileMarginBottom, 0)};
 
     ${theme.breakpoints.up('sm')} {
-      margin: ${theme.spacing(0, 0, tabletMarginBottom, 0)};
+      margin: ${theme.spacing(0, 0, $tabletMarginBottom, 0)};
     }
 
     ${theme.breakpoints.up('md')} {
-      margin: ${theme.spacing(0, 0, laptopMarginBottom, 0)};
+      margin: ${theme.spacing(0, 0, $laptopMarginBottom, 0)};
     }
   `}
 `

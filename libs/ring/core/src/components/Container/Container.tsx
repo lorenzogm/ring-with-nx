@@ -14,16 +14,16 @@ export function Container({
   ...props
 }: ContainerProps): ReactElement {
   return (
-    <ContainerStyled {...props} disableGutters disableMargins={disableMargins}>
+    <ContainerStyled {...props} disableGutters $disableMargins={disableMargins}>
       {children}
     </ContainerStyled>
   )
 }
 
-const ContainerStyled = styled(ContainerMui)<{ disableMargins?: boolean }>`
-  ${({ theme, disableMargins }) => `
+const ContainerStyled = styled(ContainerMui)<{ $disableMargins?: boolean }>`
+  ${({ theme, $disableMargins }) => `
     ${
-      disableMargins
+      $disableMargins
         ? ''
         : `
           padding-left: ${theme.spacing(theme.grid.margin.xs)}px;
