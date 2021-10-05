@@ -38,8 +38,8 @@ export function LayoutDefault({
         <main>{children}</main>
       </ContainerStyled>
 
-      <ReactCookieConsent>
-        This website uses cookies to enhance the user experience.
+      <ReactCookieConsent buttonText="Acepto">
+        Este sitio web utiliza cookies para mejorar la expencia de usuario.
       </ReactCookieConsent>
     </Background>
   )
