@@ -8,11 +8,11 @@ export type ContainerModuleProps = Pick<GridProps, 'justifyContent'> & {
   children: ReactElement
   disableMargins?: boolean
   alignContent?: GridJustification
-  mobileFlexDirection: 'row' | 'column'
+  mobileFlexDirection?: 'row' | 'column'
   mobileMarginBottom: number
-  tabletFlexDirection: 'row' | 'column'
+  tabletFlexDirection?: 'row' | 'column'
   tabletMarginBottom: number
-  laptopFlexDirection: 'row' | 'column'
+  laptopFlexDirection?: 'row' | 'column'
   laptopMarginBottom: number
 }
 
@@ -84,16 +84,16 @@ const ContainerStyled = styled(Container)<{
         : ''
     }
 
-    flex-direction: ${$mobileFlexDirection};
+    ${$mobileFlexDirection ? `flex-direction: ${$mobileFlexDirection}` : ''};
     margin: ${theme.spacing(0, 0, $mobileMarginBottom, 0)};
 
     ${theme.breakpoints.up('sm')} {
-      flex-direction: ${$tabletFlexDirection};
+      ${$tabletFlexDirection ? `flex-direction: ${$tabletFlexDirection}` : ''};
       margin: ${theme.spacing(0, 0, $tabletMarginBottom, 0)};
     }
 
     ${theme.breakpoints.up('md')} {
-      flex-direction: ${$laptopFlexDirection};
+      ${$laptopFlexDirection ? `flex-direction: ${$laptopFlexDirection}` : ''};
       margin: ${theme.spacing(0, 0, $laptopMarginBottom, 0)};
     }
   `}
