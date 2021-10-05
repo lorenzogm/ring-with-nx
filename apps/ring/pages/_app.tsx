@@ -2,6 +2,7 @@ import 'normalize.css/normalize.css'
 
 import { RingProvider } from '@ring/core/index'
 import { Image, Link } from '@ring/nextjs/index'
+import { Header } from '@ring/storyblok/index'
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import { ReactElement } from 'react'
 
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <RingProvider
-      components={{ Image, Link }}
+      components={{ Header, Image, Link }}
       layout={{ header: story.content.header }}
       locale={locale}
       locales={locales}

@@ -1,10 +1,9 @@
 import { Button, Container, Meta, previewExit } from '@ring/core/index'
+import { useRing } from '@ring/core/providers'
 import { useRouter } from 'next/router'
 import { ReactElement, ReactNode } from 'react'
 import ReactCookieConsent from 'react-cookie-consent'
 import styled from 'styled-components'
-
-import { Header } from './Header'
 
 type LayoutDefaultProps = {
   preview: boolean
@@ -16,6 +15,8 @@ export function LayoutDefault({
   children,
 }: LayoutDefaultProps): ReactElement {
   const router = useRouter()
+  const { components } = useRing()
+  const { Header } = components
 
   async function onClickExitPreview() {
     await previewExit()
@@ -32,7 +33,7 @@ export function LayoutDefault({
         </div>
       )}
 
-      <Header />
+      {Header ? <Header /> : null}
       <ContainerStyled>
         <main>{children}</main>
       </ContainerStyled>

@@ -1,4 +1,4 @@
-import { RingTheme } from '@ring'
+import { RingTheme } from '@ring/core/index'
 
 import { MuiContainer } from './MuiContainer'
 

@@ -75,12 +75,14 @@ export type RingState = {
 
 type Components = {
   Head?: Head
+  Header?: Header
   Image?: Image
   Link?: Link
   Logo?: Logo
 }
 
 type Head = ({ children }: { children: ReactNode }) => ReactElement
+type Header = () => ReactElement
 type Image = ({ src }: ImageProps) => JSX.Element
 type Link = ({
   ariaLabel,

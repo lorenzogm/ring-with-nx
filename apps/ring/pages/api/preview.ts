@@ -28,5 +28,5 @@ export default async function preview(
   )
 
   // Redirect to the path from entry
-  res.redirect(`/${slug as string}?${params[1]}`)
+  res.redirect(`/${slug as string}?${params[1] as string}`)
 }

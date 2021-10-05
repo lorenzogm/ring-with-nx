@@ -82,25 +82,6 @@
       "sourceRoot": "libs/ring/core/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/ring/core",
-            "tsConfig": "libs/ring/core/tsconfig.lib.json",
-            "project": "libs/ring/core/package.json",
-            "entryFile": "libs/ring/core/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/ring/core/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -123,25 +104,6 @@
       "sourceRoot": "libs/ring/nextjs/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/ring/nextjs",
-            "tsConfig": "libs/ring/nextjs/tsconfig.lib.json",
-            "project": "libs/ring/nextjs/package.json",
-            "entryFile": "libs/ring/nextjs/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/ring/nextjs/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -164,25 +126,6 @@
       "sourceRoot": "libs/ring/storyblok/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/ring/storyblok",
-            "tsConfig": "libs/ring/storyblok/tsconfig.lib.json",
-            "project": "libs/ring/storyblok/package.json",
-            "entryFile": "libs/ring/storyblok/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/ring/storyblok/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
