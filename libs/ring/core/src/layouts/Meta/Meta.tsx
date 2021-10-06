@@ -2,44 +2,72 @@ import { useRing } from '@ring/core/index'
 import { ReactElement } from 'react'
 
 export function Meta(): ReactElement | null {
-  const { components, seo } = useRing()
+  const { components, meta } = useRing()
   const { Head } = components
 
   if (Head) {
     return (
       <Head>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
 
-        <meta property="og:image" content={seo.ogImage} />
+        <meta property="og:image" content={meta.openGraphImage} />
 
+        {/* <!-- generics --> */}
+        <link rel="icon" href={meta.favicons.favicon} />
+        <link rel="icon" href={meta.favicons.favicon16} sizes="16x16" />
+        <link rel="icon" href={meta.favicons.favicon32} sizes="32x32" />
+        {/* <link rel="icon" href="/path/to/favicon-57.png" sizes="57x57" />
+        <link rel="icon" href="/path/to/favicon-76.png" sizes="76x76" />
+        <link rel="icon" href="/path/to/favicon-96.png" sizes="96x96" />
+        <link rel="icon" href="/path/to/favicon-128.png" sizes="128x128" /> */}
+        <link
+          rel="icon"
+          href={meta.favicons.androidChrome192}
+          sizes="192x192"
+        />
+        {/* <link rel="icon" href="/path/to/favicon-228.png" sizes="228x228" /> */}
+
+        {/* <!-- Android --> */}
+        {/* <link
+          rel="shortcut icon"
+          href="/path/to/favicon-196.png"
+          sizes="196x196"
+        /> */}
+
+        {/* <!-- iOS --> */}
+        {/* <link
+          rel="apple-touch-icon"
+          href="/path/to/favicon-120.png"
+          sizes="120x120"
+        />
         <link
           rel="apple-touch-icon"
+          href="path/to/favicon-152.png"
+          sizes="152x152"
+        /> */}
+        <link
+          rel="apple-touch-icon"
+          href={meta.favicons.appleTouchIcon}
           sizes="180x180"
-          href={seo.favicons['180']}
         />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={seo.favicons['32']}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={seo.favicons['16']}
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="mask-icon" href={seo.favicons['180']} color="#000000" />
-        <link rel="shortcut icon" href={seo.favicons['180']} />
-        <meta name="msapplication-TileColor" content="#000000" />
+
+        {/* <!-- Windows 8 IE 10--> */}
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        {/* <meta
+          name="msapplication-TileImage"
+          content="/path/to/favicon-144.png"
+        /> */}
+
+        {/* <!— Windows 8.1 + IE11 and above —> */}
+        {/* <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-square70x70logo" content="favicon-128.png" />
         <meta
-          name="msapplication-config"
-          content="/favicon/browserconfig.xml"
+          name="msapplication-square150x150logo"
+          content="favicon-270.png"
         />
-        <meta name="theme-color" content="#000" />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <meta name="msapplication-TileImage" content="favicon-270.png" />
+        <meta name="msapplication-config" content="none" /> */}
 
         <link
           rel="stylesheet"
