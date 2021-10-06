@@ -1,5 +1,5 @@
 import { LayoutDefault } from '@ring/core/layouts'
-import { DynamicComponent } from '@ring/storyblok/templates'
+import { DynamicComponent } from '@ring/storyblok/components'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
 
@@ -18,6 +18,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
     // get array for slug because of catch all
     const { slug } = data.links[linkKey]
+
     const slugAsArray = slug.split('/')
     const [firstPath] = slugAsArray
 
@@ -54,10 +55,12 @@ export const getStaticProps: GetStaticProps = async ({
   }
 
   const { data } = await Storyblok.get(`cdn/stories/${slug}`, sbParams)
+  const config = await Storyblok.get(`cdn/stories/global/config`, sbParams)
 
   return {
     props: {
       story: data ? data.story : false,
+      config,
       preview,
       locale,
       locales,

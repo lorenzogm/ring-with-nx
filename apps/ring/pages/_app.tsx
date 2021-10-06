@@ -4,12 +4,13 @@ import { RingProvider } from '@ring/core/index'
 import { Image, Link } from '@ring/nextjs/index'
 import { Header } from '@ring/storyblok/index'
 import { AppProps } from 'next/dist/shared/lib/router/router'
+import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { blueTheme } from '../src/ui'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-  const { locale, locales, story } = pageProps
+  const { locale, locales, story, config } = pageProps
 
   if (!story) {
     return null
@@ -17,20 +18,20 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
 
   return (
     <RingProvider
-      components={{ Header, Image, Link }}
-      layout={{ header: story.content.header }}
+      components={{ Head, Header, Image, Link }}
+      layout={{ header: config.data.story.content.header }}
       locale={locale}
       locales={locales}
       theme={blueTheme}
-      seo={{
-        title: 'Ring',
-        description: 'Ring with Storyblok',
-        ogImage: '',
-        favicons: {
-          16: '',
-          32: '',
-          180: '',
-        },
+      meta={{
+        title: story.content.metaTitle || config.data.story.content.metaTitle,
+        description:
+          story.content.metaDescription ||
+          config.data.story.content.metaDescription,
+        openGraphImage:
+          story.content.metaOpenGraphImage?.filename ||
+          config.data.story.content.metaOpenGraphImage,
+        favicons: config.data.story.content.favicons,
       }}
     >
       <Component
