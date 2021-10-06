@@ -2,11 +2,11 @@ import { useRing } from '@ring/core/index'
 import { DynamicComponent, Modules } from '@ring/storyblok/index'
 import { ReactElement } from 'react'
 
-export function Header(): ReactElement {
+export function Header(): ReactElement | null {
   const { layout } = useRing()
   const { header } = layout
 
-  const body: Array<Modules> = header[0].reference.content.global[0].body
+  const body: Array<Modules> = header[0].body
 
   return (
     <>
