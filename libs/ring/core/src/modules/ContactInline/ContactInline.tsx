@@ -1,4 +1,4 @@
-import { Typography } from '@ring/core/index'
+import { LinkExternal, Typography } from '@ring/core/index'
 import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
@@ -43,7 +43,7 @@ const Title = styled(Typography)`
     margin-right: ${theme.spacing(2)}px;
   `}
 `
-const Link = styled.a`
+const Link = styled(LinkExternal)`
   ${({ theme }) => `
     margin-left: ${theme.spacing(1)}px;
   `}
