@@ -9,14 +9,19 @@ const initialState = {
   layout: {
     header: [],
   },
-  seo: {
+  meta: {
     title: '',
     description: '',
-    ogImage: '',
+    openGraphImage: '',
     favicons: {
-      16: '',
-      32: '',
-      180: '',
+      favicon: '',
+      favicon16: '',
+      favicon32: '',
+      androidChrome192: '',
+      androidChrome512: '',
+      appleTouchIcon: '',
+      mstile150: '',
+      safariPinnedTab: '',
     },
   },
 }
@@ -33,7 +38,7 @@ type ProviderProps = {
   locale: string
   locales: Array<string>
   theme: RingTheme
-  seo: SEO
+  meta: MetaProps
 }
 
 export function RingProvider({
@@ -42,8 +47,8 @@ export function RingProvider({
   layout,
   locale,
   locales,
+  meta,
   theme,
-  seo,
 }: ProviderProps): ReactElement {
   return (
     <StyledComponentsProvider theme={createRingTheme(theme)}>
@@ -53,7 +58,7 @@ export function RingProvider({
           layout,
           locale,
           locales,
-          seo,
+          meta,
         }}
       >
         <>
@@ -70,7 +75,7 @@ export type RingState = {
   layout: Layout
   locale?: string
   locales?: Array<string>
-  seo: SEO
+  meta: Meta
 }
 
 type Components = {
@@ -100,15 +105,20 @@ export type Layout = {
   header: Array<any>
 }
 
-export type SEO = {
+export type MetaProps = {
   title: string
   description: string
-  ogImage: string
+  openGraphImage: string
   favicons: Favicons
 }
 
 export type Favicons = {
-  16: string
-  32: string
-  180: string
+  favicon: string
+  favicon16: string
+  favicon32: string
+  androidChrome192: string
+  androidChrome512: string
+  appleTouchIcon: string
+  mstile150: string
+  safariPinnedTab: string
 }
