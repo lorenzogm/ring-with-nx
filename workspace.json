@@ -31,6 +31,13 @@
       "sourceRoot": "apps/ring",
       "projectType": "application",
       "targets": {
+        "config": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["cp apps/ring/.env.{args.env} apps/ring/.env.local"],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
