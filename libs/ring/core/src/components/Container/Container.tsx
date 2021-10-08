@@ -1,8 +1,8 @@
 import ContainerMui, {
   ContainerProps as ContainerMuiProps,
 } from '@material-ui/core/Container'
+import { styled } from '@ring/core/theme'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 export type ContainerProps = ContainerMuiProps & {
   disableMargins?: boolean

@@ -1,17 +1,17 @@
 import Paper from '@material-ui/core/Paper'
 import { ButtonUnstyled, Grid, Image } from '@ring/core/index'
-import { StoreProductColorsStoryblok } from '@ring/storyblok/types'
+import { StoreProductColor } from '@ring/core/types'
 import { ReactElement } from 'react'
 
 type ColorSelectorProps = {
-  colors: Array<StoreProductColorsStoryblok>
-  colorSelected: StoreProductColorsStoryblok['color']
+  colors: Array<StoreProductColor>
+  colorSelected: StoreProductColor['color']
   onSelectColor: ({
     imageSelected,
     colorSelected,
   }: {
-    imageSelected: StoreProductColorsStoryblok['image']
-    colorSelected: StoreProductColorsStoryblok['color']
+    imageSelected: StoreProductColor['image']
+    colorSelected: StoreProductColor['color']
   }) => void
 }
 
@@ -33,7 +33,7 @@ export function ColorSelector({
             >
               <Paper elevation={colorSelected === color ? 4 : 0}>
                 <Image
-                  src={image.filename}
+                  src={image.src}
                   alt={image.alt || color}
                   layout="responsive"
                   width={1}

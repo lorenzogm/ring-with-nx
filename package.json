@@ -49,6 +49,7 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@stripe/stripe-js": "^1.19.1",
     "@types/react-slick": "^0.23.5",
     "core-js": "^3.17.2",
     "document-register-element": "1.14.10",
@@ -69,10 +70,11 @@
     "react-select": "^5.1.0",
     "regenerator-runtime": "0.13.9",
     "sanitize-html": "^2.4.0",
+    "slugify": "^1.6.1",
     "storyblok-js-client": "^4.1.4",
     "styled-components": "^5.3.1",
     "tslib": "^2.3.1",
-    "use-shopping-cart": "^3.0.3"
+    "use-shopping-cart": "2.4.2"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",

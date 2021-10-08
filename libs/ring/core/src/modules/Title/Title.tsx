@@ -1,7 +1,7 @@
 import { Typography, TypographyProps } from '@ring/core/index'
 import { ContainerModule, ContainerModuleProps } from '@ring/core/modules'
+import { styled } from '@ring/core/theme'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 export type TitleProps = Pick<TypographyProps, 'align' | 'variant'> & {
   mobileMarginBottom: number

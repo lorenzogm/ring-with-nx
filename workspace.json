@@ -81,6 +81,13 @@
           "options": {
             "lintFilePatterns": ["apps/ring/**/*.{ts,tsx,js,jsx}"]
           }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./apps/ring/tsconfig.json"],
+            "parallel": false
+          }
         }
       }
     },
@@ -102,6 +109,13 @@
           "options": {
             "jestConfig": "libs/ring/core/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./libs/ring/core/tsconfig.json"],
+            "parallel": false
           }
         }
       }
@@ -125,6 +139,13 @@
             "jestConfig": "libs/ring/nextjs/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./libs/ring/nextjs/tsconfig.json"],
+            "parallel": false
+          }
         }
       }
     },
@@ -146,6 +167,13 @@
           "options": {
             "jestConfig": "libs/ring/storyblok/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./libs/ring/storyblok/tsconfig.json"],
+            "parallel": false
           }
         },
         "types": {

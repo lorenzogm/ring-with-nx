@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from '@ring/core/theme'
 
 import { useCurrentMediaQuery } from '../../hooks'
 

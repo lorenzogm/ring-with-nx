@@ -1,6 +1,6 @@
 import 'normalize.css/normalize.css'
 
-import { RingProvider } from '@ring/core/index'
+import { RingProvider, StripeProvider } from '@ring/core/index'
 import { Image, Link } from '@ring/nextjs/index'
 import { Header } from '@ring/storyblok/index'
 import { AppProps } from 'next/dist/shared/lib/router/router'
@@ -10,11 +10,7 @@ import { ReactElement } from 'react'
 import { blueTheme } from '../src/ui'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
-  const { locale, locales, story, config } = pageProps
-
-  if (!story) {
-    return null
-  }
+  const { config, locale, locales, story } = pageProps
 
   return (
     <RingProvider
@@ -24,20 +20,22 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
       locales={locales}
       theme={blueTheme}
       meta={{
-        title: story.content.metaTitle || config.data.story.content.metaTitle,
+        title: story?.content.metaTitle || config.data.story.content.metaTitle,
         description:
-          story.content.metaDescription ||
+          story?.content.metaDescription ||
           config.data.story.content.metaDescription,
         openGraphImage:
-          story.content.metaOpenGraphImage?.filename ||
+          story?.content.metaOpenGraphImage?.filename ||
           config.data.story.content.metaOpenGraphImage,
         favicons: config.data.story.content.favicons,
       }}
     >
-      <Component
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...pageProps}
-      />
+      <StripeProvider>
+        <Component
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...pageProps}
+        />
+      </StripeProvider>
     </RingProvider>
   )
 }

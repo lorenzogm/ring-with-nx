@@ -2,18 +2,20 @@ import {
   Button as ButtonMui,
   ButtonProps as ButtonMuiProps,
 } from '@material-ui/core'
+import { styled } from '@ring/core/theme'
 import { ReactNode } from 'react'
-import styled from 'styled-components'
 
 export type ButtonProps = {
   children: ReactNode
   color?: 'secondary'
   disabled?: boolean
   endIcon?: ButtonMuiProps['endIcon']
+  fullWidth?: boolean
+  onClick?: React.MouseEventHandler
   size?: 'small'
   startIcon?: ButtonMuiProps['startIcon']
+  type?: 'submit'
   variant?: 'outlined'
-  onClick?: React.MouseEventHandler
 }
 
 export function Button({
@@ -21,26 +23,36 @@ export function Button({
   color,
   disabled,
   endIcon,
+  fullWidth,
+  onClick,
   size,
   startIcon,
+  type,
   variant,
-  onClick,
 }: ButtonProps): JSX.Element {
   return (
     <ButtonStyled
       color={color || 'primary'}
       disabled={disabled}
       endIcon={endIcon}
+      onClick={onClick}
       size={size || 'large'}
       startIcon={startIcon}
       variant={variant || 'contained'}
-      onClick={onClick}
+      type={type || 'button'}
+      $fullWidth={fullWidth}
     >
       {children}
     </ButtonStyled>
   )
 }
 
-const ButtonStyled = styled(ButtonMui)`
+const ButtonStyled = styled(ButtonMui)<{
+  $fullWidth: ButtonProps['fullWidth']
+}>`
   font-weight: 700;
+
+  ${({ $fullWidth }) => `
+    ${$fullWidth ? `width: 100%` : ''}
+  `}
 `

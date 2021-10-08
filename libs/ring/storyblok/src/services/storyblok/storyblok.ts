@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import StoryblokClient from 'storyblok-js-client'
 
-const Storyblok = new StoryblokClient({
+export const Storyblok = new StoryblokClient({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   cache: {
     clear: 'auto',
@@ -9,13 +9,19 @@ const Storyblok = new StoryblokClient({
   },
 })
 
+type UseStoryblokProps = {
+  story: any
+  preview: boolean
+  locale: string
+  resolveRelations: Array<string>
+}
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function useStoryblok({
   story,
   preview,
   locale,
   resolveRelations = [],
-}) {
+}: UseStoryblokProps) {
   const [storyUpdated, setStoryUpdated] = useState(story)
 
   // adds the events for updating the visual editor
@@ -35,16 +41,14 @@ export function useStoryblok({
       storyblokInstance.on(['change', 'published'], () => location.reload())
 
       // live update the story on input events
-      storyblokInstance.on('input', (event) => {
-        // eslint-disable-next-line no-underscore-dangle
+      storyblokInstance.on('input', (event: { story: { _uid: any } }) => {
         if (story && event.story._uid === story._uid) {
           setStoryUpdated(event.story)
         }
       })
 
-      storyblokInstance.on('enterEditmode', (event) => {
+      storyblokInstance.on('enterEditmode', (event: { storyId: string }) => {
         // loading the draft version on initial enter of editor
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         Storyblok.get(`cdn/stories/${event.storyId}`, {
           version: 'draft',
           resolve_relations: resolveRelations,
@@ -65,7 +69,7 @@ export function useStoryblok({
 
   // appends the bridge script tag to our document
   // see https://www.storyblok.com/docs/guide/essentials/visual-editor#installing-the-storyblok-js-bridge
-  function addBridge(callback) {
+  function addBridge(callback: { (): void; (): void }) {
     // check if the script is already present
     // eslint-disable-next-line testing-library/no-node-access
     const existingScript = document.getElementById('storyblokBridge')
@@ -94,5 +98,3 @@ export function useStoryblok({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return storyUpdated
 }
-
-export default Storyblok

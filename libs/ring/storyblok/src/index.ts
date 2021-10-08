@@ -1,5 +1,6 @@
 export * from './components'
 export * from './hooks'
 export * from './modules'
+export * from './services'
 export * from './templates'
 export * from './types'

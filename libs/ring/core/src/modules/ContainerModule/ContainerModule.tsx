@@ -1,7 +1,7 @@
 import { GridJustification } from '@material-ui/core'
 import { Container, GridProps } from '@ring/core/index'
+import { styled } from '@ring/core/theme'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 export type ContainerModuleProps = Pick<GridProps, 'justifyContent'> & {
   backgroundColor?: string

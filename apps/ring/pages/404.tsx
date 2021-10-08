@@ -1,16 +1,23 @@
-import { DynamicComponent } from '@ring/storyblok/templates'
+import { DynamicComponent } from '@ring/storyblok/components'
+import { Storyblok, useStoryblok } from '@ring/storyblok/index'
 import { GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
-
-import { useStoryblok } from '../src/services/storyblok'
 
 export const getStaticProps: GetStaticProps = async ({
   locale,
   locales,
   preview = false,
 }) => {
+  const sbParams = {
+    version: 'draft', // or 'draft'
+    language: locale,
+    ...(preview ? { cv: Date.now() } : {}),
+  }
+
+  const config = await Storyblok.get(`cdn/stories/global/config`, sbParams)
   return {
     props: {
+      config,
       preview,
       locale,
       locales,
@@ -30,6 +37,7 @@ export default function Page404({ locale }: Page404Props): ReactElement {
     story: null,
     preview: enableBridge,
     locale,
+    resolveRelations: [],
   })
 
   let content = <h1>Not found</h1>

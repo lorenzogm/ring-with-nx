@@ -1,9 +1,12 @@
+import { useToggle } from '@ring/core/hooks'
 import { Button, Container, Meta, previewExit } from '@ring/core/index'
 import { useRing } from '@ring/core/providers'
+import { styled } from '@ring/core/theme'
 import { useRouter } from 'next/router'
 import { ReactElement, ReactNode } from 'react'
 import ReactCookieConsent from 'react-cookie-consent'
-import styled from 'styled-components'
+
+import Aside from './Aside'
 
 type LayoutDefaultProps = {
   preview: boolean
@@ -17,6 +20,8 @@ export function LayoutDefault({
   const router = useRouter()
   const { components } = useRing()
   const { Header } = components
+
+  const [cartStatus, { open: openCart, close: closeCart }] = useToggle()
 
   async function onClickExitPreview() {
     await previewExit()
@@ -37,6 +42,12 @@ export function LayoutDefault({
       <ContainerStyled>
         <main>{children}</main>
       </ContainerStyled>
+
+      <Aside
+        cartStatus={cartStatus}
+        openCart={openCart}
+        closeCart={closeCart}
+      />
 
       <ReactCookieConsent buttonText="Acepto">
         Este sitio web utiliza cookies para mejorar la expencia de usuario.

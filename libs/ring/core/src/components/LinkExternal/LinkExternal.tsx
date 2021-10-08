@@ -1,5 +1,5 @@
+import { styled } from '@ring/core/theme'
 import { ReactElement, ReactNode } from 'react'
-import styled from 'styled-components'
 
 export type LinkExternalProps = {
   children: ReactNode

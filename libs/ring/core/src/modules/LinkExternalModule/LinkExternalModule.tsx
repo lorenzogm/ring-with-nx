@@ -1,6 +1,6 @@
 import { ContainerModule, LinkExternal } from '@ring/core/index'
+import { styled } from '@ring/core/theme'
 import { ReactElement, ReactNode } from 'react'
-import styled from 'styled-components'
 
 export type LinkExternalModuleProps = {
   mobileMarginBottom: number

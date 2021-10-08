@@ -1,6 +1,6 @@
 import { Container, Grid, MediaQueryInfo } from '@ring/core/components'
 import { useKeyPress } from '@ring/core/hooks'
-import styled from 'styled-components'
+import { styled } from '@ring/core/theme'
 
 export function VisualGrid(): JSX.Element | null {
   const { isToggled } = useKeyPress()

@@ -1,7 +1,7 @@
 import { ContainerModule, Image } from '@ring/core/index'
 import { ReactElement } from 'react'
 import CarouselMui from 'react-material-ui-carousel'
-import styled from 'styled-components'
+import { styled } from '@ring/core/theme'
 
 type CarouselProps = {
   items: Array<{ src: string; alt: string }>

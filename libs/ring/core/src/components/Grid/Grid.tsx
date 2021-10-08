@@ -3,7 +3,7 @@ import GridMui, {
   GridSize,
 } from '@material-ui/core/Grid'
 import { useSpacing } from '@ring/core/index'
-import styled from 'styled-components'
+import { styled } from '@ring/core/theme'
 
 export type GridProps = {
   xsOffset?: GridSize

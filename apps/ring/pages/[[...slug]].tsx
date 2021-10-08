@@ -1,9 +1,8 @@
 import { LayoutDefault } from '@ring/core/layouts'
 import { DynamicComponent } from '@ring/storyblok/components'
+import { Storyblok, useStoryblok } from '@ring/storyblok/index'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
-
-import Storyblok, { useStoryblok } from '../src/services/storyblok'
 
 const resolveRelations = ['GlobalReference.reference']
 

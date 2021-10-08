@@ -1,5 +1,5 @@
+import { styled } from '@ring/core/theme'
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 
 import { useRing } from '../../providers'
 

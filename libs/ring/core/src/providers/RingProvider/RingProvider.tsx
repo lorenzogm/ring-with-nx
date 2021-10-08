@@ -75,7 +75,7 @@ export type RingState = {
   layout: Layout
   locale?: string
   locales?: Array<string>
-  meta: Meta
+  meta: MetaProps
 }
 
 type Components = {

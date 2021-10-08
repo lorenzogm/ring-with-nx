@@ -1,7 +1,7 @@
 import { LinkExternal, Typography } from '@ring/core/index'
+import { styled } from '@ring/core/theme'
 import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 const Email = dynamic(() => import('@material-ui/icons/Email'))
 const Phone = dynamic(() => import('@material-ui/icons/Phone'))
@@ -21,9 +21,7 @@ export function ContactInline({
 }: ContactInlineProps): ReactElement {
   return (
     <Container>
-      <Title variant="h5" component="p">
-        {title}
-      </Title>
+      <Title variant="h5">{title}</Title>
       {icon === 'Email' ? <Email /> : null}
       {icon === 'Phone' ? <Phone /> : null}
       <Link href={link}>{text}</Link>

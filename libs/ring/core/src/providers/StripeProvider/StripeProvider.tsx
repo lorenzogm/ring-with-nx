@@ -1,5 +1,5 @@
-import { ReactElement } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
+import { ReactElement } from 'react'
 import { CartProvider } from 'use-shopping-cart'
 
 const { NEXT_PUBLIC_STRIPE_API_PUBLIC } = process.env

@@ -2,8 +2,8 @@ import {
   Image as ImageRing,
   ImageProps as ImageRingProps,
 } from '@ring/core/components'
+import { styled } from '@ring/core/theme'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 export type ImageModuleProps = ImageRingProps
 
