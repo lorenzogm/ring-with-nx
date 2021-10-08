@@ -59,6 +59,7 @@
     "js-cookie": "^3.0.1",
     "next": "11.1.2",
     "normalize.css": "^8.0.1",
+    "prisma": "^3.2.1",
     "react": "^17.0.2",
     "react-cookie-consent": "^6.4.1",
     "react-dom": "17.0.2",
@@ -100,7 +101,7 @@
     "@testing-library/react": "12.0.0",
     "@testing-library/react-hooks": "7.0.1",
     "@types/jest": "^27.0.1",
-    "@types/node": "16.7.13",
+    "@types/node": "^16.10.3",
     "@types/react": "17.0.20",
     "@types/react-dom": "17.0.9",
     "@types/react-is": "17.0.2",
@@ -140,9 +141,9 @@
     "storyblok-react": "^0.1.2",
     "storybook-addon-designs": "^6.1.0",
     "ts-jest": "27.0.5",
-    "ts-node": "~10.2.1",
+    "ts-node": "^10.2.1",
     "tslint": "~6.1.0",
-    "typescript": "4.4.2",
+    "typescript": "^4.4.3",
     "url-loader": "^4.1.1"
   }
 }
