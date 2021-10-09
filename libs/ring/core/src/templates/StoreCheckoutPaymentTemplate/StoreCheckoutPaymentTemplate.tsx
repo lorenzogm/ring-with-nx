@@ -1,41 +1,39 @@
-import { ReactElement } from 'react'
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import IconArrowForward from '@material-ui/icons/ArrowForward'
-import Typography from '@material-ui/core/Typography'
+import {
+  BoxHeader,
+  Button,
+  Form,
+  FormInputRadio,
+  Grid,
+  LayoutCheckout,
+  StoreOrderSummary,
+  StorePaymentMethods,
+  Typography,
+} from '@ring/core/index'
+import { ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
-import type { PaymentMethods } from 'types/paymentMethods'
-import type { Config } from 'types/config'
-import FormInputRadio from '@ring/components/FormInputRadio'
-import Form from '@ring/components/Form'
-import BoxHeader from '@ring/components/BoxHeader'
-import OrderSummary from 'components/modules/OrderSummary'
-
-type CheckoutPaymentTemplateProps = {
-  config: Config
-  onSubmit: SubmitHandler<CheckoutPaymentFormValues>
+type StoreCheckoutPaymentTemplateProps = {
+  onSubmit: SubmitHandler<StoreCheckoutPaymentFormValues>
 }
 
-export default function CheckoutPaymentTemplate({
-  config,
+export function StoreCheckoutPaymentTemplate({
   onSubmit,
-}: CheckoutPaymentTemplateProps): ReactElement {
-  const useFormMethods = useForm<CheckoutPaymentFormValues>({
+}: StoreCheckoutPaymentTemplateProps): ReactElement {
+  const useFormMethods = useForm<StoreCheckoutPaymentFormValues>({
     defaultValues: { paymentMethod: 'WIRE_TRANSFER' },
   })
 
   const { paymentMethod } = useFormMethods.watch()
 
   return (
-    <LayoutCheckout config={config} activeStep={1}>
-      <Form<CheckoutPaymentFormValues>
+    <LayoutCheckout activeStep={1}>
+      <Form<StoreCheckoutPaymentFormValues>
         useFormMethods={useFormMethods}
         onSubmit={onSubmit}
       >
-        <Grid container justify="center" spacing={4}>
-          <Grid item xs={10} md={6}>
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={8}>
             <BoxHeader>Forma de pago</BoxHeader>
             <FormInputRadio
               name="paymentMethod"
@@ -51,15 +49,9 @@ export default function CheckoutPaymentTemplate({
               </Typography>
             )}
           </Grid>
-          <Grid item xs={10} md={4}>
-            <OrderSummary config={config} />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              endIcon={<IconArrowForward />}
-              fullWidth
-            >
+          <Grid item xs={12} md={4}>
+            <StoreOrderSummary />
+            <Button type="submit" endIcon={<IconArrowForward />} fullWidth>
               <a>Siguiente</a>
             </Button>
             <Typography variant="caption">
@@ -72,6 +64,6 @@ export default function CheckoutPaymentTemplate({
   )
 }
 
-export type CheckoutPaymentFormValues = {
-  paymentMethod: PaymentMethods
+export type StoreCheckoutPaymentFormValues = {
+  paymentMethod: StorePaymentMethods
 }
