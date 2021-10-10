@@ -1,5 +1,5 @@
 export * from './StoreCheckoutAddressTemplate'
-// export * from './StoreCheckoutConfirmationTemplate'
+export * from './StoreCheckoutConfirmationTemplate'
 export * from './StoreCheckoutPaymentTemplate'
 // export * from './StoreCheckoutSuccessTemplate'
 export * from './StoreProductTemplate'

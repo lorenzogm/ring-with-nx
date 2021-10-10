@@ -1,7 +1,7 @@
 import { StoreUserAddress } from '@ring/core/index'
 import { useEffect, useReducer } from 'react'
 
-export function useUserAddress(): State {
+export function useStoreUserAddress(): State {
   const [state, dispatch] = useReducer(reducer, {
     status: 'LOADING',
     address: {

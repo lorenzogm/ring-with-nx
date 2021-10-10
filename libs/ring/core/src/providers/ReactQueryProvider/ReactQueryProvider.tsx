@@ -8,7 +8,6 @@ type ReactQueryProviderProps = {
   children: ReactNode
 }
 
-export default ReactQueryProvider
 export function ReactQueryProvider({
   children,
 }: ReactQueryProviderProps): ReactElement {

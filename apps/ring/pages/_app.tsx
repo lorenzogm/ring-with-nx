@@ -1,6 +1,10 @@
 import 'normalize.css/normalize.css'
 
-import { RingProvider, StripeProvider } from '@ring/core/index'
+import {
+  ReactQueryProvider,
+  RingProvider,
+  StripeProvider,
+} from '@ring/core/index'
 import { Image, Link } from '@ring/nextjs/index'
 import { Header } from '@ring/storyblok/index'
 import { AppProps } from 'next/dist/shared/lib/router/router'
@@ -31,10 +35,12 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
       }}
     >
       <StripeProvider>
-        <Component
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...pageProps}
-        />
+        <ReactQueryProvider>
+          <Component
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...pageProps}
+          />
+        </ReactQueryProvider>
       </StripeProvider>
     </RingProvider>
   )

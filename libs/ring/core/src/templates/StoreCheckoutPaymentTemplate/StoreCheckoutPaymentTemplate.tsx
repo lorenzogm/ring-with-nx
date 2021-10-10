@@ -51,7 +51,12 @@ export function StoreCheckoutPaymentTemplate({
           </Grid>
           <Grid item xs={12} md={4}>
             <StoreOrderSummary />
-            <Button type="submit" endIcon={<IconArrowForward />} fullWidth>
+            <Button
+              type="submit"
+              disabled={!paymentMethod}
+              endIcon={<IconArrowForward />}
+              fullWidth
+            >
               <a>Siguiente</a>
             </Button>
             <Typography variant="caption">

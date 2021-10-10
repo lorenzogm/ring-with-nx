@@ -1,31 +1,33 @@
 import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import IconArrowBack from '@material-ui/icons/ArrowBack'
 import IconArrowForward from '@material-ui/icons/ArrowForward'
-import BoxHeader from '@ring/components/BoxHeader'
-import LayoutCheckout from 'components/layouts/LayoutCheckout/LayoutCheckout'
-import CartProductList from 'components/modules/CartProductList'
-import OrderSummary from 'components/modules/OrderSummary'
-import useUserAddress from 'hooks/useUserAddress'
+import {
+  BoxHeader,
+  Button,
+  Grid,
+  Link,
+  StoreCartProductList,
+  StoreOrderSummary,
+  StorePaymentMethods,
+  Typography,
+  useStoreUserAddress,
+} from '@ring/core/index'
 import { MouseEvent, ReactElement, useEffect, useReducer } from 'react'
 import { MutationStatus } from 'react-query'
-import type { Config } from 'types/config'
-import type { PaymentMethods } from 'types/paymentMethods'
+import { useShoppingCart } from 'use-shopping-cart'
 
 type CheckoutConfirmationTemplateProps = {
-  config: Config
   onConfirm: (e: MouseEvent<HTMLButtonElement>) => void
   onConfirmStatus: MutationStatus
 }
 
 export function StoreCheckoutConfirmationTemplate({
-  config,
   onConfirm,
   onConfirmStatus,
 }: CheckoutConfirmationTemplateProps): ReactElement | null {
-  const { status: addressStatus, address } = useUserAddress()
+  const { status: addressStatus, address } = useStoreUserAddress()
+  const { totalPrice } = useShoppingCart()
 
   const [state, dispatch] = useReducer(reducer, {
     status: 'LOADING',
@@ -42,7 +44,8 @@ export function StoreCheckoutConfirmationTemplate({
 
     dispatch({
       type: 'UPDATE_PAYMENT_METHOD',
-      paymentMethod: paymentMethodFromLocalStorage as unknown as PaymentMethods,
+      paymentMethod:
+        paymentMethodFromLocalStorage as unknown as StorePaymentMethods,
     })
   }, [])
 
@@ -50,64 +53,80 @@ export function StoreCheckoutConfirmationTemplate({
     return null
   }
 
+  if (totalPrice === 0) {
+    return (
+      <>
+        <Box display="flex" justifyContent="center" mb={2}>
+          <Typography>
+            Pues ya no tienes ningún artículo en tu cesta de la compra...
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <Link href="/">
+            <Button startIcon={<IconArrowBack />}>Volver a la tienda</Button>
+          </Link>
+        </Box>
+      </>
+    )
+  }
+
   return (
-    <LayoutCheckout config={config} activeStep={2}>
-      <Grid container justify="center" spacing={4}>
-        <Grid item xs={10} md={6}>
-          <BoxHeader>Pedido</BoxHeader>
-          <CartProductList />
-        </Grid>
-        <Grid item xs={10} md={4}>
-          <BoxHeader>Dirección de envío</BoxHeader>
-          <Box mb={4}>
-            <Typography style={{ width: '100%' }}>
-              {address.firstName} {address.lastName}
-            </Typography>
-            <Typography style={{ width: '100%' }}>
-              {address.address}
-              {address.addressMoreInfo}
-            </Typography>
-            <Typography style={{ width: '100%' }}>
-              {address.postcode} {address.city}
-            </Typography>
-            <Typography style={{ width: '100%' }}>{address.country}</Typography>
-          </Box>
-          <BoxHeader>Forma de pago</BoxHeader>
-          <Box mb={4}>
-            <Typography>
-              {state.paymentMethod === 'WIRE_TRANSFER' &&
-                'Transferencia bancaria'}
-            </Typography>
-          </Box>
-          <OrderSummary config={config} />
-          <Button
-            disabled={onConfirmStatus === 'loading'}
-            type="submit"
-            variant="contained"
-            color="primary"
-            startIcon={
-              onConfirmStatus === 'loading' ? (
-                <CircularProgress color="secondary" size="1rem" />
-              ) : undefined
-            }
-            endIcon={<IconArrowForward />}
-            onClick={onConfirm}
-            fullWidth
-          >
-            <a>Finalizar pedido</a>
-          </Button>
-        </Grid>
+    <Grid container justifyContent="center">
+      <Grid item xs={12} md={8}>
+        <BoxHeader>Pedido</BoxHeader>
+        <StoreCartProductList />
       </Grid>
-    </LayoutCheckout>
+      <Grid item xs={12} md={4}>
+        <BoxHeader>Dirección de envío</BoxHeader>
+        <Box mb={4}>
+          <Typography>
+            {address.firstName} {address.lastName}
+          </Typography>
+          <Typography>
+            {address.address}
+            {address.addressMoreInfo}
+          </Typography>
+          <Typography>
+            {address.postcode} {address.city}
+          </Typography>
+          <Typography>{address.country}</Typography>
+        </Box>
+        <BoxHeader>Forma de pago</BoxHeader>
+        <Box mb={4}>
+          <Typography>
+            {state.paymentMethod === 'WIRE_TRANSFER' &&
+              'Transferencia bancaria'}
+          </Typography>
+        </Box>
+        <StoreOrderSummary />
+        <Button
+          disabled={onConfirmStatus === 'loading'}
+          type="submit"
+          startIcon={
+            onConfirmStatus === 'loading' ? (
+              <CircularProgress color="secondary" size="1rem" />
+            ) : undefined
+          }
+          endIcon={<IconArrowForward />}
+          onClick={onConfirm}
+          fullWidth
+        >
+          <a>Finalizar pedido</a>
+        </Button>
+      </Grid>
+    </Grid>
   )
 }
 
 type State = {
   status: 'LOADING' | 'SUCCESS'
-  paymentMethod?: PaymentMethods
+  paymentMethod?: StorePaymentMethods
 }
 
-type Action = { type: 'UPDATE_PAYMENT_METHOD'; paymentMethod: PaymentMethods }
+type Action = {
+  type: 'UPDATE_PAYMENT_METHOD'
+  paymentMethod: StorePaymentMethods
+}
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {

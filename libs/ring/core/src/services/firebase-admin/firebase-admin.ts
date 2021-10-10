@@ -1,4 +1,4 @@
-import firebaseAdmin from 'firebase-admin'
+import * as firebaseAdmin from 'firebase-admin'
 
 if (!firebaseAdmin.apps.length) {
   const {
@@ -20,5 +20,4 @@ if (!firebaseAdmin.apps.length) {
   })
 }
 
-export default firebaseAdmin
-export const db = firebaseAdmin.firestore()
+export const firestore = firebaseAdmin.firestore()

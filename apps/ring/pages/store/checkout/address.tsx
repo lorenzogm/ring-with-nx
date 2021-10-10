@@ -3,7 +3,7 @@ import {
   CheckoutAddressFormValues,
   LayoutCheckout,
   StoreCheckoutAddressTemplate,
-  useUserAddress,
+  useStoreUserAddress,
 } from '@ring/core/index'
 import { Storyblok } from '@ring/storyblok/services'
 import { GetStaticProps } from 'next'
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
 
 export default function CheckoutAddressPage(): ReactElement | null {
   const router = useRouter()
-  const { address, status } = useUserAddress()
+  const { address, status } = useStoreUserAddress()
 
   return (
     <LayoutCheckout activeStep={0}>

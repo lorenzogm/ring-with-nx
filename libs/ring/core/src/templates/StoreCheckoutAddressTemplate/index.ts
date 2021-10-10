@@ -1,2 +1,2 @@
 export * from './StoreCheckoutAddressTemplate'
-export * from './useUserAddress'
+export * from './useStoreUserAddress'

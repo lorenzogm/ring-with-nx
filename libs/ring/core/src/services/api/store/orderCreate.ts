@@ -28,7 +28,7 @@ export async function orderCreate({
   const address: StoreUserAddress = JSON.parse(addressFromLocalStorage)
   const paymentMethod = paymentMethodFromLocalStorage as StorePaymentMethods
 
-  const response = await fetch('/api/order/createOrder', {
+  const response = await fetch('/api/store/order-create', {
     method: 'POST',
     body: JSON.stringify({
       address,

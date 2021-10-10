@@ -17,6 +17,14 @@ module.exports = withNx({
   },
   webpack: (config) => {
     applyUrlLoader(config)
+    config.resolve.fallback = {
+      fs: false,
+      stream: false,
+      crypto: false,
+      os: false,
+      zlib: false,
+    }
+
     return config
   },
 })
