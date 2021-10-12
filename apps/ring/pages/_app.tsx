@@ -16,6 +16,8 @@ import { blueTheme } from '../src/ui'
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   const { config, locale, locales, story } = pageProps
 
+  console.log(pageProps)
+
   return (
     <RingProvider
       components={{ Head, Header, Image, Link }}

@@ -9,8 +9,8 @@ module.exports = withNx({
   },
   i18n: {
     localeDetection: false,
-    locales: ['en', 'es-es'],
-    defaultLocale: 'en',
+    locales: ['es'],
+    defaultLocale: 'es',
   },
   images: {
     domains: ['a.storyblok.com'],

@@ -23,12 +23,18 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
     if (firstPath !== 'global') {
       // create additional languages
-      locales.forEach((locale) => {
+      if (locales) {
+        locales.forEach((locale) => {
+          paths.push({
+            params: { slug: slug === 'home' ? false : slugAsArray },
+            locale,
+          })
+        })
+      } else {
         paths.push({
           params: { slug: slug === 'home' ? false : slugAsArray },
-          locale,
         })
-      })
+      }
     }
   })
 
