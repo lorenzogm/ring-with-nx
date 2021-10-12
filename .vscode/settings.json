@@ -6,8 +6,5 @@
     "source.fixAll.eslint": true
   },
 
-  "eslint.validate": ["typescript"],
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
-  }
+  "eslint.validate": ["typescript"]
 }
