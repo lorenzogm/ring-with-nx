@@ -1,18 +1,20 @@
 import TextField from '@material-ui/core/TextField'
 import { ReactElement } from 'react'
-import { useController, useFormContext } from 'react-hook-form'
+import { RegisterOptions, useController, useFormContext } from 'react-hook-form'
 
-type FormInputTextProps = {
+export type FormInputTextProps = {
   name: string
   label: string
   placeholder?: string
   disabled?: boolean
-  required?: boolean
-  validate?: Record<string, (value: string) => boolean | string>
+  required?: RegisterOptions['required']
+  validate?: RegisterOptions['validate']
+  pattern?: RegisterOptions['pattern']
 }
 export function FormInputText({
   name,
   label,
+  pattern,
   placeholder,
   required,
   validate,
@@ -27,6 +29,7 @@ export function FormInputText({
     rules: {
       required: required ? 'Requerido' : undefined,
       validate,
+      pattern,
     },
   })
 

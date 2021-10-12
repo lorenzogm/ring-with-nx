@@ -145,6 +145,7 @@ export interface GlobalStoryblok {
 }
 
 export interface GlobalConfigStoryblok {
+  storeCurrency?: "EUR";
   favicons: FaviconsStoryblok[];
   metaTitle: string;
   metaDescription: string;
@@ -161,7 +162,6 @@ export interface GlobalConfigStoryblok {
   storeShippingFreeAmount?: number;
   storeShippingCosts?: number;
   storePaymentMethods?: "WIRE_TRANSFER"[];
-  storeCurrency?: "EUR";
   storeCompanyName?: string;
   storeCompanyEmail?: string;
   storeCompanyAddress?: string;

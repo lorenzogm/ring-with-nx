@@ -15,14 +15,16 @@ module.exports = withNx({
   images: {
     domains: ['a.storyblok.com'],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     applyUrlLoader(config)
-    config.resolve.fallback = {
-      fs: false,
-      stream: false,
-      crypto: false,
-      os: false,
-      zlib: false,
+
+    if (!isServer) {
+      config.resolve.fallback.fs = false
+      config.resolve.fallback.child_process = false
+      config.resolve.fallback.request = false
+      config.resolve.fallback.net = false
+      config.resolve.fallback.worker_threads = false
+      config.resolve.fallback.tls = false
     }
 
     return config

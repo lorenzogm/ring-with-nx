@@ -1,4 +1,5 @@
 import IconArrowForward from '@material-ui/icons/ArrowForward'
+import { FormInputTextEmail } from '@ring/core/components/FormInputTextEmail'
 import {
   Button,
   Form,
@@ -40,7 +41,7 @@ export function StoreCheckoutAddressTemplate({
     >
       <Grid container alignItems="center">
         <Grid item xs={12} sm={6}>
-          <FormInputText name="address.email" label="Email" required />
+          <FormInputTextEmail name="address.email" label="Email" required />
         </Grid>
 
         <Grid item xs={12} sm={6}>

@@ -1,21 +1,21 @@
 import * as firebaseAdmin from 'firebase-admin'
 
 if (!firebaseAdmin.apps.length) {
-  const {
-    NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    FIREBASE_PRIVATE_KEY,
-    FIREBASE_CLIENT_EMAIL,
-  } = process.env
-
-  if (!FIREBASE_PRIVATE_KEY) {
+  if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+    throw new Error('Undefined "NEXT_PUBLIC_FIREBASE_PROJECT_ID"')
+  }
+  if (!process.env.FIREBASE_PRIVATE_KEY) {
     throw new Error('Undefined "FIREBASE_PRIVATE_KEY"')
+  }
+  if (!process.env.FIREBASE_CLIENT_EMAIL) {
+    throw new Error('Undefined "FIREBASE_CLIENT_EMAIL"')
   }
 
   firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert({
-      projectId: NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-      privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      clientEmail: FIREBASE_CLIENT_EMAIL,
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     }),
   })
 }

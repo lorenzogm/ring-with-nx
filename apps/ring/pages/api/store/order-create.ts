@@ -1,9 +1,6 @@
-import {
-  firestore,
-  StorePaymentMethods,
-  StoreUserAddress,
-  transactionalEmailsApi,
-} from '@ring/core/index'
+import { StorePaymentMethods, StoreUserAddress } from '@ring/core/index'
+import { firestore } from '@ring/core/services/firebase-admin'
+import { transactionalEmailsApi } from '@ring/core/services/sendinblue'
 import { GlobalConfigStoryblok, Storyblok } from '@ring/storyblok/index'
 import { SendSmtpEmail } from '@sendinblue/client'
 import { NextApiHandler } from 'next'
@@ -22,6 +19,7 @@ const schema = yup.object().shape({
   storeCompanyCountry: yup.string().required(),
   storeCompanyIBANAccountHolder: yup.string().required(),
   storeCompanyIBAN: yup.string().required(),
+  storeOrderConfirmationEmailTemplateId: yup.number().required(),
 })
 
 const createOrder: NextApiHandler = async (req, res) => {
@@ -42,10 +40,12 @@ const createOrder: NextApiHandler = async (req, res) => {
     language: 'es',
   }
   // @ts-expect-error missing generic
-  const config: GlobalConfigStoryblok = await Storyblok.get(
+  const configStory: GlobalConfigStoryblok = await Storyblok.get(
     `cdn/stories/global/config`,
     sbParams,
   )
+
+  const config = configStory.data.story.content
 
   await schema.isValid(config).catch((error) => {
     res.status(500).json(error)
@@ -53,9 +53,9 @@ const createOrder: NextApiHandler = async (req, res) => {
 
   const subtotal = totalPrice
   const shipping =
-    subtotal >= config.storeShippingFreeAmount
+    subtotal >= Number(config.storeShippingFreeAmount)
       ? 0
-      : (config.storeShippingCosts as number)
+      : Number(config.storeShippingCosts)
   const total = subtotal + shipping
 
   const payment = {
@@ -79,9 +79,14 @@ const createOrder: NextApiHandler = async (req, res) => {
   const date = new Date()
   const dateString = date.toLocaleString()
 
-  const order = await firestore
-    .collection('order')
-    .add({ address, cartDetails, paymentMethod, payment, date: dateString })
+  const order = await firestore.collection('order').add({
+    address,
+    cartDetails,
+    paymentMethod,
+    payment,
+    date: dateString,
+    status: 'AWAITING_PAYMENT',
+  })
 
   const params: OrderConfirmationEmail = {
     companyName: config.storeCompanyName,
@@ -123,22 +128,22 @@ const createOrder: NextApiHandler = async (req, res) => {
         email: address.email,
         name: `${address.firstName} ${address.lastName}`,
       },
-      ...(config.company.email
+      ...(config.storeCompanyEmail
         ? [
             {
-              email: config.company.email,
-              name: config.company.name,
+              email: config.storeCompanyEmail,
+              name: config.storeCompanyName,
             },
           ]
         : []),
     ],
-    templateId: config.emails.orderConfirmationTemplateId,
+    templateId: Number(config.storeOrderConfirmationEmailTemplateId),
     params,
   }
 
   const r = await transactionalEmailsApi
     .sendTransacEmail(sendSmtpEmail)
-    .catch(() => {
+    .catch((e) => {
       res.status(500).json({
         message: `Unexpected error when sending the transactional email with Sendinblue`,
       })
