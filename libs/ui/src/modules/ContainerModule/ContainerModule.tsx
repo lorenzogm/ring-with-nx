@@ -1,4 +1,3 @@
-import { GridJustification } from '@material-ui/core'
 import { Container, GridProps } from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 import { ReactElement } from 'react'
@@ -7,7 +6,7 @@ export type ContainerModuleProps = Pick<GridProps, 'justifyContent'> & {
   backgroundColor?: string
   children: ReactElement
   disableMargins?: boolean
-  alignContent?: GridJustification
+  alignContent?: 'flex-start' | 'justify'
   mobileFlexDirection?: 'row' | 'column'
   mobileMarginBottom: number
   tabletFlexDirection?: 'row' | 'column'

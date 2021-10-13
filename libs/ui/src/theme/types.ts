@@ -1,4 +1,4 @@
-import { Theme, ThemeOptions } from '@material-ui/core'
+import { DeprecatedThemeOptions, Theme } from '@mui/material'
 
 import { ThemeColors } from './colors'
 import { ThemeFooter } from './footer'
@@ -12,7 +12,7 @@ export type RingTheme = Theme & {
   header: ThemeHeader
 }
 
-export type RingThemeOptions = ThemeOptions & {
+export type RingThemeOptions = DeprecatedThemeOptions & {
   colors?: ThemeColors
   footer?: ThemeFooter
   grid?: ThemeGrid

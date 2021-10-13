@@ -1,5 +1,6 @@
 export * from './components'
 export * from './hooks'
+export * from './icons'
 export * from './layouts'
 export * from './modules'
 export * from './providers'

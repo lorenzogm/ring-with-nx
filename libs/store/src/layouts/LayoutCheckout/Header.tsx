@@ -1,7 +1,12 @@
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import Stepper from '@material-ui/core/Stepper'
-import { Container, Grid, Link, Typography } from '@ring/ui'
+import {
+  Container,
+  Grid,
+  Link,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 import { ReactElement } from 'react'
 
@@ -43,7 +48,7 @@ export function Header({ activeStep }: HeaderProps): ReactElement {
 const HeaderWrapper = styled.header`
   ${({ theme }) => `
     background-color: ${theme.palette.grey[500]};
-    padding: ${theme.spacing(2)}px;
+    padding: ${theme.spacing(2)};
   `}
 `
 

@@ -1,6 +1,5 @@
-import { GridSize } from '@material-ui/core'
 import { DynamicComponent, GridItemStoryblok } from '@ring/storyblok'
-import { GridItem as GridItemRing } from '@ring/ui'
+import { GridItem as GridItemRing, GridSize } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type GridItemProps = GridItemStoryblok & {

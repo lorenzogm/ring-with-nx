@@ -1,6 +1,5 @@
-import Paper from '@material-ui/core/Paper'
 import { StoreProductColor } from '@ring/store'
-import { ButtonUnstyled, Grid, Image } from '@ring/ui'
+import { ButtonUnstyled, Grid, Image, Paper } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type ColorSelectorProps = {

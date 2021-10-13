@@ -1,4 +1,4 @@
-import { GridSpacing } from '@material-ui/core'
+import { GridSpacing } from '@mui/material'
 
 export type ThemeGrid = {
   gutter: {

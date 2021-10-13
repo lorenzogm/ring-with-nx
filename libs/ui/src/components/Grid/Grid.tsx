@@ -1,7 +1,7 @@
 import GridMui, {
   GridProps as GridMuiProps,
-  GridSize,
-} from '@material-ui/core/Grid'
+  GridSize as GridSizeMui,
+} from '@mui/material/Grid'
 import { useSpacing } from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 
@@ -59,6 +59,8 @@ export function Grid({
 
   return render
 }
+
+export type GridSize = GridSizeMui
 
 const GridNestedStyled = styled(GridMui)`
   max-width: initial;

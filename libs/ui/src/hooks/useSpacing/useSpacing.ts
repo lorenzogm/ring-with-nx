@@ -1,4 +1,4 @@
-import { GridSpacing } from '@material-ui/core/Grid'
+import { GridSpacing } from '@mui/material/Grid'
 
 import { useRingTheme } from '../../theme'
 import { useCurrentMediaQuery } from '../useCurrentMediaQuery'

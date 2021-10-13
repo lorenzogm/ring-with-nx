@@ -1,5 +1,4 @@
-import IconArrowBack from '@material-ui/icons/ArrowBack'
-import { Button, Container, Grid, Link } from '@ring/ui'
+import { Button, Container, Grid, IconArrowBack, Link } from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 import { ReactElement } from 'react'
 
@@ -17,9 +16,11 @@ export function Footer(): ReactElement {
   )
 }
 
-const FooterWrapper = styled.footer`
-  background-color: ${({ theme }) => theme.palette.background.default};
-  border-top: ${({ theme }) => theme.palette.grey[900]} solid 1px;
-  padding-bottom: ${({ theme }) => theme.spacing(4)}px;
-  padding-top: ${({ theme }) => theme.spacing(2)}px;
-`
+const FooterWrapper = styled.footer(
+  ({ theme }) => `
+  background-color: ${theme.palette.background.default};
+  border-top: ${theme.palette.grey[900]} solid 1px;
+  padding-bottom: ${theme.spacing(4)}px;
+  padding-top: ${theme.spacing(2)}px;
+`,
+)

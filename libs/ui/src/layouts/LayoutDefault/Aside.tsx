@@ -1,13 +1,12 @@
-import Box from '@material-ui/core/Box'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import CloseIcon from '@material-ui/icons/Close'
 import { StoreCartProductList } from '@ring/store'
 import {
+  Box,
   Button,
+  Divider,
+  Drawer,
   Grid,
+  IconArrowForward,
+  IconButton,
   Typography,
   UseToggleHandlers,
   UseToggleState,
@@ -53,7 +52,7 @@ export default function Aside({
               alignItems="center"
             >
               <Typography variant="h4">Tu cesta</Typography>
-              <IconButton onClick={closeCart}>
+              <IconButton onClick={closeCart} size="large">
                 <CloseIcon />
               </IconButton>
             </Box>
@@ -70,7 +69,7 @@ export default function Aside({
             <Divider />
             <Box m={4}>
               <Box mb={2}>
-                <Grid container justify="space-between">
+                <Grid container justifyContent="space-between">
                   <Typography variant="h5">Total</Typography>
                   <Typography variant="h5">{formattedTotalPrice}</Typography>
                 </Grid>
@@ -79,7 +78,7 @@ export default function Aside({
               <Link href="/store/checkout/address">
                 <Button fullWidth>
                   <span>Comenzar pedido</span>
-                  <ArrowForwardIcon />
+                  <IconArrowForward />
                 </Button>
               </Link>
             </Box>
@@ -92,7 +91,7 @@ export default function Aside({
 
 const DrawerStyled = styled(Drawer)`
   .MuiDrawer-paper {
-    ${({ theme }) => theme.breakpoints.down('sm')} {
+    ${({ theme }) => theme.breakpoints.down('md')} {
       width: 100%;
     }
 

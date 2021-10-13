@@ -1,5 +1,4 @@
-import { Box } from '@material-ui/core'
-import { Grid, Typography } from '@ring/ui'
+import { Box, Grid, Typography } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type CheckoutSuccessTemplateProps = {

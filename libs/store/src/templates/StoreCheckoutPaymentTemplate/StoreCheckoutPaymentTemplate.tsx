@@ -1,4 +1,3 @@
-import IconArrowForward from '@material-ui/icons/ArrowForward'
 import {
   LayoutCheckout,
   StoreOrderSummary,
@@ -10,6 +9,7 @@ import {
   Form,
   FormInputRadio,
   Grid,
+  IconArrowForward,
   Typography,
 } from '@ring/ui'
 import { ReactElement } from 'react'

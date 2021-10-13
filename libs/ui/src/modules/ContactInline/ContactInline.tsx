@@ -3,8 +3,8 @@ import { styled } from '@ring/ui/theme'
 import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 
-const Email = dynamic(() => import('@material-ui/icons/Email'))
-const Phone = dynamic(() => import('@material-ui/icons/Phone'))
+const Email = dynamic(() => import('@mui/icons-material/Email'))
+const Phone = dynamic(() => import('@mui/icons-material/Phone'))
 
 type ContactInlineProps = {
   title?: string
@@ -38,11 +38,11 @@ const Container = styled.div`
 `
 const Title = styled(Typography)`
   ${({ theme }) => `
-    margin-right: ${theme.spacing(2)}px;
+    margin-right: ${theme.spacing(2)};
   `}
 `
 const Link = styled(LinkExternal)`
   ${({ theme }) => `
-    margin-left: ${theme.spacing(1)}px;
+    margin-left: ${theme.spacing(1)};
   `}
 `

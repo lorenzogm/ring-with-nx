@@ -34,6 +34,6 @@ const ContainerStyled = styled(Container)(
   // 100vh - header height - footer height
   min-height: calc(100vh - 342px - 40px);
   flex-direction: column;
-  margin-bottom: ${theme.spacing(6)}px;
+  margin-bottom: ${theme.spacing(6)};
 `,
 )

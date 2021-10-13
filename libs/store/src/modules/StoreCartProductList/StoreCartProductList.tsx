@@ -1,9 +1,13 @@
-import Box from '@material-ui/core/Box'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import AddIcon from '@material-ui/icons/Add'
-import RemoveIcon from '@material-ui/icons/Remove'
-import { Grid, Image, Typography } from '@ring/ui'
+import {
+  Box,
+  Divider,
+  Grid,
+  IconAdd,
+  IconButton,
+  IconRemove,
+  Image,
+  Typography,
+} from '@ring/ui'
 import { ReactElement } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
 
@@ -47,16 +51,18 @@ export function StoreCartProductList(): ReactElement {
                     onClick={() => {
                       decrementItem(cartItem.sku)
                     }}
+                    size="large"
                   >
-                    <RemoveIcon />
+                    <IconRemove />
                   </IconButton>
                   <Typography>{cartItem.quantity}</Typography>
                   <IconButton
                     onClick={() => {
                       incrementItem(cartItem.sku)
                     }}
+                    size="large"
                   >
-                    <AddIcon />
+                    <IconAdd />
                   </IconButton>
                 </Grid>
               </Grid>

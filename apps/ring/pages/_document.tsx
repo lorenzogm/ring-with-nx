@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 
-import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
+import MaterialUiServerStyleSheets from '@mui/styles/ServerStyleSheets'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React, { ReactElement } from 'react'
 // import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'

@@ -1,6 +1,4 @@
-import Box from '@material-ui/core/Box'
-import Divider from '@material-ui/core/Divider'
-import { Typography } from '@ring/ui/components/Typography'
+import { Box, Divider, Typography } from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 import { ReactElement } from 'react'
 

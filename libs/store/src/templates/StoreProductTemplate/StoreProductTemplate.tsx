@@ -1,6 +1,13 @@
-import { Box, Paper } from '@material-ui/core'
 import { StoreProduct, StoreProductColor } from '@ring/store'
-import { Button, Grid, Image, Typography, useToggle } from '@ring/ui'
+import {
+  Box,
+  Button,
+  Grid,
+  Image,
+  Paper,
+  Typography,
+  useToggle,
+} from '@ring/ui'
 import { useRing } from '@ring/ui/providers'
 import { styled } from '@ring/ui/theme'
 import Head from 'next/head'
@@ -155,17 +162,17 @@ export function StoreProductTemplate({
 
 const Brand = styled(Typography)`
   ${({ theme }) => `
-    margin-bottom: ${theme.spacing(4)}px;
+    margin-bottom: ${theme.spacing(4)};
   `}
 `
 const Name = styled(Typography)`
   ${({ theme }) => `
-    margin-bottom: ${theme.spacing(2)}px;
+    margin-bottom: ${theme.spacing(2)};
   `}
 `
 const Price = styled(Typography)`
   ${({ theme }) => `
-    margin-bottom: ${theme.spacing(2)}px;
+    margin-bottom: ${theme.spacing(2)};
   `}
 `
 

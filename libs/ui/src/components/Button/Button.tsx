@@ -1,7 +1,7 @@
 import {
   Button as ButtonMui,
   ButtonProps as ButtonMuiProps,
-} from '@material-ui/core'
+} from '@mui/material'
 import { styled } from '@ring/ui/theme'
 import { ReactNode } from 'react'
 

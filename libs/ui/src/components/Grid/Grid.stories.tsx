@@ -1,7 +1,6 @@
-import Paper from '@material-ui/core/Paper'
+import { Paper } from '@ring/ui'
 import { styled } from '@ring/ui/theme'
 import { Meta } from '@storybook/react'
-import React from 'react'
 import { withDesign } from 'storybook-addon-designs'
 
 import { Container } from '../Container'
