@@ -1,7 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNx = require('@nrwl/next/plugins/with-nx')
+const withPlugins = require('next-compose-plugins')
+const nx = require('@nrwl/next/plugins/with-nx')
+const bundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
-module.exports = withNx({
+module.exports = withPlugins([nx, bundleAnalyzer], {
   nx: {
     // Set this to false if you do not want to use SVGR
     // See: https://github.com/gregberge/svgr

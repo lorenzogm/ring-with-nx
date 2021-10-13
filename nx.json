@@ -29,16 +29,19 @@
     }
   },
   "projects": {
+    "nextjs": {
+      "tags": []
+    },
     "ring": {
       "tags": []
     },
-    "ring-core": {
+    "store": {
       "tags": []
     },
-    "ring-nextjs": {
+    "storyblok": {
       "tags": []
     },
-    "ring-storyblok": {
+    "ui": {
       "tags": []
     }
   },

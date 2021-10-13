@@ -1,5 +1,5 @@
+import { Storyblok, useStoryblok } from '@ring/storyblok'
 import { DynamicComponent } from '@ring/storyblok/components'
-import { Storyblok, useStoryblok } from '@ring/storyblok/index'
 import { GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
 

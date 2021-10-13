@@ -1,4 +1,4 @@
-import { RingTheme } from '@ring/core/theme'
+import { RingTheme } from '@ring/ui/theme'
 
 import { colors } from '../colors'
 

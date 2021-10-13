@@ -1,9 +1,8 @@
-import { ReactElement, useEffect, useState } from 'react'
-import { GetStaticProps } from 'next'
-import { useShoppingCart } from 'use-shopping-cart'
-
-import { StoreCheckoutSuccessTemplate, LayoutCheckout } from '@ring/core/index'
+import { LayoutCheckout, StoreCheckoutSuccessTemplate } from '@ring/store'
 import { Storyblok } from '@ring/storyblok/services'
+import { GetStaticProps } from 'next'
+import { ReactElement, useEffect, useState } from 'react'
+import { useShoppingCart } from 'use-shopping-cart'
 
 export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
   const sbParams = {

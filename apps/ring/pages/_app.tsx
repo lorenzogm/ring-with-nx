@@ -1,12 +1,9 @@
 import 'normalize.css/normalize.css'
 
-import {
-  ReactQueryProvider,
-  RingProvider,
-  StripeProvider,
-} from '@ring/core/index'
-import { Image, Link } from '@ring/nextjs/index'
-import { Header } from '@ring/storyblok/index'
+import { Image, Link } from '@ring/nextjs'
+import { StripeProvider } from '@ring/store'
+import { Header } from '@ring/storyblok'
+import { ReactQueryProvider, RingProvider } from '@ring/ui'
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
 import { ReactElement } from 'react'
@@ -15,8 +12,6 @@ import { blueTheme } from '../src/ui'
 
 export default function App({ Component, pageProps }: AppProps): ReactElement {
   const { config, locale, locales, story } = pageProps
-
-  console.log(pageProps)
 
   return (
     <RingProvider

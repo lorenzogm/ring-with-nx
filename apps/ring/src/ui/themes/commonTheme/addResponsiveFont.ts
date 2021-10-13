@@ -1,4 +1,4 @@
-import { RingTheme } from '@ring/core/index'
+import { RingTheme } from '@ring/ui'
 
 export function addResponsiveFont(theme: RingTheme): RingTheme {
   return {

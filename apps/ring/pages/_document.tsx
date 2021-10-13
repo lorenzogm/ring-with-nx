@@ -3,7 +3,7 @@
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React, { ReactElement } from 'react'
-import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
+// import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 
 export default class MyDocument extends Document {
   // eslint-disable-next-line class-methods-use-this
@@ -46,21 +46,21 @@ MyDocument.getInitialProps = async (ctx) => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  const styledComponentSheet = new StyledComponentSheets()
+  // const styledComponentSheet = new StyledComponentSheets()
   const materialUiSheets = new MaterialUiServerStyleSheets()
   const { renderPage } = ctx
   try {
     ctx.renderPage = () =>
       renderPage({
         enhanceApp: (App) => (props) =>
-          styledComponentSheet.collectStyles(
-            materialUiSheets.collect(
-              <App
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...props}
-              />,
-            ),
+          // styledComponentSheet.collectStyles(
+          materialUiSheets.collect(
+            <App
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...props}
+            />,
           ),
+        // ),
       })
     const initialProps = await Document.getInitialProps(ctx)
     return {
@@ -69,11 +69,11 @@ MyDocument.getInitialProps = async (ctx) => {
         <React.Fragment key="styles">
           {initialProps.styles}
           {materialUiSheets.getStyleElement()}
-          {styledComponentSheet.getStyleElement()}
+          {/* {styledComponentSheet.getStyleElement()} */}
         </React.Fragment>,
       ],
     }
   } finally {
-    styledComponentSheet.seal()
+    //   styledComponentSheet.seal()
   }
 }

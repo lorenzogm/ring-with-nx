@@ -1,6 +1,6 @@
-import { LayoutDefault } from '@ring/core/layouts'
+import { Storyblok, useStoryblok } from '@ring/storyblok'
 import { DynamicComponent } from '@ring/storyblok/components'
-import { Storyblok, useStoryblok } from '@ring/storyblok/index'
+import { LayoutDefault } from '@ring/ui/layouts'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
 

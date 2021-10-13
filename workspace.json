@@ -26,6 +26,35 @@
     }
   },
   "projects": {
+    "nextjs": {
+      "root": "libs/nextjs",
+      "sourceRoot": "libs/nextjs/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/nextjs/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nextjs"],
+          "options": {
+            "jestConfig": "libs/nextjs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./libs/nextjs/tsconfig.json"],
+            "parallel": false
+          }
+        }
+      }
+    },
     "ring": {
       "root": "apps/ring",
       "sourceRoot": "apps/ring",
@@ -91,88 +120,52 @@
         }
       }
     },
-    "ring-core": {
-      "root": "libs/ring/core",
-      "sourceRoot": "libs/ring/core/src",
+    "store": {
+      "root": "libs/store",
+      "sourceRoot": "libs/store/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/ring/core/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["libs/store/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ring/core"],
+          "outputs": ["coverage/libs/store"],
           "options": {
-            "jestConfig": "libs/ring/core/jest.config.js",
+            "jestConfig": "libs/store/jest.config.js",
             "passWithNoTests": true
-          }
-        },
-        "tsc": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": ["tsc --project ./libs/ring/core/tsconfig.json"],
-            "parallel": false
           }
         }
       }
     },
-    "ring-nextjs": {
-      "root": "libs/ring/nextjs",
-      "sourceRoot": "libs/ring/nextjs/src",
+    "storyblok": {
+      "root": "libs/storyblok",
+      "sourceRoot": "libs/storyblok/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/ring/nextjs/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["libs/storyblok/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ring/nextjs"],
+          "outputs": ["coverage/libs/storyblok"],
           "options": {
-            "jestConfig": "libs/ring/nextjs/jest.config.js",
+            "jestConfig": "libs/storyblok/jest.config.js",
             "passWithNoTests": true
           }
         },
         "tsc": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["tsc --project ./libs/ring/nextjs/tsconfig.json"],
-            "parallel": false
-          }
-        }
-      }
-    },
-    "ring-storyblok": {
-      "root": "libs/ring/storyblok",
-      "sourceRoot": "libs/ring/storyblok/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/ring/storyblok/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ring/storyblok"],
-          "options": {
-            "jestConfig": "libs/ring/storyblok/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "tsc": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": ["tsc --project ./libs/ring/storyblok/tsconfig.json"],
+            "commands": ["tsc --project ./libs/storyblok/tsconfig.json"],
             "parallel": false
           }
         },
@@ -182,11 +175,40 @@
             "parallel": false,
             "commands": [
               "yarn storyblok pull-components --space=128952",
-              "mkdir -p libs/ring/storyblok/src/types/generated",
-              "yarn storyblok-generate-ts source=./components.128952.json target=./libs/ring/storyblok/src/types/generated/storyblok.types.ts",
+              "mkdir -p libs/storyblok/src/types/generated",
+              "yarn storyblok-generate-ts source=./components.128952.json target=./libs/storyblok/src/types/generated/storyblok.types.ts",
               "rm components.128952.json",
               "rm presets.128952.json"
             ]
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["tsc --project ./libs/ui/tsconfig.json"],
+            "parallel": false
           }
         }
       }

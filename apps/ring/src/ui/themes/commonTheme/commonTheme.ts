@@ -1,4 +1,4 @@
-import { createRingTheme, RingTheme, RingThemeOptions } from '@ring/core/index'
+import { createRingTheme, RingTheme, RingThemeOptions } from '@ring/ui'
 
 import { addResponsiveFont } from './addResponsiveFont'
 import { colors } from './colors'

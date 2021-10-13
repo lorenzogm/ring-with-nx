@@ -1,7 +1,7 @@
 import {
   StoreCheckoutPaymentFormValues,
   StoreCheckoutPaymentTemplate,
-} from '@ring/core/index'
+} from '@ring/store'
 import { Storyblok } from '@ring/storyblok/services'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'

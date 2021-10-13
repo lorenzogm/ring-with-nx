@@ -4,6 +4,13 @@
   "plugins": ["@nrwl/nx"],
   "overrides": [
     {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "import/prefer-default-export": "off",
+        "jest/expect-expect": "off"
+      }
+    },
+    {
       "files": ["*.ts", "*.tsx"],
       "extends": [
         "plugin:@nrwl/nx/typescript",
@@ -12,8 +19,7 @@
         "@valtech-ch/eslint-config/rules/nextjs"
       ],
       "rules": {
-        "import/prefer-default-export": "off",
-        "jest/expect-expect": "off"
+        "@typescript-eslint/restrict-template-expressions": "off"
       }
     },
     {
