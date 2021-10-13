@@ -1,3 +1,4 @@
+import { Modules } from '@ring/storyblok'
 import { useCallback, useEffect, useState } from 'react'
 import StoryblokClient from 'storyblok-js-client'
 
@@ -10,7 +11,7 @@ export const Storyblok = new StoryblokClient({
 })
 
 type UseStoryblokProps = {
-  story: any
+  story: Story
   preview: boolean
   locale: string
   resolveRelations: Array<string>
@@ -41,7 +42,7 @@ export function useStoryblok({
       storyblokInstance.on(['change', 'published'], () => location.reload())
 
       // live update the story on input events
-      storyblokInstance.on('input', (event: { story: { _uid: any } }) => {
+      storyblokInstance.on('input', (event: { story: Story }) => {
         if (story && event.story._uid === story._uid) {
           setStoryUpdated(event.story)
         }
@@ -97,4 +98,9 @@ export function useStoryblok({
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return storyUpdated
+}
+
+type Story = {
+  _uid: string
+  content: Modules
 }

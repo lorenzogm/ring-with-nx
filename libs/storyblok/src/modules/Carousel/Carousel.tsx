@@ -1,6 +1,6 @@
-import { Carousel as CarouselRing } from '@ring/ui'
 import { useSpacing } from '@ring/storyblok/hooks'
 import { CarouselStoryblok } from '@ring/storyblok/types'
+import { Carousel as CarouselRing } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type CarouselProps = CarouselStoryblok & {

@@ -1,6 +1,6 @@
-import { ContainerModule as ContainerRing } from '@ring/ui'
-import { useSpacing } from '@ring/storyblok/hooks'
 import { ContainerStoryblok, DynamicComponent } from '@ring/storyblok'
+import { useSpacing } from '@ring/storyblok/hooks'
+import { ContainerModule as ContainerRing } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type ContainerProps = ContainerStoryblok & {

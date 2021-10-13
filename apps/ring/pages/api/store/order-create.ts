@@ -1,5 +1,5 @@
+import { StorePaymentMethods, StoreUserAddress } from '@ring/store'
 import { GlobalConfigStoryblok, Storyblok } from '@ring/storyblok'
-import { StorePaymentMethods, StoreUserAddress } from '@ring/ui'
 import { firestore } from '@ring/ui/services/firebase-admin'
 import { transactionalEmailsApi } from '@ring/ui/services/sendinblue'
 import { SendSmtpEmail } from '@sendinblue/client'
@@ -143,7 +143,7 @@ const createOrder: NextApiHandler = async (req, res) => {
 
   const r = await transactionalEmailsApi
     .sendTransacEmail(sendSmtpEmail)
-    .catch((e) => {
+    .catch(() => {
       res.status(500).json({
         message: `Unexpected error when sending the transactional email with Sendinblue`,
       })

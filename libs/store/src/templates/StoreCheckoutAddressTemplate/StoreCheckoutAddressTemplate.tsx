@@ -1,7 +1,7 @@
 import IconArrowForward from '@material-ui/icons/ArrowForward'
-import { FormInputTextEmail } from '@ring/ui/components/FormInputTextEmail'
-import { Button, Form, FormInputText, Grid } from '@ring/ui'
 import { StoreUserAddress } from '@ring/store'
+import { Button, Form, FormInputText, Grid } from '@ring/ui'
+import { FormInputTextEmail } from '@ring/ui/components/FormInputTextEmail'
 import { ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 

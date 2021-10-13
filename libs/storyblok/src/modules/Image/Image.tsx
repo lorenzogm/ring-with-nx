@@ -1,5 +1,5 @@
-import { ImageModule as ImageModuleRing } from '@ring/ui'
 import { ImageStoryblok } from '@ring/storyblok'
+import { ImageModule as ImageModuleRing } from '@ring/ui'
 import { ReactElement } from 'react'
 
 type ImageProps = ImageStoryblok & {

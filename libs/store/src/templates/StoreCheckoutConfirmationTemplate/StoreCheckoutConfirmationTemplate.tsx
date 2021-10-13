@@ -2,13 +2,13 @@ import Box from '@material-ui/core/Box'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import IconArrowBack from '@material-ui/icons/ArrowBack'
 import IconArrowForward from '@material-ui/icons/ArrowForward'
-import { BoxHeader, Button, Grid, Link, Typography } from '@ring/ui'
 import {
   StoreCartProductList,
   StoreOrderSummary,
   StorePaymentMethods,
   useStoreUserAddress,
 } from '@ring/store'
+import { BoxHeader, Button, Grid, Link, Typography } from '@ring/ui'
 import { MouseEvent, ReactElement, useEffect, useReducer } from 'react'
 import { MutationStatus } from 'react-query'
 import { useShoppingCart } from 'use-shopping-cart'

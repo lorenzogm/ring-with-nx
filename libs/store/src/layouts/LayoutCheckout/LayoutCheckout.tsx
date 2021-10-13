@@ -28,10 +28,12 @@ export function LayoutCheckout({
   )
 }
 
-const ContainerStyled = styled(Container)`
+const ContainerStyled = styled(Container)(
+  ({ theme }) => `
   display: flex;
   // 100vh - header height - footer height
   min-height: calc(100vh - 342px - 40px);
   flex-direction: column;
-  margin-bottom: ${({ theme }) => theme.spacing(6)}px;
-`
+  margin-bottom: ${theme.spacing(6)}px;
+`,
+)

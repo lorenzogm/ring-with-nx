@@ -1,8 +1,4 @@
-import {
-  StoreOrder,
-  StorePaymentMethods,
-  StoreUserAddress,
-} from 'libs/ring/store/src/types'
+import { StoreOrder, StorePaymentMethods, StoreUserAddress } from '@ring/store'
 import type { CartDetails } from 'use-shopping-cart'
 
 type CreateOrder = {

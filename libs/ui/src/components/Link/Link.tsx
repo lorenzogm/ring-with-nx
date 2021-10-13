@@ -27,7 +27,6 @@ export function Link({
   className,
   target,
   rel,
-  ariaLabel,
 }: LinkProps): JSX.Element {
   const { components } = useRing()
   const { Link: LinkRing } = components
@@ -43,7 +42,6 @@ export function Link({
         className={className}
         target={target}
         rel={relUpdated}
-        ariaLabel={ariaLabel}
       >
         {children}
       </LinkStyled>

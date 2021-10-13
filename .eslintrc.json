@@ -6,8 +6,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "import/prefer-default-export": "off",
-        "jest/expect-expect": "off"
+        "import/prefer-default-export": "off"
       }
     },
     {
@@ -19,7 +18,8 @@
         "@valtech-ch/eslint-config/rules/nextjs"
       ],
       "rules": {
-        "@typescript-eslint/restrict-template-expressions": "off"
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "jest/expect-expect": "off"
       }
     },
     {

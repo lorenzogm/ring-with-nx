@@ -12,22 +12,16 @@ export default {
 
 export function VariantOne(): JSX.Element {
   return (
-    <>
-      <Image {...dataOne} />
-    </>
+    <Image {...dataOne} />
   )
 }
 export function VariantTwo(): JSX.Element {
   return (
-    <>
-      <Image {...dataTwo} />
-    </>
+    <Image {...dataTwo} />
   )
 }
 export function VariantThree(): JSX.Element {
   return (
-    <>
-      <Image {...dataThree} />
-    </>
+    <Image {...dataThree} />
   )
 }

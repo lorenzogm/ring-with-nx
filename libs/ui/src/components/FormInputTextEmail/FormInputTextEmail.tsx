@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+
 import { FormInputText, FormInputTextProps } from '..'
 
 type FormInputTextEmailProps = FormInputTextProps

@@ -1,5 +1,5 @@
-import { Grid } from '@ring/ui/components'
 import { ContainerModule } from '@ring/ui'
+import { Grid } from '@ring/ui/components'
 import { ReactElement, ReactNode } from 'react'
 
 export type GridContainerProps = {

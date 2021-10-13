@@ -1,5 +1,10 @@
 import IconArrowForward from '@material-ui/icons/ArrowForward'
 import {
+  LayoutCheckout,
+  StoreOrderSummary,
+  StorePaymentMethods,
+} from '@ring/store'
+import {
   BoxHeader,
   Button,
   Form,
@@ -7,11 +12,6 @@ import {
   Grid,
   Typography,
 } from '@ring/ui'
-import {
-  LayoutCheckout,
-  StoreOrderSummary,
-  StorePaymentMethods,
-} from '@ring/store'
 import { ReactElement } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
