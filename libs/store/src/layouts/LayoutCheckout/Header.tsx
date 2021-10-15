@@ -5,9 +5,9 @@ import {
   Step,
   StepLabel,
   Stepper,
+  styled,
   Typography,
 } from '@ring/ui'
-import { styled } from '@ring/ui/theme'
 import { ReactElement } from 'react'
 
 type HeaderProps = {

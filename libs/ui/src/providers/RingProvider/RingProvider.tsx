@@ -1,8 +1,5 @@
 import { ImageProps, LinkProps, VisualGrid } from '@ring/ui/components'
-import { createRingTheme, RingTheme } from '@ring/ui/theme'
 import { createContext, ReactElement, ReactNode, useContext } from 'react'
-
-import { StyledComponentsProvider } from '..'
 
 const initialState = {
   components: {},
@@ -37,7 +34,6 @@ type ProviderProps = {
   layout: Layout
   locale: string
   locales: Array<string>
-  theme: RingTheme
   meta: MetaProps
 }
 
@@ -48,25 +44,22 @@ export function RingProvider({
   locale,
   locales,
   meta,
-  theme,
 }: ProviderProps): ReactElement {
   return (
-    <StyledComponentsProvider theme={createRingTheme(theme)}>
-      <Context.Provider
-        value={{
-          components,
-          layout,
-          locale,
-          locales,
-          meta,
-        }}
-      >
-        <>
-          {children}
-          {(process.env.NODE_ENV === 'development' && <VisualGrid />) || null}
-        </>
-      </Context.Provider>
-    </StyledComponentsProvider>
+    <Context.Provider
+      value={{
+        components,
+        layout,
+        locale,
+        locales,
+        meta,
+      }}
+    >
+      <>
+        {children}
+        {(process.env.NODE_ENV === 'development' && <VisualGrid />) || null}
+      </>
+    </Context.Provider>
   )
 }
 

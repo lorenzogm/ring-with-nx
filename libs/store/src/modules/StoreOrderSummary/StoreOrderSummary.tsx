@@ -1,5 +1,4 @@
-import { Box, BoxHeader, Typography } from '@ring/ui'
-import { styled } from '@ring/ui/theme'
+import { Box, BoxHeader, styled, Typography } from '@ring/ui'
 import { ReactElement } from 'react'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 

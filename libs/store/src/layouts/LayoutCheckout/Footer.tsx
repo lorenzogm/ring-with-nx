@@ -1,5 +1,4 @@
-import { Button, Container, Grid, IconArrowBack, Link } from '@ring/ui'
-import { styled } from '@ring/ui/theme'
+import { Button, Container, Grid, IconArrowBack, Link, styled } from '@ring/ui'
 import { ReactElement } from 'react'
 
 export function Footer(): ReactElement {

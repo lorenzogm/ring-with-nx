@@ -9,6 +9,7 @@ import {
   StepLabel as StepLabelMui,
   Stepper as StepperMui,
   Typography as TypographyMui,
+  TypographyProps as TypographyMuiProps,
 } from '@mui/material'
 
 export * from './BoxHeader'
@@ -35,3 +36,4 @@ export const Step = StepMui
 export const StepLabel = StepLabelMui
 export const Stepper = StepperMui
 export const Typography = TypographyMui
+export type TypographyProps = TypographyMuiProps

@@ -2,21 +2,19 @@ import { createRingTheme, RingTheme, RingThemeOptions } from '@ring/ui'
 
 import { addResponsiveFont } from './addResponsiveFont'
 import { colors } from './colors'
+import { components } from './components'
 import { footer } from './footer'
 import { grid } from './grid'
 import { header } from './header'
-import { overrides } from './overrides'
-import { props } from './props'
 
-function commonThemeOptions(themeOptions: RingThemeOptions): RingThemeOptions {
+function commonThemeOptions(themeOptions: RingThemeOptions) {
   return {
     colors,
     footer,
     grid,
     header,
     spacing: 10,
-    overrides,
-    props,
+    components,
     palette: {
       ...themeOptions.palette,
       background: {

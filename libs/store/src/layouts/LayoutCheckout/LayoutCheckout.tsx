@@ -1,5 +1,4 @@
-import { Container, Meta } from '@ring/ui'
-import { styled } from '@ring/ui/theme'
+import { Container, Meta, styled } from '@ring/ui'
 import { ReactElement, ReactNode } from 'react'
 
 import { Footer } from './Footer'

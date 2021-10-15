@@ -5,11 +5,11 @@ import {
   Grid,
   Image,
   Paper,
+  styled,
   Typography,
   useToggle,
 } from '@ring/ui'
 import { useRing } from '@ring/ui/providers'
-import { styled } from '@ring/ui/theme'
 import Head from 'next/head'
 import { ReactElement, useRef, useState } from 'react'
 import ReactSelect from 'react-select'

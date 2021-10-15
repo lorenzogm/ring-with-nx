@@ -7,6 +7,7 @@ import {
   Grid,
   IconArrowForward,
   IconButton,
+  IconClose,
   Typography,
   UseToggleHandlers,
   UseToggleState,
@@ -53,7 +54,7 @@ export default function Aside({
             >
               <Typography variant="h4">Tu cesta</Typography>
               <IconButton onClick={closeCart} size="large">
-                <CloseIcon />
+                <IconClose />
               </IconButton>
             </Box>
 

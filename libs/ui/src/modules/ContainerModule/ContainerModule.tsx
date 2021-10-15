@@ -6,7 +6,7 @@ export type ContainerModuleProps = Pick<GridProps, 'justifyContent'> & {
   backgroundColor?: string
   children: ReactElement
   disableMargins?: boolean
-  alignContent?: 'flex-start' | 'justify'
+  alignContent?: 'center' | 'flex-end' | 'flex-start' | 'justify'
   mobileFlexDirection?: 'row' | 'column'
   mobileMarginBottom: number
   tabletFlexDirection?: 'row' | 'column'

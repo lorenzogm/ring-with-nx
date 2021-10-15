@@ -3,7 +3,7 @@ import createEmotionServer from '@emotion/server/create-instance'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import * as React from 'react'
 
-export default class MyDocument extends Document {
+export class DocumentEmotion extends Document {
   render() {
     return (
       <Html lang="en">
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async function getInitialProps(ctx) {
+export async function getInitialProps(ctx) {
   // Resolution order
   //
   // On the server:
