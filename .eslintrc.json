@@ -1,26 +1,12 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "simple-import-sort", "unused-imports"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "import/prefer-default-export": "off"
-      }
-    },
-    {
       "files": ["*.ts", "*.tsx"],
-      "extends": [
-        "plugin:@nrwl/nx/typescript",
-        "@valtech-ch/eslint-config/plugins/react",
-        "@valtech-ch/eslint-config/rules/react",
-        "@valtech-ch/eslint-config/rules/nextjs"
-      ],
-      "rules": {
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "jest/expect-expect": "off"
-      }
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {}
     },
     {
       "files": ["*.js", "*.jsx"],

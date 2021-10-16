@@ -3522,10 +3522,10 @@
     "@typescript-eslint/types" "5.0.0"
     eslint-visitor-keys "^3.0.0"
 
-"@valtech-ch/eslint-config@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@valtech-ch/eslint-config/-/eslint-config-2.1.0.tgz#ca82bd5c42b25da2a019df8241e12dadd650b4c8"
-  integrity sha512-LikVCduWE0rHswVLW7/so75ZRHWhczg/tH9BR3PLG9DgPe5u08U9nyYiuPn6pI8fVwPVBs783YtGCBeFR8SdQQ==
+"@valtech-ch/eslint-config@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@valtech-ch/eslint-config/-/eslint-config-2.2.0.tgz#534a23ddc9e724c4dec988f168f52d8d752e73ce"
+  integrity sha512-0eiJmSI0POk95EEuonUr5r9Kp5QQBMQOM1qI4A84qAzzQNsSB0BfVMSI7vV9LeT2g6IUKTohZ8Js8HNNKOsyhQ==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -6885,7 +6885,7 @@ eslint-plugin-testing-library@^4.12.1:
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.30.0"
 
-eslint-plugin-unused-imports@^1.1.4:
+eslint-plugin-unused-imports@^1.1.5:
   version "1.1.5"
   resolved "https://registry.npmjs.org/eslint-plugin-unused-imports/-/eslint-plugin-unused-imports-1.1.5.tgz#a2b992ef0faf6c6c75c3815cc47bde76739513c2"
   integrity sha512-TeV8l8zkLQrq9LBeYFCQmYVIXMjfHgdRQLw7dEZp4ZB3PeR10Y5Uif11heCsHRmhdRIYMoewr1d9ouUHLbLHew==

@@ -1,5 +1,10 @@
 {
-  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nrwl/nx/react",
+    "../../.eslintrc.json",
+    "@valtech-ch/eslint-config/plugins/react",
+    "@valtech-ch/eslint-config/rules/react"
+  ],
   "parserOptions": {
     "project": "./tsconfig.*?.json"
   },
@@ -7,7 +12,10 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "react/react-in-jsx-scope": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

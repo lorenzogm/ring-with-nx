@@ -1,5 +1,10 @@
 {
-  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nrwl/nx/react",
+    "../../.eslintrc.json",
+    "@valtech-ch/eslint-config/plugins/nextjs",
+    "@valtech-ch/eslint-config/rules/nextjs"
+  ],
   "parserOptions": {
     "project": "./tsconfig.*?.json"
   },

@@ -2,17 +2,20 @@
   "parserOptions": {
     "project": "./tsconfig.*?.json"
   },
-  "extends": ["plugin:@nrwl/nx/react-typescript", "../../.eslintrc.json"],
+  "extends": [
+    "plugin:@nrwl/nx/react-typescript",
+    "../../.eslintrc.json",
+    "next",
+    "next/core-web-vitals",
+    "@valtech-ch/eslint-config/plugins/nextjs",
+    "@valtech-ch/eslint-config/rules/nextjs"
+  ],
   "ignorePatterns": ["!**/*"],
-  "rules": {
-    "@typescript-eslint/semi": "off",
-    "import/no-unresolved": "off"
-  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "react/react-in-jsx-scope": "off"
+        "@next/next/no-html-link-for-pages": ["error", "apps/ring/pages"]
       }
     },
     {
