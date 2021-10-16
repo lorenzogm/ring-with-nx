@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       locales,
     },
-    revalidate: 3600, // revalidate every hour
+    revalidate: 10, // revalidate every hour
   }
 }
 

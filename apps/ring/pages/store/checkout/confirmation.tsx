@@ -22,7 +22,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
     props: {
       config,
     },
-    revalidate: 1,
   }
 }
 
