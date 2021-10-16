@@ -1,4 +1,4 @@
-import { Storyblok, useStoryblok } from '@ring/storyblok'
+import { getConfig, Storyblok, useStoryblok } from '@ring/storyblok'
 import { DynamicComponent } from '@ring/storyblok/components'
 import { LayoutDefault } from '@ring/ui/layouts'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -52,15 +52,12 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home'
 
-  const sbParams = {
-    version: 'draft', // or 'draft'
-    resolve_relations: resolveRelations,
+  const { data } = await Storyblok.get(`cdn/stories/${slug}`, {
+    version: 'published',
     language: locale,
     ...(preview ? { cv: Date.now() } : {}),
-  }
-
-  const { data } = await Storyblok.get(`cdn/stories/${slug}`, sbParams)
-  const config = await Storyblok.get(`cdn/stories/global/config`, sbParams)
+  })
+  const config = await getConfig({ locale, preview })
 
   return {
     props: {
@@ -70,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({
       locale,
       locales,
     },
-    revalidate: 10, // revalidate every hour
+    revalidate: 10, // in seconds
   }
 }
 

@@ -1,16 +1,11 @@
 import { LayoutCheckout, StoreCheckoutSuccessTemplate } from '@ring/store'
-import { Storyblok } from '@ring/storyblok/services'
+import { getConfig } from '@ring/storyblok'
 import { GetStaticProps } from 'next'
 import { ReactElement, useEffect, useState } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
 
 export const getStaticProps: GetStaticProps = async ({ locale, preview }) => {
-  const sbParams = {
-    version: 'draft', // or 'draft'
-    language: locale,
-    ...(preview ? { cv: Date.now() } : {}),
-  }
-  const config = await Storyblok.get(`cdn/stories/global/config`, sbParams)
+  const config = await getConfig({ locale, preview })
 
   return {
     props: {

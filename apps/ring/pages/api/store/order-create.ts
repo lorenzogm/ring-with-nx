@@ -1,5 +1,5 @@
 import { StorePaymentMethods, StoreUserAddress } from '@ring/store'
-import { GlobalConfigStoryblok, Storyblok } from '@ring/storyblok'
+import { getConfig } from '@ring/storyblok'
 import { firestore } from '@ring/ui/services/firebase-admin'
 import { transactionalEmailsApi } from '@ring/ui/services/sendinblue'
 import { SendSmtpEmail } from '@sendinblue/client'
@@ -35,15 +35,7 @@ const createOrder: NextApiHandler = async (req, res) => {
     totalPrice: number
   } = JSON.parse(req.body)
 
-  const sbParams = {
-    version: 'draft', // or 'draft'
-    language: 'es',
-  }
-  // @ts-expect-error missing generic
-  const configStory: GlobalConfigStoryblok = await Storyblok.get(
-    `cdn/stories/global/config`,
-    sbParams,
-  )
+  const configStory = await getConfig({ locale: 'es', preview: false })
 
   const config = configStory.data.story.content
 

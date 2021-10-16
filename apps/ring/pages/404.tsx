@@ -1,4 +1,4 @@
-import { Storyblok, useStoryblok } from '@ring/storyblok'
+import { getConfig, useStoryblok } from '@ring/storyblok'
 import { DynamicComponent } from '@ring/storyblok/components'
 import { GetStaticProps } from 'next'
 import React, { ReactElement } from 'react'
@@ -8,13 +8,8 @@ export const getStaticProps: GetStaticProps = async ({
   locales,
   preview = false,
 }) => {
-  const sbParams = {
-    version: 'draft', // or 'draft'
-    language: locale,
-    ...(preview ? { cv: Date.now() } : {}),
-  }
+  const config = await getConfig({ locale, preview })
 
-  const config = await Storyblok.get(`cdn/stories/global/config`, sbParams)
   return {
     props: {
       config,
