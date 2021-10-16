@@ -2,6 +2,7 @@ import createCache from '@emotion/cache'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
+import { RingTheme } from '@ring/ui'
 import { ReactElement, ReactNode } from 'react'
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -10,7 +11,7 @@ const clientSideEmotionCache = createEmotionCache()
 type EmotionProviderProps = {
   children: ReactNode
   emotionCache?: EmotionCache
-  theme: any
+  theme: RingTheme
 }
 
 export function EmotionProvider({

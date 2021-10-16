@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/display-name */
 import createCache from '@emotion/cache'
 import createEmotionServer from '@emotion/server/create-instance'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
@@ -56,7 +58,6 @@ MyDocument.getInitialProps = async function getInitialProps(ctx) {
 
   ctx.renderPage = () =>
     renderPage({
-      // eslint-disable-next-line react/display-name
       enhanceApp: (App: any) => (props) =>
         <App emotionCache={cache} {...props} />,
     })

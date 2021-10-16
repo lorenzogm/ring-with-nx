@@ -95,6 +95,7 @@ type Link = ({
 type Logo = ({ height }: { height: number }) => JSX.Element
 
 export type Layout = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   header: Array<any>
 }
 
