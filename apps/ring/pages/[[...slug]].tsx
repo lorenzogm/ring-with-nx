@@ -52,22 +52,29 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = Array.isArray(params.slug) ? params.slug.join('/') : 'home'
 
-  const { data } = await Storyblok.get(`cdn/stories/${slug}`, {
-    version: 'published',
-    language: locale,
-    ...(preview ? { cv: Date.now() } : {}),
-  })
-  const config = await getConfig({ locale, preview })
+  try {
+    const { data } = await Storyblok.get(`cdn/stories/${slug}`, {
+      version: 'draft',
+      language: locale,
+      ...(preview ? { cv: Date.now() } : {}),
+    })
 
-  return {
-    props: {
-      story: data ? data.story : false,
-      config,
-      preview,
-      locale,
-      locales,
-    },
-    revalidate: 10, // in seconds
+    const config = await getConfig({ locale, preview })
+
+    return {
+      props: {
+        story: data ? data.story : false,
+        config,
+        preview,
+        locale,
+        locales,
+      },
+      revalidate: 10, // in seconds
+    }
+  } catch {
+    return {
+      notFound: true,
+    }
   }
 }
 
