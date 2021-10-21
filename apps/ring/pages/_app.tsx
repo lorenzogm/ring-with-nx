@@ -9,7 +9,7 @@ import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
 import { ReactElement } from 'react'
 
-import { blueTheme } from '../src/ui'
+import { theme } from '../src/ui'
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
 }
@@ -38,7 +38,7 @@ export default function App({
         favicons: config.data.story.content.favicons,
       }}
     >
-      <EmotionProvider theme={blueTheme} emotionCache={emotionCache}>
+      <EmotionProvider theme={theme} emotionCache={emotionCache}>
         <StripeProvider>
           <ReactQueryProvider>
             <Component
