@@ -1,1 +1,3 @@
-export * from './ContentTemplate'
+import { ContentTemplate } from './ContentTemplate'
+export { ContentTemplate }
+export default ContentTemplate

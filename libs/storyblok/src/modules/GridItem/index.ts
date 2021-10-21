@@ -1,1 +1,3 @@
-export * from './GridItem'
+import { GridItem } from './GridItem'
+export { GridItem }
+export default GridItem

@@ -1,1 +1,3 @@
-export * from './StoreProductTemplate'
+import { StoreProductTemplate } from './StoreProductTemplate'
+export { StoreProductTemplate }
+export default StoreProductTemplate

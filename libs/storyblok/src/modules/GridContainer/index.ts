@@ -1,1 +1,3 @@
-export * from './GridContainer'
+import { GridContainer } from './GridContainer'
+export { GridContainer }
+export default GridContainer

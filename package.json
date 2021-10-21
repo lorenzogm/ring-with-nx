@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
+  "sideEffects": false,
   "lint-staged": {
     "*.{json,yml,yaml,css,scss,md,mdx,graphql}": [
       "yarn format:write --uncommitted"

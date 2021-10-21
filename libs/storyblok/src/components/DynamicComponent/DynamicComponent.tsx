@@ -1,18 +1,4 @@
 import {
-  Carousel,
-  ContactInline,
-  Container,
-  GridContainer,
-  GridItem,
-  Image,
-  LinkExternal,
-  Title,
-} from '@ring/storyblok/modules'
-import {
-  ContentTemplate,
-  StoreProductTemplate,
-} from '@ring/storyblok/templates'
-import {
   CarouselStoryblok,
   ContactInlineStoryblok,
   ContainerStoryblok,
@@ -24,10 +10,35 @@ import {
   StoreProductStoryblok,
   TitleStoryblok,
 } from '@ring/storyblok/types'
+import dynamic from 'next/dynamic'
 import { ReactElement } from 'react'
 import StoryblokReact from 'storyblok-react'
 
-import { Placeholder } from './Placeholder'
+const Placeholder = dynamic(() => import('./Placeholder'))
+
+// templates
+const ContentTemplate = dynamic(
+  () => import('@ring/storyblok/templates/ContentTemplate'),
+)
+const StoreProductTemplate = dynamic(
+  () => import('@ring/storyblok/templates/StoreProductTemplate'),
+)
+
+// modules
+const Carousel = dynamic(() => import('@ring/storyblok/modules/Carousel'))
+const ContactInline = dynamic(
+  () => import('@ring/storyblok/modules/ContactInline'),
+)
+const Container = dynamic(() => import('@ring/storyblok/modules/Container'))
+const GridContainer = dynamic(
+  () => import('@ring/storyblok/modules/GridContainer'),
+)
+const GridItem = dynamic(() => import('@ring/storyblok/modules/GridItem'))
+const Image = dynamic(() => import('@ring/storyblok/modules/Image'))
+const LinkExternal = dynamic(
+  () => import('@ring/storyblok/modules/LinkExternal'),
+)
+const Title = dynamic(() => import('@ring/storyblok/modules/Title'))
 
 export type Modules =
   | CarouselStoryblok

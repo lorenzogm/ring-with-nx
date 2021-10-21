@@ -2,6 +2,7 @@ type PlaceholderProps = {
   componentName: string
 }
 
+export default Placeholder
 export function Placeholder({ componentName }: PlaceholderProps): JSX.Element {
   return (
     <p>

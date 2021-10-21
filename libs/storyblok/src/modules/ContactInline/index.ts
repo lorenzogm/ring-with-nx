@@ -1,1 +1,3 @@
-export * from './ContactInline'
+import { ContactInline } from './ContactInline'
+export { ContactInline }
+export default ContactInline
