@@ -12,8 +12,8 @@ module.exports = withPlugins([nx, bundleAnalyzer], {
   },
   i18n: {
     localeDetection: false,
-    locales: ['es'],
-    defaultLocale: 'es',
+    locales: ['de', 'en', 'es'],
+    defaultLocale: 'en',
   },
   images: {
     domains: ['a.storyblok.com'],
