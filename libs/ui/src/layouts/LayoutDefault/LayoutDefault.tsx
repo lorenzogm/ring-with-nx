@@ -56,9 +56,9 @@ export function LayoutDefault({
   )
 }
 
-const ContainerStyled = styled(Container)`
-  min-height: calc(100vh - 88px);
-`
+const ContainerStyled = styled(Container)(
+  ({ theme }) => theme.layouts.LayoutDefault.Container,
+)
 
 const Background = styled.div`
   background-size: 100% 300px;

@@ -10,6 +10,7 @@ import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { theme } from '../src/ui'
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
 }

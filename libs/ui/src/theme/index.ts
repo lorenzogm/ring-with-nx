@@ -1,7 +1,2 @@
-export * from './colors'
-export * from './footer'
-export * from './grid'
-export * from './header'
 export * from './styled'
 export * from './theme'
-export * from './types'

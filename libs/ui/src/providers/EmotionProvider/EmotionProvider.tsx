@@ -31,5 +31,5 @@ export function EmotionProvider({
 }
 
 function createEmotionCache() {
-  return createCache({ key: 'css' })
+  return createCache({ key: 'css', prepend: true })
 }
