@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async ({
     props: {
       config,
       preview,
-      locale,
+      locale: locale || 'en',
       locales,
     },
   }
