@@ -30,10 +30,11 @@ export function StoreProductTemplate({
   const { cartDetails, addItem, incrementItem } = useShoppingCart()
 
   const sizeSelectedRef = useRef(null)
+  const imageSelectedDefault = useImageSelected({ product })
   const [{ colorSelected, imageSelected }, selectColor] =
     useState<UseColorSelectorState>({
       colorSelected: product.colorDefault,
-      imageSelected: product.imageDefault,
+      imageSelected: imageSelectedDefault,
     })
   const [{ sizeSelected }, selectSize] = useState<UseSizeSelectorState>({})
 
@@ -56,13 +57,15 @@ export function StoreProductTemplate({
           <Grid container>
             <Grid item xs={12} md={6}>
               <Paper>
-                <Image
-                  src={imageSelected.src}
-                  alt={imageSelected.alt || product.name}
-                  layout="responsive"
-                  width={1}
-                  height={1}
-                />
+                {imageSelected ? (
+                  <Image
+                    src={imageSelected.src}
+                    alt={imageSelected.alt || product.name}
+                    layout="responsive"
+                    width={1}
+                    height={1}
+                  />
+                ) : null}
               </Paper>
             </Grid>
 
@@ -144,7 +147,7 @@ export function StoreProductTemplate({
           sku,
           price: product.price,
           currency: 'EUR',
-          image: imageSelected.src,
+          image: imageSelected ? imageSelected.src : '',
           color: colorSelected,
           ...(sizeSelected ? { size: sizeSelected } : {}),
         })
@@ -178,9 +181,29 @@ const Price = styled(Typography)`
 
 type UseColorSelectorState = {
   colorSelected: StoreProductColor['color']
-  imageSelected: StoreProductColor['image']
+  imageSelected?: StoreProductColor['image']
 }
 
 type UseSizeSelectorState = {
   sizeSelected?: string
+}
+
+type UseImageSelectedProps = {
+  product: StoreProduct
+}
+
+function useImageSelected({ product }: UseImageSelectedProps) {
+  if (!product.colors) {
+    return undefined
+  }
+
+  const colorSelected = product.colors.find(
+    (c) => c.color === product.colorDefault,
+  )
+
+  if (colorSelected) {
+    return colorSelected.image
+  }
+
+  return undefined
 }

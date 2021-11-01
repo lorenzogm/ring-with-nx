@@ -21,7 +21,7 @@ export function ColorSelector({
 }: ColorSelectorProps): ReactElement | null {
   return (
     <div>
-      <div>Color: {colorSelected}</div>
+      {colorSelected ? <div>Color: {colorSelected}</div> : null}
       <Grid container>
         {colors.map(({ image, color }) => (
           <Grid item key={color} xs={4} sm={2}>

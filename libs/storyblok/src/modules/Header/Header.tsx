@@ -6,6 +6,10 @@ export function Header(): ReactElement | null {
   const { layout } = useRing()
   const { header } = layout
 
+  if (!header[0]) {
+    return null
+  }
+
   const body: Array<Modules> = header[0].body
 
   return (
