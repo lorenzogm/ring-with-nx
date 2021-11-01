@@ -6,40 +6,40 @@ import React, { ReactElement } from 'react'
 
 const resolveRelations = ['GlobalReference.reference']
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
-  const { data } = await Storyblok.get('cdn/links/')
+export const getStaticPaths: GetStaticPaths = async () => {
+  // const { data } = await Storyblok.get('cdn/links/')
 
-  const paths = []
-  Object.keys(data.links).forEach((linkKey) => {
-    if (data.links[linkKey].is_folder) {
-      return
-    }
+  // const paths = []
+  // Object.keys(data.links).forEach((linkKey) => {
+  //   if (data.links[linkKey].is_folder) {
+  //     return
+  //   }
 
-    // get array for slug because of catch all
-    const { slug } = data.links[linkKey]
+  //   // get array for slug because of catch all
+  //   const { slug } = data.links[linkKey]
 
-    const slugAsArray = slug.split('/')
-    const [firstPath] = slugAsArray
+  //   const slugAsArray = slug.split('/')
+  //   const [firstPath] = slugAsArray
 
-    if (firstPath !== 'global') {
-      // create additional languages
-      if (locales) {
-        locales.forEach((locale) => {
-          paths.push({
-            params: { slug: slug === 'home' ? false : slugAsArray },
-            locale,
-          })
-        })
-      } else {
-        paths.push({
-          params: { slug: slug === 'home' ? false : slugAsArray },
-        })
-      }
-    }
-  })
+  //   if (firstPath !== 'global') {
+  //     // create additional languages
+  //     if (locales) {
+  //       locales.forEach((locale) => {
+  //         paths.push({
+  //           params: { slug: slug === 'home' ? ['/'] : slugAsArray },
+  //           locale,
+  //         })
+  //       })
+  //     } else {
+  //       paths.push({
+  //         params: { slug: slug === 'home' ? ['/'] : slugAsArray },
+  //       })
+  //     }
+  //   }
+  // })
 
   return {
-    paths,
+    paths: [],
     fallback: 'blocking',
   }
 }
