@@ -54,9 +54,6 @@ export type ThemeGrid = {
 }
 
 type ThemeLayouts = {
-  LayoutCheckout: {
-    Container: CSSInterpolation
-  }
   LayoutDefault: {
     Container: CSSInterpolation
   }
