@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({
 
   try {
     const { data } = await Storyblok.get(`cdn/stories/${slug}`, {
-      version: 'draft',
+      version: 'published',
       language: locale,
       ...(preview ? { cv: Date.now() } : {}),
     })
@@ -71,7 +71,8 @@ export const getStaticProps: GetStaticProps = async ({
       },
       revalidate: 10, // in seconds
     }
-  } catch {
+  } catch (e) {
+    console.error(e)
     return {
       notFound: true,
     }
