@@ -12,6 +12,7 @@ export function LocaleSwitcher(): ReactElement | null {
 
   return (
     <Select
+      instanceId="localeSwitcher"
       onChange={onChange}
       options={locales.map((l) => ({
         value: l,
@@ -27,5 +28,9 @@ export function LocaleSwitcher(): ReactElement | null {
     await router.push({ pathname, query }, asPath, {
       locale: localeAsObject ? localeAsObject.value : defaultLocale,
     })
+    // reload is not required,
+    // but the "useStorybook" defined in "pages/[[...slug]].tsx" is not updating
+    // the content on the client
+    window.location.reload()
   }
 }
