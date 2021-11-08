@@ -38,6 +38,9 @@ const Image = dynamic(() => import('@ring/storyblok/modules/Image'))
 const LinkExternal = dynamic(
   () => import('@ring/storyblok/modules/LinkExternal'),
 )
+const LocaleSwitcher = dynamic(
+  () => import('@ring/storyblok/modules/LocaleSwitcher'),
+)
 const Title = dynamic(() => import('@ring/storyblok/modules/Title'))
 
 export type Modules =
@@ -61,6 +64,7 @@ const ModulesMapping = {
   GridItem,
   Image,
   LinkExternal,
+  LocaleSwitcher,
   StoreProduct: StoreProductTemplate,
   Title,
 }

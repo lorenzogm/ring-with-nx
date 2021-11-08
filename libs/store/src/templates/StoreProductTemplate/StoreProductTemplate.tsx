@@ -5,6 +5,7 @@ import {
   Grid,
   Image,
   Paper,
+  Select,
   styled,
   Typography,
   useToggle,
@@ -12,7 +13,6 @@ import {
 import { useRing } from '@ring/ui/providers'
 import Head from 'next/head'
 import { ReactElement, useRef, useState } from 'react'
-import ReactSelect from 'react-select'
 import slugify from 'slugify'
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 
@@ -95,7 +95,7 @@ export function StoreProductTemplate({
 
               {sizes && (
                 <Box mb={2}>
-                  <ReactSelect
+                  <Select
                     ref={sizeSelectedRef}
                     options={sizes}
                     placeholder="Elige tu talla"
