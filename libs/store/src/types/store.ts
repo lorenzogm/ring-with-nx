@@ -18,6 +18,7 @@ export type StoreProduct = {
   brand?: string
   colorDefault: string
   colors?: Array<StoreProductColor>
+  disabled?: boolean
   name: string
   price: number
   type?: 'CLOTHES_BABIES' | 'CLOTHES_BIGS' | 'CLOTHES_KIDS'

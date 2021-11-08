@@ -43,6 +43,15 @@ export function StoreProductTemplate({
     { open: openSizeSelector, close: closeSizeSelector },
   ] = useToggle()
 
+  if (product.disabled) {
+    return (
+      <Typography>
+        This product is not available, or any other custom code when the product
+        is disabled
+      </Typography>
+    )
+  }
+
   const sizes = product.type ? sizesMapping[product.type] : null
 
   return (

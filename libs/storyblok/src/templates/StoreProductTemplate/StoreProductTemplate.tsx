@@ -8,6 +8,7 @@ export function StoreProductTemplate({
   brand,
   colorDefault,
   colors,
+  disabled,
   name,
   price,
   type,
@@ -21,6 +22,7 @@ export function StoreProductTemplate({
           image: { src: image.filename, alt: image.alt },
         }))
       : undefined,
+    disabled,
     name,
     price: price ? price.number : 0,
     type,
