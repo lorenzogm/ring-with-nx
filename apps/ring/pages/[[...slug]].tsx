@@ -80,15 +80,10 @@ export const getStaticProps: GetStaticProps = async ({
 
 type PageProps = {
   locale: string
-  // locales: Array<string>
   story
 }
 
-export default function Page({
-  story,
-  locale,
-}: // locales,
-PageProps): ReactElement {
+export default function Page({ story, locale }: PageProps): ReactElement {
   const enableBridge = true // load the storyblok bridge everywhere
   // use the preview variable to enable the bridge only in preview mode
   // const enableBridge = preview;
