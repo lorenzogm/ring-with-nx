@@ -70,7 +70,7 @@
     "react": "^17.0.2",
     "react-cookie-consent": "^6.4.1",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.17.4",
+    "react-hook-form": "^7.21.2",
     "react-is": "17.0.2",
     "react-material-ui-carousel": "^2.3.7-mui5",
     "react-query": "^3.23.1",
