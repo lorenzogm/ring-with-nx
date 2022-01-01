@@ -12852,10 +12852,10 @@ react-material-ui-carousel@^2.3.7-mui5:
     auto-bind "^2.1.1"
     react-swipeable "^6.1.0"
 
-react-query@^3.23.1:
-  version "3.26.0"
-  resolved "https://registry.npmjs.org/react-query/-/react-query-3.26.0.tgz#7083a8622afdf946ee6d8f3a6d94591b980c1aa0"
-  integrity sha512-wFPnL9Y+9xf6gJHAQ8ue+vBurciJ4cfQL4dhsI0x3YyRaEXlyklUQpJzbR63CfFULVekP3iWoyFxhaNVS9RFDw==
+react-query@^3.34.2:
+  version "3.34.7"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.34.7.tgz#e3d71318f510ea354794cd188b351bb57f577cb9"
+  integrity sha512-Q8+H2DgpoZdGUpwW2Z9WAbSrIE+yOdZiCUokHjlniOOmlcsfqNLgvHF5i7rtuCmlw3hv5OAhtpS7e97/DvgpWw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
