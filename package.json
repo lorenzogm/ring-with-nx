@@ -60,7 +60,7 @@
     "@nrwl/next": "12.10.0",
     "@sendinblue/client": "^3.0.1",
     "@stripe/stripe-js": "^1.19.1",
-    "core-js": "^3.18.3",
+    "core-js": "^3.19.3",
     "document-register-element": "1.14.10",
     "firebase": "^9.6.1",
     "firebase-admin": "^9.12.0",
