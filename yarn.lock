@@ -14455,12 +14455,10 @@ storyblok-js-client@^3.3.1:
   dependencies:
     qs "^6.9.4"
 
-storyblok-js-client@^4.1.4:
-  version "4.1.5"
-  resolved "https://registry.npmjs.org/storyblok-js-client/-/storyblok-js-client-4.1.5.tgz#d0ceb811a9b4847850bf4856046e01816ac221c6"
-  integrity sha512-0cd9AtU1JE0Q7lyda7NSyfwasvuy3X5v9z1kMm4TWmcbUiQEjUjiNaZ9o0bu7iTpgVeatoa2j6XGLRqPQKz8dw==
-  dependencies:
-    qs "^6.9.4"
+storyblok-js-client@^4.1.6:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.2.0.tgz#f1b64b256b071aef14d915e326210a73f18a0259"
+  integrity sha512-dAeZfqFrHdxyvGFEVv0glOTxLx1Y2faGN39qeLZLOGCoeK49Xg53hOl8BddxqrjTqTp93GzbqLx04r/hzXrfxA==
 
 storyblok-react@^0.1.2:
   version "0.1.2"
